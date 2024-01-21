@@ -10,5 +10,9 @@ class AdminController extends Controller
         return view('Admin.districtList');
     }
 
+    public function barangayListpage(){
+        return view('Admin.barangayList');
+    }
+
 
 }

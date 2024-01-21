@@ -149,7 +149,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item">
-                <a href="Barangay_list.php" class="menu-link">
+                <a href={{ '/Admin/Barangay_List' }} class="menu-link">
                   <div data-i18n="Perfect Scrollbar">Barangay List</div>
                 </a>
               </li>

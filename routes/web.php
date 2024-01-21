@@ -46,4 +46,5 @@ Route::controller(UserController::class)->group(function () {
 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/Admin/District_List', 'districtListpage');
+    Route::get('/Admin/Barangay_List', 'barangayListpage');
 });
