@@ -75,8 +75,8 @@
               <!-- /Logo -->
               <h5 class="mb-2 text-center">Welcome to Admin Page!👋</h5>
               <p class="mb-4 text-center">Please sign-in to your account and start the adventure</p>
-              <form id="formAuthentication" class="mb-3" action="HDlogin.php" method="POST">
-
+              <form id="formAuthentication" class="mb-3" action="/Admin/Login/Process" method="POST">
+                @csrf
               <div class="mb-3">
                       <!-- <label class="form-label" for="selectTypeOpt">Type</label> -->
                       <a href="{{ '/' }}" class="form-control text-center d-flex align-items-center justify-content-center"><i class='bx bxs-share px-1' ></i>

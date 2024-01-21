@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -44,6 +45,19 @@ class UserController extends Controller
     public function userList(){
         $data = User::paginate(10);
         return view('Admin.userList',['users'=>$data]);
+    }   
+
+
+
+    public function LoginProcess(Request $request){
+        $validated = $request->validate([
+            "email"=> ['required','email'],
+            "password" => 'required',
+        ]);
+        if(auth()-> attempt($validated)){
+                $request->session()->regenerate();
+                return redirect('/Admin/Dashboard');
+        }
     }
 
 

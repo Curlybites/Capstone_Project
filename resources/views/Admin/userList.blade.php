@@ -128,7 +128,7 @@
             <!-- User interface -->
             <li class="menu-item">
               <a href="javascript:void(0)" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons bx bxs-building-house"></i>
+              <i class="menu-icon tf-icons bx bx-building"></i>
                 <div data-i18n="User interface">Districts</div>
               </a>
               <ul class="menu-sub">
@@ -156,9 +156,24 @@
             </ul>
           </li>
 
+          <li class="menu-item">
+            <a href="javascript:void(0)" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-capsule"></i>
+              <div data-i18n="Extended UI">Health Center</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="Barangay_list.php" class="menu-link">
+                  <div data-i18n="Perfect Scrollbar">List of Health Centers</div>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
             <li class="menu-item">
               <a href="javascript:void(0)" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bxs-folder-plus"></i>
+                <i class="menu-icon tf-icons bx bx-customize"></i>
                 <div data-i18n="Extended UI">Programs</div>
               </a>
               <ul class="menu-sub">
@@ -333,12 +348,13 @@
                      
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                       aria-hidden="true">
-                      <div class="modal-dialog modal-xl">
-                        <div class="modal-content border-2 border-start-0 border-end-0 border-bottom-0 border-success">
-                          <div class="modal-header border-1">
-                            <h1 class="modal-title fs-3" id="exampleModalLabel">Create User</h1>         
+                      <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content ">
+                          <div class="modal-header ">
+                            <h1 class="modal-title fs-3" id="exampleModalLabel">Create User</h1>       
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>  
                           </div>
-                      <form action="/Admin/Store" method="POST">
+                      <form action="/Admin/Store" method="POST" >
                         @csrf
                           <div class="modal-body">
 
@@ -528,8 +544,23 @@
                           <td>{{ $user->sex }}</td>
                             <td>{{ $user->contact }}</td>
                             <td>{{ $user->created_at }}</td>
-                            <td class="">
-                                <div class="dropdown">
+                          
+                            <td class="d-flex justify-content-center align-items-center">
+                        
+            
+                             
+                                  <a type="button" href={{"/Admin/User_List/$user->id"}} class="text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                    <i class="bi bi-eye-fill"></i>
+                                  </a>
+
+                                  <a type="button" href={{"/Admin/User_List/$user->id"}} class="text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                    <i class="bi bi-pencil-square"></i>
+                                  </a>
+                         
+                                  
+                               
+                       
+                                {{-- <div class="dropdown">
                                   <a class="btn btn-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Action
                                   </a>
@@ -538,22 +569,65 @@
                                     <li>
                                       <a class="dropdown-item" href="#">View</a>
                                     </li>
-
                                     <li>
-                                      <a class="dropdown-item" href="#">Delete</a>
-                                    </li>
+                                      <a class="dropdown-item text-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Edit</a>
+                                    </li> --}}
+                                    {{-- <li>
+                                      <button type="button" class="dropdown-item" href="/Admin/User_List/{{ $user->id }}">Edit</button>
+                                    </li> --}}
+                                    {{-- <li><a class="dropdown-item" href="#">Delete</a></li>
                                   </ul>
-                                </div>
+                                </div> --}}
                             </td>
                           </tr>
                           @endforeach
+                          <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  MOdal 1
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  MODAL 2
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
                         </tbody>
                         </tfoot>
                       </table>
                     </div>
                   </div>
                   <hr class="my-0">
-               
+                  <div class="card-body">
+                    <form id="formAccountSettings" method="POST" onsubmit="return false">
+
+                    </form>
+                  </div>
                   <!-- /Account -->
                 </div>
 

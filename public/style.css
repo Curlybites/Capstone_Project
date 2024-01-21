@@ -177,3 +177,7 @@ body a {
   -webkit-transform: scale(1);
           transform: scale(1);
 }
+
+#eye-icon {
+  font-size: 2%;
+}
