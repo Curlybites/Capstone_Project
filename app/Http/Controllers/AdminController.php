@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function districtList(){
-        return view('');
+    public function districtListpage(){
+        return view('Admin.districtList');
     }
 
-    
+
 }

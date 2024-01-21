@@ -134,7 +134,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="District_List.php" class="menu-link">
+                  <a href={{ '/Admin/District_List' }} class="menu-link">
                     <div data-i18n="Accordion">District List</div>
                   </a>
                 </li>
