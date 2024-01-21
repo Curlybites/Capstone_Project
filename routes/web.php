@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -21,37 +22,6 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 
-// Auth::routes();
-// admin Route
-// Route::middleware(['auth','user-role:user'])->group(function(){
-//     Route::get("/Admin/Dashboard",[PageController::class,'adminDashboard'])->name('AdminHome');
-// });
-
-
-// // Program Manager Route
-// Route::middleware(['auth','user-role:user'])->group(function(){
-//     // Route::get("/Admin/Dashboard",[PageController::class,'adminDashboard'])->name('AdminHome');
-// });
-
-
-// // Health Department Route
-// Route::middleware(['auth','user-role:user'])->group(function(){
-//     // Route::get("/Admin/Dashboard",[PageController::class,'adminDashboard'])->name('AdminHome');
-// });
-
-
-// // District  Route
-// Route::middleware(['auth','user-role:user'])->group(function(){
-//     // Route::get("/Admin/Dashboard",[PageController::class,'adminDashboard'])->name('AdminHome');
-// });
-
-// // Health Center Route
-// Route::middleware(['auth','user-role:user'])->group(function(){
-//     // Route::get("/Admin/Dashboard",[PageController::class,'adminDashboard'])->name('AdminHome');
-// });
-
-
-
 Route::controller(PageController::class)->group(function(){
     Route::get('/','loginPage');
     Route::get('/Admin/Login','AdminLogin');
@@ -70,4 +40,11 @@ Route::controller(UserController::class)->group(function(){
     Route::get('/Admin/Add_User','createUserPage');
     Route::get('/Admin/User_List','userList');
     Route::post('/Admin/Login/Process','LoginProcess');
+});
+
+
+// Admin route
+
+Route::controller(AdminController::class)->group(function(){
+    Route::get('/Admin/District_List', 'districtList');
 });
