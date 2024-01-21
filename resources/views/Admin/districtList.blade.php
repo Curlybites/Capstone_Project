@@ -111,13 +111,13 @@
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
                                         <h5 class="card-header">District List</h5>
-                                        <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
+                                        {{-- <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
-                                            New</button>
+                                            New</button> --}}
 
                                         <div class="modal fade" id="exampleModal" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-xl modal-dialog-centered">
+                                            <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content ">
                                                     <div class="modal-header ">
                                                         <h1 class="modal-title fs-3" id="exampleModalLabel">Create
@@ -131,145 +131,56 @@
                                                         <div class="modal-body">
 
                                                             <div class="row">
-
                                                                 <h5>Personal Details</h5>
-                                                                <div class="col">
-                                                                    <p>First Name</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing e xample input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="firstname" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Middle Name</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="middlename" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Last Name</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="lastname" required>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row pb-4">
-
-                                                                <div class="col">
-                                                                    <p>Sex</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <select class="form-select"
-                                                                            aria-label="Default select example"
-                                                                            name="sex">
-                                                                            <option value="male">Male</option>
-                                                                            <option value="Female">Female</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Birthdate</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="date" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="birthdate" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Address</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="address" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Contact Number</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="number" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="contact" required>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-
-                                                            <div class="row border-top pt-4 pb-4">
-                                                                <h5 class="">Account Setup</h5>
-
-                                                                <div class="col">
-                                                                    <p>Email</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="email" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="email" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Password</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="password" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="password" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Confirm Password</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="password" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="password_confirmation" required>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                            </div>
-
-                                                            <div class="row border-top pt-4">
-                                                                <h5>Designation / Role Setup</h5>
-
-                                                                <div class="col">
-                                                                    <p>Select Role Type</p>
+                                                                <div class="col-12">
+                                                                    <p>District Number</p>
                                                                     <div class="input-group mb-3">
                                                                         <select class="form-select"
                                                                             aria-label="Default select example"
                                                                             name="role">
-                                                                            <option value="1">Admin</option>
-                                                                            <option value="2">Program Manager
+                                                                            <option value="">Select District
+                                                                                Number
                                                                             </option>
-                                                                            <option value="3">District Staff
+                                                                            <option value="1">District 1
                                                                             </option>
-                                                                            <option value="4">Health Department
-                                                                                Staff</option>
-                                                                            <option value="5">Brgy. Health Center
-                                                                                Staff</option>
+                                                                            <option value="2">District 2
+                                                                            </option>
+                                                                            <option value="3">District 3
+                                                                            </option>
+                                                                            <option value="4">District 4
+                                                                            </option>
+                                                                            <option value="5">District 5
+                                                                            </option>
+                                                                            <option value="6">District 6
+                                                                            </option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
+                                                            </div>
 
-
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <p>District Supervisor</p>
+                                                                    <select class="form-select"
+                                                                        aria-label="Default select example"
+                                                                        name="role">
+                                                                        <option value="">Select District
+                                                                            Number
+                                                                        </option>
+                                                                        <option value="1">District 1
+                                                                        </option>
+                                                                        <option value="2">District 2
+                                                                        </option>
+                                                                        <option value="3">District 3
+                                                                        </option>
+                                                                        <option value="4">District 4
+                                                                        </option>
+                                                                        <option value="5">District 5
+                                                                        </option>
+                                                                        <option value="6">District 6
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
                                                             </div>
 
                                                         </div>
@@ -279,10 +190,10 @@
                                                             <button type="submit"
                                                                 class="btn btn-primary mt-3">Save</button>
                                                         </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        </form>
                                     </div>
 
                                     <hr class="my-0">
@@ -299,7 +210,108 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <tr>
+                                                        <td>District 1</td>
+                                                        <td></td>
+                                                        <td class="d-flex justify-content-center align-items-center"><a
+                                                                type="button" href=/Admin/User_List/1
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal1">
+                                                                <i class="bi bi-eye-fill"></i>
+                                                            </a>
 
+                                                            <a type="button" href=/Admin/User_List/1
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal2">
+                                                                <i class="bi bi-pencil-square"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>District 2</td>
+                                                        <td></td>
+                                                        <td class="d-flex justify-content-center align-items-center"><a
+                                                                type="button" href=/Admin/User_List/1
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal1">
+                                                                <i class="bi bi-eye-fill"></i>
+                                                            </a>
+
+                                                            <a type="button" href=/Admin/User_List/1
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal2">
+                                                                <i class="bi bi-pencil-square"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>District 3</td>
+                                                        <td></td>
+                                                        <td class="d-flex justify-content-center align-items-center"><a
+                                                                type="button" href=/Admin/User_List/1
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal1">
+                                                                <i class="bi bi-eye-fill"></i>
+                                                            </a>
+
+                                                            <a type="button" href=/Admin/User_List/1
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal2">
+                                                                <i class="bi bi-pencil-square"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>District 4</td>
+                                                        <td></td>
+                                                        <td class="d-flex justify-content-center align-items-center"><a
+                                                                type="button" href=/Admin/User_List/1
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal1">
+                                                                <i class="bi bi-eye-fill"></i>
+                                                            </a>
+
+                                                            <a type="button" href=/Admin/User_List/1
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal2">
+                                                                <i class="bi bi-pencil-square"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>District 5</td>
+                                                        <td></td>
+                                                        <td class="d-flex justify-content-center align-items-center"><a
+                                                                type="button" href=/Admin/User_List/1
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal1">
+                                                                <i class="bi bi-eye-fill"></i>
+                                                            </a>
+
+                                                            <a type="button" href=/Admin/User_List/1
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal2">
+                                                                <i class="bi bi-pencil-square"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>District 6</td>
+                                                        <td></td>
+                                                        <td class="d-flex justify-content-center align-items-center"><a
+                                                                type="button" href=/Admin/User_List/1
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal1">
+                                                                <i class="bi bi-eye-fill"></i>
+                                                            </a>
+
+                                                            <a type="button" href=/Admin/User_List/1
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal2">
+                                                                <i class="bi bi-pencil-square"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
                                                     <div class="modal fade" id="exampleModal1" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">
@@ -349,7 +361,7 @@
                                                     </div>
 
                                                 </tbody>
-                                                </tfoot>
+
                                             </table>
                                         </div>
                                     </div>
