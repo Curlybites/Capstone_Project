@@ -132,9 +132,9 @@
 
                                                             <div class="row">
 
-                                                                <h5>Personal Details</h5>
+                                                                <h5>Barangay Details</h5>
                                                                 <div class="col">
-                                                                    <p>First Name</p>
+                                                                    <p>Name of Barangay Captain</p>
                                                                     <div class="input-group mb-3">
                                                                         <input type="text" class="form-control"
                                                                             aria-label="Sizing e xample input"
@@ -143,25 +143,6 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col">
-                                                                    <p>Middle Name</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="middlename" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Last Name</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="lastname" required>
-                                                                    </div>
-                                                                </div>
                                                             </div>
 
                                                             <div class="row pb-4">
@@ -189,7 +170,7 @@
                                                                 </div>
 
                                                                 <div class="col">
-                                                                    <p>Address</p>
+                                                                    <p>Address of Barangay</p>
                                                                     <div class="input-group mb-3">
                                                                         <input type="text" class="form-control"
                                                                             aria-label="Sizing example input"
@@ -243,31 +224,6 @@
                                                                     </div>
                                                                 </div>
 
-
-
-                                                            </div>
-
-                                                            <div class="row border-top pt-4">
-                                                                <h5>Designation / Role Setup</h5>
-
-                                                                <div class="col">
-                                                                    <p>Select Role Type</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <select class="form-select"
-                                                                            aria-label="Default select example"
-                                                                            name="role">
-                                                                            <option value="1">Admin</option>
-                                                                            <option value="2">Program Manager
-                                                                            </option>
-                                                                            <option value="3">Barangay Staff
-                                                                            </option>
-                                                                            <option value="4">Health Department
-                                                                                Staff</option>
-                                                                            <option value="5">Brgy. Health Center
-                                                                                Staff</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
 
 
                                                             </div>
