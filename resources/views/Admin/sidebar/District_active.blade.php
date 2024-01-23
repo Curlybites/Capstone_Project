@@ -3,16 +3,12 @@
     <div class="app-brand d-flex align-items-center justify-content-center p-3">
       <a href={{ '/Admin/Dashboard' }} class="app-brand-link ">
         <img src="../assets/img/download.png" width="100$" class="">
-
       </a>
-
       <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
         <i class="bx bx-chevron-left bx-sm align-middle"></i>
       </a>
     </div>
-
     <div class="menu-inner-shadow"></div>
-
     <ul class="menu-inner py-1">
       <!-- Dashboard -->
       <li class="menu-item">
@@ -21,7 +17,6 @@
           <div data-i18n="Analytics">Dashboard</div>
         </a>
       </li>
-
         {{-- <li class="menu-header small text-uppercase">
           <span class="menu-header-text">Pages</span>
         </li>
@@ -82,7 +77,6 @@
             </li>
           </ul>
         </li>
-
         <li class="menu-item">
           <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bxs-truck"></i>
@@ -93,13 +87,12 @@
               <a href="Distribution_list.php" class="menu-link">
                 <div data-i18n="Error">Distribution List</div>
               </a>
-               <a href="Add_distribution_list.php" class="menu-link">
+              <a href="Add_distribution_list.php" class="menu-link">
                 <div data-i18n="Error">Add Distribution</div>
               </a>
             </li>
           </ul>
         </li>
-
         <li class="menu-item">
           <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-notepad"></i>
@@ -113,7 +106,6 @@
             </li>
           </ul>
         </li> --}}
-
         <!-- Components -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
         
@@ -131,7 +123,6 @@
             </li>
           </ul>
         </li>
-
       <!-- Extended components -->
       <li class="menu-item">
         <a href="javascript:void(0)" class="menu-link menu-toggle">
@@ -140,14 +131,12 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="Barangay_list.php" class="menu-link">
+            <a href={{ '/Admin/Barangay_List' }} class="menu-link">
               <div data-i18n="Perfect Scrollbar">Barangay List</div>
             </a>
           </li>
-
         </ul>
       </li>
-
       <li class="menu-item">
         <a href="javascript:void(0)" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-capsule"></i>
@@ -155,14 +144,12 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="Barangay_list.php" class="menu-link">
+            <a href={{ '/Admin/HealthCenter_List' }} class="menu-link">
               <div data-i18n="Perfect Scrollbar">List of Health Centers</div>
             </a>
           </li>
-
         </ul>
       </li>
-
         <li class="menu-item">
           <a href="javascript:void(0)" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-customize"></i>
@@ -170,14 +157,12 @@
           </a>
           <ul class="menu-sub">
             <li class="menu-item">
-              <a href="Programs_list.php" class="menu-link">
+              <a href={{ '/Admin/Program_List' }} class="menu-link">
                 <div data-i18n="Perfect Scrollbar">Program List</div>
               </a>
             </li>
-
           </ul>
         </li>
-
         <li class="menu-item">
           <a href="javascript:void(0)" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-user-pin"></i>
@@ -185,29 +170,25 @@
           </a>
           <ul class="menu-sub">
             <li class="menu-item">
-              <a href="Supplier_list.php" class="menu-link">
+              <a href={{ '/Admin/Supplier_List' }} class="menu-link">
                 <div data-i18n="Perfect Scrollbar">List of Supplier</div>
               </a>
             </li>
-
           </ul>
         </li>
-
         <li class="menu-item">
-          <a href="javascript:void(0)" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bxs-package"></i>
+        <a href="javascript:void(0)" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bxs-package"></i>
             <div data-i18n="Extended UI">Items</div>
-          </a>
-          <ul class="menu-sub">
+        </a>
+        <ul class="menu-sub">
             <li class="menu-item">
-              <a href="Item_list.php" class="menu-link">
+            <a href={{ '/Admin/Item_List' }} class="menu-link">
                 <div data-i18n="Perfect Scrollbar">List of Items</div>
-              </a>
+            </a>
             </li>
-
-          </ul>
+        </ul>
         </li>
-
         <li class="menu-item">
           <a href="javascript:void(0)" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-user"></i>
@@ -219,12 +200,8 @@
                 <div data-i18n="Perfect Scrollbar">List of User</div>
               </a>
             </li>
-
           </ul>
         </li>
-
-
-
         <!-- Forms & Tables -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Profile</span></li>
         <!-- Forms -->
@@ -233,7 +210,6 @@
             <i class="menu-icon tf-icons bx bx-user-circle"></i>
             <div data-i18n="Form Elements">Account</div>
           </a>
-         
         </li>
         
         
