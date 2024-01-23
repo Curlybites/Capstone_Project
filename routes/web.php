@@ -42,6 +42,7 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/Admin/Add_User', 'createUserPage');
     Route::get('/Admin/User_List', 'userList');
     Route::post('/Admin/Login/Process', 'LoginProcess');
+    Route::post('/Logout', 'logout');
 });
 
 

@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function userlistPage(){
-        return view('Admin.userList');
+        $user = Auth::user();
+        return view('Admin.userList',['user' => $user]);
     }
 
     // public function createUserPage(){
@@ -43,8 +44,9 @@ class UserController extends Controller
     }
 
     public function userList(){
-        $data = User::paginate(10);
-        return view('Admin.userList',['users'=>$data]);
+        $user = Auth::user();
+        $data = User::all();
+        return view('Admin.userList',['users'=>$data],['user' => $user]);
     }   
 
 
@@ -69,7 +71,7 @@ class UserController extends Controller
     
         if (auth()->attempt($validated)) {
             $userRole = auth()->user()->role;
-    
+          
             switch ($userRole) {
                 case 1:
                     $request->session()->regenerate();
@@ -78,12 +80,12 @@ class UserController extends Controller
     
                 case 2:
                     $request->session()->regenerate();
-                    return redirect('/Health_Department/Dashboard');
+                    return redirect('/Program_Manager/Dashboard');
                     break;
     
                 case 3:
                     $request->session()->regenerate();
-                    return redirect('/Program_Manager/Dashboard');
+                    return redirect('/Health_Department/Dashboard');
                     break;
 
                 case 4:
@@ -99,16 +101,21 @@ class UserController extends Controller
                 default:
                     // Handle other roles or redirect as needed
                     // You might want to redirect to a different page or show an error message
-                    return redirect('/')->with('error', 'Unauthorized access');
+                    return back()->withErrors(['email'=> 'invalid email or password']);
                     break;
             }
         } else {
             // Authentication failed, return to login with an error message
-            return redirect('/')->with('error', 'Invalid credentials');
+       return back()->withErrors(['email'=> 'invalid email or password']);
         }
     }
     
-
+    public function logout(Request $request){
+       auth()->logout();
+       request()->session()->invalidate();
+       request()->session()->regenerateToken();
+       return redirect('/');
+    }
 
 
     // public function LoginProcess(Request $request){

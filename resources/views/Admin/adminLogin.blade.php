@@ -72,16 +72,27 @@
                   </span>
                 </a>
               </div>
+
+              
               <!-- /Logo -->
               <h5 class="mb-2 text-center">Welcome to Admin Page!👋</h5>
               <p class="mb-4 text-center">Please sign-in to your account and start the adventure</p>
+              <script>
+              
+                  @if ($errors->any())
+                      <div class="alert alert-danger alert-dismissible " role="alert">
+                              @foreach ($errors->all() as $error)
+                                  <p>{{ $error }}</p>
+                              @endforeach
+                      </div>
+                  @endif
               <form id="formAuthentication" class="mb-3" action="/Admin/Login/Process" method="POST">
                 @csrf
               <div class="mb-3">
                       <!-- <label class="form-label" for="selectTypeOpt">Type</label> -->
-                      <a href="{{ '/' }}" class="form-control text-center d-flex align-items-center justify-content-center"><i class='bx bxs-share px-1' ></i>
+                      {{-- <a href="{{ '/' }}" class="form-control text-center d-flex align-items-center justify-content-center"><i class='bx bxs-share px-1' ></i>
                       BACK
-                      </a>
+                      </a> --}}
                       <!-- <select id="selectTypeOpt" class="form-select color-dropdown">
                         <option value="bg-primary" selected><a href="">Health Department</a></option>
                         <option value="bg-secondary">Program Manager</option>
