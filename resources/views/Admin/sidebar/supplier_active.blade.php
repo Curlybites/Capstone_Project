@@ -101,18 +101,18 @@
         </li>
 
         <li class="menu-item">
-          <a href="javascript:void(0)" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bxs-package"></i>
+        <a href="javascript:void(0)" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bxs-package"></i>
             <div data-i18n="Extended UI">Items</div>
-          </a>
-          <ul class="menu-sub">
+        </a>
+        <ul class="menu-sub">
             <li class="menu-item">
-              <a href="Item_list.php" class="menu-link">
+            <a href={{ '/Admin/Item_List' }} class="menu-link">
                 <div data-i18n="Perfect Scrollbar">List of Items</div>
-              </a>
+            </a>
             </li>
 
-          </ul>
+        </ul>
         </li>
 
         <li class="menu-item">
@@ -140,7 +140,6 @@
             <i class="menu-icon tf-icons bx bx-user-circle"></i>
             <div data-i18n="Form Elements">Account</div>
           </a>
-         
         </li>
         
         

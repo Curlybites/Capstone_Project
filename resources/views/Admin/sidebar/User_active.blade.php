@@ -93,7 +93,7 @@
               <a href="Distribution_list.php" class="menu-link">
                 <div data-i18n="Error">Distribution List</div>
               </a>
-               <a href="Add_distribution_list.php" class="menu-link">
+              <a href="Add_distribution_list.php" class="menu-link">
                 <div data-i18n="Error">Add Distribution</div>
               </a>
             </li>
