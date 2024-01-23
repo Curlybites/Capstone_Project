@@ -14,9 +14,9 @@ class UserController extends Controller
         return view('Admin.userList');
     }
 
-    public function createUserPage(){
-        return view('Admin.createUser');
-    }
+    // public function createUserPage(){
+    //     return view('Admin.createUser');
+    // }
 
 
     public function store(Request $request){
@@ -49,17 +49,114 @@ class UserController extends Controller
 
 
 
-    public function LoginProcess(Request $request){
+    // public function LoginProcess(Request $request){
+    //     $validated = $request->validate([
+    //         "email"=> ['required','email'],
+    //         "password" => 'required',
+    //     ]);
+    //     if(auth()-> attempt($validated)){
+    //             $request->session()->regenerate();
+    //             return redirect('/Admin/Dashboard');
+    //     }
+    // }
+
+    public function LoginProcess(Request $request)
+    {
         $validated = $request->validate([
-            "email"=> ['required','email'],
+            "email" => ['required', 'email'],
             "password" => 'required',
         ]);
-        if(auth()-> attempt($validated)){
-                $request->session()->regenerate();
-                return redirect('/Admin/Dashboard');
+    
+        if (auth()->attempt($validated)) {
+            $userRole = auth()->user()->role;
+    
+            switch ($userRole) {
+                case 1:
+                    $request->session()->regenerate();
+                    return redirect('/Admin/Dashboard');
+                    break;
+    
+                case 2:
+                    $request->session()->regenerate();
+                    return redirect('/health_department/dashboard');
+                    break;
+    
+                case 3:
+                    $request->session()->regenerate();
+                    return redirect('/program_manager/dashboard');
+                    break;
+
+                case 4:
+                    $request->session()->regenerate();
+                    return redirect('district_supervisor/dashboard');
+                    break;
+    
+                default:
+                    // Handle other roles or redirect as needed
+                    // You might want to redirect to a different page or show an error message
+                    return redirect('/')->with('error', 'Unauthorized access');
+                    break;
+            }
+        } else {
+            // Authentication failed, return to login with an error message
+            return redirect('/')->with('error', 'Invalid credentials');
         }
     }
+    
 
 
 
+    // public function LoginProcess(Request $request){
+    //     $validated = $request->validate([
+    //         "email"=> ['required','email'],
+    //         "password" => 'required',
+    //     ]);
+    //     if (auth()->attempt($validated)) {
+    //         // Authentication successful
+    //         $userRole = auth()->user()->role;
+        
+    //         if ($userRole == 1) {
+    //             $request->session()->regenerate();
+    //             return redirect('/Admin/Dashboard');
+    //         } else {
+    //             // Handle other roles or redirect as needed
+    //             // You might want to redirect to a different page or show an error message
+    //             return redirect('/')->with('error', 'Unauthorized access');
+    //         }
+    //     } else {
+    //         // Authentication failed, return to login with an error message
+    //         return redirect('/')->with('error', 'Invalid credentials');
+    //     }
+    // }
 }
+
+    
+
+        // In a controller
+    // public function index(Request $request)
+    // {
+    //     $validated = $request->validate([
+    //                 "email"=> ['required','email'],
+    //                 "password" => 'required',
+    //             ]);
+
+    //     if (auth()->user()->role == User::ROLE_ADMIN) {
+    //         // Logic for admin
+    //     } elseif (auth()->user()->role == User::ROLE_HEALTH_DEPARTMENT) {
+    //         // Logic for manager
+    //     } elseif (auth()->user()->role == User::ROLE_PROGRAM_MANAGER) {
+
+    //     } elseif (auth()->user()->role == User::ROLE_DISTRICT_SUPERVISOR) {
+
+    //     } elseif (auth()->user()->role == User::ROLE_HEALTH_CENTER) {
+    //        // Logic for user
+    //     } else {
+    //         // Logic for guest
+    //     }
+
+    //     // ...
+    // }
+
+
+
+

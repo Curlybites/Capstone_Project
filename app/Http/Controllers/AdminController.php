@@ -9,6 +9,12 @@ class AdminController extends Controller
     public function districtListpage(){
         return view('Admin.districtList');
     }
+    // public function index(){
+    //     return view('admin.index');
+    // }
+
+
+
 
 
 }

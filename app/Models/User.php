@@ -55,6 +55,14 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    
+    
+    // const ROLE_ADMIN = 1;
+    // const ROLE_HEALTH_DEPARTMENT = 2;
+    // const ROLE_PROGRAM_MANAGER = 3;
+    // const ROLE_DISTRICT_SUPERVISOR = 4;
+    // const ROLE_HEALTH_CENTER = 5;
+
     protected function role(): Attribute
     {
         return new Attribute(
