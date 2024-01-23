@@ -77,7 +77,7 @@
               <!-- /Logo -->
               <h5 class="mb-2 text-center">Welcome to Admin Page!👋</h5>
               <p class="mb-4 text-center">Please sign-in to your account and start the adventure</p>
-              <script>
+
               
                   @if ($errors->any())
                       <div class="alert alert-danger alert-dismissible " role="alert">
