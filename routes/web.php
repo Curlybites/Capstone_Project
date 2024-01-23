@@ -23,14 +23,17 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::controller(PageController::class)->group(function () {
-    Route::get('/', 'AdminLogin');
+    Route::get('/', 'AdminLogin')->name('login');
     // Route::get('/Admin/Login', 'AdminLogin');
     // Route::get('/District/Login', 'districtPage');
     // Route::get('/Program_Manager/Login', 'pmPage');
     // Route::get('/Health_Department/Login', 'hdPage');
     // Route::get('/Health_Center/Login', 'hcPage');
-    Route::get('/Program_Manager/Dashboard', 'pmDashboard');
-    Route::get('/Admin/Dashboard', 'adminDashboard');
+    Route::get('/Program_Manager/Dashboard', 'pmDashboard')->middleware('auth');
+    Route::get('/Admin/Dashboard', 'adminDashboard')->middleware('auth');
+    Route::get('/Health_Department/Dashboard', 'hdDashboard')->middleware('auth');
+    Route::get('/District/Dashboard', 'dtDashboard')->middleware('auth');
+    Route::get('/Health_Center/Dashboard', 'hcDashboard')->middleware('auth');
 });
 
 Route::controller(UserController::class)->group(function () {

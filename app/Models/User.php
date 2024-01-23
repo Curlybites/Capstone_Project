@@ -63,11 +63,9 @@ class User extends Authenticatable
     // const ROLE_DISTRICT_SUPERVISOR = 4;
     // const ROLE_HEALTH_CENTER = 5;
 
-    protected function role(): Attribute
+    public function role()
     {
-        return new Attribute(
-            get: fn($value) => [1,2,3,4,5][$value],
-        );
+        return $this->belongsTo(User::class);
     }
 
 }

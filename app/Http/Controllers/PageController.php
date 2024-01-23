@@ -40,6 +40,18 @@ class PageController extends Controller
         return view('Program_Manager.Dashboard');
     }
 
+    public function hdDashboard(){
+        return view('Health_Department.hdDashboard');
+    }
+
+    public function dtDashboard(){
+        return view('District.dtDashboard');
+    }
+
+    public function hcDashboard(){
+        return view('Health_Center.hcDashboard');
+    }
+
 
   
 }

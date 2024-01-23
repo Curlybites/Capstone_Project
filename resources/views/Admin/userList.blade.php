@@ -266,10 +266,9 @@
                                                                             <option value="1">Admin</option>
                                                                             <option value="2">Program Manager
                                                                             </option>
-                                                                            <option value="3">District Staff
+                                                                            <option value="3">Health Department Staff
                                                                             </option>
-                                                                            <option value="4">Health Department
-                                                                                Staff</option>
+                                                                            <option value="4">District Stafff</option>
                                                                             <option value="5">Brgy. Health Center
                                                                                 Staff</option>
                                                                         </select>
@@ -335,11 +334,11 @@
                                                                     @break
 
                                                                     @case(3)
-                                                                        District Staff
+                                                                        Health Department Staff
                                                                     @break
 
                                                                     @case(4)
-                                                                        Health Department Staff
+                                                                        District Staff
                                                                     @break
 
                                                                     @case(5)

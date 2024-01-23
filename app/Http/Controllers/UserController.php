@@ -78,17 +78,22 @@ class UserController extends Controller
     
                 case 2:
                     $request->session()->regenerate();
-                    return redirect('/health_department/dashboard');
+                    return redirect('/Health_Department/Dashboard');
                     break;
     
                 case 3:
                     $request->session()->regenerate();
-                    return redirect('/program_manager/dashboard');
+                    return redirect('/Program_Manager/Dashboard');
                     break;
 
                 case 4:
                     $request->session()->regenerate();
-                    return redirect('district_supervisor/dashboard');
+                    return redirect('District/Dashboard');
+                    break;
+
+                case 5:
+                    $request->session()->regenerate();
+                    return redirect('Health_Center/Dashboard');
                     break;
     
                 default:
