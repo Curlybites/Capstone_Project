@@ -37,10 +37,10 @@ Route::controller(PageController::class)->group(function () {
 });
 
 Route::controller(UserController::class)->group(function () {
-    Route::get('/Admin/User_List', 'userlistPage');
+    Route::get('/Admin/User_List', 'userlistPage')->middleware('auth');
     Route::post('/Admin/Store', 'store');
-    Route::get('/Admin/Add_User', 'createUserPage');
-    Route::get('/Admin/User_List', 'userList');
+    Route::get('/Admin/Add_User', 'createUserPage')->middleware('auth');
+    Route::get('/Admin/User_List', 'userList')->middleware('auth');
     Route::post('/Admin/Login/Process', 'LoginProcess');
     Route::post('/Logout', 'logout');
 });
@@ -49,6 +49,6 @@ Route::controller(UserController::class)->group(function () {
 // Admin route
 
 Route::controller(AdminController::class)->group(function () {
-    Route::get('/Admin/District_List', 'districtListpage');
+    Route::get('/Admin/District_List', 'districtListpage')->middleware('auth');
 
 });
