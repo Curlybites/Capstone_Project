@@ -15,7 +15,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>QC Login | Medicine Supply Distribution</title>
 
     <meta name="description" content="" />
 
@@ -75,7 +75,7 @@
 
               
               <!-- /Logo -->
-              <h5 class="mb-2 text-center">Welcome to Admin Page!👋</h5>
+              <h5 class="mb-2 text-center">Welcome to QC Medicine & Supply Distribution System!👋</h5>
               <p class="mb-4 text-center">Please sign-in to your account and start the adventure</p>
 
               
@@ -111,6 +111,7 @@
                     name="email"
                     placeholder="Enter your email or username"
                     autofocus
+                    required
                   />
                 </div>
                 <div class="mb-3 form-password-toggle">
@@ -128,6 +129,8 @@
                       name="password"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
+                    required
+
                     />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
