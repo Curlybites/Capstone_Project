@@ -37,7 +37,7 @@ Route::controller(PageController::class)->group(function () {
 });
 
 Route::controller(UserController::class)->group(function () {
-    Route::get('/Admin/User_List', 'userlistPage')->middleware('auth');
+    // Route::get('/Admin/User_List', 'userlistPage');
     Route::post('/Admin/Store', 'store');
     Route::get('/Admin/Add_User', 'createUserPage')->middleware('auth');
     Route::get('/Admin/User_List', 'userList')->middleware('auth');
