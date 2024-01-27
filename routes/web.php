@@ -41,6 +41,7 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/Admin/Store', 'store');
     Route::get('/Admin/Add_User', 'createUserPage')->middleware('auth');
     Route::get('/Admin/User_List', 'userList')->middleware('auth');
+    Route::get('/Admin/User_List/$id', );
     Route::post('/Admin/Login/Process', 'LoginProcess');
     Route::post('/Logout', 'logout');
 });

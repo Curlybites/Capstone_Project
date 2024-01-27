@@ -117,29 +117,12 @@ class UserController extends Controller
        return redirect('/');
     }
 
+    public function editUser($id){
+        $user = User::findOrFail($id);
+        return view('');
 
-    // public function LoginProcess(Request $request){
-    //     $validated = $request->validate([
-    //         "email"=> ['required','email'],
-    //         "password" => 'required',
-    //     ]);
-    //     if (auth()->attempt($validated)) {
-    //         // Authentication successful
-    //         $userRole = auth()->user()->role;
-        
-    //         if ($userRole == 1) {
-    //             $request->session()->regenerate();
-    //             return redirect('/Admin/Dashboard');
-    //         } else {
-    //             // Handle other roles or redirect as needed
-    //             // You might want to redirect to a different page or show an error message
-    //             return redirect('/')->with('error', 'Unauthorized access');
-    //         }
-    //     } else {
-    //         // Authentication failed, return to login with an error message
-    //         return redirect('/')->with('error', 'Invalid credentials');
-    //     }
-    // }
+    }
+ 
 }
 
     
