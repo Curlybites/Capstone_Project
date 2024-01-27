@@ -59,5 +59,5 @@ Route::controller(HdController::class)->group(function () {
     Route::get('/Health_Department/Item_List', 'hdInventory')->middleware('auth');
     Route::get('/Health_Department/Allocation_List', 'hdAllocation')->middleware('auth');
     Route::get('/Health_Department/Profile', 'hdAccount')->middleware('auth');
-    Route::get('/Health_Department/Profile/Change', 'hdAccountChange')->middleware('auth');
+    Route::get('/Health_Department/Profile_Change', 'hdAccountChange')->middleware('auth');
 });
