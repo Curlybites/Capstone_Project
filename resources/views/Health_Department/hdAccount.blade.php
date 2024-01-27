@@ -19,7 +19,7 @@
                 <div class="content-wrapper">
                     <!-- Content -->
 
-                    <div class="container-xxl">
+                    <div class="container-fluid flex-grow-1 container-p-y">
                         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account /</span> Profile
                         </h4>
 
@@ -31,6 +31,12 @@
                                                 class="bx
                                             bx-user me-1"></i>
                                             Account</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link d-flex align-items-center justify-content-center" href= {{ '/Health_Department/Profile_Change' }}>
+                                            <i class='bx bx-lock-alt'></i>
+                                            <span>Change Password</span>
+                                            </a>
                                     </li>
                                 </ul>
                                 <div class="card mb-4">
