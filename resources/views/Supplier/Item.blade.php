@@ -6,7 +6,7 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('Admin.sidebar.User_active');
+            @include('Supplier.sidebar.Item_active');
             <!-- / Menu -->
 
             <!-- Layout container -->
@@ -20,7 +20,7 @@
                     <!-- Content -->
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Users /</span> List of Users
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Item /</span> List of Items
                         </h4>
 
                         <div class="row">
@@ -28,7 +28,7 @@
                                 <div class="card mb-4">
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
-                                        <h5 class="card-header">User List</h5>
+                                        <h5 class="card-header">Item List</h5>
                                         <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
                                             New</button>
@@ -229,49 +229,20 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($users as $user)
+                                                 
                                                         <tr>
-                                                            <td>{{ $user->id }}</td>
+                                                            <td></td>
 
-                                                            <td>{{ $user->lastname }}, {{ $user->firstname }}
-                                                                @if (isset($user->middlename) && !empty($user->middlename))
-                                                                    {{ strtoupper(substr($user->middlename, 0, 1)) }}.
-                                                                    </>
-                                                                @else
-                                                                    No middlename provided
-                                                                @endif
-                                                            </td>
-                                                            <td>{{ $user->email }}</td>
                                                             <td>
-                                                                @switch($user->role)
-                                                                    @case(1)
-                                                                        Admin
-                                                                    @break
-
-                                                                    @case(2)
-                                                                        Program Manager
-                                                                    @break
-
-                                                                    @case(3)
-                                                                        Health Department Staff
-                                                                    @break
-
-                                                                    @case(4)
-                                                                        District Staff
-                                                                    @break
-
-                                                                    @case(5)
-                                                                        Brgy. Health Center Staff
-                                                                    @case(6)
-                                                                        Supplier
-                                                                    @break
-
-                                                                    @default
-                                                                @endswitch
+                                                               
                                                             </td>
-                                                            <td>{{ $user->sex }}</td>
-                                                            <td>{{ $user->contact }}</td>
-                                                            <td>{{ $user->created_at }}</td>
+                                                            <td></td>
+                                                            <td>
+                                                               
+                                                            </td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
 
                                                             <td
                                                                 class="d-flex justify-content-center align-items-center">
@@ -279,14 +250,14 @@
 
 
                                                                 <a type="button"
-                                                                    href={{ "/Admin/User_List/$user->id" }}
+                                                                    href=
                                                                     class="text-primary" data-bs-toggle="modal"
                                                                     data-bs-target="#exampleModal1">
                                                                     <i class="bi bi-eye-fill"></i>
                                                                 </a>
 
                                                                 <a type="button"
-                                                                    href={{ "/Admin/User_List/$user->id" }}
+                                                                    href=
                                                                     class="text-primary" data-bs-toggle="modal"
                                                                     data-bs-target="#exampleModal2">
                                                                     <i class="bi bi-pencil-square"></i>
@@ -315,7 +286,7 @@
                                 </div> --}}
                                                             </td>
                                                         </tr>
-                                                    @endforeach
+                                         
                                                     <div class="modal fade" id="exampleModal1" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">

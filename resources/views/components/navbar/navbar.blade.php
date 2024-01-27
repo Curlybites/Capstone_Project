@@ -61,7 +61,9 @@
                                             @break
 
                                             @case(5)
-                                                Brgy. Health Center Staff
+                                                Brgy. Health Center Staff 
+                                            @case(6)
+                                                Supplier
                                             @break
 
                                             @default

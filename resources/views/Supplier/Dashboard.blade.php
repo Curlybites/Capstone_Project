@@ -7,7 +7,7 @@
     <div class="layout-container">
       <!-- Menu -->
 
-      @include('Admin.sidebar.Dashboard_active');
+      @include('Supplier.sidebar.Dashboard_active');
 
       <!-- Layout container -->
       <div class="layout-page">
@@ -19,20 +19,19 @@
         <!-- Content wrapper -->
         <div class="content-wrapper">
           <!-- Content -->
-    @if(session('success'))
-              <div class="bs-toast toast fade show position-fixed bottom-0 end-0 m-3 " role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                  <i class='bx bxs-bell' ></i>
-                  <div class="me-auto fw-medium">QCMDS Notification</div>
-                  <small>Just now</small>
-                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                  {{ session('success') }}
-                </div>
-              </div>
-    @endif
-
+          @if(session('success'))
+          <div class="bs-toast toast fade show position-fixed bottom-0 end-0 m-3 " role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+              <i class='bx bxs-bell' ></i>
+              <div class="me-auto fw-medium">QCMDS Notification</div>
+              <small>Just now</small>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+              {{ session('success') }}
+            </div>
+          </div>
+@endif
           <div class="container-fluid  flex-grow-1 container-p-y">
             <div class="row">
               <div class="col-lg-8 mb-4 order-0">
@@ -40,7 +39,7 @@
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">Welcome to Admin Dashboard {{ $user->firstname }}  {{$user->lastname }} 🎉</h5>
+                        <h5 class="card-title text-primary">Welcome to Supplier Dashboard {{ $user->firstname }}  {{$user->lastname }} 🎉</h5>
                         <p class="mb-4">
                           You have done <span class="fw-bold"></span> Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
                         </p>
@@ -339,7 +338,6 @@
                       </li>
                     </ul>
                   </div>
-                  
                   <div class="card-body px-0">
                     <div class="tab-content p-0">
                       <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
@@ -494,7 +492,6 @@
                     </div>
                   </div>
                 </div>
-                
                 <!--/ Transactions -->
               </div>
             </div>

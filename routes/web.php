@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HdController;
+use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,6 +36,7 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/Health_Department/Dashboard', 'hdDashboard')->middleware('auth');
     Route::get('/District/Dashboard', 'dtDashboard')->middleware('auth');
     Route::get('/Health_Center/Dashboard', 'hcDashboard')->middleware('auth');
+    Route::get('/Supplier/Dashboard','supplierDashboard')->middleware('auth');
 });
 
 Route::controller(UserController::class)->group(function () {
@@ -61,4 +63,11 @@ Route::controller(HdController::class)->group(function () {
     Route::get('/Health_Department/Allocation_List', 'hdAllocation')->middleware('auth');
     Route::get('/Health_Department/Profile', 'hdAccount')->middleware('auth');
     Route::get('/Health_Department/Profile_Change', 'hdAccountChange')->middleware('auth');
+});
+
+
+
+// Supplier Route
+Route::controller(SupplierController::class)->group(function(){
+    Route::get('/Supplier/Item_List','itemList')->middleware('auth');
 });

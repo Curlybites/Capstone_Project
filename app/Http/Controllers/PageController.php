@@ -58,6 +58,11 @@ class PageController extends Controller
         return view('Health_Center.hcDashboard',['user' => $user]);
     }
 
+    public function supplierDashboard(){
+        $user = Auth::user();
+        return view('Supplier.Dashboard',['user' => $user]);
+    }
+
 
   
 }

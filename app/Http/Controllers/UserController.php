@@ -75,28 +75,33 @@ class UserController extends Controller
             switch ($userRole) {
                 case 1:
                     $request->session()->regenerate();
-                    return redirect('/Admin/Dashboard');
+                    return redirect('/Admin/Dashboard')->with('success', 'Login successful!');
                     break;
     
                 case 2:
                     $request->session()->regenerate();
-                    return redirect('/Program_Manager/Dashboard');
+                    return redirect('/Program_Manager/Dashboard')->with('success', 'Login successful!');
                     break;
     
                 case 3:
                     $request->session()->regenerate();
-                    return redirect('/Health_Department/Dashboard');
+                    return redirect('/Health_Department/Dashboard')->with('success', 'Login successful!');
                     break;
 
                 case 4:
                     $request->session()->regenerate();
-                    return redirect('District/Dashboard');
+                    return redirect('District/Dashboard')->with('success', 'Login successful!');
                     break;
 
                 case 5:
                     $request->session()->regenerate();
-                    return redirect('Health_Center/Dashboard');
+                    return redirect('Health_Center/Dashboard')->with('success', 'Login successful!');
                     break;
+
+                case 6:
+                    $request->session()->regenerate();
+                    return redirect('Supplier/Dashboard')->with('success', 'Login successful!');
+                    break;       
     
                 default:
                     // Handle other roles or redirect as needed

@@ -58,6 +58,19 @@
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
+        @if(session('success'))
+        <div class="bs-toast toast fade show position-fixed bottom-0 end-0 m-3 " role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <i class='bx bxs-bell' ></i>
+            <div class="me-auto fw-medium">QCMDS Notification</div>
+            <small>Just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            {{ session('success') }}
+          </div>
+        </div>
+@endif
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand d-flex align-items-center justify-content-center p-3">
