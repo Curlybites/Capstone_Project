@@ -37,7 +37,7 @@
                                 <a href="#"><i class='bx bxs-bell'></i></a>
                             </li>
 
-                            <!-- Barangay -->
+                            <!-- District -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                                     data-bs-toggle="dropdown">
@@ -90,7 +90,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <!--/ Barangay -->
+                            <!--/ District -->
                         </ul>
                     </div>
                 </nav>
@@ -102,7 +102,7 @@
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
                         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Barangay /</span> List of
-                            Barangays
+                            Barangay
                         </h4>
 
                         <div class="row">
@@ -114,14 +114,14 @@
                                         <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
                                             New</button>
-
+                                                                    <!-- Modal Content -->
                                         <div class="modal fade" id="exampleModal" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-xl modal-dialog-centered">
+                                            <div class="modal-dialog modal-md modal-dialog-centered">
                                                 <div class="modal-content ">
                                                     <div class="modal-header ">
-                                                        <h1 class="modal-title fs-3" id="exampleModalLabel">Create
-                                                            Barangay 
+                                                        <h1 class="modal-title fs-3" id="exampleModalLabel">Create Barangay
+
                                                         </h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
@@ -132,100 +132,62 @@
 
                                                             <div class="row">
 
-                                                                <h5>Barangay Details</h5>
-                                                                <div class="col">
-                                                                    <p>Name of Barangay Captain</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing e xample input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="firstname" required>
-                                                                    </div>
-                                                                </div>
 
-                                                            </div>
-
-                                                            <div class="row pb-4">
-
-                                                                <div class="col">
-                                                                    <p>Sex</p>
+                                                                <div class="row">
+                                                                    <p>Select District</p>
                                                                     <div class="input-group mb-3">
                                                                         <select class="form-select"
                                                                             aria-label="Default select example"
-                                                                            name="sex">
-                                                                            <option value="male">Male</option>
-                                                                            <option value="Female">Female</option>
+                                                                            name="Select District">
+                                                                            <option value="1">District 1</option>
+                                                                            <option value="2">District 2</option>
+                                                                            <option value="3">District 3</option>
+                                                                            <option value="4">District 4</option>
+                                                                            <option value="5">District 5</option>
+                                                                            <option value="6">District 6</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col">
-                                                                    <p>Birthdate</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="date" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="birthdate" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Address of Barangay</p>
+                                                                <div class="row">
+                                                                    <p>Barangay Name</p>
                                                                     <div class="input-group mb-3">
                                                                         <input type="text" class="form-control"
                                                                             aria-label="Sizing example input"
                                                                             aria-describedby="inputGroup-sizing-default"
-                                                                            name="address" required>
+                                                                            name="Barangay Name" required>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col">
-                                                                    <p>Contact Number</p>
+                                                                <div class="row">
+                                                                    <p>City</p>
                                                                     <div class="input-group mb-3">
-                                                                        <input type="number" class="form-control"
+                                                                        <input type="text" class="form-control"
                                                                             aria-label="Sizing example input"
                                                                             aria-describedby="inputGroup-sizing-default"
-                                                                            name="contact" required>
+                                                                            name="City" required>
                                                                     </div>
                                                                 </div>
 
-                                                            </div>
-
-                                                            <div class="row border-top pt-4 pb-4">
-                                                                <h5 class="">Account Setup</h5>
-
-                                                                <div class="col">
-                                                                    <p>Email</p>
+                                                                <div class="row">
+                                                                    <p>Address</p>
                                                                     <div class="input-group mb-3">
-                                                                        <input type="email" class="form-control"
+                                                                        <input type="text" class="form-control"
                                                                             aria-label="Sizing example input"
                                                                             aria-describedby="inputGroup-sizing-default"
-                                                                            name="email" required>
+                                                                            name="City" required>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col">
-                                                                    <p>Password</p>
+                                                                <div class="row">
+                                                                    <p>Date</p>
                                                                     <div class="input-group mb-3">
-                                                                        <input type="password" class="form-control"
+                                                                        <input type="date" class="form-control"
                                                                             aria-label="Sizing example input"
                                                                             aria-describedby="inputGroup-sizing-default"
-                                                                            name="password" required>
+                                                                            name="Date" required>
                                                                     </div>
                                                                 </div>
-
-                                                                <div class="col">
-                                                                    <p>Confirm Password</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="password" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="password_confirmation" required>
-                                                                    </div>
-                                                                </div>
-
-
-
                                                             </div>
 
                                                         </div>
@@ -240,7 +202,7 @@
                                         </div>
                                         </form>
                                     </div>
-
+                                                    <!-- Modal Content end-->
                                     <hr class="my-0">
                                     <!-- Account -->
                                     <div class="card-body p-5 ">
@@ -253,6 +215,9 @@
                                                         <th>Date Created</th>
                                                         <th>District</th>
                                                         <th>Barangay</th>
+                                                        <th>Address</th>
+                                                        <th>Action</th>
+                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody>
