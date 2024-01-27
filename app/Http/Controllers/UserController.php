@@ -11,12 +11,13 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function userlistPage(){
-        return view('Admin.userList');
+        $user = Auth::user();
+        return view('Admin.userList',['user' => $user]);
     }
 
-    public function createUserPage(){
-        return view('Admin.createUser');
-    }
+    // public function createUserPage(){
+    //     return view('Admin.createUser');
+    // }
 
 
     public function store(Request $request){
@@ -43,23 +44,131 @@ class UserController extends Controller
     }
 
     public function userList(){
-        $data = User::paginate(10);
-        return view('Admin.userList',['users'=>$data]);
+        $user = Auth::user();
+        $data = User::all();
+        return view('Admin.userList',['users'=>$data],['user' => $user]);
     }   
 
 
 
-    public function LoginProcess(Request $request){
+    // public function LoginProcess(Request $request){
+    //     $validated = $request->validate([
+    //         "email"=> ['required','email'],
+    //         "password" => 'required',
+    //     ]);
+    //     if(auth()-> attempt($validated)){
+    //             $request->session()->regenerate();
+    //             return redirect('/Admin/Dashboard');
+    //     }
+    // }
+
+    public function LoginProcess(Request $request)
+    {
         $validated = $request->validate([
-            "email"=> ['required','email'],
+            "email" => ['required', 'email'],
             "password" => 'required',
         ]);
-        if(auth()-> attempt($validated)){
-                $request->session()->regenerate();
-                return redirect('/Admin/Dashboard');
+    
+        if (auth()->attempt($validated)) {
+            $userRole = auth()->user()->role;
+          
+            switch ($userRole) {
+                case 1:
+                    $request->session()->regenerate();
+                    return redirect('/Admin/Dashboard');
+                    break;
+    
+                case 2:
+                    $request->session()->regenerate();
+                    return redirect('/Program_Manager/Dashboard');
+                    break;
+    
+                case 3:
+                    $request->session()->regenerate();
+                    return redirect('/Health_Department/Dashboard');
+                    break;
+
+                case 4:
+                    $request->session()->regenerate();
+                    return redirect('District/Dashboard');
+                    break;
+
+                case 5:
+                    $request->session()->regenerate();
+                    return redirect('Health_Center/Dashboard');
+                    break;
+    
+                default:
+                    // Handle other roles or redirect as needed
+                    // You might want to redirect to a different page or show an error message
+                    return back()->withErrors(['email'=> 'invalid email or password']);
+                    break;
+            }
+        } else {
+            // Authentication failed, return to login with an error message
+       return back()->withErrors(['email'=> 'invalid email or password']);
         }
+    }
+    
+    public function logout(Request $request){
+       auth()->logout();
+       request()->session()->invalidate();
+       request()->session()->regenerateToken();
+       return redirect('/');
     }
 
 
-
+    // public function LoginProcess(Request $request){
+    //     $validated = $request->validate([
+    //         "email"=> ['required','email'],
+    //         "password" => 'required',
+    //     ]);
+    //     if (auth()->attempt($validated)) {
+    //         // Authentication successful
+    //         $userRole = auth()->user()->role;
+        
+    //         if ($userRole == 1) {
+    //             $request->session()->regenerate();
+    //             return redirect('/Admin/Dashboard');
+    //         } else {
+    //             // Handle other roles or redirect as needed
+    //             // You might want to redirect to a different page or show an error message
+    //             return redirect('/')->with('error', 'Unauthorized access');
+    //         }
+    //     } else {
+    //         // Authentication failed, return to login with an error message
+    //         return redirect('/')->with('error', 'Invalid credentials');
+    //     }
+    // }
 }
+
+    
+
+        // In a controller
+    // public function index(Request $request)
+    // {
+    //     $validated = $request->validate([
+    //                 "email"=> ['required','email'],
+    //                 "password" => 'required',
+    //             ]);
+
+    //     if (auth()->user()->role == User::ROLE_ADMIN) {
+    //         // Logic for admin
+    //     } elseif (auth()->user()->role == User::ROLE_HEALTH_DEPARTMENT) {
+    //         // Logic for manager
+    //     } elseif (auth()->user()->role == User::ROLE_PROGRAM_MANAGER) {
+
+    //     } elseif (auth()->user()->role == User::ROLE_DISTRICT_SUPERVISOR) {
+
+    //     } elseif (auth()->user()->role == User::ROLE_HEALTH_CENTER) {
+    //        // Logic for user
+    //     } else {
+    //         // Logic for guest
+    //     }
+
+    //     // ...
+    // }
+
+
+
+

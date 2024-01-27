@@ -24,6 +24,12 @@ class AdminController extends Controller
     public function itempage(){
         return view('Admin.Itemlist');
     }
+    // public function index(){
+    //     return view('admin.index');
+    // }
+
+
+
 
 
 }

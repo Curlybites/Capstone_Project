@@ -23,32 +23,32 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::controller(PageController::class)->group(function () {
-    Route::get('/', 'loginPage');
-    Route::get('/Admin/Login', 'AdminLogin');
-    Route::get('/District/Login', 'districtPage');
-    Route::get('/Program_Manager/Login', 'pmPage');
-    Route::get('/Health_Department/Login', 'hdPage');
-    Route::get('/Health_Center/Login', 'hcPage');
-    Route::get('/Project_Manager/Dashboard', 'pmDashboard');
-    Route::get('/Admin/Dashboard', 'adminDashboard');
+    Route::get('/', 'AdminLogin')->name('login');
+    // Route::get('/Admin/Login', 'AdminLogin');
+    // Route::get('/District/Login', 'districtPage');
+    // Route::get('/Program_Manager/Login', 'pmPage');
+    // Route::get('/Health_Department/Login', 'hdPage');
+    // Route::get('/Health_Center/Login', 'hcPage');
+    Route::get('/Program_Manager/Dashboard', 'pmDashboard')->middleware('auth');
+    Route::get('/Admin/Dashboard', 'adminDashboard')->middleware('auth');
+    Route::get('/Health_Department/Dashboard', 'hdDashboard')->middleware('auth');
+    Route::get('/District/Dashboard', 'dtDashboard')->middleware('auth');
+    Route::get('/Health_Center/Dashboard', 'hcDashboard')->middleware('auth');
 });
 
 Route::controller(UserController::class)->group(function () {
-    Route::get('/Admin/User_List', 'userlistPage');
+    // Route::get('/Admin/User_List', 'userlistPage');
     Route::post('/Admin/Store', 'store');
-    Route::get('/Admin/Add_User', 'createUserPage');
-    Route::get('/Admin/User_List', 'userList');
+    Route::get('/Admin/Add_User', 'createUserPage')->middleware('auth');
+    Route::get('/Admin/User_List', 'userList')->middleware('auth');
     Route::post('/Admin/Login/Process', 'LoginProcess');
+    Route::post('/Logout', 'logout');
 });
 
 
 // Admin route
 
 Route::controller(AdminController::class)->group(function () {
-    Route::get('/Admin/District_List', 'districtListpage');
-    Route::get('/Admin/Barangay_List', 'barangaylistpage');
-    Route::get('/Admin/HealthCenter_List', 'healthcenterpage' );
-    Route::get('/Admin/Program_List', 'programpage');
-    Route::get('/Admin/Supplier_List', 'Supplierpage');
-    Route::get('/Admin/Item_List', 'itempage');
+    Route::get('/Admin/District_List', 'districtListpage')->middleware('auth');
+
 });
