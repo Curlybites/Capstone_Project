@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HdController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,7 +38,7 @@ Route::controller(PageController::class)->group(function () {
 });
 
 Route::controller(UserController::class)->group(function () {
-    Route::get('/Admin/User_List', 'userlistPage')->middleware('auth');
+    // Route::get('/Admin/User_List', 'userlistPage');
     Route::post('/Admin/Store', 'store');
     Route::get('/Admin/Add_User', 'createUserPage')->middleware('auth');
     Route::get('/Admin/User_List', 'userList')->middleware('auth');
@@ -51,5 +52,13 @@ Route::controller(UserController::class)->group(function () {
 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/Admin/District_List', 'districtListpage')->middleware('auth');
+});
 
+
+// Health Department Route
+Route::controller(HdController::class)->group(function () {
+    Route::get('/Health_Department/Item_List', 'hdInventory')->middleware('auth');
+    Route::get('/Health_Department/Allocation_List', 'hdAllocation')->middleware('auth');
+    Route::get('/Health_Department/Profile', 'hdAccount')->middleware('auth');
+    Route::get('/Health_Department/Profile/Change', 'hdAccountChange')->middleware('auth');
 });
