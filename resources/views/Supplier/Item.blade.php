@@ -219,12 +219,13 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
+                                                        <th>Image</th>
                                                         <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Role</th>
-                                                        <th>Sex</th>
-                                                        <th>Contact</th>
+                                                        <th>Description</th>
+                                                        <th>Price</th>
                                                         <th>Date Created</th>
+                                                        <th>Date Expiration</th>
+                                                        <th>Status</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -236,7 +237,13 @@
                                                             <td>
                                                                
                                                             </td>
-                                                            <td></td>
+                                                            <td>
+
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+                                                            
                                                             <td>
                                                                
                                                             </td>
