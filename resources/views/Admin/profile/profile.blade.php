@@ -6,7 +6,7 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('components.sidebar.hd_sidebar')
+            @include('components.sidebar.admin_sidebar')
 
             <!-- Layout container -->
             <div class="layout-page">
@@ -27,14 +27,14 @@
                             <div class="col-md-12">
                                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
                                     <li class="nav-item">
-                                        <a class="nav-link" href={{ '/Health_Department/Profile' }}><i
+                                        <a class="nav-link active" href="#"><i
                                                 class="bx
                                             bx-user me-1"></i>
                                             Account</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link active d-flex align-items-center justify-content-center"
-                                            href={{ '/Health_Department/Profile_Change' }}>
+                                        <a class="nav-link d-flex align-items-center justify-content-center"
+                                            href={{ '/Admin/Account_Change_Password' }}>
                                             <i class='bx bx-lock-alt'></i>
                                             <span>Change Password</span>
                                         </a>
@@ -73,17 +73,17 @@
                                                     <div class="mb-3 col-md-4">
                                                         <label for="firstName" class="form-label">First Name</label>
                                                         <input class="form-control" type="text" id="firstName"
-                                                            name="firstName" value="{{ $user->firstname }}" disabled />
+                                                            name="firstName" value="{{ $user->firstname }}" />
                                                     </div>
                                                     <div class="mb-3 col-md-4">
                                                         <label for="lastName" class="form-label">Last Name</label>
                                                         <input class="form-control" type="text" name="lastName"
-                                                            id="lastName" value="{{ $user->lastname }}" disabled />
+                                                            id="lastName" value="{{ $user->lastname }}" />
                                                     </div>
                                                     <div class="mb-3 col-md-4">
                                                         <label for="middleName" class="form-label">Middle Name</label>
                                                         <input class="form-control" type="text" name="middleName"
-                                                            id="middleName" value="{{ $user->middlename }}" disabled />
+                                                            id="middleName" value="{{ $user->middlename }}" />
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 col-md-6">
@@ -94,24 +94,23 @@
                                                 <div class="mb-3 col-md-6">
                                                     <label for="contact" class="form-label">Contact</label>
                                                     <input type="text" class="form-control" id="contact"
-                                                        name="contact" value="{{ $user->contact }}" disabled />
+                                                        name="contact" value="{{ $user->contact }}" />
                                                 </div>
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
                                                         <label for="address" class="form-label">Address</label>
                                                         <input type="text" class="form-control" id="address"
-                                                            name="address" value="{{ $user->address }}" disabled />
+                                                            name="address" value="{{ $user->address }}" />
                                                     </div>
                                                     <div class="mb-3 col-md-3">
                                                         <label for="sex" class="form-label">Sex</label>
                                                         <input class="form-control" type="text" id="sex"
-                                                            name="sex" value="{{ $user->sex }}" disabled />
+                                                            name="sex" value="{{ $user->sex }}" />
                                                     </div>
                                                     <div class="mb-3 col-md-3">
                                                         <label for="birthdate" class="form-label">Birthdate</label>
                                                         <input class="form-control" type="text" id="birthdate"
-                                                            name="birthdate" value="{{ $user->birthdate }}"
-                                                            disabled />
+                                                            name="birthdate" value="{{ $user->birthdate }}" />
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 col-md-6">

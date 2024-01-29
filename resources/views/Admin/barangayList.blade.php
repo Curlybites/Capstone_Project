@@ -5,7 +5,7 @@
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             {{-- sidebar --}}
-            @include('Admin.sidebar.District_active');
+            @include('components.sidebar.admin_sidebar');
 
 
             <!-- Layout container -->
@@ -121,7 +121,7 @@
                                                 <div class="modal-content ">
                                                     <div class="modal-header ">
                                                         <h1 class="modal-title fs-3" id="exampleModalLabel">Create
-                                                            Barangay 
+                                                            Barangay
                                                         </h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>

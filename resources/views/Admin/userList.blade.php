@@ -6,15 +6,15 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('Admin.sidebar.User_active');
+            @include('components.sidebar.admin_sidebar');
             <!-- / Menu -->
 
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-          @include('components.navbar.navbar');
+                @include('components.navbar.navbar');
                 <!-- / Navbar -->
-                
+
 
                 <div class="content-wrapper">
                     <!-- Content -->
@@ -184,9 +184,11 @@
                                                                             <option value="1">Admin</option>
                                                                             <option value="2">Program Manager
                                                                             </option>
-                                                                            <option value="3">Health Department Staff
+                                                                            <option value="3">Health Department
+                                                                                Staff
                                                                             </option>
-                                                                            <option value="4">District Stafff</option>
+                                                                            <option value="4">District Stafff
+                                                                            </option>
                                                                             <option value="5">Brgy. Health Center
                                                                                 Staff</option>
                                                                             <option value="6">Supplier</option>
@@ -213,7 +215,7 @@
                                     <hr class="my-0">
                                     <!-- Account -->
                                     <div class="card-body p-5 ">
-                                        <div class="table-responsive text-nowrap overflow-visible">
+                                        <div class="table-responsive text-nowrap">
                                             <table id="dataTable" class="datatables-basic table   border-top "
                                                 style="width:100%">
                                                 <thead>
@@ -366,7 +368,7 @@
 
 
 
-                                                    
+
 
                                                 </tbody>
                                                 </tfoot>
