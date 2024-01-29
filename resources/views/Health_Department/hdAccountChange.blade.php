@@ -45,10 +45,18 @@
                                     <hr class="my-0" />
                                     <div class="card-body">
                                         @if (session('success'))
-                                            <div class="text-success">
-                                                {{ session('success') }}
+                                            <div class="alert alert-success" role="alert"> {{ session('success') }}
                                             </div>
+                                            {{-- <div class="toast fade show bs-toast align-items-center position-fixed bottom-0 end-0 m-3 bg-success"
+                                                role="alert" aria-live="assertive" aria-atomic="true">
+                                                <div class="d-flex">
+                                                    <div class="toast-body"> {{ session('success') }} </div> <button
+                                                        type="button" class="btn-close me-2 m-auto"
+                                                        data-bs-dismiss="toast" aria-label="Close"></button>
+                                                </div>
+                                            </div> --}}
                                         @endif
+
                                         <form action="{{ route('changePass') }}" method="POST">
                                             @csrf
                                             <div class="row">
@@ -90,6 +98,11 @@
                                                     @if ($errors->has('newPassword'))
                                                         <span
                                                             class="text-danger">{{ $errors->first('newPassword') }}</span>
+                                                    @endif
+
+                                                    @if ($errors->has('confirmNewPassword'))
+                                                        <span
+                                                            class="text-danger">{{ $errors->first('confirmNewPassword') }}</span>
                                                     @endif
                                                 </div>
 
