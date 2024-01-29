@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProgramManagerController;
 use App\Http\Controllers\HdController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
@@ -75,4 +76,13 @@ Route::controller(SupplierController::class)->group(function () {
     Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
     Route::get('/Supplier/Account_Profile', 'profileSupplier')->middleware('auth');
     Route::get('/Supplier/Account_Change_Password', 'profileChangeSupplier')->middleware('auth');
+});
+
+// Program Manager route
+Route::controller(ProgramManagerController::class)->group(function () {
+    Route::get('/Program_Manager/Inventorylist', 'Inventorypage')->middleware('auth');
+    Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
+    Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
+    Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
+
 });
