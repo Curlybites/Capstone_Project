@@ -6,7 +6,7 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('Health_Department.sidebar.Profile_active');
+            @include('components.sidebar.hd_sidebar');
 
             <!-- Layout container -->
             <div class="layout-page">
@@ -33,10 +33,11 @@
                                             Account</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link d-flex align-items-center justify-content-center" href= {{ '/Health_Department/Profile_Change' }}>
+                                        <a class="nav-link d-flex align-items-center justify-content-center"
+                                            href={{ '/Health_Department/Profile_Change' }}>
                                             <i class='bx bx-lock-alt'></i>
                                             <span>Change Password</span>
-                                            </a>
+                                        </a>
                                     </li>
                                 </ul>
                                 <div class="card mb-4">

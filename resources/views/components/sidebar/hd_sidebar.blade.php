@@ -10,7 +10,7 @@
     <div class="menu-inner-shadow"></div>
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
+        <li class="menu-item {{ Request::is('Health_Department/Dashboard') ? 'active' : '' }}">
             <a href="{{ '/Health_Department/Dashboard' }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-dashboard"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -19,28 +19,35 @@
         <!-- Components -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
 
-        <li class="menu-item">
-            <a href="javascript:void(0)" class="menu-link menu-toggle">
+        <li class="menu-item {{ Request::is('Health_Department/Item_List') ? 'active open' : '' }}">
+            <a href="#" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-capsule"></i>
                 <div data-i18n="Extended UI">Inventory</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item {{ Request::is('Health_Department/Item_List') ? 'active' : '' }}">
                     <a href="{{ '/Health_Department/Item_List' }}" class="menu-link">
                         <div data-i18n="Perfect Scrollbar">Item List</div>
                     </a>
                 </li>
             </ul>
         </li>
-        <li class="menu-item">
+
+        <li
+            class="menu-item {{ Request::is('Health_Department/Allocation_List') || Request::is('Health_Department/Allocation_Process') ? 'active open' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-customize"></i>
                 <div data-i18n="Extended UI">Allocation</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item {{ Request::is('Health_Department/Allocation_List') ? 'active' : '' }}">
                     <a href="{{ '/Health_Department/Allocation_List' }}" class="menu-link">
                         <div data-i18n="Perfect Scrollbar">Allocation List</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('Health_Department/Allocation_Process') ? 'active' : '' }}">
+                    <a href="{{ '/Health_Department/Allocation_Process' }}" class="menu-link">
+                        <div data-i18n="Perfect Scrollbar">Allocation Process</div>
                     </a>
                 </li>
             </ul>
@@ -48,13 +55,15 @@
         <!-- Forms & Tables -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Profile</span></li>
         <!-- Forms -->
-        <li class="menu-item">
+        <li
+            class="menu-item {{ Request::is('Health_Department/Profile') || Request::is('Health_Department/Profile_Change') ? 'active open' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-building"></i>
                 <div data-i18n="User interface">Account</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item ">
+                <li
+                    class="menu-item {{ Request::is('Health_Department/Profile') || Request::is('Health_Department/Profile_Change') ? 'active' : '' }}">
                     <a href={{ '/Health_Department/Profile' }} class="menu-link">
                         <div data-i18n="Accordion">Profile</div>
                     </a>

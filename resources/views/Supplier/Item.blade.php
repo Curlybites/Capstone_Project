@@ -6,15 +6,15 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('Supplier.sidebar.Item_active');
+            @include('components.sidebar.supplier_sidebar');
             <!-- / Menu -->
 
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-          @include('components.navbar.navbar');
+                @include('components.navbar.navbar');
                 <!-- / Navbar -->
-                
+
 
                 <div class="content-wrapper">
                     <!-- Content -->
@@ -184,9 +184,11 @@
                                                                             <option value="1">Admin</option>
                                                                             <option value="2">Program Manager
                                                                             </option>
-                                                                            <option value="3">Health Department Staff
+                                                                            <option value="3">Health Department
+                                                                                Staff
                                                                             </option>
-                                                                            <option value="4">District Stafff</option>
+                                                                            <option value="4">District Stafff
+                                                                            </option>
                                                                             <option value="5">Brgy. Health Center
                                                                                 Staff</option>
                                                                             <option value="6">Supplier</option>
@@ -230,50 +232,47 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                 
-                                                        <tr>
-                                                            <td></td>
 
-                                                            <td>
-                                                               
-                                                            </td>
-                                                            <td>
+                                                    <tr>
+                                                        <td></td>
 
-                                                            </td>
-                                                            <td>
+                                                        <td>
 
-                                                            </td>
-                                                            
-                                                            <td>
-                                                               
-                                                            </td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
+                                                        </td>
+                                                        <td>
 
-                                                            <td
-                                                                class="d-flex justify-content-center align-items-center">
+                                                        </td>
+                                                        <td>
 
+                                                        </td>
+
+                                                        <td>
+
+                                                        </td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+
+                                                        <td class="d-flex justify-content-center align-items-center">
 
 
-                                                                <a type="button"
-                                                                    href=
-                                                                    class="text-primary" data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModal1">
-                                                                    <i class="bi bi-eye-fill"></i>
-                                                                </a>
 
-                                                                <a type="button"
-                                                                    href=
-                                                                    class="text-primary" data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModal2">
-                                                                    <i class="bi bi-pencil-square"></i>
-                                                                </a>
+                                                            <a type="button" href=class="text-primary"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal1">
+                                                                <i class="bi bi-eye-fill"></i>
+                                                            </a>
+
+                                                            <a type="button" href=class="text-primary"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal2">
+                                                                <i class="bi bi-pencil-square"></i>
+                                                            </a>
 
 
 
 
-                                                                {{-- <div class="dropdown">
+                                                            {{-- <div class="dropdown">
                                   <a class="btn btn-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Action
                                   </a>
@@ -285,15 +284,15 @@
                                     <li>
                                       <a class="dropdown-item text-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Edit</a>
                                     </li> --}}
-                                                                {{-- <li>
+                                                            {{-- <li>
                                       <button type="button" class="dropdown-item" href="/Admin/User_List/{{ $user->id }}">Edit</button>
                                     </li> --}}
-                                                                {{-- <li><a class="dropdown-item" href="#">Delete</a></li>
+                                                            {{-- <li><a class="dropdown-item" href="#">Delete</a></li>
                                   </ul>
                                 </div> --}}
-                                                            </td>
-                                                        </tr>
-                                         
+                                                        </td>
+                                                    </tr>
+
                                                     <div class="modal fade" id="exampleModal1" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">
@@ -344,7 +343,7 @@
 
 
 
-                                                    
+
 
                                                 </tbody>
                                                 </tfoot>

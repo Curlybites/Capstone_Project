@@ -7,8 +7,21 @@ use Illuminate\Support\Facades\Auth;
 
 class SupplierController extends Controller
 {
-    public function itemList(){
+    public function itemList()
+    {
         $user = Auth::user();
-        return view('Supplier.Item',['user' => $user]);
+        return view('Supplier.Item', ['user' => $user]);
+    }
+
+    public function profileSupplier()
+    {
+        $user = Auth::user();
+        return view('Supplier.profile.profile', ['user' => $user]);
+    }
+
+    public function profileChangeSupplier()
+    {
+        $user = Auth::user();
+        return view('Supplier.profile.change_pass', ['user' => $user]);
     }
 }

@@ -6,7 +6,7 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('Health_Department.sidebar.Inventory_active')
+            @include('components.sidebar.hd_sidebar')
 
             <!-- Layout container -->
             <div class="layout-page">

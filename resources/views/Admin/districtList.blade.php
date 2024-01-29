@@ -5,7 +5,7 @@
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             {{-- sidebar --}}
-            @include('Admin.sidebar.District_active');
+            @include('components.sidebar.admin_sidebar');
 
 
             <!-- Layout container -->

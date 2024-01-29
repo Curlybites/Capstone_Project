@@ -5,19 +5,19 @@
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             {{-- sidebar --}}
-            @include('Admin.sidebar.Program_active');
+            @include('components.sidebar.admin_sidebar');
 
 
             <!-- Layout container -->
             <div class="layout-page">
-                
+
                 @include('Admin.navbar.navbar');
                 <!-- / Navbar -->
 
                 <div class="content-wrapper">
                     <!-- Content -->
 
-                    
+
                     <div class="container-fluid  flex-grow-1 container-p-y">
                         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Programs /</span> List of
                             Program
@@ -32,13 +32,14 @@
                                         <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
                                             New</button>
-                                                                    <!-- Modal Content -->
+                                        <!-- Modal Content -->
                                         <div class="modal fade" id="exampleModal" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-md modal-dialog-centered">
                                                 <div class="modal-content ">
                                                     <div class="modal-header ">
-                                                        <h1 class="modal-title fs-3" id="exampleModalLabel">Create Program </h1>
+                                                        <h1 class="modal-title fs-3" id="exampleModalLabel">Create
+                                                            Program </h1>
 
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
@@ -78,20 +79,20 @@
                                                             </div>
 
                                                             <div class="row">
-                                                                    <p>Select Program Manager</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <select class="form-select"
-                                                                            aria-label="Default select example"
-                                                                            name="Select District">
-                                                                            <option value="1"></option>
-                                                                            <option value="2"></option>
-                                                                            <option value="3"></option>
-                                                                            <option value="4"></option>
-                                                                            <option value="5"></option>
-                                                                            <option value="6"></option>
-                                                                        </select>
-                                                                    </div>
+                                                                <p>Select Program Manager</p>
+                                                                <div class="input-group mb-3">
+                                                                    <select class="form-select"
+                                                                        aria-label="Default select example"
+                                                                        name="Select District">
+                                                                        <option value="1"></option>
+                                                                        <option value="2"></option>
+                                                                        <option value="3"></option>
+                                                                        <option value="4"></option>
+                                                                        <option value="5"></option>
+                                                                        <option value="6"></option>
+                                                                    </select>
                                                                 </div>
+                                                            </div>
 
                                                         </div>
                                                         <div class="modal-footer border-1">
@@ -113,10 +114,10 @@
                                             <table id="dataTable" class="datatables-basic table   border-top "
                                                 style="width:100%">
                                                 <thead>
-                                                        <th>Program Name</th>
-                                                        <th>Date</th>
-                                                        <th>Program Manager</th>
-                                                        <th>Action</th>
+                                                    <th>Program Name</th>
+                                                    <th>Date</th>
+                                                    <th>Program Manager</th>
+                                                    <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -138,8 +139,8 @@
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button"
-                                                                        class="btn btn-primary">Save changes</button>
+                                                                    <button type="button" class="btn btn-primary">Save
+                                                                        changes</button>
                                                                 </div>
                                                             </div>
                                                         </div>
