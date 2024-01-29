@@ -1,4 +1,4 @@
-@include('components.header');
+@include('components.header')
 
 <body>
     <!-- Layout wrapper -->
@@ -6,12 +6,12 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('Health_Department.sidebar.Dashboard_active');
+            @include('Health_Department.sidebar.Dashboard_active')
 
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-                @include('components.navbar.navbar');
+                @include('components.navbar.navbar')
                 <!-- Navbar End-->
 
 
@@ -552,4 +552,4 @@
                     </div>
                     <!--footer-->
 
-                    @include('components.footer');
+                    @include('components.footer')

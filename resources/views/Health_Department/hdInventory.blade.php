@@ -1,4 +1,4 @@
-@include('components.header');
+@include('components.header')
 
 <body>
     <!-- Layout wrapper -->
@@ -6,7 +6,7 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('Health_Department.sidebar.Inventory_active')
+            @include('Health_Department.sidebar.Dashboard_active')
 
             <!-- Layout container -->
             <div class="layout-page">
