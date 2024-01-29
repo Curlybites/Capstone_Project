@@ -59,7 +59,7 @@
       <div class="layout-container">
         <!-- Menu -->
         @if(session('success'))
-        <div class="bs-toast toast fade show position-fixed bottom-0 end-0 m-3 " role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="bs-toast toast fade show position-fixed bottom-0 end-0 m-3 bg-primary " role="alert" aria-live="assertive" aria-atomic="true">
           <div class="toast-header">
             <i class='bx bxs-bell' ></i>
             <div class="me-auto fw-medium">QCMDS Notification</div>
