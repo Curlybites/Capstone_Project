@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Auth;
 //     return view('welcome');
 // });
 
-
 Route::controller(PageController::class)->group(function () {
     Route::get('/', 'AdminLogin')->name('login');
     // Route::get('/Admin/Login', 'AdminLogin');
@@ -35,6 +34,7 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/Health_Department/Dashboard', 'hdDashboard')->middleware('auth');
     Route::get('/District/Dashboard', 'dtDashboard')->middleware('auth');
     Route::get('/Health_Center/Dashboard', 'hcDashboard')->middleware('auth');
+    Route::get('/Supplier/Dashboard', 'supplierDashboard')->middleware('auth');
 });
 
 Route::controller(UserController::class)->group(function () {
@@ -42,10 +42,12 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/Admin/Store', 'store');
     Route::get('/Admin/Add_User', 'createUserPage')->middleware('auth');
     Route::get('/Admin/User_List', 'userList')->middleware('auth');
+    Route::get('/Admin/User_List/$id',);
     Route::post('/Admin/Login/Process', 'LoginProcess');
     Route::post('/Logout', 'logout');
+    Route::get('/change-password', 'changePassword')->name('changePassword');
+    Route::post('/change-password', 'ChangePasswordSave')->name('changePass');
 });
-
 
 // Admin route
 
@@ -53,11 +55,15 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/Admin/District_List', 'districtListpage')->middleware('auth');
 });
 
-
 // Health Department Route
 Route::controller(HdController::class)->group(function () {
     Route::get('/Health_Department/Item_List', 'hdInventory')->middleware('auth');
     Route::get('/Health_Department/Allocation_List', 'hdAllocation')->middleware('auth');
     Route::get('/Health_Department/Profile', 'hdAccount')->middleware('auth');
     Route::get('/Health_Department/Profile_Change', 'hdAccountChange')->middleware('auth');
+});
+
+// Supplier Route
+Route::controller(SupplierController::class)->group(function () {
+    Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
 });
