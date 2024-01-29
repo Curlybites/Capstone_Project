@@ -43,7 +43,7 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <form action="/Admin/Store" method="POST">
+                                                    <form action="/Admin/Store" method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="modal-body">
 
@@ -374,11 +374,11 @@
                                         </div>
                                     </div>
                                     <hr class="my-0">
-                                    <div class="card-body">
+                                    {{-- <div class="card-body">
                                         <form id="formAccountSettings" method="POST" onsubmit="return false">
 
                                         </form>
-                                    </div>
+                                    </div> --}}
                                     <!-- /Account -->
                                 </div>
 
