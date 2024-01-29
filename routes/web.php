@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProgramManagerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,5 +51,14 @@ Route::controller(UserController::class)->group(function () {
 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/Admin/District_List', 'districtListpage')->middleware('auth');
+
+});
+
+// Program Manager route
+Route::controller(ProgramManagerController::class)->group(function () {
+    Route::get('/Program_Manager/Inventorylist', 'Inventorypage')->middleware('auth');
+    Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
+    Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
+    Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
 
 });
