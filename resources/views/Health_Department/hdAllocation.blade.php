@@ -6,7 +6,7 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('Health_Department.sidebar.Dashboard_active')
+            @include('components.sidebar.hd_sidebar')
 
             <!-- Layout container -->
             <div class="layout-page">
@@ -22,7 +22,7 @@
                             Allocation List
                         </h4>
 
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-md-12">
                                 <div class="card mb-4">
                                     <div class="card-body px-5">
@@ -72,14 +72,22 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-md-12">
                                 <div class="card mb-4">
                                     <!-- Account -->
                                     <div class="card-body px-5">
-                                        <h4 class="mb-4">Allocation Details</h4>
+                                        <div
+                                            class="title d-flex align-items-center justify-content-between border-top border-success">
+                                            <h4 class="mb-4">Allocation Details</h4>
+                                            <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i>
+                                                Create
+                                                New</button>
+                                        </div>
+
                                         <div class="table-responsive text-nowrap">
                                             <table id="dataTable" class="datatables-basic table border-top "
                                                 style="width:100%">
@@ -110,6 +118,87 @@
 
                                                 </tbody>
 
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <hr class="my-0">
+                                    <div class="card-body">
+                                        <form id="formAccountSettings" method="POST" onsubmit="return false">
+
+                                        </form>
+                                    </div>
+                                    <!-- /Account -->
+                                </div>
+
+                            </div>
+                        </div> --}}
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card mb-4">
+                                    <div
+                                        class="title d-flex align-items-center justify-content-between border-top border-success">
+                                        <h5 class="card-header">Allocation List</h5>
+                                    </div>
+
+                                    <hr class="my-0">
+                                    <!-- Account -->
+                                    <div class="card-body p-5 ">
+                                        <div class="table-responsive text-nowrap overflow-visible">
+                                            <table id="dataTable" class="datatables-basic table   border-top "
+                                                style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th>Item Name</th>
+                                                        <th>Image</th>
+                                                        <th>District</th>
+                                                        <th>Program</th>
+                                                        <th>Type</th>
+                                                        <th>Quantity</th>
+                                                        <th>Price</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Paracetamol</td>
+                                                        <td>
+                                                            <ul
+                                                                class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                                    data-bs-placement="top"
+                                                                    class="avatar avatar-xs pull-up"
+                                                                    title="Lilian Fuller">
+                                                                    <img src="../assets/img/avatars/5.png"
+                                                                        alt="Avatar" class="rounded-circle">
+                                                                </li>
+                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                                    data-bs-placement="top"
+                                                                    class="avatar avatar-xs pull-up"
+                                                                    title="Sophia Wilkerson">
+                                                                    <img src="../assets/img/avatars/6.png"
+                                                                        alt="Avatar" class="rounded-circle">
+                                                                </li>
+                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                                    data-bs-placement="top"
+                                                                    class="avatar avatar-xs pull-up"
+                                                                    title="Christina Parker">
+                                                                    <img src="../assets/img/avatars/7.png"
+                                                                        alt="Avatar" class="rounded-circle">
+                                                                </li>
+                                                            </ul>
+                                                        </td>
+                                                        <td>District 1</td>
+                                                        <td>Maternity</td>
+                                                        <td>Medicine</td>
+                                                        <td>12</td>
+                                                        <td>1120</td>
+                                                        <td class="text-success">Active</td>
+                                                    </tr>
+                                                </tbody>
+                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>

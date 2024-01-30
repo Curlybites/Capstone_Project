@@ -19,6 +19,20 @@
         <!-- Components -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
 
+        <li class="menu-item {{ Request::is('Health_Department/Purchase_Order_List') ? 'active open' : '' }}">
+            <a href="#" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-capsule"></i>
+                <div data-i18n="Extended UI">Purchase Order</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::is('Health_Department/Purchase_Order_List') ? 'active' : '' }}">
+                    <a href="{{ '/Health_Department/Purchase_Order_List' }}" class="menu-link">
+                        <div data-i18n="Perfect Scrollbar">PO List</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <li class="menu-item {{ Request::is('Health_Department/Item_List') ? 'active open' : '' }}">
             <a href="#" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-capsule"></i>
@@ -47,7 +61,7 @@
                 </li>
                 <li class="menu-item {{ Request::is('Health_Department/Allocation_Process') ? 'active' : '' }}">
                     <a href="{{ '/Health_Department/Allocation_Process' }}" class="menu-link">
-                        <div data-i18n="Perfect Scrollbar">Allocation Process</div>
+                        <div data-i18n="Perfect Scrollbar">Create Allocation</div>
                     </a>
                 </li>
             </ul>

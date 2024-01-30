@@ -12,7 +12,7 @@
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-          @include('components.navbar.navbar');
+                @include('components.navbar.navbar');
                 <!-- / Navbar -->
 
                 <div class="content-wrapper">
@@ -183,9 +183,11 @@
                                                                             <option value="1">Admin</option>
                                                                             <option value="2">Program Manager
                                                                             </option>
-                                                                            <option value="3">Health Department Staff
+                                                                            <option value="3">Health Department
+                                                                                Staff
                                                                             </option>
-                                                                            <option value="4">District Stafff</option>
+                                                                            <option value="4">District Stafff
+                                                                            </option>
                                                                             <option value="5">Brgy. Health Center
                                                                                 Staff</option>
                                                                         </select>
