@@ -40,7 +40,7 @@
                                             class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
-                                <div class="flex-grow-1">
+                                {{-- <div class="flex-grow-1">
                                     <span class="fw-semibold d-block">{{ $user->firstname }}
                                         {{ $user->lastname }}</span>
                                     <small class="text-muted"> @switch($user->role)
@@ -71,7 +71,7 @@
 
 
                                     </small>
-                                </div>
+                                </div> --}}
                             </div>
                         </a>
                     </li>
@@ -109,7 +109,7 @@
               </a> --}}
                     </li>
                 </ul>
-            </li>
+            </=>
             <!--/ User -->
         </ul>
     </div>

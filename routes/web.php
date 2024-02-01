@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProgramManagerController;
@@ -84,5 +85,16 @@ Route::controller(ProgramManagerController::class)->group(function () {
     Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
     Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
     Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
+
+});
+
+// District route
+Route::controller(DistrictController::class)->group(function (){
+    Route::get('/District/Account_Profile', 'profileDistrict')->middleware('auth');
+    Route::get('/District/Account_Change_Password', 'profileChangeDistrict')->middleware('auth');
+    Route::get('/District/Inventory', 'inventoryDistrict');
+    Route::get('/District/Allocation_List', 'allocationlistDistrict');
+    Route::get('/District/Allocation_Create', 'allocationcreateDistrict');
+    Route::get('/District/Allocation_View', 'districtView');
 
 });
