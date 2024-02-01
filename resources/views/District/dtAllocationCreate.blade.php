@@ -165,12 +165,45 @@
                     function addRow() {
                         const table = document.getElementById("myTable");
                         const tbody = table.getElementsByTagName("tbody")[0];
-                        const cloneRow = tbody.rows[0].cloneNode(true);
 
-                        const inputs = cloneRow.getElementsByTagName("input");
-                        for (let input of inputs) {
-                            input.value = "";
+                        let cloneRow;
+                        if (tbody.rows.length > 0) {
+                            // Clone an existing row if tbody is not empty
+                            cloneRow = tbody.rows[0].cloneNode(true);
+
+                            // Reset input values to empty strings
+                            const inputs = cloneRow.getElementsByTagName("input");
+                            for (let input of inputs) {
+                                input.value = "";
+                            }
+                        } else {
+                            // Create a new row if tbody is empty
+                            cloneRow = document.createElement("tr");
+                            cloneRow.innerHTML = `
+            <td>
+                <button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button>
+            </td>
+            <td class="align-middle p-0 text-center">
+                <input type="number" class="form-control text-center border-0">
+            </td>
+            <td class="align-middle p-0 text-center">
+                <input type="text" class="form-control text-center border-0">
+            </td>
+            <td class="align-middle p-0 text-center">
+                <input type="text" class="form-control text-center border-0">
+            </td>
+            <td class="align-middle p-0 text-center">
+                <input type="text" class="form-control text-center border-0">
+            </td>
+            <td class="align-middle p-0 text-center">
+                <input type="number" class="form-control text-center border-0">
+            </td>
+            <td class="align-middle p-0 text-center">
+                <input type="number" class="form-control text-center border-0" disabled>
+            </td>
+        `;
                         }
+
                         tbody.appendChild(cloneRow);
                     }
 

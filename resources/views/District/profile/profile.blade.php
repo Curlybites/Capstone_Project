@@ -34,7 +34,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link d-flex align-items-center justify-content-center"
-                                            href={{ '/Supplier/Account_Change_Password' }}>
+                                            href={{ '/District/Account_Change_Password' }}>
                                             <i class='bx bx-lock-alt'></i>
                                             <span>Change Password</span>
                                         </a>
