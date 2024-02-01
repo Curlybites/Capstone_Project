@@ -30,12 +30,12 @@
             <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class='menu-icon  bx bxs-package'></i>
                 {{-- <i class="menu-icon tf-icons bx bx-building"></i> --}}
-                <div data-i18n="User interface">Supplier</div>
+                <div data-i18n="User interface">Item</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::is('Supplier/Item_List') ? 'active' : '' }}">
                     <a href={{ '/Supplier/Item_List' }} class="menu-link">
-                        <div data-i18n="Accordion">Supplier Item List</div>
+                        <div data-i18n="Accordion">Item List</div>
                     </a>
                 </li>
             </ul>
