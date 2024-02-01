@@ -43,4 +43,10 @@ class HdController extends Controller
         $user = Auth::user();
         return view('Health_Department.hdPOList', ['user' => $user]);
     }
+
+    public function hdPurchaseOrderView()
+    {
+        $user = Auth::user();
+        return view('Health_Department.hdPOView', ['user' => $user]);
+    }
 }

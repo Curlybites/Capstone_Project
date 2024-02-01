@@ -66,7 +66,8 @@
                                                         <td><span class="badge bg-label-success me-1">Approved</span>
                                                         </td>
                                                         <td>
-                                                            <a type="button" href="#"
+                                                            <a type="button"
+                                                                href="{{ '/Health_Department/Purchase_Order_View' }}"
                                                                 class="text-primary d-flex justify-content-center">
                                                                 <i class="bi bi-eye-fill fs-5"></i>
                                                             </a>

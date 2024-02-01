@@ -19,13 +19,15 @@
         <!-- Components -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
 
-        <li class="menu-item {{ Request::is('Health_Department/Purchase_Order_List') ? 'active open' : '' }}">
+        <li
+            class="menu-item {{ Request::is('Health_Department/Purchase_Order_List') || Request::is('Health_Department/Purchase_Order_View') ? 'active open' : '' }}">
             <a href="#" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-capsule"></i>
                 <div data-i18n="Extended UI">Purchase Order</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::is('Health_Department/Purchase_Order_List') ? 'active' : '' }}">
+                <li
+                    class="menu-item {{ Request::is('Health_Department/Purchase_Order_List') || Request::is('Health_Department/Purchase_Order_View') ? 'active' : '' }}">
                     <a href="{{ '/Health_Department/Purchase_Order_List' }}" class="menu-link">
                         <div data-i18n="Perfect Scrollbar">PO List</div>
                     </a>
