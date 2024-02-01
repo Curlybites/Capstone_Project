@@ -155,7 +155,7 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::is('Admin/Health_Center_List') ? 'active' : '' }}">
-                    <a href="Barangay_list.php" class="menu-link">
+                    <a href="{{ '/Admin/Health_Center_List' }}" class="menu-link">
                         <div data-i18n="Perfect Scrollbar">List of Health Centers</div>
                     </a>
                 </li>
@@ -170,7 +170,7 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::is('Admin/Program_List') ? 'active' : '' }}">
-                    <a href="Programs_list.php" class="menu-link">
+                    <a href={{ '/Admin/Program_List' }} class="menu-link">
                         <div data-i18n="Perfect Scrollbar">Program List</div>
                     </a>
                 </li>

@@ -111,7 +111,7 @@
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
                                         <h5 class="card-header"></h5>
-                                        {{-- <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
+                                    <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
                                             New</button>
 
@@ -250,12 +250,15 @@
                                                         <th>Date Created</th>
                                                         <th>District</th>
                                                         <th>Barangay</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>2</td>
                                                         <td>District 1</td>
-                                                        <td></td>
                                                         <td class="d-flex justify-content-center align-items-center"><a
                                                                 type="button" href=/Admin/User_List/1
                                                                 class="text-primary" data-bs-toggle="modal"
@@ -271,8 +274,10 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>District 2</td>
-                                                        <td></td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>2</td>
+                                                        <td>District 1</td>
                                                         <td class="d-flex justify-content-center align-items-center"><a
                                                                 type="button" href=/Admin/User_List/1
                                                                 class="text-primary" data-bs-toggle="modal"
@@ -288,8 +293,10 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>District 3</td>
-                                                        <td></td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>2</td>
+                                                        <td>District 1</td>
                                                         <td class="d-flex justify-content-center align-items-center"><a
                                                                 type="button" href=/Admin/User_List/1
                                                                 class="text-primary" data-bs-toggle="modal"
@@ -305,8 +312,10 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>District 4</td>
-                                                        <td></td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>2</td>
+                                                        <td>District 1</td>
                                                         <td class="d-flex justify-content-center align-items-center"><a
                                                                 type="button" href=/Admin/User_List/1
                                                                 class="text-primary" data-bs-toggle="modal"
@@ -322,8 +331,10 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>District 5</td>
-                                                        <td></td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>2</td>
+                                                        <td>District 1</td>
                                                         <td class="d-flex justify-content-center align-items-center"><a
                                                                 type="button" href=/Admin/User_List/1
                                                                 class="text-primary" data-bs-toggle="modal"
@@ -339,8 +350,10 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>District 6</td>
-                                                        <td></td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>2</td>
+                                                        <td>District 1</td>
                                                         <td class="d-flex justify-content-center align-items-center"><a
                                                                 type="button" href=/Admin/User_List/1
                                                                 class="text-primary" data-bs-toggle="modal"

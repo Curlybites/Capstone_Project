@@ -23,7 +23,8 @@ class AdminController extends Controller
     }
     public function Programpage()
     {
-        return view('Admin.Programslist');
+        $user = Auth::user();
+        return view('Admin.Programslist',['user'=> $user]);
     }
     public function Supplierpage()
     {
@@ -44,4 +45,12 @@ class AdminController extends Controller
         $user = Auth::user();
         return view('Admin.profile.change_pass', ['user' => $user]);
     }
+
+    public function barangayPage(){
+        return view('Admin.barangayList');
+    }
+
+
+
+
 }

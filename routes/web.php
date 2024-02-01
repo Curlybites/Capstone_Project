@@ -59,6 +59,9 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/Admin/District_List', 'districtListpage')->middleware('auth');
     Route::get('/Admin/Account_Profile', 'profile')->middleware('auth');
     Route::get('/Admin/Account_Change_Password', 'profileChange')->middleware('auth');
+    Route::get('/Admin/Barangay_List','barangayPage');
+    Route::get('/Admin/Health_Center_List', 'Healthcenterpage');
+    Route::get('/Admin/Program_List', 'Programpage');
 });
 
 

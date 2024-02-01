@@ -5,13 +5,13 @@
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             {{-- sidebar --}}
-            @include('components.sidebar.admin_sidebar');
+            @include('components.sidebar.admin_sidebar')
 
 
             <!-- Layout container -->
             <div class="layout-page">
 
-                @include('Admin.navbar.navbar');
+                @include('components.navbar.navbar')
                 <!-- / Navbar -->
 
                 <div class="content-wrapper">
