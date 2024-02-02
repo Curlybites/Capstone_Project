@@ -42,15 +42,15 @@
         </li>
 
         <!-- Extended components -->
-        <li class="menu-item {{ Request::is('Supplier/PO_List') ? 'active open' : '' }}">
+        <li class="menu-item {{ Request::is('Supplier/PPMP_List') ? 'active open' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class='menu-icon bx bx-purchase-tag-alt'></i>
-                <div data-i18n="Extended UI">Purchase Order</div>
+                <div data-i18n="Extended UI">PPMP</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::is('Supplier/PO_List') ? 'active' : '' }}">
-                    <a href={{ '/Supplier/PO_List' }} class="menu-link">
-                        <div data-i18n="Perfect Scrollbar">Purchase Order List</div>
+                <li class="menu-item {{ Request::is('Supplier/PPMP_List') ? 'active' : '' }}">
+                    <a href={{ '/Supplier/PPMP_List' }} class="menu-link">
+                        <div data-i18n="Perfect Scrollbar">PPMP List</div>
                     </a>
                 </li>
 

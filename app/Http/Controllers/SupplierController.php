@@ -24,4 +24,11 @@ class SupplierController extends Controller
         $user = Auth::user();
         return view('Supplier.profile.change_pass', ['user' => $user]);
     }
+
+    public function ppmp(){
+        $user = Auth::user();
+        return view('Supplier.Po',['user' => $user]);
+    }
+
+
 }
