@@ -25,54 +25,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card mb-4">
-                                    <div class="card-body px-5">
-                                        <h4 class="mb-4">Item Allocation</h4>
-                                        <form action="">
-                                            <div class="row">
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="itemName" class="form-label">Item</label>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Select Item</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="quantity" class="form-label">Quantity</label>
-                                                    <input type="number" class="form-control" id="quantity"
-                                                        placeholder="Quantity">
-                                                </div>
-
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="program" class="form-label">Type of Program</label>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Select Pogram</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="program" class="form-label">Program Manager</label>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Select Program Manager</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
-
-                                            </div>
-                                            <button type="button" class="btn btn-primary me-md-3">Allocate</button>
-                                            <button type="button" class="btn btn-danger">Reset</button>
-                                        </form>
+                                    <div
+                                        class="title d-flex align-items-center justify-content-between border-top border-success">
+                                        <h5 class="card-header">Allocation List</h5>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="row">
                             <div class="col-md-12">
@@ -135,7 +91,7 @@
                                                         </td>
                                                     </tr>
                                                 </tbody>
-
+                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>
