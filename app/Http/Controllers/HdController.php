@@ -49,4 +49,16 @@ class HdController extends Controller
         $user = Auth::user();
         return view('Health_Department.hdPOView', ['user' => $user]);
     }
+
+    public function hdAllocationView()
+    {
+        $user = Auth::user();
+        return view('Health_Department.hdAllocationView', ['user' => $user]);
+    }
+
+    public function hdAllocationEdit()
+    {
+        $user = Auth::user();
+        return view('Health_Department.hdAllocationEdit', ['user' => $user]);
+    }
 }

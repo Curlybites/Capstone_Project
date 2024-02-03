@@ -67,6 +67,8 @@ Route::controller(HdController::class)->group(function () {
     Route::get('/Health_Department/Item_List', 'hdInventory')->middleware('auth');
     Route::get('/Health_Department/Allocation_List', 'hdAllocation')->middleware('auth');
     Route::get('/Health_Department/Allocation_Process', 'hdAllocationProcess')->middleware('auth');
+    Route::get('/Health_Department/Allocation_View', 'hdAllocationView')->middleware('auth');
+    Route::get('/Health_Department/Allocation_Edit', 'hdAllocationEdit')->middleware('auth');
     Route::get('/Health_Department/Profile', 'hdAccount')->middleware('auth');
     Route::get('/Health_Department/Profile_Change', 'hdAccountChange')->middleware('auth');
     Route::get('/Health_Department/Purchase_Order_List', 'hdPurchaseOrderList')->middleware('auth');
