@@ -50,13 +50,14 @@
         </li>
 
         <li
-            class="menu-item {{ Request::is('Health_Department/Allocation_List') || Request::is('Health_Department/Allocation_Process') ? 'active open' : '' }}">
+            class="menu-item {{ ((Request::is('Health_Department/Allocation_List') || Request::is('Health_Department/Allocation_Process') ? 'active open' : '' || Request::is('Health_Department/Allocation_View')) ? 'active open' : '' || Request::is('Health_Department/Allocation_Edit')) ? 'active open' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-customize"></i>
                 <div data-i18n="Extended UI">Allocation</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::is('Health_Department/Allocation_List') ? 'active' : '' }}">
+                <li
+                    class="menu-item {{ ((Request::is('Health_Department/Allocation_List') ? 'active' : '' || Request::is('Health_Department/Allocation_View')) ? 'active open' : '' || Request::is('Health_Department/Allocation_Edit')) ? 'active open' : '' }}  ">
                     <a href="{{ '/Health_Department/Allocation_List' }}" class="menu-link">
                         <div data-i18n="Perfect Scrollbar">Allocation List</div>
                     </a>
