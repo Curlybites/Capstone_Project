@@ -7,7 +7,6 @@
             {{-- sidebar --}}
             @include('components.sidebar.admin_sidebar')
 
-
             <!-- Layout container -->
             <div class="layout-page">
 
@@ -15,8 +14,14 @@
                 <!-- / Navbar -->
 
                 <div class="content-wrapper">
+                    <div class="container-fluid  flex-grow-1 container-p-y">
+                        <h3>Create</h3>
+                    </div>
+                </div>
+                
+                <div class="content-wrapper">
                     <!-- Content -->
-
+                 
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
                         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Programs /</span> List of
