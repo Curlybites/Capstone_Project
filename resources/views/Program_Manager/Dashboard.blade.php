@@ -30,7 +30,7 @@
       <!-- Layout container -->
       <div class="layout-page">
         <!-- Navbar -->
-        @include('Admin.navbar.navbar');
+        @include('components.navbar.navbar');
         <!-- / Navbar -->
 
         <!-- Content wrapper -->

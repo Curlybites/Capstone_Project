@@ -1,4 +1,4 @@
-@include('components.header');
+@include('components.header')
 
 <body>
     <!-- Layout wrapper -->
@@ -6,13 +6,13 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('components.sidebar.admin_sidebar');
+            @include('components.sidebar.admin_sidebar')
             <!-- / Menu -->
 
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-                @include('components.navbar.navbar');
+                @include('components.navbar.navbar')
                 <!-- / Navbar -->
 
 
@@ -43,7 +43,7 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <form action="/Admin/Store" method="POST">
+                                                    <form action="/Admin/Store" method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="modal-body">
 
@@ -376,11 +376,11 @@
                                         </div>
                                     </div>
                                     <hr class="my-0">
-                                    <div class="card-body">
+                                    {{-- <div class="card-body">
                                         <form id="formAccountSettings" method="POST" onsubmit="return false">
 
                                         </form>
-                                    </div>
+                                    </div> --}}
                                     <!-- /Account -->
                                 </div>
 

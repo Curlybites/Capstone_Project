@@ -59,6 +59,9 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/Admin/District_List', 'districtListpage')->middleware('auth');
     Route::get('/Admin/Account_Profile', 'profile')->middleware('auth');
     Route::get('/Admin/Account_Change_Password', 'profileChange')->middleware('auth');
+    Route::get('/Admin/Barangay_List','barangayPage');
+    Route::get('/Admin/Health_Center_List', 'Healthcenterpage');
+    Route::get('/Admin/Program_List', 'Programpage');
 });
 
 
@@ -66,7 +69,12 @@ Route::controller(AdminController::class)->group(function () {
 Route::controller(HdController::class)->group(function () {
     Route::get('/Health_Department/Item_List', 'hdInventory')->middleware('auth');
     Route::get('/Health_Department/Allocation_List', 'hdAllocation')->middleware('auth');
+    Route::get('/Health_Department/Allocation_Process', 'hdAllocationProcess')->middleware('auth');
+    Route::get('/Health_Department/Allocation_View', 'hdAllocationView')->middleware('auth');
+    Route::get('/Health_Department/Allocation_Edit', 'hdAllocationEdit')->middleware('auth');
     Route::get('/Health_Department/Profile', 'hdAccount')->middleware('auth');
+    Route::get('/Health_Department/Purchase_Order_View','hdPurchaseOrderView')->middleware('auth');
+    Route::get('/Health_Department/Purchase_Order_List','hdPurchaseOrderList')->middleware('auth');
     Route::get('/Health_Department/Profile_Change', 'hdAccountChange')->middleware('auth');
 });
 
@@ -76,6 +84,7 @@ Route::controller(SupplierController::class)->group(function () {
     Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
     Route::get('/Supplier/Account_Profile', 'profileSupplier')->middleware('auth');
     Route::get('/Supplier/Account_Change_Password', 'profileChangeSupplier')->middleware('auth');
+    Route::get('/Supplier/PPMP_List','ppmp')->middleware('auth');
 });
 
 // Program Manager route
