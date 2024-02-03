@@ -38,8 +38,8 @@
                                             <div class="modal-dialog modal-xl modal-dialog-centered">
                                                 <div class="modal-content ">
                                                     <div class="modal-header ">
-                                                        <h1 class="modal-title fs-3" id="exampleModalLabel">Create User
-                                                        </h1>
+                                                        <h1 class="modal-title fs-3" id="exampleModalLabel">Create Item</h1>
+
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
@@ -47,157 +47,48 @@
                                                         @csrf
                                                         <div class="modal-body">
 
-                                                            <div class="row">
+                                                    
+                                                                <div class="form-floating">
+                                                                    <input type="text" class="form-control " id="floatingInput" placeholder="Item Name" aria-describedby="floatingInputHelp" />
+                                                                    <label for="floatingInput">Name</label>
+                                                                  </div>
 
-                                                                <h5>Personal Details</h5>
-                                                                <div class="col">
-                                                                    <p>First Name</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing e xample input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="firstname" required>
-                                                                    </div>
-                                                                </div>
+                                                                  <div class="form-floating">
+                                                                    <textarea class="form-control mt-2" placeholder="Leave a description here" id="floatingTextarea"></textarea>
+                                                                    <label for="floatingTextarea">Description</label>
+                                                                  </div>
 
-                                                                <div class="col">
-                                                                    <p>Middle Name</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="middlename" required>
-                                                                    </div>
-                                                                </div>
+                                                                  <div class="form-floating mt-2">
+                                                                    <input type="number" class="form-control " id="floatingInput" placeholder="Item Price" aria-describedby="floatingInputHelp" />
+                                                                    <label for="floatingInput">Price</label>
+                                                                  </div>
 
-                                                                <div class="col">
-                                                                    <p>Last Name</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="lastname" required>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                                  <div class="form-floating mt-2">
+                                                                    <input type="date" class="form-control " id="floatingInput" placeholder="Date Creation" aria-describedby="floatingInputHelp" />
+                                                                    <label for="floatingInput">Date creation</label>
+                                                                  </div>
 
-                                                            <div class="row pb-4">
+                                                                  <div class="form-floating mt-2">
+                                                                    <input type="date" class="form-control " id="floatingInput" placeholder="Date Expiration" aria-describedby="floatingInputHelp" />
+                                                                    <label for="floatingInput">Date Expiration</label>
+                                                                  </div>
 
-                                                                <div class="col">
-                                                                    <p>Sex</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <select class="form-select"
-                                                                            aria-label="Default select example"
-                                                                            name="sex">
-                                                                            <option value="male">Male</option>
-                                                                            <option value="Female">Female</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
+                                                                  <div class="form-floating mt-2">
+                                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                                                    
+                                                                      <option value="1">Active</option>
+                                                                      <option value="2">Inactive</option>  
+                                                                    </select>
+                                                                    <label for="floatingSelect">Status</label>
+                                                                  </div>
 
-                                                                <div class="col">
-                                                                    <p>Birthdate</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="date" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="birthdate" required>
-                                                                    </div>
-                                                                </div>
+                                                                  <div>
+                                                                    <label for="formFileLg" class="form-label mt-3">Input image here</label>
+                                                                    <input class="form-control form-control-lg" id="formFileLg" type="file">
+                                                                  </div>
 
-                                                                <div class="col">
-                                                                    <p>Address</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="address" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Contact Number</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="number" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="contact" required>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-
-                                                            <div class="row border-top pt-4 pb-4">
-                                                                <h5 class="">Account Setup</h5>
-
-                                                                <div class="col">
-                                                                    <p>Email</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="email" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="email" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Password</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="password" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="password" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Confirm Password</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="password" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="password_confirmation" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>User Image</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="file" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="image">
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-
-                                                            <div class="row border-top pt-4">
-                                                                <h5>Designation / Role Setup</h5>
-
-                                                                <div class="col">
-                                                                    <p>Select Role Type</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <select class="form-select"
-                                                                            aria-label="Default select example"
-                                                                            name="role">
-                                                                            <option value="1">Admin</option>
-                                                                            <option value="2">Program Manager
-                                                                            </option>
-                                                                            <option value="3">Health Department
-                                                                                Staff
-                                                                            </option>
-                                                                            <option value="4">District Stafff
-                                                                            </option>
-                                                                            <option value="5">Brgy. Health Center
-                                                                                Staff</option>
-                                                                            <option value="6">Supplier</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
-
-                                                            </div>
+                                                                  
+                                                          
 
                                                         </div>
                                                         <div class="modal-footer border-1">
