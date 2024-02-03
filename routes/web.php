@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Auth;
 //     return view('welcome');
 // });
 
+
 Route::controller(PageController::class)->group(function () {
     Route::get('/', 'AdminLogin')->name('login');
     // Route::get('/Admin/Login', 'AdminLogin');
@@ -51,6 +52,7 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/change-password', 'ChangePasswordSave')->name('changePass');
 });
 
+
 // Admin route
 
 Route::controller(AdminController::class)->group(function () {
@@ -62,6 +64,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/Admin/Program_List', 'Programpage');
 });
 
+
 // Health Department Route
 Route::controller(HdController::class)->group(function () {
     Route::get('/Health_Department/Item_List', 'hdInventory')->middleware('auth');
@@ -70,14 +73,9 @@ Route::controller(HdController::class)->group(function () {
     Route::get('/Health_Department/Allocation_View', 'hdAllocationView')->middleware('auth');
     Route::get('/Health_Department/Allocation_Edit', 'hdAllocationEdit')->middleware('auth');
     Route::get('/Health_Department/Profile', 'hdAccount')->middleware('auth');
+    Route::get('/Health_Department/Purchase_Order_View','hdPurchaseOrderView')->middleware('auth');
+    Route::get('/Health_Department/Purchase_Order_List','hdPurchaseOrderList')->middleware('auth');
     Route::get('/Health_Department/Profile_Change', 'hdAccountChange')->middleware('auth');
-    Route::get('/Health_Department/Purchase_Order_List', 'hdPurchaseOrderList')->middleware('auth');
-    Route::get('/Health_Department/Purchase_Order_View', 'hdPurchaseOrderView')->middleware('auth');
-});
-
-// Supplier Route
-Route::controller(SupplierController::class)->group(function () {
-    Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
 });
 
 
@@ -86,6 +84,7 @@ Route::controller(SupplierController::class)->group(function () {
     Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
     Route::get('/Supplier/Account_Profile', 'profileSupplier')->middleware('auth');
     Route::get('/Supplier/Account_Change_Password', 'profileChangeSupplier')->middleware('auth');
+    Route::get('/Supplier/PPMP_List','ppmp')->middleware('auth');
 });
 
 // Program Manager route

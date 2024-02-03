@@ -30,21 +30,24 @@
                                         <h5 class="card-header">Allocation List</h5>
                                     </div>
 
-                                    <hr class="my-0">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card mb-4">
                                     <!-- Account -->
-                                    <div class="card-body p-5 ">
-                                        <div class="table-responsive text-nowrap overflow-visible">
-                                            <table id="dataTable" class="datatables-basic table   border-top "
+                                    <div class="card-body px-5">
+                                        <h4 class="mb-4">Allocation Details</h4>
+                                        <div class="table-responsive text-nowrap">
+                                            <table id="dataTable" class="datatables-basic table border-top "
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
                                                         <th>No.</th>
                                                         <th>Item Name</th>
-                                                        {{-- <th>Image</th> --}}
                                                         <th>Program</th>
                                                         <th>Program Manager</th>
                                                         <th>Type</th>
                                                         <th>Quantity</th>
+                                                        <th>Image</th>
                                                         <th>Price</th>
                                                         <th>Status</th>
                                                         <th>Action</th>
@@ -54,36 +57,11 @@
                                                     <tr>
                                                         <td>1</td>
                                                         <td>Paracetamol</td>
-                                                        {{-- <td>
-                                                            <ul
-                                                                class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
-                                                                    data-bs-placement="top"
-                                                                    class="avatar avatar-xs pull-up"
-                                                                    title="Lilian Fuller">
-                                                                    <img src="../assets/img/avatars/5.png"
-                                                                        alt="Avatar" class="rounded-circle">
-                                                                </li>
-                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
-                                                                    data-bs-placement="top"
-                                                                    class="avatar avatar-xs pull-up"
-                                                                    title="Sophia Wilkerson">
-                                                                    <img src="../assets/img/avatars/6.png"
-                                                                        alt="Avatar" class="rounded-circle">
-                                                                </li>
-                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
-                                                                    data-bs-placement="top"
-                                                                    class="avatar avatar-xs pull-up"
-                                                                    title="Christina Parker">
-                                                                    <img src="../assets/img/avatars/7.png"
-                                                                        alt="Avatar" class="rounded-circle">
-                                                                </li>
-                                                            </ul>
-                                                        </td> --}}
                                                         <td>Maternity</td>
-                                                        <td>Jong Smith</td>
+                                                        <td>John Smith</td>
                                                         <td>Medicine</td>
                                                         <td>12</td>
+                                                        <td>1120</td>
                                                         <td>1120</td>
                                                         <td class="text-success">Approved</td>
                                                         <td>

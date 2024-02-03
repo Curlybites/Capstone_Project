@@ -1,7 +1,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand d-flex align-items-center justify-content-center p-3">
-        <a href={{ '/Admin/Dashboard' }} class="app-brand-link ">
-            <img src="../assets/img/download.png" width="100$" class="">
+        <a href={{ '/Supplier/Dashboard' }} class="app-brand-link ">
+            <img src="../assets/img/download.png" width="100" class="">
 
         </a>
 
@@ -42,15 +42,16 @@
         </li>
 
         <!-- Extended components -->
-        <li class="menu-item {{ Request::is('Supplier/PO_List') ? 'active open' : '' }}">
+        <li class="menu-item {{ Request::is('Supplier/PPMP_List') ? 'active open' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
-                <i class='menu-icon bx bx-purchase-tag-alt'></i>
-                <div data-i18n="Extended UI">Purchase Order</div>
+                {{-- <i class='menu-icon bx bx-purchase-tag-alt'></i> --}}
+                <i class='menu-icon bx bx-note'></i>
+                <div data-i18n="Extended UI">PPMP</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::is('Supplier/PO_List') ? 'active' : '' }}">
-                    <a href={{ '/Supplier/PO_List' }} class="menu-link">
-                        <div data-i18n="Perfect Scrollbar">Purchase Order List</div>
+                <li class="menu-item {{ Request::is('Supplier/PPMP_List') ? 'active' : '' }}">
+                    <a href={{ '/Supplier/PPMP_List' }} class="menu-link">
+                        <div data-i18n="Perfect Scrollbar">PPMP List</div>
                     </a>
                 </li>
 

@@ -1,4 +1,4 @@
-@include('components.header')
+@include('components.header');
 
 <body>
     <!-- Layout wrapper -->
@@ -11,7 +11,7 @@
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-                @include('components.navbar.navbar')
+                @include('components.navbar.navbar');
                 <!-- Navbar End-->
 
 
@@ -571,4 +571,4 @@
                     </div>
                     <!--footer-->
 
-                    @include('components.footer')
+                    @include('components.footer');

@@ -1,4 +1,4 @@
-@include('components.header')
+@include('components.header');
 
 <body>
     <!-- Layout wrapper -->
@@ -10,91 +10,8 @@
 
             <!-- Layout container -->
             <div class="layout-page">
-                <!-- Navbar -->
 
-                <nav class="layout-navbar container-fluid  navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-                    id="layout-navbar">
-                    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                            <i class="bx bx-menu bx-sm"></i>
-                        </a>
-                    </div>
-
-                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                        <!-- Search -->
-                        <div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
-                                    aria-label="Search..." />
-                            </div>
-                        </div>
-                        <!-- /Search -->
-
-                        <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            <!-- Place this tag where you want the button to render. -->
-                            <li class="nav-item lh-1 me-3">
-                                <a href="#"><i class='bx bxs-bell'></i></a>
-                            </li>
-
-                            <!-- District -->
-                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
-                                    data-bs-toggle="dropdown">
-                                    <div class="avatar avatar-online">
-                                        <img src="../assets/img/avatars/1.png" alt
-                                            class="w-px-40 h-auto rounded-circle" />
-                                    </div>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <div class="d-flex">
-                                                <div class="flex-shrink-0 me-3">
-                                                    <div class="avatar avatar-online">
-                                                        <img src="../assets/img/avatars/1.png" alt
-                                                            class="w-px-40 h-auto rounded-circle" />
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">John Doe</span>
-                                                    <small class="text-muted">Admin</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="dropdown-divider"></div>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="bx bx-user me-2"></i>
-                                            <span class="align-middle">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="bx bx-cog me-2"></i>
-                                            <span class="align-middle">Settings</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <div class="dropdown-divider"></div>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="../logout.php">
-                                            <i class="bx bx-power-off me-2"></i>
-                                            <span class="align-middle">Log Out</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!--/ District -->
-                        </ul>
-                    </div>
-                </nav>
-
+                @include('components.navbar.navbar')
                 <!-- / Navbar -->
 
                 <div class="content-wrapper">
@@ -122,7 +39,7 @@
                                                 <div class="modal-content ">
                                                     <div class="modal-header ">
                                                         <h1 class="modal-title fs-3" id="exampleModalLabel">Create
-                                                            Supplier </h1>
+                                                            Program </h1>
 
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
@@ -133,27 +50,24 @@
 
                                                             <div class="row">
 
-                                                                <div class="row">
-                                                                    <p>Supplier Name</p>
+
+                                                                <div class="col">
+                                                                    <p>Select Program Name</p>
                                                                     <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing e xample input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="SupplierName" required>
+                                                                        <select class="form-select"
+                                                                            aria-label="Default select example"
+                                                                            name="Select District">
+                                                                            <option value="1"></option>
+                                                                            <option value="2"></option>
+                                                                            <option value="3"></option>
+                                                                            <option value="4"></option>
+                                                                            <option value="5"></option>
+                                                                            <option value="6"></option>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="row">
-                                                                    <p>Contact Person Name</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing e xample input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="ContactPerson" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row">
+                                                                <div class="col">
                                                                     <p>Date</p>
                                                                     <div class="input-group mb-3">
                                                                         <input type="date" class="form-control"
@@ -161,6 +75,22 @@
                                                                             aria-describedby="inputGroup-sizing-default"
                                                                             name="Date" required>
                                                                     </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <p>Select Program Manager</p>
+                                                                <div class="input-group mb-3">
+                                                                    <select class="form-select"
+                                                                        aria-label="Default select example"
+                                                                        name="Select District">
+                                                                        <option value="1"></option>
+                                                                        <option value="2"></option>
+                                                                        <option value="3"></option>
+                                                                        <option value="4"></option>
+                                                                        <option value="5"></option>
+                                                                        <option value="6"></option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
 
@@ -184,11 +114,9 @@
                                             <table id="dataTable" class="datatables-basic table   border-top "
                                                 style="width:100%">
                                                 <thead>
-                                                    <th>#</th>
-                                                    <th>Date Created</th>
-                                                    <th>Supplier Name</th>
-                                                    <th>Contact Person</th>
-                                                    <th>Status</th>
+                                                    <th>Program Name</th>
+                                                    <th>Date</th>
+                                                    <th>Program Manager</th>
                                                     <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -211,8 +139,8 @@
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button"
-                                                                        class="btn btn-primary">Save changes</button>
+                                                                    <button type="button" class="btn btn-primary">Save
+                                                                        changes</button>
                                                                 </div>
                                                             </div>
                                                         </div>
