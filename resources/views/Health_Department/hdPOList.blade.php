@@ -43,11 +43,9 @@
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>PO#</th>
+                                                        <th>PPMP#</th>
                                                         <th>Date Created</th>
                                                         <th>Item Name</th>
-                                                        <th>Image</th>
-                                                        <th>Unit</th>
                                                         <th>Price</th>
                                                         <th>Quantity</th>
                                                         <th>Supplier</th>
@@ -61,14 +59,10 @@
                                                         <td>01232</td>
                                                         <td>2024-12-12</td>
                                                         <td>Paracetamol</td>
-                                                        <td class="avatar me-2"><img
-                                                                src="https://5.imimg.com/data5/SELLER/Default/2022/9/IV/UY/CG/75459511/500mg-paracetamol-tablet.jpg"
-                                                                class="rounded" alt="awts"></td>
-                                                        <td>Box</td>
                                                         <td>12</td>
                                                         <td>30</td>
-                                                        <td>John Smith</td>
                                                         <td>1200</td>
+                                                        <td>John Smith</td>
                                                         <td><span class="badge bg-label-success me-1">Approved</span>
                                                         </td>
                                                         <td>

@@ -47,7 +47,6 @@
                                                         <th>Quantity</th>
                                                         <th>Price</th>
                                                         <th>Status</th>
-                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -86,32 +85,6 @@
                                                         <td>12</td>
                                                         <td>1120</td>
                                                         <td class="text-success">Approved</td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <button class="btn btn-secondary dropdown-toggle"
-                                                                    type="button" id="dropdownMenuButton1"
-                                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                                    Action
-                                                                </button>
-                                                                <ul class="dropdown-menu"
-                                                                    aria-labelledby="dropdownMenuButton1">
-                                                                    <li><a class="dropdown-item"
-                                                                            href="{{ '/Health_Department/Allocation_View' }}"><i
-                                                                                class="bi bi-eye-fill fs-5 text-primary"></i>
-                                                                            View</a>
-                                                                    </li>
-                                                                    <li><a class="dropdown-item"
-                                                                            href="{{ '/Health_Department/Allocation_Edit' }}"><i
-                                                                                class="bi bi-pen-fill fs-5 text-info"></i>
-                                                                            Edit</a>
-                                                                    </li>
-                                                                    <li><a class="dropdown-item" href="#"><i
-                                                                                class="bi bi-trash-fill fs-5 text-danger"></i>
-                                                                            Delete</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </td>
                                                     </tr>
                                                 </tbody>
                                                 </tfoot>
