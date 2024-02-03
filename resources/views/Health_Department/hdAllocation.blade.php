@@ -62,6 +62,7 @@
                                                         <td>Medicine</td>
                                                         <td>12</td>
                                                         <td>1120</td>
+                                                        <td>1120</td>
                                                         <td class="text-success">Approved</td>
                                                         <td>
                                                             <div class="dropdown">
