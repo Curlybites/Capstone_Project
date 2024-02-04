@@ -21,7 +21,7 @@
 
         <li class="menu-item {{ Request::is('Health_Center/Item_List') ? 'active open' : '' }}">
             <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-capsule"></i>
+                <i class="menu-icon tf-icons bx bx-list-ul"></i>
                 <div data-i18n="Extended UI">Inventory</div>
             </a>
             <ul class="menu-sub">
@@ -35,13 +35,27 @@
 
         <li class="menu-item {{ Request::is('Health_Center/Patient_List') ? 'active open' : '' }}">
             <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-capsule"></i>
+                <i class="menu-icon tf-icons bx bx-user-circle"></i>
                 <div data-i18n="Extended UI">Patient</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::is('Health_Center/Patient_List') ? 'active' : '' }}">
                     <a href="{{ '/Health_Center/Patient_List' }}" class="menu-link">
                         <div data-i18n="Perfect Scrollbar">Patient List</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="menu-item {{ Request::is('/Health_Center/Report') ? 'active open' : '' }}">
+            <a href="#" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-notepad"></i>
+                <div data-i18n="Extended UI">Report</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::is('/Health_Center/Report') ? 'active' : '' }}">
+                    <a href="{{ '/Health_Center/Report' }}" class="menu-link">
+                        <div data-i18n="Perfect Scrollbar">Report</div>
                     </a>
                 </li>
             </ul>

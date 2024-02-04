@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HcController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProgramManagerController;
@@ -8,6 +9,9 @@ use App\Http\Controllers\HdController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\PatientController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -94,4 +98,14 @@ Route::controller(ProgramManagerController::class)->group(function () {
     Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
     Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
 
+});
+
+Route::controller(HcController::class)->group(function () {
+    Route::get('/Health_Center/Item_List', 'hcInventory')->middleware('auth');
+    Route::get('/Health_Center/Patient_List', 'hcPatient')->middleware('auth');
+    Route::get('/Health_Center/Patient_Item_List', 'hcItemList')->middleware('auth');
+    Route::get('/Health_Center/Patient_View', 'hcPatientView')->middleware('auth');
+    Route::get('/Health_Center/Report', 'hcReport')->middleware('auth');
+    Route::post('/Health_Center/Patient_List', 'storePatient')->name('patientname')->middleware('auth');
+    Route::get('/Health_Center/Patient_List', 'listPatient');
 });
