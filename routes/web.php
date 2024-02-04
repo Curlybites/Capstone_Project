@@ -59,7 +59,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/Admin/District_List', 'districtListpage')->middleware('auth');
     Route::get('/Admin/Account_Profile', 'profile')->middleware('auth');
     Route::get('/Admin/Account_Change_Password', 'profileChange')->middleware('auth');
-    Route::get('/Admin/Barangay_List','barangayPage');
+    Route::get('/Admin/Barangay_List', 'barangayPage');
     Route::get('/Admin/Health_Center_List', 'Healthcenterpage');
     Route::get('/Admin/Program_List', 'Programpage');
 });
@@ -76,10 +76,13 @@ Route::controller(HdController::class)->group(function () {
 
 // Supplier Route
 Route::controller(SupplierController::class)->group(function () {
-    Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
+    Route::get('/Supplier/Item_List', 'itemList')->middleware('auth')->name('items');
     Route::get('/Supplier/Account_Profile', 'profileSupplier')->middleware('auth');
     Route::get('/Supplier/Account_Change_Password', 'profileChangeSupplier')->middleware('auth');
-    Route::get('/Supplier/PPMP_List','ppmp')->middleware('auth');
+    Route::get('/Supplier/PPMP_List', 'ppmp')->middleware('auth');
+    Route::post('/Supplier/Item_List', 'storeItem')->name('products.store')->middleware('auth');
+    Route::put('/Supplier/Item_List/{id}', 'updateItem')->name('products.update')->middleware('auth');
+    Route::delete('/Supplier/Item_List/{id}', 'deleteItem')->name('products.delete')->middleware('auth');
 });
 
 // Program Manager route
@@ -88,5 +91,4 @@ Route::controller(ProgramManagerController::class)->group(function () {
     Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
     Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
     Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
-
 });
