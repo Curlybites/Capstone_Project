@@ -195,7 +195,7 @@
                                                         <td class="">
                                                             <a type="button" href=/Admin/Edit/""
                                                                 class="text-primary" data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal2">
+                                                                data-bs-target="#exampleModal2{{ $healthcenterRow->id }}">
                                                                 <i class="bi bi-pencil-square"></i>
                                                             </a>
                                                         </td>
@@ -227,7 +227,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="modal fade" id="exampleModal2" tabindex="-1"
+                                                    <div class="modal fade" id="exampleModal2{{ $healthcenterRow->id }}" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">

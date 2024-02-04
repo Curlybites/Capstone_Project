@@ -114,16 +114,16 @@
                                                                 data-bs-target="#exampleModal1">
                                                                 <i class="bi bi-eye-fill"></i>
                                                             </a> --}}
-                                                                <a type="button" href={{'/Admin/Barangay_Update/' . $barangayRow->id}}
+
+                                                                <a type="button" href=/Admin/User_List/
                                                                     class="text-primary" data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModal2">
+                                                                    data-bs-target="#exampleModal2{{ $barangayRow->id }}">
                                                                     <i class="bi bi-pencil-square"></i>
-                                                                    
-                                                                    <span>Edit(ID: {{ $barangayRow->id }})</span>
-                                                                </a>     
+                                                                    <span>Edit</span>
+                                                                </a>
                                                             </td>
                                                         </tr>
-                                                      @endforeach
+
                                                         <div class="modal fade" id="exampleModal1" tabindex="-1"
                                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered">
@@ -149,31 +149,33 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="modal fade" id="exampleModal2" tabindex="-1"
+                                                        <div class="modal fade" id="exampleModal2{{ $barangayRow->id }}" tabindex="-1"
                                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title" id="exampleModalLabel">
-                                                                            Edit Barangay(ID: {{ $barangayRow->id }})</h5>
+                                                                            Edit Barangay</h5>
                                                                         <button type="button" class="btn-close"
                                                                             data-bs-dismiss="modal"
                                                                             aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <form
-                                                                            action={{ url('/Admin/Barangay_Update/' . $barangayRow->id) }}
-                                                                            method="POST" id="editBarangay">
-                                                                            {{ csrf_field() }}
-                                                                            {{ method_field('PUT') }}
+                                                                            action={{ "/Admin/Barangay_List/$barangayRow->id" }}
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            @method('PUT')
+
                                                                             <div class="row">
                                                                                 <p>Barangay Name</p>
                                                                                 <div class="input-group mb-3">
+                                                                                    
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             aria-label="Sizing example input"
                                                                                             aria-describedby="inputGroup-sizing-default"
-                                                                                            name="barangayName" id="barangayName"
+                                                                                            name="barangayName"
                                                                                             value="{{ $barangayRow->name }}">
                                                                                 </div>
                                                                             </div>
@@ -191,7 +193,9 @@
                                                             </div>
                                                         </div>
                                                         </form>
+                                                    @endforeach
                                                 </tbody>
+
                                             </table>
                                         </div>
                                     </div>
@@ -215,5 +219,3 @@
                 <!--footer-->
 
                 @include('components.footer');
-
-                

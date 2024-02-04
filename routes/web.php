@@ -66,7 +66,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/Admin/Account_Profile', 'profile')->middleware('auth');
     Route::get('/Admin/Account_Change_Password', 'profileChange')->middleware('auth');
     Route::get('/Admin/Barangay_List','barangayPage');
-    Route::put('/Admin/Barangay_Update/{id}','updateBarangay');
+    Route::put('/Admin/Barangay_List/{id}','updateBarangay');
     Route::get('/Admin/Health_Center_List', 'Healthcenterpage');
     Route::put('/Admin/Health_Center_List/{id}','updatehc');
     Route::get('/Admin/Program_List', 'Programpage');

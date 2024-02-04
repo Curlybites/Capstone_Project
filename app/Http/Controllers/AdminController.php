@@ -77,17 +77,11 @@ class AdminController extends Controller
         return view('Admin.barangayList',['user'=>$user, 'barangayData'=>$barangayData]);
     }
 
-    public function updateBarangay(Request $request, $id){
+    public function updateBarangay(Request $request, Barangay $barangay){
         
-        $barangay = Barangay::all();
-        $barangay = Barangay::findOrFail($request->$id);
-        $barangay->update([
-            'name' => $request->input('barangayName')
-        ]);
-
-
-        // $barangay->name = $request->barangayName;
-        // $barangay->save();
+        $barangay = Barangay::find($request->id);
+        $barangay->name = $request->barangayName;
+        $barangay->save();
         return redirect('/Admin/Barangay_List')->with('success', 'Update successful!');
     }
     // public function updatebarangay(Request $request, $id)
