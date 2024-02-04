@@ -99,7 +99,9 @@
 
                 <div class="content-wrapper">
                     <!-- Content -->
-
+                    @if (session('success'))
+                        @include('components.insertnotification')
+                    @endif
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
                         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Health Center /</span> List of
@@ -127,55 +129,25 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <form action="/Admin/Store" method="POST">
+                                                    <form action="/Admin/Health_Center_Store" method="POST">
                                                         @csrf
                                                         <div class="modal-body">
 
                                                             <div class="row">
 
 
+                                                                
                                                                 <div class="row">
-                                                                    <p>Select District</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <select class="form-select"
-                                                                            aria-label="Default select example"
-                                                                            name="Select District">
-                                                                            <option value="1">District 1</option>
-                                                                            <option value="2">District 2</option>
-                                                                            <option value="3">District 3</option>
-                                                                            <option value="4">District 4</option>
-                                                                            <option value="5">District 5</option>
-                                                                            <option value="6">District 6</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row">
-                                                                    <p>Select Barangay</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <select class="form-select"
-                                                                            aria-label="Default select example"
-                                                                            name="Select District">
-                                                                            <option value="1"></option>
-                                                                            <option value="2"></option>
-                                                                            <option value="3"></option>
-                                                                            <option value="4"></option>
-                                                                            <option value="5"></option>
-                                                                            <option value="6"></option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <p>Health Center</p>
+                                                                    <p>Health Center Name</p>
                                                                     <div class="input-group mb-3">
                                                                         <input type="text" class="form-control"
                                                                             aria-label="Sizing example input"
                                                                             aria-describedby="inputGroup-sizing-default"
-                                                                            name="City" required>
+                                                                            name="healthcenterName" required>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="row">
+                                                                {{-- <div class="row">
                                                                     <p>Address</p>
                                                                     <div class="input-group mb-3">
                                                                         <input type="text" class="form-control"
@@ -183,17 +155,9 @@
                                                                             aria-describedby="inputGroup-sizing-default"
                                                                             name="City" required>
                                                                     </div>
-                                                                </div>
+                                                                </div> --}}
 
-                                                                <div class="row">
-                                                                    <p>Date</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="date" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="Date" required>
-                                                                    </div>
-                                                                </div>
+                                                              
                                                             </div>
 
                                                         </div>
@@ -217,16 +181,26 @@
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>Select District</th>
-                                                        <th>Select Barangay</th>
+                                                        <th>#</th>
                                                         <th>Health Center</th>
-                                                        <th>Address</th>
-                                                        <th>Date</th>
+                                                        {{-- <th>Address</th> --}}
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-
+                                                    @foreach ($healthcenterData as $healthcenterRow)
+                                                    <tr>
+                                                        <td>{{ $healthcenterRow->id }}</td>
+                                                        <td>{{ $healthcenterRow->name }}</td>
+                                                        <td class="">
+                                                            <a type="button" href=/Admin/Edit/""
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal2">
+                                                                <i class="bi bi-pencil-square"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                 
                                                     <div class="modal fade" id="exampleModal1" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">
@@ -239,6 +213,8 @@
                                                                         aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
+
+                                                                   
 
                                                                 </div>
                                                                 <div class="modal-footer">
@@ -263,18 +239,32 @@
                                                                         aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    MODAL 2
+                                                                    <form action={{ "/Admin/Health_Center_List/$healthcenterRow->id" }} method="POST">
+                                                                        @csrf
+                                                                        @method('PUT')
+                                                                                    
+                                                                            <div class="row">
+                                                                                <p>Health Center Name</p>
+                                                                                <div class="input-group mb-3">
+                                                                                    <input type="text" class="form-control"
+                                                                                        aria-label="Sizing example input"
+                                                                                        aria-describedby="inputGroup-sizing-default"
+                                                                                        name="healthcenterName" value="{{ $healthcenterRow->name }}" >
+                                                                                </div>
+                                                                            </div>
+                                                                 
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button"
+                                                                    <button type="submit"
                                                                         class="btn btn-primary">Save changes</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-
+                                                </form>
+                                                    @endforeach
                                                 </tbody>
                                                 </tfoot>
                                             </table>
@@ -282,9 +272,7 @@
                                     </div>
                                     <hr class="my-0">
                                     <div class="card-body">
-                                        <form id="formAccountSettings" method="POST" onsubmit="return false">
-
-                                        </form>
+                                       
                                     </div>
                                     <!-- /Account -->
                                 </div>
