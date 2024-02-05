@@ -70,6 +70,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/Admin/Health_Center_List', 'Healthcenterpage');
     Route::put('/Admin/Health_Center_List/{id}','updatehc');
     Route::get('/Admin/Program_List', 'Programpage');
+    Route::put('Admin/Program_List/{id}', 'programUpdate');
     
   
 
