@@ -25,7 +25,7 @@
     <div class="layout-container">
       <!-- Menu -->
 
-      @include('Program_Manager.sidebar.Dashboard_active');
+      @include('components.sidebar.pm_sidebar');
 
       <!-- Layout container -->
       <div class="layout-page">

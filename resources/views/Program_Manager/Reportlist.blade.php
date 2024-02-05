@@ -5,7 +5,7 @@
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             {{-- sidebar --}}
-            @include('Program_Manager.sidebar.Inventory_active');
+            @include('Components.sidebar.pm_sidebar');
 
             <!-- Layout container -->
             <div class="layout-page">
@@ -17,8 +17,8 @@
                     <!-- Content -->
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Inventory /</span> List of
-                            Items
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Report /</span> List of
+                            Report
                         </h4>
 
                         <div class="row">
@@ -26,7 +26,7 @@
                                 <div class="card mb-4">
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
-                                        <h5 class="card-header">Item List</h5>
+                                        <h5 class="card-header">Report List</h5>
 
                     <!-- / Content -->
 

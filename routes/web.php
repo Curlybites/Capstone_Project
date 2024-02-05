@@ -88,10 +88,20 @@ Route::controller(SupplierController::class)->group(function () {
 });
 
 // Program Manager route
-Route::controller(ProgramManagerController::class)->group(function () {
-    Route::get('/Program_Manager/Inventorylist', 'Inventorypage')->middleware('auth');
+Route::controller(ProgramManagerController::class)->group(function () 
+{
+    Route::get('/Program_Manager/Reportlist', 'Reportpage')->middleware('auth');
     Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
+    Route::get('/Program_Manager/AllocationView', 'pmAllocationView')->middleware('auth');
+    Route::get('/Program_Manager/AllocationEdit', 'pmAllocationEdit')->middleware('auth');
+    Route::get('/Program_Manager/pmAllocationPrint', 'AllocationPrint')->middleware('auth');
+    Route::get('/Program_Manager/AllocationProcess', 'pmAccountChange')->middleware('auth');
     Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
+    Route::get('/Program_Manager/pmPPMPView', 'PPMPView')->middleware('auth');
+    Route::get('/Program_Manager/pmPPMPEdit', 'PPMPEdit')->middleware('auth');
+    Route::get('/Program_Manager/pmPPMPPrint', 'PPMPPrint')->middleware('auth');
     Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
-
+    Route::get('/Program_Manager/Profile_Change', 'pmAccountChange')->middleware('auth');
+    Route::post('/Program_Manager/PPMPlist', 'storePPMP')->name('ppmp.create')->middleware('auth');
+    Route::get('/Program_Manager/pmPPMPView/{id}', 'PPMPView')->name('ppmp.view')->middleware('auth');
 });
