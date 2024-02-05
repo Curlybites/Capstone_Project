@@ -62,7 +62,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('/Admin/Health_Center_Store', 'healthcenterStore');
     Route::post('/Admin/Program_Store', 'programStore');
     Route::get('/Admin/District_List', 'districtListpage')->middleware('auth');
-    Route::put('/Admin/District_Update/{id}', 'updateDistrict');
+    Route::put('/Admin/District_List/{id}', 'updateDistrict');
     Route::get('/Admin/Account_Profile', 'profile')->middleware('auth');
     Route::get('/Admin/Account_Change_Password', 'profileChange')->middleware('auth');
     Route::get('/Admin/Barangay_List','barangayPage');

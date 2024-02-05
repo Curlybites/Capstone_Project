@@ -115,7 +115,7 @@
                                                                 <i class="bi bi-eye-fill"></i>
                                                             </a> --}}
 
-                                                                <a type="button" href=/Admin/User_List/
+                                                                <a type="button" href=/Admin/Barangay_List/
                                                                     class="text-primary" data-bs-toggle="modal"
                                                                     data-bs-target="#exampleModal2{{ $barangayRow->id }}">
                                                                     <i class="bi bi-pencil-square"></i>

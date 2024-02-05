@@ -43,13 +43,13 @@ class AdminController extends Controller
     // {
     //     return view('Admin.edit', ['district' => $district]);
     // }
-    public function updateDistrict(Request $request, District $id)
+    public function updateDistrict(Request $request, District $district)
     {
         // $district = District::all();
-        $district = District::findOrFail($id);
+        $district = District::find($request->id);
         $district->supervisor = $request->districtSupervisor;
         $district->save();
-        return redirect('/Admin/District_List')->with('success', 'Updatsuccessfule !');
+        return redirect('/Admin/District_List')->with('success', 'Update successful !');
 
         // $barangay = Barangay::find($request->id);
         // $barangay->name = $request->barangayName;
