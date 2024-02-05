@@ -77,7 +77,7 @@
                                                                             </option>
                                                                             @foreach ($userData as $userRow)
                                                                                 <option
-                                                                                    value="{{ $userRow->email }}">
+                                                                                    value="{{ $userRow->id }}">
                                                                                     {{ $userRow->firstname }}
                                                                                     {{ $userRow->lastname }}
                                                                                 </option>

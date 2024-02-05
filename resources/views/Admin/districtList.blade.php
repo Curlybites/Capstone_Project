@@ -268,6 +268,7 @@
                                                                         aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
+                                                                    @foreach ( $userData as $districtRow )   
                                                                     <form
                                                                         action={{ "/Admin/District_Update/$districtRow->id" }}
                                                                         method="POST">
@@ -277,7 +278,7 @@
                                                                             <select class="form-select"
                                                                                 name="districtSupervisor"
                                                                                 aria-label="Default select example">
-                                                                                @foreach ( $userData as $districtRow )                 
+                                                                                            
                                                                                 <option
                                                                                     value="{{ $districtRow->firstname }} {{ $districtRow->lastname }}">
                                                                                     {{ $districtRow->firstname }}
