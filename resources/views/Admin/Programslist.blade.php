@@ -7,12 +7,13 @@
             {{-- sidebar --}}
             @include('components.sidebar.admin_sidebar')
 
-
             <!-- Layout container -->
             <div class="layout-page">
 
                 @include('components.navbar.navbar')
                 <!-- / Navbar -->
+
+           
 
                 <div class="content-wrapper">
                     <!-- Content -->
@@ -39,12 +40,12 @@
                                                 <div class="modal-content ">
                                                     <div class="modal-header ">
                                                         <h1 class="modal-title fs-3" id="exampleModalLabel">Create
-                                                            Program </h1>
+                                                            Programs </h1>
 
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <form action="/Admin/Store" method="POST">
+                                                    <form action="/Admin/Program_Store" method="POST">
                                                         @csrf
                                                         <div class="modal-body">
 
@@ -52,22 +53,38 @@
 
 
                                                                 <div class="col">
-                                                                    <p>Select Program Name</p>
+                                                                    <p>Program Name</p>
+                                                                    <div class="input-group mb-3">
+                                                                        {{-- @foreach ($programData as $programRow) --}}
+                                                                        <input type="text" class="form-control"
+                                                                            aria-label="Sizing example input"
+                                                                            aria-describedby="inputGroup-sizing-default"
+                                                                            name="programName" required>
+                                                                        {{-- @endforeach --}}
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <p>Program Manager</p>
                                                                     <div class="input-group mb-3">
                                                                         <select class="form-select"
+                                                                            name="programManager"
                                                                             aria-label="Default select example"
                                                                             name="Select District">
-                                                                            <option value="1"></option>
-                                                                            <option value="2"></option>
-                                                                            <option value="3"></option>
-                                                                            <option value="4"></option>
-                                                                            <option value="5"></option>
-                                                                            <option value="6"></option>
+                                                                            <option selected>Choose Program Manager
+                                                                            </option>
+                                                                            @foreach ($userData as $userRow)
+                                                                                <option
+                                                                                    value="{{ $userRow->firstname }} {{ $userRow->lastname }}">
+                                                                                    {{ $userRow->firstname }}
+                                                                                    {{ $userRow->lastname }}
+                                                                                </option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col">
+                                                                {{-- <div class="col">
                                                                     <p>Date</p>
                                                                     <div class="input-group mb-3">
                                                                         <input type="date" class="form-control"
@@ -75,25 +92,8 @@
                                                                             aria-describedby="inputGroup-sizing-default"
                                                                             name="Date" required>
                                                                     </div>
-                                                                </div>
+                                                                </div> --}}
                                                             </div>
-
-                                                            <div class="row">
-                                                                <p>Select Program Manager</p>
-                                                                <div class="input-group mb-3">
-                                                                    <select class="form-select"
-                                                                        aria-label="Default select example"
-                                                                        name="Select District">
-                                                                        <option value="1"></option>
-                                                                        <option value="2"></option>
-                                                                        <option value="3"></option>
-                                                                        <option value="4"></option>
-                                                                        <option value="5"></option>
-                                                                        <option value="6"></option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-
                                                         </div>
                                                         <div class="modal-footer border-1">
                                                             <button type="button" class="btn btn-secondary mt-3"
@@ -114,14 +114,26 @@
                                             <table id="dataTable" class="datatables-basic table   border-top "
                                                 style="width:100%">
                                                 <thead>
+                                                    <th>#</th>
                                                     <th>Program Name</th>
-                                                    <th>Date</th>
                                                     <th>Program Manager</th>
                                                     <th>Action</th>
-                                                    </tr>
                                                 </thead>
                                                 <tbody>
-
+                                                    @foreach ($programData as $programRow)
+                                                    <tr>
+                                                        <td>{{ $programRow->id }}</td>
+                                                        <td>{{ $programRow->name }}</td>
+                                                        <td>{{ $programRow->program_manager }}</td>
+                                                        <td>
+                                                            <a type="button" href=editDistrict {{ $programRow->id }}
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal2">
+                                                                <i class="bi bi-pencil-square"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
                                                     <div class="modal fade" id="exampleModal1" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">

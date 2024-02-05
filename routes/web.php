@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProgramManagerController;
 use App\Http\Controllers\HdController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\DistrictController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,12 +57,22 @@ Route::controller(UserController::class)->group(function () {
 // Admin route
 
 Route::controller(AdminController::class)->group(function () {
+    Route::post('/Admin/District_Store', 'districtStore');
+    Route::post('/Admin/Barangay_Store', 'barangayStore');
+    Route::post('/Admin/Health_Center_Store', 'healthcenterStore');
+    Route::post('/Admin/Program_Store', 'programStore');
     Route::get('/Admin/District_List', 'districtListpage')->middleware('auth');
+    Route::put('/Admin/District_Update/{id}', 'updateDistrict');
     Route::get('/Admin/Account_Profile', 'profile')->middleware('auth');
     Route::get('/Admin/Account_Change_Password', 'profileChange')->middleware('auth');
     Route::get('/Admin/Barangay_List','barangayPage');
+    Route::put('/Admin/Barangay_List/{id}','updateBarangay');
     Route::get('/Admin/Health_Center_List', 'Healthcenterpage');
+    Route::put('/Admin/Health_Center_List/{id}','updatehc');
     Route::get('/Admin/Program_List', 'Programpage');
+    
+  
+
 });
 
 
@@ -95,3 +106,4 @@ Route::controller(ProgramManagerController::class)->group(function () {
     Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
 
 });
+
