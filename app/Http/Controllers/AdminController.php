@@ -19,8 +19,9 @@ class AdminController extends Controller
         $districtData = District::all();
         $userData = DB::table('users')->where('role', 4)->orderBy('id')->get();
         $barangayData = Barangay::all();
+        $user = Auth::user();
         $healthcenterData = HealthCenters::all();
-        return view('Admin.districtList', ['districtData' => $districtData, 'barangayData' => $barangayData, 'healthcenterData' => $healthcenterData, 'userData' => $userData, ]);
+        return view('Admin.districtList', ['districtData' => $districtData, 'barangayData' => $barangayData, 'healthcenterData' => $healthcenterData, 'userData' => $userData, 'user'=>$user ]);
         // return view('Admin.districtList', compact('districts, barangays'));
     }
 
@@ -68,7 +69,8 @@ class AdminController extends Controller
     public function districtList()
     {
         $data = District::all();
-        return view('Admin.districtList', ['districts' => $data], ['district' => $data]);
+        $user = Auth::user();
+        return view('Admin.districtList', ['districts' => $data], ['district' => $data, 'user'=>$user]);
     }
 
     public function barangayPage(){
