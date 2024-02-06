@@ -14,6 +14,7 @@ class UserController extends Controller
     public function userlistPage()
     {
         $user = Auth::user();
+       
         return view('Admin.userList', ['user' => $user]);
     }
 
@@ -48,9 +49,10 @@ class UserController extends Controller
 
     public function userList()
     {
+        $totalUser = User::count();
         $user = Auth::user();
         $data = User::all();
-        return view('Admin.userList', ['users' => $data], ['user' => $user]);
+        return view('Admin.userList', ['users' => $data , 'totalUser' => $totalUser], ['user' => $user]);
     }
 
 

@@ -14,12 +14,25 @@
                 <!-- Navbar -->
                 @include('components.navbar.navbar')
                 <!-- / Navbar -->
-
+                
+                <div class="card">
+                    
+                </div>
 
                 <div class="content-wrapper">
                     <!-- Content -->
+                    
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
+
+                        <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-header">User</div>
+                            <div class="card-body">
+                              <h1 class="card-title">{{ $totalUser }}</h1>
+                              <p class="card-text">Number of User</p>
+                            </div>
+                          </div>
+                        
                         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Users /</span> List of Users
                         </h4>
 
