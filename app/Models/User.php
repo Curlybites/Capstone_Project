@@ -33,7 +33,7 @@ class User extends Authenticatable
         'password',
         'role',
     ];
-    
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -55,8 +55,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    
-    
+
+
     // const ROLE_ADMIN = 1;
     // const ROLE_HEALTH_DEPARTMENT = 2;
     // const ROLE_PROGRAM_MANAGER = 3;
@@ -67,5 +67,4 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class);
     }
-
 }

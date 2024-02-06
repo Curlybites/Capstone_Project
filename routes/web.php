@@ -59,7 +59,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/Admin/District_List', 'districtListpage')->middleware('auth');
     Route::get('/Admin/Account_Profile', 'profile')->middleware('auth');
     Route::get('/Admin/Account_Change_Password', 'profileChange')->middleware('auth');
-    Route::get('/Admin/Barangay_List','barangayPage');
+    Route::get('/Admin/Barangay_List', 'barangayPage');
     Route::get('/Admin/Health_Center_List', 'Healthcenterpage');
     Route::get('/Admin/Program_List', 'Programpage');
 });
@@ -73,18 +73,20 @@ Route::controller(HdController::class)->group(function () {
     Route::get('/Health_Department/Allocation_View', 'hdAllocationView')->middleware('auth');
     Route::get('/Health_Department/Allocation_Edit', 'hdAllocationEdit')->middleware('auth');
     Route::get('/Health_Department/Profile', 'hdAccount')->middleware('auth');
-    Route::get('/Health_Department/Purchase_Order_View','hdPurchaseOrderView')->middleware('auth');
-    Route::get('/Health_Department/Purchase_Order_List','hdPurchaseOrderList')->middleware('auth');
+    Route::get('/Health_Department/Purchase_Order_View', 'hdPurchaseOrderView')->middleware('auth');
+    Route::get('/Health_Department/Purchase_Order_List', 'hdPurchaseOrderList')->middleware('auth');
     Route::get('/Health_Department/Profile_Change', 'hdAccountChange')->middleware('auth');
+
+    Route::post('/Health_Department/Allocation_Process', 'hdAllocationtoProg')->name('allocate')->middleware('auth');
 });
 
 
 // Supplier Route
-Route::controller(SupplierController::class)->group(function () {
+Route::controller(SupplierController::class)->group(function () {   
     Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
     Route::get('/Supplier/Account_Profile', 'profileSupplier')->middleware('auth');
     Route::get('/Supplier/Account_Change_Password', 'profileChangeSupplier')->middleware('auth');
-    Route::get('/Supplier/PPMP_List','ppmp')->middleware('auth');
+    Route::get('/Supplier/PPMP_List', 'ppmp')->middleware('auth');
 });
 
 // Program Manager route
@@ -93,5 +95,14 @@ Route::controller(ProgramManagerController::class)->group(function () {
     Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
     Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
     Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
-
 });
+
+
+// $table->id();
+// $table->string('program');
+// $table->string('PO#');
+// $table->string('item_type');
+// $table->float('items_total');
+// $table->text('notes');
+// $table->text('item_status');
+// $table->timestamps();
