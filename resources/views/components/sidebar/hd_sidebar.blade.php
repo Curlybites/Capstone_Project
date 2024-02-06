@@ -18,11 +18,10 @@
         </li>
         <!-- Components -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
-
         <li
             class="menu-item {{ Request::is('Health_Department/Purchase_Order_List') || Request::is('Health_Department/Purchase_Order_View') ? 'active open' : '' }}">
             <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-capsule"></i>
+                <i class="menu-icon tf-icons bx bxs-receipt"></i>
                 <div data-i18n="Extended UI">Purchase Order</div>
             </a>
             <ul class="menu-sub">
@@ -37,7 +36,7 @@
 
         <li class="menu-item {{ Request::is('Health_Department/Item_List') ? 'active open' : '' }}">
             <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-capsule"></i>
+                <i class="menu-icon tf-icons bx bxs-box"></i>
                 <div data-i18n="Extended UI">Inventory</div>
             </a>
             <ul class="menu-sub">
@@ -52,7 +51,7 @@
         <li
             class="menu-item {{ ((Request::is('Health_Department/Allocation_List') || Request::is('Health_Department/Allocation_Process') ? 'active open' : '' || Request::is('Health_Department/Allocation_View')) ? 'active open' : '' || Request::is('Health_Department/Allocation_Edit')) ? 'active open' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-customize"></i>
+                <i class='menu-icon tf-icons bx bxs-right-arrow-square'></i>
                 <div data-i18n="Extended UI">Allocation</div>
             </a>
             <ul class="menu-sub">
@@ -75,7 +74,7 @@
         <li
             class="menu-item {{ Request::is('Health_Department/Profile') || Request::is('Health_Department/Profile_Change') ? 'active open' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-building"></i>
+                <i class="menu-icon tf-icons bx bxs-user-account"></i>
                 <div data-i18n="User interface">Account</div>
             </a>
             <ul class="menu-sub">

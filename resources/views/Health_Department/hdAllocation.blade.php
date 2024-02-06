@@ -41,13 +41,13 @@
                                                             style="width:100%">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>No.</th>
-                                                                    <th>Item Name</th>
+                                                                    <th>PO#</th>
+                                                                    <th>Date Created</th>
                                                                     <th>Program</th>
-                                                                    <th>Program Manager</th>
+                                                                    {{-- <th>Program Manager</th> --}}
                                                                     <th>Type</th>
                                                                     <th>Quantity</th>
-                                                                    <th>Image</th>
+                                                                    {{-- <th>Image</th> --}}
                                                                     <th>Price</th>
                                                                     <th>Status</th>
                                                                     <th>Action</th>
@@ -55,13 +55,13 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>1</td>
-                                                                    <td>Paracetamol</td>
+                                                                    <td>5</td>
+                                                                    <td>009</td>
                                                                     <td>Maternity</td>
-                                                                    <td>John Smith</td>
+                                                                    {{-- <td>John Smith</td> --}}
                                                                     <td>Medicine</td>
                                                                     <td>12</td>
-                                                                    <td>
+                                                                    {{-- <td>
                                                                         <ul
                                                                             class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                                                                             <li data-bs-toggle="tooltip"
@@ -92,17 +92,18 @@
                                                                                     class="rounded-circle">
                                                                             </li>
                                                                         </ul>
-                                                                    </td>
+                                                                    </td> --}}
                                                                     <td>1120</td>
                                                                     <td class="text-success">Approved</td>
                                                                     <td>
                                                                         <div class="dropdown">
                                                                             <button
-                                                                                class="btn btn-secondary dropdown-toggle"
+                                                                                class="btn p-0 dropdown-toggle hide-arrow"
                                                                                 type="button" id="dropdownMenuButton1"
                                                                                 data-bs-toggle="dropdown"
                                                                                 aria-expanded="false">
-                                                                                Action
+                                                                                <i
+                                                                                    class="bx bx-dots-vertical-rounded"></i>
                                                                             </button>
                                                                             <ul class="dropdown-menu"
                                                                                 aria-labelledby="dropdownMenuButton1">
