@@ -43,7 +43,7 @@
                                 <div class="card-header"><i class='bx bx-user text-warning fs-3'></i></div>
                                 <div class="card-body">
                                     <h1 class="card-title">{{ $totalAdmin }}</h1>
-                                    <p class="card-text">Number of Admin</p>
+                                    <p class="card-text">Admin</p>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                                 <div class="card-header"><i class='bx bx-task text-success fs-3' ></i></div>
                                 <div class="card-body">
                                     <h1 class="card-title">{{ $totalProgram }}</h1>
-                                    <p class="card-text">Number of Program Manager</p>
+                                    <p class="card-text">Program Manager</p>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                                 <div class="card-header"><i class='bx bxs-map-pin text-danger fs-3' ></i></div>
                                 <div class="card-body">
                                     <h1 class="card-title">{{$totalDistrict}}</h1>
-                                    <p class="card-text">Number of District Supervisor</p>
+                                    <p class="card-text">District Supervisor</p>
                                 </div>
                             </div>
                         </div>
