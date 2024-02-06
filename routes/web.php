@@ -46,7 +46,7 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/Admin/Store', 'store');
     Route::get('/Admin/Add_User', 'createUserPage')->middleware('auth');
     Route::get('/Admin/User_List', 'userList')->middleware('auth');
-    Route::get('/Admin/User_List/$id',);
+    Route::get('/Admin/User_List/$id',)->middleware('auth');
     Route::post('/Admin/Login/Process', 'LoginProcess');
     Route::post('/Logout', 'logout');
     Route::get('/change-password', 'changePassword')->name('changePassword');
@@ -70,6 +70,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/Admin/Health_Center_List', 'Healthcenterpage');
     Route::put('/Admin/Health_Center_List/{id}','updatehc');
     Route::get('/Admin/Program_List', 'Programpage');
+    Route::put('Admin/Program_List/{id}', 'programUpdate');
     
   
 

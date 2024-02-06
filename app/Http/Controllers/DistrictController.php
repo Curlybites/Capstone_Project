@@ -15,8 +15,9 @@ class DistrictController extends Controller
     {
         $districts = District::with('district')->get();
         $barangays = Barangay::with('barangay')->get();
+        $user = Auth::user();
 
-        return view('district.districtList', ['districts' => $districts]);
+        return view('district.districtList', ['districts' => $districts,'user'=>$user]);
  
     }
     public function create()

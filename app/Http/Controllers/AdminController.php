@@ -19,8 +19,9 @@ class AdminController extends Controller
         $districtData = District::all();
         $userData = DB::table('users')->where('role', 4)->orderBy('id')->get();
         $barangayData = Barangay::all();
+        $user = Auth::user();
         $healthcenterData = HealthCenters::all();
-        return view('Admin.districtList', ['districtData' => $districtData, 'barangayData' => $barangayData, 'healthcenterData' => $healthcenterData, 'userData' => $userData, ]);
+        return view('Admin.districtList', ['districtData' => $districtData, 'barangayData' => $barangayData, 'healthcenterData' => $healthcenterData, 'userData' => $userData, 'user'=>$user ]);
         // return view('Admin.districtList', compact('districts, barangays'));
     }
 
@@ -68,7 +69,8 @@ class AdminController extends Controller
     public function districtList()
     {
         $data = District::all();
-        return view('Admin.districtList', ['districts' => $data], ['district' => $data]);
+        $user = Auth::user();
+        return view('Admin.districtList', ['districts' => $data], ['district' => $data, 'user'=>$user]);
     }
 
     public function barangayPage(){
@@ -134,7 +136,8 @@ class AdminController extends Controller
     public function Healthcenterpage()
     {
         $healthcenterData = HealthCenters::all();
-        return view('Admin.HealthCenter', ['healthcenterData' => $healthcenterData]);
+        $user = Auth::user();
+        return view('Admin.HealthCenter', ['healthcenterData' => $healthcenterData,'user'=>$user]);
     }
 
     public function healthcenterStore(Request $request)
@@ -146,15 +149,26 @@ class AdminController extends Controller
         // $districtData = $request->all(['districtNumber']);
         // District::create($districtData);
         
-        return redirect('/Admin/Health_Center_List')->with('message', 'Health Center created successfully!');
+        return redirect('/Admin/Health_Center_List')->with('success', 'Health Center created successfully!');
     }
     public function Programpage()
     {
         $user = Auth::user();
         $userData = DB::table('users')->where('role', 2)->orderBy('id')->get();
-        $programData = Program::all();
-        return view('Admin.Programslist', ['user'=> $user, 'userData' => $userData, 'programData' => $programData]);
+        $programUser = User::join('programs', 'users.id', '=', 'programs.program_manager')
+        ->select('users.firstname', 'users.lastname','programs.id','programs.name')
+        ->get();
+        // $programData = Program::all();
+        return view('Admin.Programslist', ['user'=> $user, 'userData' => $userData,  'programUsers'=>$programUser]);
 
+    }
+
+    public function programUpdate(Request $request, Program $program){
+        $program = Program::find($request->id);
+        $program->name = $request->programName;
+        $program->program_manager = $request->programManager;
+        $program->save();
+        return redirect('/Admin/Program_List')->with('message', 'Update successfully!');
     }
 
     public function programStore(Request $request)
@@ -190,6 +204,7 @@ class AdminController extends Controller
     }
 
     
+   
 
 
 

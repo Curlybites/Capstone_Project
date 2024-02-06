@@ -11,92 +11,9 @@
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-
-                <nav class="layout-navbar container-fluid  navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-                    id="layout-navbar">
-                    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                            <i class="bx bx-menu bx-sm"></i>
-                        </a>
-                    </div>
-
-                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                        <!-- Search -->
-                        <div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
-                                    aria-label="Search..." />
-                            </div>
-                        </div>
-                        <!-- /Search -->
-
-                        <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            <!-- Place this tag where you want the button to render. -->
-                            <li class="nav-item lh-1 me-3">
-                                <a href="#"><i class='bx bxs-bell'></i></a>
-                            </li>
-
-                            <!-- District -->
-                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
-                                    data-bs-toggle="dropdown">
-                                    <div class="avatar avatar-online">
-                                        <img src="../assets/img/avatars/1.png" alt
-                                            class="w-px-40 h-auto rounded-circle" />
-                                    </div>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <div class="d-flex">
-                                                <div class="flex-shrink-0 me-3">
-                                                    <div class="avatar avatar-online">
-                                                        <img src="../assets/img/avatars/1.png" alt
-                                                            class="w-px-40 h-auto rounded-circle" />
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">John Doe</span>
-                                                    <small class="text-muted">Admin</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="dropdown-divider"></div>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="bx bx-user me-2"></i>
-                                            <span class="align-middle">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="bx bx-cog me-2"></i>
-                                            <span class="align-middle">Settings</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <div class="dropdown-divider"></div>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="../logout.php">
-                                            <i class="bx bx-power-off me-2"></i>
-                                            <span class="align-middle">Log Out</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!--/ District -->
-                        </ul>
-                    </div>
-                </nav>
-
+                @include('components.navbar.navbar')
                 <!-- / Navbar -->
-
+                
                 <div class="content-wrapper">
                     <!-- Content -->
 
@@ -257,53 +174,43 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="modal fade"
-                                                            id="exampleModal2{{ $districtRow->id }}" tabindex="-1"
-                                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="exampleModalLabel">
-                                                                            Edit District Supervisor</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal"
-                                                                            aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form
-                                                                            action={{ "/Admin/District_List/$districtRow->id" }}
-                                                                            method="POST">
-                                                                            @csrf
-                                                                            @method('PUT')
-
-                                                                            <div class="row">
-                                                                                <p>Barangay Name</p>
-                                                                                <div class="input-group mb-3">
-
-                                                                                    <select class="form-select"
-                                                                                        name="districtSupervisor"
-                                                                                        aria-label="Default select example">
-                                                                                        @foreach ($userData as $districtRow)
-                                                                                            <option
-                                                                                                value="{{ $districtRow->firstname }} {{ $districtRow->lastname }}">
-                                                                                                {{ $districtRow->firstname }}
-                                                                                                {{ $districtRow->lastname }}
-                                                                                            </option>
-                                                                                        @endforeach
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button"
-                                                                            class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit"
-                                                                            class="btn btn-primary">Save
-                                                                            changes</button>
-                                                                    </div>
+                                                    <div class="modal fade" id="exampleModal2" tabindex="-1"
+                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">
+                                                                        Edit Line</h5>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    @foreach ( $userData as $districtRow )   
+                                                                    <form
+                                                                        action={{ "/Admin/District_Update/$districtRow->id" }}
+                                                                        method="POST">
+                                                                        {{ csrf_field() }}
+                                                                        {{ method_field('PUT') }}
+                                                                        <div class="mb-3">
+                                                                            <select class="form-select"
+                                                                                name="districtSupervisor"
+                                                                                aria-label="Default select example">
+                                                                                            
+                                                                                <option
+                                                                                    value="{{ $districtRow->firstname }} {{ $districtRow->lastname }}">
+                                                                                    {{ $districtRow->firstname }}
+                                                                                    {{ $districtRow->lastname }}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Close</button>
+                                                                    <button type="button"
+                                                                        class="btn btn-primary">Save
+                                                                        changes</button>
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -14,21 +14,103 @@
                 <!-- Navbar -->
                 @include('components.navbar.navbar')
                 <!-- / Navbar -->
-
+                
+                <div class="card">
+                    
+                </div>
 
                 <div class="content-wrapper">
                     <!-- Content -->
+                    
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
                         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Users /</span> List of Users
                         </h4>
 
-                        <div class="row">
+                    <div class="row align-items-start ">
+                        {{-- <div class="col-md-2">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                <div class="card-header"><i class='bx bx-user text-primary fs-3'></i></div>
+                                <div class="card-body">
+                                    <h1 class="card-title">{{ $totalUser }}</h1>
+                                    <p class="card-text">Number of User</p>
+                                </div>
+                            </div>
+                        </div> --}}
+
+                        <div class="col-md-2">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                <div class="card-header"><i class='bx bx-user text-warning fs-3'></i></div>
+                                <div class="card-body">
+                                    <h1 class="card-title">{{ $totalAdmin }}</h1>
+                                    <p class="card-text">Admin</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                <div class="card-header"><i class='bx bx-task text-success fs-3' ></i></div>
+                                <div class="card-body">
+                                    <h1 class="card-title">{{ $totalProgram }}</h1>
+                                    <p class="card-text">Program Manager</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                <div class="card-header"><i class='bx bxs-map-pin text-danger fs-3' ></i></div>
+                                <div class="card-body">
+                                    <h1 class="card-title">{{$totalDistrict}}</h1>
+                                    <p class="card-text">District Supervisor</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="col-md-2">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                <div class="card-header"><i class='bx bx-heart text-success fs-3' ></i></div>
+                                <div class="card-body">
+                                    <h1 class="card-title">{{  $totalHc }}</h1>
+                                    <p class="card-text">Health Center Staff</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="col-md-2">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                <div class="card-header"><i class='bx bx-first-aid text-success fs-3' ></i></div>
+                                <div class="card-body">
+                                    <h1 class="card-title">{{   $totalHd }}</h1>
+                                    <p class="card-text">Health Department Staff</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                <div class="card-header"><i class='bx bx-package text-warning fs-3' ></i></div>
+                                <div class="card-body">
+                                    <h1 class="card-title">{{ $totalSupplier }}</h1>
+                                    <p class="card-text">Supplier</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>        
+                      
+                        
+
+                        <div class="row mt-2">
                             <div class="col-md-12">
                                 <div class="card mb-4">
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
-                                        <h5 class="card-header">User List</h5>
+                                        <h5 class="card-header d-flex align-items-center "><i class='bx bx-user text-primary fs-3'>
+                                            </i> <span class="badge bg-primary">{{ $totalUser }}</span></h5>
                                         <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
                                             New</button>
