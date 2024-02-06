@@ -50,9 +50,15 @@ class UserController extends Controller
     public function userList()
     {
         $totalUser = User::count();
+        $totalAdmin = User::all()->where('role',1)->count();
+        $totalProgram = User::all()->where('role',2)->count();
+        $totalDistrict = User::all()->where('role',4)->count();
+        $totalHd = User::all()->where('role',3)->count();
+        $totalHc= User::all()->where('role',5)->count();
+        $totalSupplier= User::all()->where('role',6)->count();
         $user = Auth::user();
         $data = User::all();
-        return view('Admin.userList', ['users' => $data , 'totalUser' => $totalUser], ['user' => $user]);
+        return view('Admin.userList', ['users' => $data , 'totalUser' => $totalUser, 'totalAdmin'=>$totalAdmin, 'totalProgram'=>$totalProgram, 'totalDistrict'=>$totalDistrict,'totalHd'=>$totalHd, 'totalHc'=> $totalHc , 'totalSupplier'=>$totalSupplier], ['user' => $user]);
     }
 
 
