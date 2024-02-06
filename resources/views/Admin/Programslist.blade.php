@@ -7,16 +7,19 @@
             {{-- sidebar --}}
             @include('components.sidebar.admin_sidebar')
 
-
             <!-- Layout container -->
             <div class="layout-page">
 
                 @include('components.navbar.navbar')
                 <!-- / Navbar -->
 
+           
+
                 <div class="content-wrapper">
                     <!-- Content -->
-
+                    @if (session('success'))
+                       @include('components.insertnotification')
+                    @endif
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
                         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Programs /</span> List of
@@ -39,12 +42,12 @@
                                                 <div class="modal-content ">
                                                     <div class="modal-header ">
                                                         <h1 class="modal-title fs-3" id="exampleModalLabel">Create
-                                                            Program </h1>
+                                                            Programs </h1>
 
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <form action="/Admin/Store" method="POST">
+                                                    <form action="/Admin/Program_Store" method="POST">
                                                         @csrf
                                                         <div class="modal-body">
 
@@ -52,22 +55,38 @@
 
 
                                                                 <div class="col">
-                                                                    <p>Select Program Name</p>
+                                                                    <p>Program Name</p>
+                                                                    <div class="input-group mb-3">
+                                                                        {{-- @foreach ($programData as $programRow) --}}
+                                                                        <input type="text" class="form-control"
+                                                                            aria-label="Sizing example input"
+                                                                            aria-describedby="inputGroup-sizing-default"
+                                                                            name="programName" required>
+                                                                        {{-- @endforeach --}}
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <p>Program Manager</p>
                                                                     <div class="input-group mb-3">
                                                                         <select class="form-select"
+                                                                            name="programManager"
                                                                             aria-label="Default select example"
                                                                             name="Select District">
-                                                                            <option value="1"></option>
-                                                                            <option value="2"></option>
-                                                                            <option value="3"></option>
-                                                                            <option value="4"></option>
-                                                                            <option value="5"></option>
-                                                                            <option value="6"></option>
+                                                                            <option selected>Choose Program Manager
+                                                                            </option>
+                                                                            @foreach ($userData as $userRow)
+                                                                                <option
+                                                                                    value="{{ $userRow->id }}">
+                                                                                    {{ $userRow->firstname }}
+                                                                                    {{ $userRow->lastname }}
+                                                                                </option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col">
+                                                                {{-- <div class="col">
                                                                     <p>Date</p>
                                                                     <div class="input-group mb-3">
                                                                         <input type="date" class="form-control"
@@ -75,25 +94,8 @@
                                                                             aria-describedby="inputGroup-sizing-default"
                                                                             name="Date" required>
                                                                     </div>
-                                                                </div>
+                                                                </div> --}}
                                                             </div>
-
-                                                            <div class="row">
-                                                                <p>Select Program Manager</p>
-                                                                <div class="input-group mb-3">
-                                                                    <select class="form-select"
-                                                                        aria-label="Default select example"
-                                                                        name="Select District">
-                                                                        <option value="1"></option>
-                                                                        <option value="2"></option>
-                                                                        <option value="3"></option>
-                                                                        <option value="4"></option>
-                                                                        <option value="5"></option>
-                                                                        <option value="6"></option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-
                                                         </div>
                                                         <div class="modal-footer border-1">
                                                             <button type="button" class="btn btn-secondary mt-3"
@@ -114,15 +116,31 @@
                                             <table id="dataTable" class="datatables-basic table   border-top "
                                                 style="width:100%">
                                                 <thead>
+                                                    <th>#</th>
                                                     <th>Program Name</th>
-                                                    <th>Date</th>
                                                     <th>Program Manager</th>
                                                     <th>Action</th>
-                                                    </tr>
                                                 </thead>
                                                 <tbody>
-
-                                                    <div class="modal fade" id="exampleModal1" tabindex="-1"
+                                                    @foreach ($programUsers as $programRow)
+                                                    <tr>
+                                                        <td>{{ $programRow->id }}</td>
+                                                        <td>{{ $programRow->name }}</td>
+                                                        
+                                                        {{-- @foreach ($programUsers as $programUser  ) --}}
+                                                        <td>{{ $programRow->firstname }} {{ $programRow->lastname }} </td>
+                                                         {{-- @endforeach --}}
+                                                         
+                                                        <td>
+                                                            <a type="button" href=""
+                                                                class="text-primary" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal2{{ $programRow->id }}">
+                                                                <i class="bi bi-pencil-square"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                  
+                                                    {{-- <div class="modal fade" id="exampleModal1" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
@@ -139,14 +157,14 @@
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn btn-primary">Save
+                                                                    <button type="submit" class="btn btn-primary">Save
                                                                         changes</button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
-                                                    <div class="modal fade" id="exampleModal2" tabindex="-1"
+                                                    <div class="modal fade" id="exampleModal2{{ $programRow->id }}" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
@@ -158,20 +176,57 @@
                                                                         aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    MODAL 2
+                                                                   <form action={{"/Admin/Program_List/$programRow->id"}} method="POST">
+                                                                    @csrf
+                                                                    @method('PUT')
+                                                                    <div class="col">
+                                                                        <p>Program Name</p>
+                                                                        <div class="input-group mb-3">
+                                                                            {{-- @foreach ($programData as $programRow) --}}
+                                                                            <input type="text" class="form-control"
+                                                                                aria-label="Sizing example input"
+                                                                                aria-describedby="inputGroup-sizing-default"
+                                                                                name="programName" value="{{ $programRow->name }}" required>
+                                                                            {{-- @endforeach --}}
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <p>Program Manager</p>
+                                                                            <div class="input-group mb-3">
+                                                                                <select class="form-select"
+                                                                                    name="programManager"
+                                                                                    aria-label="Default select example"
+                                                                                    name="Select District">
+                                                                                  
+                                                                                    @foreach ($userData as $userRow)
+                                                                                        <option
+                                                                                            value="{{ $userRow->id }}">
+                                                                                            {{ $userRow->firstname }}
+                                                                                            {{ $userRow->lastname }}
+                                                                                        </option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button"
+                                                                    <button type="submit"
                                                                         class="btn btn-primary">Save changes</button>
                                                                 </div>
+                                                            </form>
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                 </tbody>
                                                 </tfoot>
+                                                @endforeach
                                             </table>
                                         </div>
                                     </div>

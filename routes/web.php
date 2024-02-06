@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProgramManagerController;
 use App\Http\Controllers\HdController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\DistrictController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,7 +46,7 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/Admin/Store', 'store');
     Route::get('/Admin/Add_User', 'createUserPage')->middleware('auth');
     Route::get('/Admin/User_List', 'userList')->middleware('auth');
-    Route::get('/Admin/User_List/$id',);
+    Route::get('/Admin/User_List/$id',)->middleware('auth');
     Route::post('/Admin/Login/Process', 'LoginProcess');
     Route::post('/Logout', 'logout');
     Route::get('/change-password', 'changePassword')->name('changePassword');
@@ -56,12 +57,23 @@ Route::controller(UserController::class)->group(function () {
 // Admin route
 
 Route::controller(AdminController::class)->group(function () {
+    Route::post('/Admin/District_Store', 'districtStore');
+    Route::post('/Admin/Barangay_Store', 'barangayStore');
+    Route::post('/Admin/Health_Center_Store', 'healthcenterStore');
+    Route::post('/Admin/Program_Store', 'programStore');
     Route::get('/Admin/District_List', 'districtListpage')->middleware('auth');
+    Route::put('/Admin/District_List/{id}', 'updateDistrict');
     Route::get('/Admin/Account_Profile', 'profile')->middleware('auth');
     Route::get('/Admin/Account_Change_Password', 'profileChange')->middleware('auth');
-    Route::get('/Admin/Barangay_List', 'barangayPage');
+    Route::get('/Admin/Barangay_List','barangayPage');
+    Route::put('/Admin/Barangay_List/{id}','updateBarangay');
     Route::get('/Admin/Health_Center_List', 'Healthcenterpage');
+    Route::put('/Admin/Health_Center_List/{id}','updatehc');
     Route::get('/Admin/Program_List', 'Programpage');
+    Route::put('Admin/Program_List/{id}', 'programUpdate');
+    
+  
+
 });
 
 
@@ -97,12 +109,3 @@ Route::controller(ProgramManagerController::class)->group(function () {
     Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
 });
 
-
-// $table->id();
-// $table->string('program');
-// $table->string('PO#');
-// $table->string('item_type');
-// $table->float('items_total');
-// $table->text('notes');
-// $table->text('item_status');
-// $table->timestamps();
