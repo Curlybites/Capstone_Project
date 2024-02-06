@@ -147,6 +147,88 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
+<<<<<<< Updated upstream
+=======
+
+                                                        <div class="modal fade" id="exampleModal1" tabindex="-1"
+                                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="exampleModalLabel">
+                                                                            Profile View</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Close</button>
+                                                                        <button type="button"
+                                                                            class="btn btn-primary">Save
+                                                                            changes</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal fade"
+                                                            id="exampleModal2{{ $districtRow->id }}" tabindex="-1"
+                                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="exampleModalLabel">
+                                                                            Edit District Supervisor</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form
+                                                                            action={{ "/Admin/District_List/$districtRow->id" }}
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            @method('PUT')
+
+                                                                            <div class="row">
+                                                                                <p>Barangay Name</p>
+                                                                                <div class="input-group mb-3">
+
+                                                                                    <select class="form-select"
+                                                                                        name="districtSupervisor"
+                                                                                        aria-label="Default select example">
+                                                                                        @foreach ($userData as $districtRow)
+                                                                                            <option
+                                                                                                value="{{ $districtRow->firstname }} {{ $districtRow->lastname }}">
+                                                                                                {{ $districtRow->firstname }}
+                                                                                                {{ $districtRow->lastname }}
+                                                                                            </option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Close</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary">Save
+                                                                            changes</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </form>
+>>>>>>> Stashed changes
                                                     @endforeach
                                                     <div class="modal fade" id="exampleModal1" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -216,7 +298,7 @@
                                                     </div>
 
                                                 </tbody>
-
+                                            </tfoot>
                                             </table>
                                         </div>
                                     </div>

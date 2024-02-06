@@ -13,7 +13,7 @@
                 @include('components.navbar.navbar')
                 <!-- / Navbar -->
 
-           
+
 
                 <div class="content-wrapper">
                     <!-- Content -->
@@ -122,6 +122,7 @@
                                                     <th>Action</th>
                                                 </thead>
                                                 <tbody>
+<<<<<<< Updated upstream
                                                     @foreach ($programUsers as $programRow)
                                                     <tr>
                                                         <td>{{ $programRow->id }}</td>
@@ -141,6 +142,22 @@
                                                     </tr>
                                                   
                                                     {{-- <div class="modal fade" id="exampleModal1" tabindex="-1"
+=======
+                                                    @foreach ($programData as $programRow)
+                                                        <tr>
+                                                            <td>{{ $programRow->id }}</td>
+                                                            <td>{{ $programRow->name }}</td>
+                                                            <td>{{ $programRow->program_manager }}</td>
+                                                            <td>
+                                                                <a type="button" href=/Admin/Program_List/
+                                                                    class="text-primary" data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleModal2{{ $programRow->id }}">
+                                                                    <i class="bi bi-pencil-square"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    <div class="modal fade" id="exampleModal1" tabindex="-1"
+>>>>>>> Stashed changes
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
@@ -164,18 +181,25 @@
                                                         </div>
                                                     </div> --}}
 
+<<<<<<< Updated upstream
                                                     <div class="modal fade" id="exampleModal2{{ $programRow->id }}" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+=======
+                                                    <div class="modal fade" id="exampleModal2{{ $programRow->id }}"
+                                                        tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                        aria-hidden="true">
+>>>>>>> Stashed changes
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title" id="exampleModalLabel">
-                                                                        Modal title</h5>
+                                                                        Edit Program List</h5>
                                                                     <button type="button" class="btn-close"
                                                                         data-bs-dismiss="modal"
                                                                         aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
+<<<<<<< Updated upstream
                                                                    <form action={{"/Admin/Program_List/$programRow->id"}} method="POST">
                                                                     @csrf
                                                                     @method('PUT')
@@ -203,27 +227,69 @@
                                                                                             value="{{ $userRow->id }}">
                                                                                             {{ $userRow->firstname }}
                                                                                             {{ $userRow->lastname }}
+=======
+                                                                    <form
+                                                                        action={{ "/Admin/Program_List/$programRow->id" }}
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        @method('PUT')
+
+                                                                        <div class="row">
+                                                                            <div class="col">
+                                                                                <p>Program Name</p>
+                                                                                <select class="form-select"
+                                                                                    name="programName"
+                                                                                    aria-label="Default select example">
+                                                                                    @foreach ($programData as $programRow)
+                                                                                        <option
+                                                                                            value="{{ $programRow->name }}">
+                                                                                            {{ $programRow->name }}
+                                                                                        </option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <p>Program Manager</p>
+                                                                                <select class="form-select"
+                                                                                    name="programManager"
+                                                                                    aria-label="Default select example">
+                                                                                    @foreach ($userData as $programRow)
+                                                                                        <option
+                                                                                            value="{{ $programRow->firstname }} {{ $programRow->lastname }}">
+                                                                                            {{ $programRow->firstname }}
+                                                                                            {{ $programRow->lastname }}
+>>>>>>> Stashed changes
                                                                                         </option>
                                                                                     @endforeach
                                                                                 </select>
                                                                             </div>
                                                                         </div>
+<<<<<<< Updated upstream
 
 
                                                                     </div>
                                                                 
+=======
+                                                                    </form>
+>>>>>>> Stashed changes
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Close</button>
                                                                     <button type="submit"
+<<<<<<< Updated upstream
                                                                         class="btn btn-primary">Save changes</button>
+=======
+                                                                        class="btn btn-primary">Save
+                                                                        changes</button>
+>>>>>>> Stashed changes
                                                                 </div>
                                                             </form>
                                                             </div>
                                                         </div>
                                                     </div>
-
+                                                    </form>
+                                                    @endforeach
                                                 </tbody>
                                                 </tfoot>
                                                 @endforeach

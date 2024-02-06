@@ -120,7 +120,6 @@
                                                                     class="text-primary" data-bs-toggle="modal"
                                                                     data-bs-target="#exampleModal2{{ $barangayRow->id }}">
                                                                     <i class="bi bi-pencil-square"></i>
-                                                                    <span>Edit</span>
                                                                 </a>
                                                             </td>
                                                         </tr>
