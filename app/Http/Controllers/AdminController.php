@@ -59,6 +59,13 @@ class AdminController extends Controller
 
     }
 
+    public function destroy(District $district)
+    {
+        $district->delete();
+
+        return redirect()->route('Admin/districtList')->with('success', 'District deleted successfully!');
+    }
+
     public function districtList()
     {
         $data = District::all();
@@ -176,16 +183,6 @@ class AdminController extends Controller
         
         return redirect('/Admin/Program_List')->with('message', 'Health Center created successfully!');
     }
-
-    public function updateProgram(Request $request, Program $program){
-        
-        $program = Program::find($request->id);
-        $program->name = $request->programName;
-        $program->program_manager = $request->programManager;
-        $program->save();
-        return redirect('/Admin/Program_List')->with('success', 'Update successful!');
-    }
-
     public function Supplierpage()
     {
         return view('Admin.Supplierlist');

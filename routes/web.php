@@ -57,33 +57,20 @@ Route::controller(UserController::class)->group(function () {
 // Admin route
 
 Route::controller(AdminController::class)->group(function () {
-
     Route::post('/Admin/District_Store', 'districtStore');
+    Route::post('/Admin/Barangay_Store', 'barangayStore');
+    Route::post('/Admin/Health_Center_Store', 'healthcenterStore');
+    Route::post('/Admin/Program_Store', 'programStore');
     Route::get('/Admin/District_List', 'districtListpage')->middleware('auth');
-<<<<<<< Updated upstream
     Route::put('/Admin/District_Update/{id}', 'updateDistrict');
-=======
-    Route::put('/Admin/District_List/{id}', 'updateDistrict');
-
->>>>>>> Stashed changes
     Route::get('/Admin/Account_Profile', 'profile')->middleware('auth');
     Route::get('/Admin/Account_Change_Password', 'profileChange')->middleware('auth');
-
     Route::get('/Admin/Barangay_List','barangayPage');
-    Route::post('/Admin/Barangay_Store', 'barangayStore');
     Route::put('/Admin/Barangay_List/{id}','updateBarangay');
-
     Route::get('/Admin/Health_Center_List', 'Healthcenterpage');
-    Route::post('/Admin/Health_Center_Store', 'healthcenterStore');
     Route::put('/Admin/Health_Center_List/{id}','updatehc');
-
     Route::get('/Admin/Program_List', 'Programpage');
-<<<<<<< Updated upstream
     Route::put('Admin/Program_List/{id}', 'programUpdate');
-=======
-    Route::post('/Admin/Program_Store', 'programStore');
-    Route::put('/Admin/Program_List/{id}', 'updateProgram');
->>>>>>> Stashed changes
     
   
 
