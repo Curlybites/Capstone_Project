@@ -136,7 +136,8 @@ class AdminController extends Controller
     public function Healthcenterpage()
     {
         $healthcenterData = HealthCenters::all();
-        return view('Admin.HealthCenter', ['healthcenterData' => $healthcenterData]);
+        $user = Auth::user();
+        return view('Admin.HealthCenter', ['healthcenterData' => $healthcenterData,'user'=>$user]);
     }
 
     public function healthcenterStore(Request $request)
