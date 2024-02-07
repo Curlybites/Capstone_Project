@@ -61,9 +61,32 @@
                                                         <td>01232</td>
                                                         <td>2024-12-12</td>
                                                         <td>Paracetamol</td>
-                                                        <td class="avatar me-2"><img
-                                                                src="https://5.imimg.com/data5/SELLER/Default/2022/9/IV/UY/CG/75459511/500mg-paracetamol-tablet.jpg"
-                                                                class="rounded" alt="awts"></td>
+                                                        <td>
+                                                            <ul
+                                                                class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                                    data-bs-placement="top"
+                                                                    class="avatar avatar-xs pull-up"
+                                                                    title="Lilian Fuller">
+                                                                    <img src="../assets/img/avatars/5.png"
+                                                                        alt="Avatar" class="rounded-circle">
+                                                                </li>
+                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                                    data-bs-placement="top"
+                                                                    class="avatar avatar-xs pull-up"
+                                                                    title="Sophia Wilkerson">
+                                                                    <img src="../assets/img/avatars/6.png"
+                                                                        alt="Avatar" class="rounded-circle">
+                                                                </li>
+                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                                    data-bs-placement="top"
+                                                                    class="avatar avatar-xs pull-up"
+                                                                    title="Christina Parker">
+                                                                    <img src="../assets/img/avatars/7.png"
+                                                                        alt="Avatar" class="rounded-circle">
+                                                                </li>
+                                                            </ul>
+                                                        </td>
                                                         <td>Box</td>
                                                         <td>12</td>
                                                         <td>30</td>

@@ -18,9 +18,9 @@
                     <!-- Content -->
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">District /</span> List of
+                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">District /</span> List of
                             Districts
-                        </h4>
+                        </h4> --}}
 
                         <div class="row">
                             <div class="col-md-12">
@@ -65,7 +65,7 @@
                                                                     <p>Barangay</p>
                                                                     <select class="form-select" name="barangayName"
                                                                         aria-label="Default select example">
-                                                                            <option selected>Choose Barangay</option>
+                                                                        <option selected>Choose Barangay</option>
                                                                         @foreach ($barangayData as $barangayRow)
                                                                             <option value="{{ $barangayRow->name }}">
                                                                                 {{ $barangayRow->name }}</option>
@@ -76,7 +76,7 @@
                                                                     <p>Barangay Health Center</p>
                                                                     <select class="form-select"
                                                                         name="healthcenterName"
-                                                                        aria-label="Default select example"> 
+                                                                        aria-label="Default select example">
                                                                         <option selected>Choose Health Center</option>
                                                                         @foreach ($healthcenterData as $healthcenterRow)
                                                                             <option
@@ -90,8 +90,8 @@
                                                                     <select class="form-select"
                                                                         name="districtSupervisor"
                                                                         aria-label="Default select example">
-                                                                            <option selected>Choose District Supervisor
-                                                                            </option>
+                                                                        <option selected>Choose District Supervisor
+                                                                        </option>
                                                                         @foreach ($userData as $userRow)
                                                                             <option
                                                                                 value="{{ $userRow->firstname }} {{ $userRow->lastname }}">
@@ -139,39 +139,40 @@
                                                             <td>{{ $districtRow->healthcenter }}</td>
                                                             <td>{{ $districtRow->supervisor }}</td>
                                                             <td class="">
-                                                                <a type="button" href=editDistrict
-                                                                    {{ $districtRow->id }} class="text-primary"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModal2">
+                                                                <a type="button" href=/Admin/District_List/
+                                                                    class="text-primary" data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleModal2{{ $districtRow->id }}">
                                                                     <i class="bi bi-pencil-square"></i>
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                    @endforeach
-                                                    <div class="modal fade" id="exampleModal1" tabindex="-1"
-                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                                        Profile View</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
 
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button"
-                                                                        class="btn btn-primary">Save
-                                                                        changes</button>
+                                                        <div class="modal fade" id="exampleModal1" tabindex="-1"
+                                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="exampleModalLabel">
+                                                                            Profile View</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Close</button>
+                                                                        <button type="button"
+                                                                            class="btn btn-primary">Save
+                                                                            changes</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
                                                     <div class="modal fade" id="exampleModal2" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -213,8 +214,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-
+                                                        </form>
+                                                    @endforeach
                                                 </tbody>
 
                                             </table>

@@ -42,12 +42,13 @@
                                     <div class="d-flex align-items-end row">
                                         <div class="col-sm-7">
                                             <div class="card-body">
-                                                <h5 class="card-title text-primary">Welcome to Admin Dashboard John! 🎉
+                                                <h5 class="card-title text-primary">Welcome to Admin Dashboard
+                                                    {{ $user->firstname }} 🎉
                                                 </h5>
                                                 <p class="mb-4">
                                                     You have done <span class="fw-bold"></span> Lorem ipsum dolor, sit
                                                     amet consectetur adipisicing elit.
-                                                </p>
+                                                </p>    
 
                                                 <!-- <a href="javascript:;" class="btn btn-sm btn-outline-primary"></a> -->
                                             </div>

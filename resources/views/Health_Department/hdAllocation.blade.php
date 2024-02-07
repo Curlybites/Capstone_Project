@@ -30,83 +30,119 @@
                                         <h5 class="card-header">Allocation List</h5>
                                     </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card mb-4">
-                                    <!-- Account -->
-                                    <div class="card-body px-5">
-                                        <h4 class="mb-4">Allocation Details</h4>
-                                        <div class="table-responsive text-nowrap">
-                                            <table id="dataTable" class="datatables-basic table border-top "
-                                                style="width:100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No.</th>
-                                                        <th>Item Name</th>
-                                                        <th>Program</th>
-                                                        <th>Program Manager</th>
-                                                        <th>Type</th>
-                                                        <th>Quantity</th>
-                                                        <th>Image</th>
-                                                        <th>Price</th>
-                                                        <th>Status</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Paracetamol</td>
-                                                        <td>Maternity</td>
-                                                        <td>John Smith</td>
-                                                        <td>Medicine</td>
-                                                        <td>12</td>
-                                                        <td>1120</td>
-                                                        <td>1120</td>
-                                                        <td class="text-success">Approved</td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <button class="btn btn-secondary dropdown-toggle"
-                                                                    type="button" id="dropdownMenuButton1"
-                                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                                    Action
-                                                                </button>
-                                                                <ul class="dropdown-menu"
-                                                                    aria-labelledby="dropdownMenuButton1">
-                                                                    <li><a class="dropdown-item"
-                                                                            href="{{ '/Health_Department/Allocation_View' }}"><i
-                                                                                class="bi bi-eye-fill fs-5 text-primary"></i>
-                                                                            View</a>
-                                                                    </li>
-                                                                    <li><a class="dropdown-item"
-                                                                            href="{{ '/Health_Department/Allocation_Edit' }}"><i
-                                                                                class="bi bi-pen-fill fs-5 text-info"></i>
-                                                                            Edit</a>
-                                                                    </li>
-                                                                    <li><a class="dropdown-item" href="#"><i
-                                                                                class="bi bi-trash-fill fs-5 text-danger"></i>
-                                                                            Delete</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                                </tfoot>
-                                            </table>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card mb-4">
+                                                <!-- Account -->
+                                                <div class="card-body px-5">
+                                                    <h4 class="mb-4">Allocation Details</h4>
+                                                    <div class="table-responsive text-nowrap overflow-visible">
+                                                        <table id="dataTable" class="datatables-basic table border-top "
+                                                            style="width:100%">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>PO#</th>
+                                                                    <th>Date Created</th>
+                                                                    <th>Program</th>
+                                                                    {{-- <th>Program Manager</th> --}}
+                                                                    <th>Type</th>
+                                                                    <th>Quantity</th>
+                                                                    {{-- <th>Image</th> --}}
+                                                                    <th>Price</th>
+                                                                    <th>Status</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>5</td>
+                                                                    <td>009</td>
+                                                                    <td>Maternity</td>
+                                                                    {{-- <td>John Smith</td> --}}
+                                                                    <td>Medicine</td>
+                                                                    <td>12</td>
+                                                                    {{-- <td>
+                                                                        <ul
+                                                                            class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                                                            <li data-bs-toggle="tooltip"
+                                                                                data-popup="tooltip-custom"
+                                                                                data-bs-placement="top"
+                                                                                class="avatar avatar-xs pull-up"
+                                                                                title="Lilian Fuller">
+                                                                                <img src="../assets/img/avatars/5.png"
+                                                                                    alt="Avatar"
+                                                                                    class="rounded-circle">
+                                                                            </li>
+                                                                            <li data-bs-toggle="tooltip"
+                                                                                data-popup="tooltip-custom"
+                                                                                data-bs-placement="top"
+                                                                                class="avatar avatar-xs pull-up"
+                                                                                title="Sophia Wilkerson">
+                                                                                <img src="../assets/img/avatars/6.png"
+                                                                                    alt="Avatar"
+                                                                                    class="rounded-circle">
+                                                                            </li>
+                                                                            <li data-bs-toggle="tooltip"
+                                                                                data-popup="tooltip-custom"
+                                                                                data-bs-placement="top"
+                                                                                class="avatar avatar-xs pull-up"
+                                                                                title="Christina Parker">
+                                                                                <img src="../assets/img/avatars/7.png"
+                                                                                    alt="Avatar"
+                                                                                    class="rounded-circle">
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td> --}}
+                                                                    <td>1120</td>
+                                                                    <td class="text-success">Approved</td>
+                                                                    <td>
+                                                                        <div class="dropdown">
+                                                                            <button
+                                                                                class="btn p-0 dropdown-toggle hide-arrow"
+                                                                                type="button" id="dropdownMenuButton1"
+                                                                                data-bs-toggle="dropdown"
+                                                                                aria-expanded="false">
+                                                                                <i
+                                                                                    class="bx bx-dots-vertical-rounded"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu"
+                                                                                aria-labelledby="dropdownMenuButton1">
+                                                                                <li><a class="dropdown-item"
+                                                                                        href="{{ '/Health_Department/Allocation_View' }}"><i
+                                                                                            class="bi bi-eye-fill fs-5 text-primary"></i>
+                                                                                        View</a>
+                                                                                </li>
+                                                                                <li><a class="dropdown-item"
+                                                                                        href="{{ '/Health_Department/Allocation_Edit' }}"><i
+                                                                                            class="bi bi-pen-fill fs-5 text-info"></i>
+                                                                                        Edit</a>
+                                                                                </li>
+                                                                                <li><a class="dropdown-item"
+                                                                                        href="#"><i
+                                                                                            class="bi bi-trash-fill fs-5 text-danger"></i>
+                                                                                        Delete</a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                            </tfoot>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <hr class="my-0">
+                                                <div class="card-body">
+                                                    <form id="formAccountSettings" method="POST"
+                                                        onsubmit="return false">
+
+                                                    </form>
+                                                </div>
+                                                <!-- /Account -->
+                                            </div>
+
                                         </div>
                                     </div>
-                                    <hr class="my-0">
-                                    <div class="card-body">
-                                        <form id="formAccountSettings" method="POST" onsubmit="return false">
+                                </div> <!--footer-->
 
-                                        </form>
-                                    </div>
-                                    <!-- /Account -->
-                                </div>
-
-                            </div>
-                        </div>
-                    </div> <!--footer-->
-
-                    @include('components.footer');
+                                @include('components.footer');

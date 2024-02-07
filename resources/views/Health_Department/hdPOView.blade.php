@@ -40,7 +40,7 @@
                                     <hr class="my-0">
                                     <!-- Account -->
                                     <div id="printSection">
-                                        @include('Health_Department.hdPOPrint')
+                                        @include('Health_Department.hdPOPrints')
                                     </div>
                                     a
                                 </div>
