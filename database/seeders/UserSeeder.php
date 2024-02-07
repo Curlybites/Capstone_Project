@@ -28,10 +28,9 @@ class UserSeeder extends Seeder
             'contact'=> '1234',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin123'),
-            'image' => ".",
+            'image' => "",
             'role'=> 1,
             'remember_token' => Str::random(20),
-          
         ]);
     }
 }

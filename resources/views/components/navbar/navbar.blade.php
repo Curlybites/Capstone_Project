@@ -13,6 +13,16 @@
                 {{-- <i class="bx bx-search fs-4 lh-0"></i>
                 <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
                     aria-label="Search..." /> --}}
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light"></span>{{ Request::is('Admin/Dashboard') ? 'Dashboard' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Health_Center_List') ? 'Health Center /' : '' }}</span>{{ Request::is('Admin/Health_Center_List') ? ' List of Health Center' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Barangay_List') ? 'Health Center /' : '' }}</span>{{ Request::is('Admin/Barangay_List') ? ' List of Barangay' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/District_List') ? 'District /' : '' }}</span>{{ Request::is('Admin/District_List') ? ' List of District' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Program_List') ? 'Programs /' : '' }}</span>{{ Request::is('Admin/Program_List') ? ' List of Programs' : '' }} </h5>
+
             </div>
         </div>
         <!-- /Search -->
@@ -30,7 +40,7 @@
                         <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end">0
+                <ul class="dropdown-menu dropdown-menu-end">
                     <li>
                         <a class="dropdown-item" href="#">
                             <div class="d-flex">
