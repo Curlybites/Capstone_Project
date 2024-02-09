@@ -28,6 +28,10 @@
 
                 <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Account_Change_Password') ? 'Account /' : '' }}</span>{{ Request::is('Admin/Account_Change_Password') ? ' Change Password' : '' }} </h5>
 
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Supplier/Item_List') ? 'Item /' : '' }}</span>{{ Request::is('Supplier/Item_List') ? ' List of Items' : '' }} </h5>
+
+             
+
             </div>
         </div>
         <!-- /Search -->

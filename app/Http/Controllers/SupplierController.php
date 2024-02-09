@@ -78,7 +78,6 @@ class SupplierController extends Controller
         if ($request->hasFile('item_image')) {
             $fileName = time() . '.' . $request->item_image->extension();
             $request->item_image->storeAs('public/images', $fileName);
-
             $item->item_image = $fileName;
         }
         $item->save();

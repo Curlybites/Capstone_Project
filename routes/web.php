@@ -125,10 +125,15 @@ Route::middleware(['auth', 'health_center'])->group(function () {
 Route::middleware(['auth', 'supplier'])->group(function () {
     Route::get('/Supplier/Dashboard', [PageController::class,'supplierDashboard']);
 
+
+    Route::post('/Supplier/Item_List',[SupplierController::class,'storeItem'])->name('products.store');
+    Route::put('/Supplier/Item_List/{id}',[SupplierController::class,'updateItem'])->name('products.update');
+    Route::delete('/Supplier/Item_List/{id}',[SupplierController::class,'deleteitem'])->name('products.delete');
     Route::get('/Supplier/Item_List', [SupplierController::class,'itemList']);
     Route::get('/Supplier/Account_Profile', [SupplierController::class,'profileSupplier']);
     Route::get('/Supplier/Account_Change_Password', [SupplierController::class,'profileChangeSupplier']);
     Route::get('/Supplier/PPMP_List', [SupplierController::class,'ppmp']);
+    
 });
 
 
