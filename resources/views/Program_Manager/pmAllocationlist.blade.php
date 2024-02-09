@@ -16,10 +16,6 @@
                     <!-- Content -->
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Allocation /</span> List of
-                            Allocation
-                        </h4>
-
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card mb-4">
@@ -85,7 +81,7 @@
                                                         <td>1120</td>
                                                         <td class="text-success">Approved</td>
                                                         <td>
-                                                            <div class="dropdown">
+                                                            {{-- <div class="dropdown">
                                                                 <button class="btn btn-secondary dropdown-toggle"
                                                                     type="button" id="dropdownMenuButton1"
                                                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -108,7 +104,25 @@
                                                                             Delete</a>
                                                                     </li>
                                                                 </ul>
-                                                            </div>
+                                                            </div> --}}
+                                                            <div class="dropdown">
+                                                                <button type="button"
+                                                                    class="btn p-0 dropdown-toggle hide-arrow"
+                                                                    data-bs-toggle="dropdown"><i
+                                                                        class="bx bx-dots-vertical-rounded"></i></button>
+                                                                <div class="dropdown-menu">
+                                                                    <a class="dropdown-item" <a
+                                                                        href="{{ '/Program_Manager/AllocationView' }}">
+                                                                        <i class="bi bi-eye-fill me-2"></i>View
+                                                                    </a>
+                                                                    <a class="dropdown-item" 
+                                                                    {{-- data-bs-toggle="modal" --}}
+                                                                        {{-- data-bs-target="#exampleModal2"  --}}
+                                                                        href="{{'/Program_Manager/AllocationEdit'}}"><i
+                                                                            class="bx bx-edit-alt me-2"></i>Edit</a>
+                                                                    <a class="dropdown-item" href=""><i
+                                                                            class="bx bx-trash me-2"></i>Delete</a>
+                                                                </div>
                                                         </td>
                                                     </tr>
                                                 </tbody>

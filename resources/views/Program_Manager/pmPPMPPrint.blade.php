@@ -1,82 +1,183 @@
-
-@include('components.header')
+{{-- @include('components.header')
 
 <body class="container-fluid">
-    <div class="card-body">
-        @foreach ($ppmp as $ppmps)
-        <div class="pb-4">
-            <p style="margin-bottom: 0px; font-weight: bold;">{{ $ppmps->department }}</p>
-            <p style="margin-bottom: 0px; font-weight: bold;">{{ $ppmps->programtitle }}</p>
-            <p style="margin-bottom: 0px; font-weight: bold;">{{ $ppmps->projecttitle }}</p>
-        </div>
-        @endforeach
-        <div class="row pb-4 mt-5">
-            <div class="col-md-4 col-4 mb-md-0 mb-3">
-                <p style="margin-bottom: 0px; font-weight: bold;">Vendor</p>
-                <p style="margin-bottom: 0px;">Supplier 101</p>
-                <p style="margin-bottom: 0px;">Sample Address Only</p>
-                <p style="margin-bottom: 0px;">George Wilson</p>
-                <p style="margin-bottom: 0px;">09123459879</p>
-                <p style="margin-bottom: 0px;">supplier101@gmail.com</p>
-            </div>
-            <div class="col-md-4 col-4 mb-md-0 mb-3">
-                <p style="margin-bottom: 0px; font-weight: bold;">P.O #</p>
-                <p style="margin-bottom: 0px;">PO-94619964639</p>
-            </div>
-            <div class="col-md-4 col-4">
-                <p style="margin-bottom: 0px; font-weight: bold;">Date Created:</p>
-                <p style="margin-bottom: 0px;">2021-09-08</p>
-            </div>
-        </div>
-        <div class="text-nowrap">
-            <table id="" class="datatables-basic table border-top table-bordered" style="width:100%">
-                <thead>
-                    <tr class="text-center">
-                        <th>Item Name</th>
-                        <th>Unit</th>
-                        <th>Quantity</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Total Amount</th>
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+            <!-- Menu -->
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Paracetamol</td>
-                        <td>Per Box</td>
-                        <td>30</td>
-                        <td>Sample Item Only. Test 101</td>
-                        <td>12</td>
-                        <td>20</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="4"></th>
-                        <th class="fs-6">Sub Total:</th>
-                        <th class="fs-6">1000</th>
-                    </tr>
-                    <tr>
-                        <th colspan="4"></th>
-                        <th class="fs-6">Total:</th>
-                        <th class="fs-6">255</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
+            @include('components.sidebar.pm_sidebar')
 
-        <div class="row mt-5">
-            <div class="col-xxl-6 col-6 mb-md-0 mb-2">
-                <p style="margin-bottom: 0px; font-weight: bold;">Note:</p>
-                <p style="margin-bottom: 0px;">Sample Purchase Order
-                    Only</p>
-            </div>
-            <div class="col-md-1 col-6">
-                <p style="margin-bottom: 0px; font-weight: bold;">Status:</p>
-                <p class="text-success">Approved</p>
+            <!-- Layout container -->
+            <div class="layout-page">
+                <!-- Navbar -->
+                @include('components.navbar.navbar')
+                <!-- Navbar End-->
+                <div class="card-body">
+
+                    <div class="pb-4">
+                        <p style="margin-bottom: 0px; font-weight: bold;">
+                            @if ($ppmp)
+                                <p>{{ $ppmp->department }}</p>
+                            @else
+                                <p>walang data</p>
+                            @endif
+                        </p>
+                        <p style="margin-bottom: 0px; font-weight: bold;">
+                            @if ($ppmp)
+                                <p>{{ $ppmp->programtitle }}</p>
+                            @else
+                                <p>walang data</p>
+                            @endif
+                        </p>
+                        <p style="margin-bottom: 0px; font-weight: bold;">
+                            @if ($ppmp)
+                                <p>{{ $ppmp->projecttitle }}</p>
+                            @else
+                                <p>walang data</p>
+                            @endif
+                        </p>
+                        </p>
+                        <p style="margin-bottom: 0px; font-weight: bold;">
+                            @if ($ppmp)
+                                <p>{{ $ppmp->year }}</p>
+                            @else
+                                <p>walang data</p>
+                            @endif
+                        </p>
+                        </p>
+                    </div>
+                    <div class="row pb-4 mt-5">
+                        <div class="col-md-4 col-4 mb-md-0 mb-3">
+                            <p style="margin-bottom: 0px; font-weight: bold;">Types of Contract</p>
+                            <p style="margin-bottom: 0px;">
+                                @if ($ppmp)
+                                    <p>{{ $ppmp->typeofcontract }}</p>
+                                @else
+                                    <p>walang data</p>
+                                @endif
+                            </p>
+                            </p>
+                            </p>
+                        </div>
+                        <div class="col-md-4 col-4 mb-md-0 mb-3">
+                            <p style="margin-bottom: 0px; font-weight: bold;">Account Title:</p>
+                            <p style="margin-bottom: 0px;">
+                                @if ($ppmp)
+                                    <p>{{ $ppmp->accounttitle }}</p>
+                                @else
+                                    <p>walang data</p>
+                                @endif
+                            </p>
+                            </p>
+                        </div>
+                        <div class="col-md-4 col-4">
+                            <p style="margin-bottom: 0px; font-weight: bold;">Description:</p>
+                            <p style="margin-bottom: 0px;">
+                                @if ($ppmp)
+                                    <p>{{ $ppmp->description }}</p>
+                                @else
+                                    <p>walang data</p>
+                                @endif
+                            </p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text-nowrap">
+                        <table id="" class="datatables-basic table border-top table-bordered"
+                            style="width:100%">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>Item Name</th>
+                                    <th>Unit</th>
+                                    <th>Quantity</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Total Amount</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @if ($ppmp)
+                                            <p>{{ $ppmp->itemname }}</p>
+                                        @else
+                                            <p>walang data</p>
+                                        @endif
+                                        </p>
+                                    </td>
+                                    <td>
+                                        @if ($ppmp)
+                                            <p>{{ $ppmp->unitofissue }}</p>
+                                        @else
+                                            <p>walang data</p>
+                                        @endif
+                                        </p>
+                                    </td>
+                                    <td>
+                                        @if ($ppmp)
+                                            <p>{{ $ppmp->quantity }}</p>
+                                        @else
+                                            <p>walang data</p>
+                                        @endif
+                                        </p>
+                                    </td>
+                                    <td>
+                                        @if ($ppmp)
+                                            <p>{{ $ppmp->description }}</p>
+                                        @else
+                                            <p>walang data</p>
+                                        @endif
+                                        </p>
+                                    </td>
+                                    <td>
+                                        @if ($ppmp)
+                                            <p>{{ $ppmp->unitprice }}</p>
+                                        @else
+                                            <p>walang data</p>
+                                        @endif
+                                        </p>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="4"></th>
+                                    <th class="fs-6">Sub Total:</th>
+                                    <th class="fs-6">1000</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="4"></th>
+                                    <th class="fs-6">Total:</th>
+                                    <th class="fs-6">255</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-xxl-6 col-6 mb-md-0 mb-2">
+                            <p style="margin-bottom: 0px; font-weight: bold;">Schedule / Milestone of Activities:</p>
+                            <p style="margin-bottom: 0px;">
+                                @if ($ppmp)
+                                    <p>{{ $ppmp->schedule }}</p>
+                                @else
+                                    <p>walang data</p>
+                                @endif
+                            </p>
+                            </p>
+                        </div>
+                        <div class="col-md-1 col-6">
+                            <p style="margin-bottom: 0px; font-weight: bold;">Status:</p>
+                            <p class="text-success">Approved</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+
 </body>
-@include('components.footer')
+@include('components.footer') --}}

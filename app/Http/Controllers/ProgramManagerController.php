@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project_Manager;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -26,7 +29,6 @@ class ProgramManagerController extends Controller
     {
         $user = Auth::user();
         $ppmp = Project_Manager::all();
-
         return view('Program_Manager.PPMPlist', ['user' => $user, 'ppmp' => $ppmp]);
 
     }
@@ -49,32 +51,28 @@ class ProgramManagerController extends Controller
     public function pmAllocationEdit()
     {
         $user = Auth::user();
+        
         return view('Program_Manager.pmAllocationEdit', ['user' => $user]);
     }
-    public function PPMPView()
-    {
-        $user = Auth::user();
-        $ppmp = Project_Manager::all();
-
-        return view('Program_Manager.pmPPMPView', ['user' => $user, 'ppmp' => $ppmp]);
-    }
+    
 
     public function PPMPEdit()
     {
         $user = Auth::user();
-        return view('Program_Manager.pmPPMPEdit', ['user' => $user]);
-    }
-
-    public function PPMPPrint()
-    {
-        $user = Auth::user();
         $ppmp = Project_Manager::all();
-
-        return view('Program_Manager.pmPPMPPrint', ['user' => $user, 'ppmp' => $ppmp]);
+        return view('Program_Manager.pmPPMPEdit', ['user' => $user, 'ppmp' => $ppmp]);
     }
+
+    // public function PMPPrint()
+    // {
+    //     $user = Auth::user();
+    //     $ppmp = Project_Manager::all();
+    //     return view('Program_Manager.pmPPMPPrint', ['user' => $user, 'ppmp' => $ppmp]);
+    // }
     public function AllocationPrint()
     {
         $user = Auth::user();
+        
         return view('Program_Manager.pmAllocationPrint', ['user' => $user]);
     }
 
@@ -98,4 +96,39 @@ class ProgramManagerController extends Controller
         Project_Manager::create($request->all());
         return back()->with('sucess', 'PPMP created successfully');
     }
+
+    public function editPPMP(Request $request, $id)
+    {
+        $PPMP = Project_Manager::findOrFail($id);
+        $PPMP->update($request->all());
+
+        return back()->with('success', 'PPMP updated successfully.');
+    }
+
+    public function PPMPView($id)
+    {
+        $user = Auth::user();
+        $ppmp = Project_Manager::find($id);
+        return view('Program_Manager.pmPPMPView', ['user' => $user, 'ppmp' => $ppmp]);
+    }
+
+    // public function printPPMP($id)
+    // { 
+    //     $user = Auth::user();
+    //     $ppmp = Project_Manager::find($id);
+
+    //     return view('Program_Manager.pmPPMPPrint', ['user' => $user, 'ppmp' => $ppmp]);
+    // }
+
+public function deletePPMP($id)
+{
+    $user = Auth::user();
+    $ppmp = Project_Manager::find($id);
+    $ppmp->delete();
+    return view('Program_Manager.PPMPlist', ['user' => $user, 'ppmp' => $ppmp]);
+
+    
+    return redirect()->route('Program_Manager.PPMPlist')->with('success','PPMP is deleted sucessfully');
+}
+
 }

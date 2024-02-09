@@ -33,7 +33,7 @@
                                             <button type="button" class="btn btn-info text-white"
                                                 onclick="printPage()">Print</button>
                                             <a type="button" class="btn btn-danger"
-                                                href="{{ '/Program_Manager/Allocationlist' }}">Back</a>
+                                                href="{{ '/Program_Manager/pmAllocationlist' }}">Back</a>
                                         </div>
 
                                     </div>

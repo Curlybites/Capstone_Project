@@ -18,181 +18,335 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Allocation / Allocation List /
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">PPMP / PPMP List /
                             </span>
-                            Allocation Edit
-                        </h4>
-
-                        <div class="row">
+                            PPMP Edit
+                        </h4>                        <div class="row">
                             <div class="col-md-12">
                                 <div class="card mb-4">
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
-                                        <h5 class="card-header">Edit Allocation</h5>
+                                        <h5 class="card-header">PPMP List</h5>
+
+                                        <!-- PPMP Modal -->
+                                        <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
+                                            PPMP</button>
+                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-xl modal-dialog-centered">
+                                                <div class="modal-content ">
+                                                    <div
+                                                        class="modal-header justify-content-center d-block text-center">
+                                                        <h1 class="modal-title fs-3" id="exampleModalLabel">QUEZON
+                                                            CITY<br>PROJECT PROCUREMENT MANAGEMENT PLAN</h1>
+                                                        <!-- <h1 class="fs-3">PROJECT PROCUREMENT MANAGEMENT PLAN </h1><br> -->
+
+                                                    </div>
+                                                    <!-- <div class="modal-header d-flex justify-content-end">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div> -->
+                                                    <form action="{{ route('ppmp.create')}}" method="POST">
+                                                        @csrf
+                                                        <div class="modal-body">
+
+                                                            <div class="row">
+
+                                                                <!-- <h5>Personal Details</h5> -->
+                                                                <div class="col">
+                                                                    <p>Year:</p>
+                                                                    <div class="input-group mb-3">
+                                                                        <select name="year" class="form-control"
+                                                                            id="yearSelect">
+                                                                            <?php for ($year = 2000; $year <= 2024; $year++) : ?>
+                                                                            <option value="<?= $year ?>"><?= $year ?>
+                                                                            </option>
+                                                                            <?php endfor; ?>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <p>Department/Office/Unit:</p>
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="text" class="form-control"
+                                                                            aria-label="Sizing e xample input"
+                                                                            aria-describedby="inputGroup-sizing-default"
+                                                                            name="department" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">
+                                                                    <p>Program Title</p>
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="text" class="form-control"
+                                                                            aria-label="Sizing example input"
+                                                                            aria-describedby="inputGroup-sizing-default"
+                                                                            name="programtitle" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">
+                                                                    <p>Project Title</p>
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="text" class="form-control"
+                                                                            aria-label="Sizing example input"
+                                                                            aria-describedby="inputGroup-sizing-default"
+                                                                            name="projecttitle" required>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row pb-4">
+
+                                                                <div class="col">
+                                                                    <p>Type of Contract</p>
+                                                                    <div class="input-group mb-3">
+                                                                        <select class="form-select"
+                                                                            aria-label="Default select example"
+                                                                            name="typeofcontract">
+                                                                            <option value="goods">Goods</option>
+                                                                            <option value="infra">Infra</option>
+                                                                            <option value="consultingservice">Consulting
+                                                                                Service</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">
+                                                                    <p>Account Title</p>
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="text" class="form-control"
+                                                                            aria-label="Sizing example input"
+                                                                            aria-describedby="inputGroup-sizing-default"
+                                                                            name="accounttitle" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">
+                                                                    <p>Item Name</p>
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="text" class="form-control"
+                                                                            aria-label="Sizing example input"
+                                                                            aria-describedby="inputGroup-sizing-default"
+                                                                            name="itemname" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">
+                                                                    <p>Description/Specifications</p>
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="text" class="form-control"
+                                                                            aria-label="Sizing example input"
+                                                                            aria-describedby="inputGroup-sizing-default"
+                                                                            name="description" required>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="row pb-4">
+
+                                                                <div class="col">
+                                                                    <p>Quantity</p>
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="number" class="form-control"
+                                                                            aria-label="Sizing example input"
+                                                                            aria-describedby="inputGroup-sizing-default"
+                                                                            name="quantity" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">
+                                                                    <p>Unit of Issue</p>
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="number" class="form-control"
+                                                                            aria-label="Sizing example input"
+                                                                            aria-describedby="inputGroup-sizing-default"
+                                                                            name="unitofissue" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">
+                                                                    <p>Unit Price</p>
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="number" class="form-control"
+                                                                            aria-label="Sizing example input"
+                                                                            aria-describedby="inputGroup-sizing-default"
+                                                                            name="unitprice" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row pb-4">
+
+                                                                    <div class="col">
+                                                                        <p>Schedule / Milestone of Activities</p>
+                                                                        <div class="input-group mb-3">
+                                                                            <input type="text" class="form-control"
+                                                                                aria-label="Sizing example input"
+                                                                                aria-describedby="inputGroup-sizing-default"
+                                                                                name="schedule" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                {{-- <div class="row">
+                                                                    <div class="d-flex">
+                                                                        <p>Jan</p>
+                                                                        <div class="col-1">
+                                                                            <input type="text"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                        <p>Feb</p>
+                                                                        <div class="col-1">
+                                                                            <input type="text"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                        <p>Mar</p>
+                                                                        <div class="col-1">
+                                                                            <input type="text"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                        <p>Apr</p>
+                                                                        <div class="col-1">
+                                                                            <input type="text"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                        <p>May</p>
+                                                                        <div class="col-1">
+                                                                            <input type="text"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                        <p>Jun</p>
+                                                                        <div class="col-1">
+                                                                            <input type="text"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                        <p>Jul</p>
+                                                                        <div class="col-1">
+                                                                            <input type="text"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                        <p>Aug</p>
+                                                                        <div class="col-1">
+                                                                            <input type="text"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                        <p>Sep</p>
+                                                                        <div class="col-1">
+                                                                            <input type="text"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                        <p>Oct</p>
+                                                                        <div class="col-1">
+                                                                            <input type="text"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                        <p>Nov</p>
+                                                                        <div class="col-1">
+                                                                            <input type="text"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                        <p>Dec</p>
+                                                                        <div class="col-1">
+                                                                            <input type="text"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div> --}}
+                                                                <div class="modal-footer border-1">
+                                                                    <button type="button"
+                                                                        class="btn btn-secondary mt-3"
+                                                                        data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary mt-3">Save</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- / Content -->
+
+                                            <div class="content-backdrop fade"></div>
+                                        </div>
 
                                     </div>
 
-                                    <hr class="my-0">
-                                    <!-- Account -->
-                                    <div class="card-body px-5">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <form action="">
-                                                    <div class="row mb-5">
-                                                        <div class="col">
-                                                            <p>Department/Office/Unit:</p>
-                                                            <div class="input-group mb-3">
-                                                                <input type="text" class="form-control"
-                                                                    aria-label="Sizing e xample input"
-                                                                    aria-describedby="inputGroup-sizing-default"
-                                                                    name="department" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col">   
-                                                            <p>Program Title:</p>
-                                                            <div class="input-group mb-3">
-                                                                <input type="text" class="form-control"
-                                                                    aria-label="Sizing e xample input"
-                                                                    aria-describedby="inputGroup-sizing-default"
-                                                                    name="department" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col">
-                                                            <p>Project Title:</p>
-                                                            <div class="input-group mb-3">
-                                                                <input type="text" class="form-control"
-                                                                    aria-label="Sizing e xample input"
-                                                                    aria-describedby="inputGroup-sizing-default"
-                                                                    name="department" required>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-5">
-                                                        <div class="col-md-6 mb-md-0 mb-3">
-                                                            <label for="exampleFormControlInput1"
-                                                                class="form-label">Types of Contract:</label>
-                                                            <select class="form-select"
-                                                                aria-label="Default select example">
+                                    <hr class="">
+                                    <div class="card-body p-5 ">
+                                        <div class="table-responsive text-nowrap">
+                                            <table id="dataTable" class="datatables-basic table   border-top "
+                                                style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Year</th>
+                                                        <th>Department</th>
+                                                        <th>Program Title</th>
+                                                        <th>Project Title</th>
+                                                        <th>Types of Contract</th>
+                                                        <th>Account Title</th>
+                                                        <th>Item Name</th>
+                                                        <th>Description</th>
+                                                        <th>Quantity</th>
+                                                        <th>Unit of Issue</th>
+                                                        <th>Unit Price</th>
+                                                        <th>Schedule</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($ppmp as $ppmps)
+                                                        <tr>
+                                                            <td>{{ $ppmps->id }} </td>
+                                                            <td>{{ $ppmps->department }}</td>
+                                                            <td>{{ $ppmps->programtitle }}</td>
+                                                            <td>{{ $ppmps->projecttitle }}</td>
+                                                            <td>{{ $ppmps->typeofcontract }}</td>
+                                                            <td>{{ $ppmps->accounttitle }}</td>
+                                                            <td>{{ $ppmps->itemname }}</td>
+                                                            <td>{{ $ppmps->description }}</td>
+                                                            <td>{{ $ppmps->quantity }}</td>
+                                                            <td>{{ $ppmps->unitofissue }}</td>
+                                                            <td>{{ $ppmps->unitprice }}</td>
+                                                            <td>{{ $ppmps->schedule }}</td>
+                                                            <td>
+                                                                <span
+                                                                    class="badge bg-label-success me-1">Approved</span>
+                                                            </td>
+                                                            <td>
+                                                                <div class="dropdown">
+                                                                    <button class="btn btn-secondary dropdown-toggle"
+                                                                        type="button" id="dropdownMenuButton1"
+                                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        Action
+                                                                    </button>
+                                                                    <ul class="dropdown-menu"
+                                                                        aria-labelledby="dropdownMenuButton1">
+                                                                        <li><a class="dropdown-item"
+                                                                                href="{{ '/Program_Manager/pmPPMPView' }}"><i
+                                                                                    class="bi bi-eye-fill fs-5 text-primary"></i>
+                                                                                View</a>
+                                                                        </li>
+                                                                        <li><a class="dropdown-item"
+                                                                                href="{{ '/Program_Manager/pmPPMPEdit' }}"><i
+                                                                                    class="bi bi-pen-fill fs-5 text-info"></i>
+                                                                                Edit</a>
+                                                                        </li>
+                                                                        <li><a class="dropdown-item" href="#"><i
+                                                                                    class="bi bi-trash-fill fs-5 text-danger"></i>
+                                                                                Delete</a>
+                                                                        </li>
+                                                                    </ul>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
 
-                                                                <option value="1">Good</option>
-                                                                <option value="2">Infra</option>
-                                                                <option value="3">Consulting Service</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-md-6 mb-md-0 mb-3">
-                                                            <label for="exampleFormControlInput1" class="form-label">Account Title</label>
-                                                            <input type="text" class="form-control" value="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="table-responsive">
-                                                        <table class="table table-striped table-bordered"
-                                                            id="myTable">
-                                                            <colgroup>
-                                                                <col width="5%">
-                                                                <col width="5%">
-                                                                <col width="10%">
-                                                                <col width="20%">
-                                                                <col width="30%">
-                                                                <col width="15%">
-                                                                <col width="15%">
-                                                            </colgroup>
-                                                            <thead>
-                                                                <tr class="bg-navy disabled">
-                                                                    <th class="px-1 py-1 text-center"></th>
-                                                                    <th class="px-1 py-1 text-center">Qty</th>
-                                                                    <th class="px-1 py-1 text-center">Unit</th>
-                                                                    <th class="px-1 py-1 text-center">Item</th>
-                                                                    <th class="px-1 py-1 text-center">Description</th>
-                                                                    <th class="px-1 py-1 text-center">Price</th>
-                                                                    <th class="px-1 py-1 text-center">Total</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody class="addTBRow">
-                                                                <tr>
-                                                                    <td>
-                                                                        <button class="btn btn-sm btn-danger py-0"
-                                                                            onclick="removeRow(this)">X</button>
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="number"
-                                                                            class="form-control text-center border-0"
-                                                                            value="32">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            value="box">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            value="Parasatukmol">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            value="asdsad">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="number"
-                                                                            class="form-control text-center border-0"
-                                                                            value="232">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="number"
-                                                                            class="form-control text-center border-0"
-                                                                            value="2323" disabled>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                            <tfoot>
-                                                                <tr>
-                                                                    <th colspan="6" class="text-end">
-                                                                        <div class="btn btn-primary"
-                                                                            style="font-size: 10px" onclick="addRow()">
-                                                                            Add
-                                                                            Row</div><span> Sub Total</span>
-                                                                    </th>
-                                                                    <th class="text-end">0</th>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th colspan="6" class="text-end">
-                                                                        Total
-                                                                    </th>
-                                                                    <th class="text-end">0</th>
-                                                                </tr>
-                                                            </tfoot>
-                                                        </table>
-                                                    </div>
-                                                    <div class="row my-5">
-                                                        <div class="col-md-6 mb-md-0 mb-3">
-                                                            <label for="">Schedule / Milestone of Activities:</label>
-                                                            <textarea class="form-control" style="height: 100px"></textarea>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="">Status</label>
-                                                            <select class="form-select"
-                                                                aria-label="Default select example">
-                                                                <option selected>Open this select menu</option>
-                                                                <option value="1">One</option>
-                                                                <option value="2">Two</option>
-                                                                <option value="3">Three</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <div class="btn btn-primary">Save</div>
-                                                        <a class="btn btn-danger"
-                                                            href="{{ '/Program_Manager/pmAllocationlist' }}">Cancel</a>
-                                                    </div>
-                                                </form>
-                                            </div>
+                                            </table>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
 

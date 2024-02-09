@@ -10,9 +10,23 @@
         <!-- Search -->
         <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
-                <i class="bx bx-search fs-4 lh-0"></i>
-                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
-                    aria-label="Search..." />
+
+                <!--Program Manager Dashboard Page-->
+                <h5 class="fw-bold py-3 mt-3"><span
+                        class="text-muted fw-light">{{ Request::is('Program_Manager/Dashboard') ? 'Dashboard' : '' }}</span>
+                </h5>
+                <!--PPMP Page-->
+                <h5 class="fw-bold py-3 mt-3"><span
+                        class="text-muted fw-light">{{ Request::is('Program_Manager/PPMPlist') ? 'PPMP / ' : '' }}</span>{{ Request::is('Program_Manager/PPMPlist') ? 'PPMP list' : '' }}
+                </h5>
+                {{-- <h5 class="fw-bold py-3 mt-3"><span
+                        class="text-muted fw-light"></span>{{ Request::is('Program_Manager/pmPPMPView{id}') ? 'PPMP View' : '' }}
+                </h5> --}}
+                <!--Allocation Page-->
+                <h5 class="fw-bold py-3 mt-3"><span
+                        class="text-muted fw-light">{{ Request::is('Program_Manager/Allocationlist') ? 'Allocation / ' : '' }}</span>
+                    {{ Request::is('Program_Manager/Allocationlist') ? 'Allocation List' : '' }}</h5>
+
             </div>
         </div>
         <!-- /Search -->
@@ -61,7 +75,7 @@
                                             @break
 
                                             @case(5)
-                                                Brgy. Health Center Staff 
+                                                Brgy. Health Center Staff
                                             @case(6)
                                                 Supplier
                                             @break
