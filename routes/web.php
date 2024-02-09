@@ -59,18 +59,23 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Route::get('/change-password', [UserController::class,'changePass']);
 
         Route::controller(AdminController::class)->group(function () {
-        Route::post('/Admin/District_Store', 'districtStore');
-        Route::post('/Admin/Barangay_Store', 'barangayStore');
-        Route::post('/Admin/Health_Center_Store', 'healthcenterStore');
-        Route::post('/Admin/Program_Store', 'programStore');
         Route::get('/Admin/District_List', 'districtListpage');
+        Route::post('/Admin/District_Store', 'districtStore');
         Route::put('/Admin/District_List/{id}', 'updateDistrict');
+
         Route::get('/Admin/Account_Profile', 'profile');
         Route::get('/Admin/Account_Change_Password', 'profileChange');
+
         Route::get('/Admin/Barangay_List', 'barangayPage');
+        Route::post('/Admin/Barangay_Store', 'barangayStore');
+        Route::put('/Admin/Barangay_List/{id}', 'updateBarangay');
+
         Route::get('/Admin/Health_Center_List', 'Healthcenterpage');
+        Route::post('/Admin/Health_Center_Store', 'healthcenterStore');
         Route::put('/Admin/Health_Center_List/{id}','updatehc');
+
         Route::get('/Admin/Program_List', 'Programpage');
+        Route::post('/Admin/Program_Store', 'programStore');
         Route::put('Admin/Program_List/{id}', 'programUpdate');
     });
 

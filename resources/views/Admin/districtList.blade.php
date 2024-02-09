@@ -61,7 +61,7 @@
                                                                         <option value="6">6</option>
                                                                     </select>
                                                                 </div>
-                                                                <div class="col">
+                                                                {{-- <div class="col">
                                                                     <p>Barangay</p>
                                                                     <select class="form-select" name="barangayName"
                                                                         aria-label="Default select example">
@@ -71,8 +71,8 @@
                                                                                 {{ $barangayRow->name }}</option>
                                                                         @endforeach
                                                                     </select>
-                                                                </div>
-                                                                <div class="col">
+                                                                </div> --}}
+                                                                {{-- <div class="col">
                                                                     <p>Barangay Health Center</p>
                                                                     <select class="form-select"
                                                                         name="healthcenterName"
@@ -80,11 +80,11 @@
                                                                         <option selected>Choose Health Center</option>
                                                                         @foreach ($healthcenterData as $healthcenterRow)
                                                                             <option
-                                                                                value="{{ $healthcenterRow->name }}">
+                                                                                value="{{ $healthcenterRow->id }}">
                                                                                 {{ $healthcenterRow->name }}</option>
                                                                         @endforeach
                                                                     </select>
-                                                                </div>
+                                                                </div> --}}
                                                                 <div class="col">
                                                                     <p>District Supervisor</p>
                                                                     <select class="form-select"
@@ -124,8 +124,8 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>District Number</th>
-                                                        <th>Barangay</th>
-                                                        <th>Barangay Health Center</th>
+                                                        {{-- <th>Barangay</th> --}}
+                                                        {{-- <th>Barangay Health Center</th> --}}
                                                         <th>District Supervisor</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -135,8 +135,8 @@
                                                         <tr>
                                                             <td>{{ $districtRow->id }}</td>
                                                             <td>{{ $districtRow->number }}</td>
-                                                            <td>{{ $districtRow->barangay }}</td>
-                                                            <td>{{ $districtRow->healthcenter }}</td>
+                                                            {{-- <td>{{ $districtRow->barangay }}</td> --}}
+                                                            {{-- <td>{{ $districtRow->healthcenter }}</td> --}}
                                                             <td>{{ $districtRow->supervisor }}</td>
                                                             <td class="">
                                                                 <a type="button" href=/Admin/District_List/
