@@ -26,12 +26,11 @@ class UserSeeder extends Seeder
             'birthdate' => Faker::create()->dateTimeBetween('-30 years', '-18 years')->format('Y-m-d'),
             'address' => 'Quezon City',
             'contact'=> '1234',
-            'email' => 'anthony.esquilona09@gmail.com',
+            'email' => 'admin@gmail.com',
             'password' => Hash::make('admin123'),
-            'image' => ".",
+            'image' => "",
             'role'=> 1,
             'remember_token' => Str::random(20),
-          
         ]);
     }
 }
