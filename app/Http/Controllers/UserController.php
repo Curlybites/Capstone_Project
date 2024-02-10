@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -14,7 +15,8 @@ class UserController extends Controller
     public function userlistPage()
     {
         $user = Auth::user();
-        return view('Admin.userList', ['user' => $user]);
+        $roleData = Role::all();
+        return view('Admin.userList', ['user' => $user, 'roleData'=>$roleData]);
     }
 
     // public function createUserPage(){
@@ -48,80 +50,124 @@ class UserController extends Controller
 
     public function userList()
     {
+        $totalUser = User::count();
+        $totalAdmin = User::all()->where('role',1)->count();
+        $totalProgram = User::all()->where('role',2)->count();
+        $totalDistrict = User::all()->where('role',4)->count();
+        $totalHd = User::all()->where('role',3)->count();
+        $totalHc= User::all()->where('role',5)->count();
+        $totalSupplier= User::all()->where('role',6)->count();
         $user = Auth::user();
         $data = User::all();
-        return view('Admin.userList', ['users' => $data], ['user' => $user]);
+        $roleData = Role::all();
+        return view('Admin.userList', ['roleData'=>$roleData, 'users' => $data , 'totalUser' => $totalUser, 'totalAdmin'=>$totalAdmin, 'totalProgram'=>$totalProgram, 'totalDistrict'=>$totalDistrict,'totalHd'=>$totalHd, 'totalHc'=> $totalHc , 'totalSupplier'=>$totalSupplier], ['user' => $user]);
     }
-
-
-    // public function LoginProcess(Request $request){
-    //     $validated = $request->validate([
-    //         "email"=> ['required','email'],
-    //         "password" => 'required',
-    //     ]);
-    //     if(auth()-> attempt($validated)){
-    //             $request->session()->regenerate();
-    //             return redirect('/Admin/Dashboard');
-    //     }
-    // }
 
     public function LoginProcess(Request $request)
-    {
-        $validated = $request->validate([
-            "email" => ['required', 'email'],
-            "password" => 'required',
-        ]);
+{
+    $validated = $request->validate([
+        "email" => ['required', 'email'],
+        "password" => 'required',
+    ]);
 
-        if (auth()->attempt($validated)) {
-            $userRole = auth()->user()->role;
+    if (Auth::attempt($validated)) {
+        $user = Auth::user();
 
-            switch ($userRole) {
-                case 1:
-                    $request->session()->regenerate();
-                    return redirect('/Admin/Dashboard')->with('success', 'Login successful!');
-                    break;
+        switch ($user->role) {
+            case 1:
+                return redirect('/Admin/Dashboard')->with('success', 'Login successful!');
+                break;
 
-                case 2:
-                    $request->session()->regenerate();
-                    return redirect('/Program_Manager/Dashboard')->with('success', 'Login successful!');
-                    break;
+            case 2:
+                return redirect('/Program_Manager/Dashboard')->with('success', 'Login successful!');
+                break;
 
-                case 3:
-                    $request->session()->regenerate();
-                    return redirect('/Health_Department/Dashboard')->with('success', 'Login successful!');
-                    break;
+            case 3:
+                return redirect('/Health_Department/Dashboard')->with('success', 'Login successful!');
+                break;
 
-                case 4:
-                    $request->session()->regenerate();
-                    return redirect('District/Dashboard')->with('success', 'Login successful!');
-                    break;
+            case 4:
+                return redirect('/District/Dashboard')->with('success', 'Login successful!');
+                break;
 
-                case 5:
-                    $request->session()->regenerate();
-                    return redirect('Health_Center/Dashboard')->with('success', 'Login successful!');
-                    break;
+            case 5:
+                return redirect('/Health_Center/Dashboard')->with('success', 'Login successful!');
+                break;
 
-                case 6:
-                    $request->session()->regenerate();
-                    return redirect('Supplier/Dashboard')->with('success', 'Login successful!');
-                    break;
+            case 6:
+                return redirect('/Supplier/Dashboard')->with('success', 'Login successful!');
+                break;
 
-                case 6:
-                    $request->session()->regenerate();
-                    return redirect('Supplier/Dashboard')->with('success', 'Login successful!');
-                    break;
-
-                default:
-                    // Handle other roles or redirect as needed
-                    // You might want to redirect to a different page or show an error message
-                    return back()->withErrors(['email' => 'invalid email or password']);
-                    break;
-            }
-        } else {
-            // Authentication failed, return to login with an error message
-            return back()->withErrors(['email' => 'invalid email or password']);
+            default:
+                // Handle other roles or redirect as needed
+                // You might want to redirect to a different page or show an error message
+                Auth::logout(); // Log out user
+                return back()->withErrors(['email' => 'Invalid email or password']);
+                break;
         }
+    } else {
+        // Authentication failed, return to login with an error message
+        return back()->withErrors(['email' => 'Invalid email or password']);
     }
+}
+
+    // public function LoginProcess(Request $request)
+    // {
+    //     $validated = $request->validate([
+    //         "email" => ['required', 'email'],
+    //         "password" => 'required',
+    //     ]);
+
+    //     if (auth()->attempt($validated)) {
+    //         $userRole = auth()->user()->role;
+
+    //         switch ($userRole) {
+    //             case 1:
+    //                 $request->session()->regenerate();
+    //                 return redirect('/Admin/Dashboard')->with('success', 'Login successful!');
+    //                 break;
+
+    //             case 2:
+    //                 $request->session()->regenerate();
+    //                 return redirect('/Program_Manager/Dashboard')->with('success', 'Login successful!');
+    //                 break;
+
+    //             case 3:
+    //                 $request->session()->regenerate();
+    //                 return redirect('/Health_Department/Dashboard')->with('success', 'Login successful!');
+    //                 break;
+
+    //             case 4:
+    //                 $request->session()->regenerate();
+    //                 return redirect('District/Dashboard')->with('success', 'Login successful!');
+    //                 break;
+
+    //             case 5:
+    //                 $request->session()->regenerate();
+    //                 return redirect('Health_Center/Dashboard')->with('success', 'Login successful!');
+    //                 break;
+
+    //             case 6:
+    //                 $request->session()->regenerate();
+    //                 return redirect('Supplier/Dashboard')->with('success', 'Login successful!');
+    //                 break;
+
+    //             case 6:
+    //                 $request->session()->regenerate();
+    //                 return redirect('Supplier/Dashboard')->with('success', 'Login successful!');
+    //                 break;
+
+    //             default:
+    //                 // Handle other roles or redirect as needed
+    //                 // You might want to redirect to a different page or show an error message
+    //                 return back()->withErrors(['email' => 'invalid email or password']);
+    //                 break;
+    //         }
+    //     } else {
+    //         // Authentication failed, return to login with an error message
+    //         return back()->withErrors(['email' => 'invalid email or password']);
+    //     }
+    // }
 
     public function logout(Request $request)
     {

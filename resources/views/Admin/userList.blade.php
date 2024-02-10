@@ -15,20 +15,101 @@
                 @include('components.navbar.navbar')
                 <!-- / Navbar -->
 
+     
 
                 <div class="content-wrapper">
                     <!-- Content -->
 
-                    <div class="container-fluid  flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Users /</span> List of Users
-                        </h4>
 
-                        <div class="row">
+                    <div class="container-fluid  flex-grow-1 container-p-y">
+                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Users /</span> List of Users
+                        </h4> --}}
+
+                        <div class="row align-items-start ">
+                            {{-- <div class="col-md-2">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                <div class="card-header"><i class='bx bx-user text-primary fs-3'></i></div>
+                                <div class="card-body">
+                                    <h1 class="card-title">{{ $totalUser }}</h1>
+                                    <p class="card-text">Number of User</p>
+                                </div>
+                            </div>
+                        </div> --}}
+
+                            <div class="col-md-2">
+                                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                    <div class="card-header"><i class='bx bx-user text-warning fs-3'></i></div>
+                                    <div class="card-body">
+                                        <h1 class="card-title">{{ $totalAdmin }}</h1>
+                                        <p class="card-text">Admin</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                    <div class="card-header"><i class='bx bx-task text-success fs-3'></i></div>
+                                    <div class="card-body">
+                                        <h1 class="card-title">{{ $totalProgram }}</h1>
+                                        <p class="card-text">Program Manager</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                    <div class="card-header"><i class='bx bxs-map-pin text-danger fs-3'></i></div>
+                                    <div class="card-body">
+                                        <h1 class="card-title">{{ $totalDistrict }}</h1>
+                                        <p class="card-text">District Supervisor</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                    <div class="card-header"><i class='bx bx-heart text-success fs-3'></i></div>
+                                    <div class="card-body">
+                                        <h1 class="card-title">{{ $totalHc }}</h1>
+                                        <p class="card-text">Health Center Staff</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                    <div class="card-header"><i class='bx bx-first-aid text-success fs-3'></i></div>
+                                    <div class="card-body">
+                                        <h1 class="card-title">{{ $totalHd }}</h1>
+                                        <p class="card-text">Health Department Staff</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                                    <div class="card-header"><i class='bx bx-package text-warning fs-3'></i></div>
+                                    <div class="card-body">
+                                        <h1 class="card-title">{{ $totalSupplier }}</h1>
+                                        <p class="card-text">Supplier</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="row mt-2">
                             <div class="col-md-12">
                                 <div class="card mb-4">
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
-                                        <h5 class="card-header">User List</h5>
+                                        <h5 class="card-header d-flex align-items-center "><i
+                                                class='bx bx-user text-primary fs-3'>
+                                            </i> <span class="badge bg-primary">{{ $totalUser }}</span></h5>
                                         <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
                                             New</button>
@@ -43,7 +124,8 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <form action="/Admin/Store" method="POST" enctype="multipart/form-data">
+                                                    <form action="/Admin/Store" method="POST"
+                                                        enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="modal-body">
 
@@ -181,17 +263,9 @@
                                                                         <select class="form-select"
                                                                             aria-label="Default select example"
                                                                             name="role">
-                                                                            <option value="1">Admin</option>
-                                                                            <option value="2">Program Manager
-                                                                            </option>
-                                                                            <option value="3">Health Department
-                                                                                Staff
-                                                                            </option>
-                                                                            <option value="4">District Stafff
-                                                                            </option>
-                                                                            <option value="5">Brgy. Health Center
-                                                                                Staff</option>
-                                                                            <option value="6">Supplier</option>
+                                                                            @foreach ($roleData as $userRow)
+                                                                            <option value="{{ $userRow->id }}">{{ $userRow->name}}</option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -222,7 +296,8 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Name</th>
-                                                        <th>Email</th>
+                                                        {{-- <th>Name</th>
+                                                        <th>Email</th> --}}
                                                         <th>Role</th>
                                                         <th>Sex</th>
                                                         <th>Contact</th>
@@ -234,65 +309,126 @@
                                                     @foreach ($users as $user)
                                                         <tr>
                                                             <td>{{ $user->id }}</td>
+                                                            <td class="sorting_1">
+                                                                <div
+                                                                    class="d-flex justify-content-start align-items-center user-name">
+                                                                    <div class="avatar-wrapper">
+                                                                        <div class="avatar avatar-sm me-3"><img
+                                                                                src="../assets/img/avatars/1.png"
+                                                                                alt="Avatar" class="rounded-circle">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-flex flex-column"><a
+                                                                            href="app-user-view-account.html"
+                                                                            class="text-body text-truncate"><span
+                                                                                class="fw-medium">{{ $user->lastname }},
+                                                                                {{ $user->firstname }}
+                                                                                @if (isset($user->middlename) && !empty($user->middlename))
+                                                                                    {{ strtoupper(substr($user->middlename, 0, 1)) }}.
+                                                                                    </>
+                                                                                @else
+                                                                                    No middlename provided
+                                                                                @endif
+                                                                            </span>
+                                                                        </a><small
+                                                                            class="text-muted">{{ $user->email }}</small>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
 
-                                                            <td>{{ $user->lastname }}, {{ $user->firstname }}
+
+                                                            {{-- <td>{{ $user->lastname }}, {{ $user->firstname }}
                                                                 @if (isset($user->middlename) && !empty($user->middlename))
                                                                     {{ strtoupper(substr($user->middlename, 0, 1)) }}.
                                                                     </>
                                                                 @else
                                                                     No middlename provided
                                                                 @endif
-                                                            </td>
-                                                            <td>{{ $user->email }}</td>
+                                                            </td> --}}
+                                                            {{-- <td>{{ $user->email }}</td> --}}
                                                             <td>
-                                                                @switch($user->role)
-                                                                    @case(1)
-                                                                        Admin
-                                                                    @break
+                                                                <span
+                                                                    class="text-truncate d-flex align-items-center"><span
+                                                                        class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
+                                                                        @switch($user->role)
+                                                                            @case(1)
+                                                                                <i class="bx bx-cog bx-xs"></i>
+                                                                            @break
 
-                                                                    @case(2)
-                                                                        Program Manager
-                                                                    @break
+                                                                            @case(2)
+                                                                                <i class="bx bx-user bx-xs"></i>
+                                                                            @break
 
-                                                                    @case(3)
-                                                                        Health Department Staff
-                                                                    @break
+                                                                            @case(3)
+                                                                                <i class='bx bxs-first-aid'></i>
+                                                                            @break
 
-                                                                    @case(4)
-                                                                        District Staff
-                                                                    @break
+                                                                            @case(4)
+                                                                                <i class='bx bxs-pin'></i>
+                                                                            @break
 
-                                                                    @case(5)
-                                                                        Brgy. Health Center Staff
-                                                                    @case(6)
-                                                                        Supplier
-                                                                    @break
+                                                                            @case(5)
+                                                                                <i class='bx bxs-capsule'></i>
+                                                                            @break
 
-                                                                    @default
-                                                                @endswitch
+                                                                            @case(6)
+                                                                                <i class='bx bx-package bx-s'></i>
+                                                                            @break
+
+                                                                            @default
+                                                                        @endswitch
+                                                                    </span> @switch($user->role)
+                                                                        @case(1)
+                                                                            Admin
+                                                                        @break
+
+                                                                        @case(2)
+                                                                            Program Manager
+                                                                        @break
+
+                                                                        @case(3)
+                                                                            Health Department Staff
+                                                                        @break
+
+                                                                        @case(4)
+                                                                            District Staff
+                                                                        @break
+
+                                                                        @case(5)
+                                                                            Brgy. Health Center Staff
+                                                                        @break
+
+                                                                        @case(6)
+                                                                            Supplier
+                                                                        @break
+
+                                                                        @default
+                                                                    @endswitch
+                                                                </span>
                                                             </td>
                                                             <td>{{ $user->sex }}</td>
                                                             <td>{{ $user->contact }}</td>
                                                             <td>{{ $user->created_at }}</td>
 
-                                                            <td
-                                                                class="d-flex justify-content-center align-items-center">
+                                                            <td>
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    <a type="button"
+                                                                        href={{ "/Admin/User_List/$user->id" }}
+                                                                        class="text-primary" data-bs-toggle="modal"
+                                                                        data-bs-target="#exampleModal1">
+                                                                        <i class="bi bi-eye-fill"></i>
+                                                                    </a>
+
+                                                                    <a type="button"
+                                                                        href={{ "/Admin/User_List/$user->id" }}
+                                                                        class="text-primary" data-bs-toggle="modal"
+                                                                        data-bs-target="#exampleModal2">
+                                                                        <i class="bi bi-pencil-square"></i>
+                                                                    </a>
+                                                                </div>
 
 
-
-                                                                <a type="button"
-                                                                    href={{ "/Admin/User_List/$user->id" }}
-                                                                    class="text-primary" data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModal1">
-                                                                    <i class="bi bi-eye-fill"></i>
-                                                                </a>
-
-                                                                <a type="button"
-                                                                    href={{ "/Admin/User_List/$user->id" }}
-                                                                    class="text-primary" data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModal2">
-                                                                    <i class="bi bi-pencil-square"></i>
-                                                                </a>
 
 
 
