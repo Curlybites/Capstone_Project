@@ -177,7 +177,7 @@ Route::middleware(['auth', 'health_department'])->group(function () {
 
     Route::put('/Health_Department/Allocation_Edit_{id}', 'hdAllocationProgUpdate')->name('updateallocation')->middleware('auth');
     Route::delete('/Health_Department/Allocation_List{id}', 'hdAllocationProgDelete')->name('deleteallocation');
->>>>>>>>> Temporary merge branch 2
+
 });
 
 
@@ -185,8 +185,6 @@ Route::middleware(['auth', 'health_department'])->group(function () {
 Route::middleware(['auth', 'district'])->group(function () {
     Route::get('/District/Dashboard', [PageController::class,'dtDashboard']);
 });
-<<<<<<<<< Temporary merge branch 1
-=========
 
 // Route For Health Center
 Route::middleware(['auth', 'health_center'])->group(function () {
