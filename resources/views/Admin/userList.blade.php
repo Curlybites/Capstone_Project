@@ -265,17 +265,9 @@
                                                                         <select class="form-select"
                                                                             aria-label="Default select example"
                                                                             name="role">
-                                                                            <option value="1">Admin</option>
-                                                                            <option value="2">Program Manager
-                                                                            </option>
-                                                                            <option value="3">Health Department
-                                                                                Staff
-                                                                            </option>
-                                                                            <option value="4">District Stafff
-                                                                            </option>
-                                                                            <option value="5">Brgy. Health Center
-                                                                                Staff</option>
-                                                                            <option value="6">Supplier</option>
+                                                                            @foreach ($roleData as $userRow)
+                                                                            <option value="{{ $userRow->id }}">{{ $userRow->name}}</option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </div>
                                                                 </div>

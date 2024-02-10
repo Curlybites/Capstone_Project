@@ -12,8 +12,8 @@ class Barangay extends Model
     use HasFactory;
 
     protected $fillable = [
-        'district',
-        'name'
+        'name',
+        'district_id',
     ];
 
     // public function district()

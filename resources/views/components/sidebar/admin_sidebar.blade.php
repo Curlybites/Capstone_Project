@@ -178,6 +178,20 @@
             </ul>
         </li>
 
+        <li class="menu-item {{ Request::is('Admin/Role_List') ? 'active open' : '' }}">
+          <a href="javascript:void(0)" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-user"></i>
+            <div data-i18n="Extended UI">Roles</div>
+          </a>
+          <ul class="menu-sub">
+            <li class="menu-item {{ Request::is('Admin/Role_List') ? 'active' : '' }}">
+                <a href={{ '/Admin/Role_List' }} class="menu-link">
+                    <div data-i18n="Perfect Scrollbar">Roles List</div>
+                </a>
+            </li>
+        </ul>
+    </li>
+
         <li class="menu-item {{ Request::is('Admin/User_List') ? 'active open' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-user"></i>

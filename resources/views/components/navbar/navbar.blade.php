@@ -23,7 +23,8 @@
 
                 <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Program_List') ? 'Programs /' : '' }}</span>{{ Request::is('Admin/Program_List') ? ' List of Programs' : '' }} </h5>
 
-                
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Role_List') ? 'Roles /' : '' }}</span>{{ Request::is('Admin/Role_List') ? ' List of Roles' : '' }} </h5>
+
                 <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Account_Profile') ? 'Account /' : '' }}</span>{{ Request::is('Admin/Account_Profile') ? ' Profile' : '' }} </h5>
 
                 <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Account_Change_Password') ? 'Account /' : '' }}</span>{{ Request::is('Admin/Account_Change_Password') ? ' Change Password' : '' }} </h5>
@@ -111,17 +112,17 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{'/Admin/Account_Profile'}}">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a class="dropdown-item" href="#">
                             <i class="bx bx-cog me-2"></i>
                             <span class="align-middle">Settings</span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li>
                         <div class="dropdown-divider"></div>

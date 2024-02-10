@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\District;
 use App\Models\Barangay;
+use App\Models\Role;
 use App\Models\HealthCenters;
 use App\Models\Program;
 use App\Models\HealthCentersPerBarangay;
@@ -175,8 +176,33 @@ class AdminController extends Controller
 
 
         
-        return redirect('/Admin/Program_List')->with('message', 'Health Center created successfully!');
+        return redirect('/Admin/Program_List')->with('message', 'Program created successfully!');
     }
+
+    public function rolePage()
+    {
+        $user = Auth::user();
+        $roleData = Role::all();
+        return view('Admin.Rolelist', ['user'=> $user, 'roleData'=>$roleData]);
+    }
+
+    public function roleStore(Request $request)
+    {
+        $role = new Role();
+        $role->name = $request->input('roleName');
+        $role-> save();
+
+        return redirect('/Admin/Role_List')->with('message', 'Role created successfully!');
+    }
+
+    public function roleUpdate(Request $request, Role $role){
+        $role = Role::find($request->id);
+        $role->name = $request->roleName;
+        $role->save();
+        return redirect('/Admin/Role_List')->with('message', 'Update successfully!');
+    }
+
+
     public function Supplierpage()
     {
         return view('Admin.Supplierlist');
