@@ -13,6 +13,54 @@
                 {{-- <i class="bx bx-search fs-4 lh-0"></i>
                 <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
                     aria-label="Search..." /> --}}
+                <!-- Search -->
+                <div class="navbar-nav align-items-center">
+                    <div class="nav-item d-flex align-items-center">
+                        {{-- <i class="bx bx-search fs-4 lh-0"></i>
+                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
+                    aria-label="Search..." /> --}}
+                        <h5 class="fw-bold py-3 mt-3"><span
+                                class="text-muted fw-light"></span>{{ Request::is('Health_Department/Dashboard') ? 'Dashboard' : '' }}
+                        </h5>
+
+                        <h5 class="fw-bold py-3 mt-3"><span
+                                class="text-muted fw-light">{{ Request::is('Health_Department/Purchase_Order_List') ? 'Purchase Orde /' : '' }}</span>{{ Request::is('Health_Department/Purchase_Order_List') ? ' PO List' : '' }}
+                        </h5>
+
+                        <h5 class="fw-bold py-3 mt-3"><span
+                                class="text-muted fw-light">{{ Request::is('Health_Department/Item_List') ? 'Inventory /' : '' }}</span>{{ Request::is('Health_Department/Item_List') ? ' Item List' : '' }}
+                        </h5>
+
+                        <h5 class="fw-bold py-3 mt-3"><span
+                                class="text-muted fw-light">{{ Request::is('Health_Department/Allocation_List') ? 'Allocation /' : '' }}</span>{{ Request::is('Health_Department/Allocation_List') ? ' Allocation List' : '' }}
+                        </h5>
+
+                        @if (isset($allotoprogview))
+                            <h5 class="fw-bold py-3 mt-3"><span
+                                    class="text-muted fw-light">{{ Request::is('Health_Department/Allocation_View_' . $allotoprogview->id) ? 'Allocation / Allocation List / ' : '' }}</span>{{ Request::is('Health_Department/Allocation_View_' . $allotoprogview->id) ? ' Allocation Details' : '' }}
+                            </h5>
+                        @endif
+
+                        @if (isset($allotoprogedit))
+                            <h5 class="fw-bold py-3 mt-3"><span
+                                    class="text-muted fw-light">{{ Request::is('Health_Department/Allocation_Edit_' . $allotoprogedit->id) ? 'Allocation / Allocation List /' : '' }}</span>{{ Request::is('Health_Department/Allocation_Edit_' . $allotoprogedit->id) ? ' Edit Allocation' : '' }}
+                            </h5>
+                        @endif
+
+                        <h5 class="fw-bold py-3 mt-3"><span
+                                class="text-muted fw-light">{{ Request::is('Health_Department/Allocation_Process') ? 'Allocation /' : '' }}</span>{{ Request::is('Health_Department/Allocation_Process') ? ' Create Allocation' : '' }}
+                        </h5>
+
+                        <h5 class="fw-bold py-3 mt-3"><span
+                                class="text-muted fw-light">{{ Request::is('Health_Department/Profile') ? 'Account /' : '' }}</span>{{ Request::is('Health_Department/Profile') ? ' Profile' : '' }}
+                        </h5>
+
+                        <h5 class="fw-bold py-3 mt-3"><span
+                                class="text-muted fw-light">{{ Request::is('Health_Department/Profile_Change') ? 'Account /' : '' }}</span>{{ Request::is('Health_Department/Profile_Change') ? ' Change' : '' }}
+                        </h5>
+                    </div>
+                </div>
+                <!-- /Search -->
             </div>
         </div>
         <!-- /Search -->
@@ -57,11 +105,11 @@
                                             @break
 
                                             @case(4)
-                                                District Staff
+                                                District Supervisor
                                             @break
 
                                             @case(5)
-                                                Brgy. Health Center Staff 
+                                                Brgy. Health Center Staff
                                             @case(6)
                                                 Supplier
                                             @break

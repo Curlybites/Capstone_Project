@@ -18,9 +18,9 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Allocation /</span>
+                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Allocation /</span>
                             Create Allocation
-                        </h4>
+                        </h4> --}}
 
                         <div class="row">
                             <div class="col-md-12">
@@ -93,16 +93,19 @@
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            id="quantItem" onkeyup="autoCal()">
+                                                                            id="quantItem" name="alloprog_quan"
+                                                                            onkeyup="autoCal()">
                                                                     </td>
                                                                     <td
                                                                         class="align-middle
                                                                             p-0 text-center">
                                                                         <input type="text"
-                                                                            class="form-control text-center border-0">
+                                                                            class="form-control text-center border-0"
+                                                                            name="alloprog_unit">
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <select class="form-select text-center border-0"
+                                                                            name="alloprog_item"
                                                                             aria-label="Default select example">
                                                                             <option selected>Select Item
                                                                             </option>
@@ -113,25 +116,31 @@
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
-                                                                            class="form-control text-center border-0">
+                                                                            class="form-control text-center border-0"
+                                                                            name="alloprog_descript">
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            id="price" onkeyup="autoCal()">
+                                                                            name="alloprog_price" id="price"
+                                                                            onkeyup="autoCal()">
                                                                     </td>
                                                                     <td>
                                                                         <div class="float-start">
                                                                             <span class="fw-bold ">₱</span>
                                                                         </div>
                                                                         <div class="text-center">
-                                                                            <span id="totalPrice">0</span>
+                                                                            <input
+                                                                                class="text-center border-0 bg-white ms-2 fs-6"
+                                                                                type="text"
+                                                                                name="alloprog_pricetotal"
+                                                                                id="totalPrice" value="0" readonly>
+                                                                            {{-- <span id="totalPrice">0</span> --}}
                                                                         </div>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
                                                             <tfoot>
-
                                                                 <tr>
                                                                     <th colspan="6" class="text-end">
                                                                         <div class="btn btn-primary me-2"
@@ -147,7 +156,8 @@
                                                                             <input
                                                                                 class="text-center border-0 bg-white ms-2 fs-6"
                                                                                 type="text" name="items_total"
-                                                                                id="total" value="0" readonly>
+                                                                                id="total" value="0"
+                                                                                readonly>
                                                                         </div>
                                                                     </th>
                                                                 </tr>
@@ -196,21 +206,21 @@
                         // Create a new row element
                         var newRow = '<tr>' +
                             '<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" id="quantItem" onkeyup="autoCal()"></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0"></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_quan" id="quantItem" onkeyup="autoCal()"></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_unit"></td>' +
                             '<td class="align-middle p-0 text-center">' +
-                            '<select class="form-select text-center border-0" aria-label="Default select example">' +
+                            '<select class="form-select text-center border-0" name="alloprog_item" aria-label="Default select example">' +
                             '<option selected>Select Item</option>' +
                             '<option value="1">One</option>' +
                             '<option value="2">Two</option>' +
                             '<option value="3">Three</option>' +
                             '</select>' +
                             '</td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0"></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" id="price" onkeyup="autoCal()"></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_descript"></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_price" id="price" onkeyup="autoCal()"></td>' +
                             '<td>' +
                             '<div class="float-start"><span class="fw-bold">₱</span></div>' +
-                            '<div class="text-center"><span id="totalPrice">0</span></div>' +
+                            '<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog_pricetotal" id="totalPrice" value="0" readonly></div>' +
                             '</td>' +
                             '</tr>';
 
@@ -222,7 +232,7 @@
                     function removeRow(button) {
                         var row = $(button).closest("tr");
                         var total = $("#total").val();
-                        var price = row.find("#totalPrice").text();
+                        var price = row.find("#totalPrice").val();
                         total -= price;
 
                         $("#total").val(total);
@@ -236,12 +246,12 @@
                             var quant = $(this).find("#quantItem").val();
                             var price = $(this).find("#price").val();
                             var totalPrice = quant * price;
-                            $(this).find("#totalPrice").text(totalPrice.toLocaleString());
+                            $(this).find("#totalPrice").val(totalPrice);
                             total += totalPrice;
                         });
 
                         // $("#subtotal").text(subtotal.toLocaleString());
-                        $("#total").val(total.toLocaleString());
+                        $("#total").val(total);
                     }
                 </script>
 
