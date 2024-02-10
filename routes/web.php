@@ -171,12 +171,12 @@ Route::middleware(['auth', 'supplier'])->group(function () {
 
 
 // Supplier Route
-Route::controller(SupplierController::class)->group(function () {
-    Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
-    Route::get('/Supplier/Account_Profile', 'profileSupplier')->middleware('auth');
-    Route::get('/Supplier/Account_Change_Password', 'profileChangeSupplier')->middleware('auth');
-    Route::get('/Supplier/PPMP_List', 'ppmp')->middleware('auth');
-});
+// Route::controller(SupplierController::class)->group(function () {
+//     Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
+//     Route::get('/Supplier/Account_Profile', 'profileSupplier')->middleware('auth');
+//     Route::get('/Supplier/Account_Change_Password', 'profileChangeSupplier')->middleware('auth');
+//     Route::get('/Supplier/PPMP_List', 'ppmp')->middleware('auth');
+// });
 
 // Program Manager route
 Route::controller(ProgramManagerController::class)->group(function () {
