@@ -15,9 +15,7 @@
                 @include('components.navbar.navbar')
                 <!-- / Navbar -->
 
-                <div class="card">
 
-                </div>
 
                 <div class="content-wrapper">
                     <!-- Content -->
