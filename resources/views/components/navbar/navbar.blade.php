@@ -13,6 +13,38 @@
                 {{-- <i class="bx bx-search fs-4 lh-0"></i>
                 <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
                     aria-label="Search..." /> --}}
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light"></span>{{ Request::is('Admin/Dashboard') ? 'Dashboard' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Health_Center_List') ? 'Health Center /' : '' }}</span>{{ Request::is('Admin/Health_Center_List') ? ' List of Health Center' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Barangay_List') ? 'Health Center /' : '' }}</span>{{ Request::is('Admin/Barangay_List') ? ' List of Barangay' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/District_List') ? 'District /' : '' }}</span>{{ Request::is('Admin/District_List') ? ' List of District' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Program_List') ? 'Programs /' : '' }}</span>{{ Request::is('Admin/Program_List') ? ' List of Programs' : '' }} </h5>
+
+                
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Account_Profile') ? 'Account /' : '' }}</span>{{ Request::is('Admin/Account_Profile') ? ' Profile' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Account_Change_Password') ? 'Account /' : '' }}</span>{{ Request::is('Admin/Account_Change_Password') ? ' Change Password' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/User_List') ? 'Users /' : '' }}</span>{{ Request::is('Admin/User_List') ? ' List of Users' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Supplier/Account_Change_Password') ? 'Account /' : '' }}</span>{{ Request::is('Supplier/Account_Change_Password') ? ' Change Password' : '' }} </h5>
+
+
+                {{-- Supplier navbar --}}
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light"></span>{{ Request::is('Supplier/Dashboard') ? 'Dashboard' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Supplier/Item_List') ? 'Item /' : '' }}</span>{{ Request::is('Supplier/Item_List') ? ' List of Items' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Supplier/PPMP_List') ? 'PPMP /' : '' }}</span>{{ Request::is('Supplier/PPMP_List') ? ' List of PPMP' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Supplier/Account_Profile') ? 'Account /' : '' }}</span>{{ Request::is('Supplier/Account_Profile') ? ' Profile' : '' }} </h5>
+
+                {{-- Supplier/Account_Profile --}}
+
+
                 <!-- Search -->
                 <div class="navbar-nav align-items-center">
                     <div class="nav-item d-flex align-items-center">
@@ -61,6 +93,7 @@
                     </div>
                 </div>
                 <!-- /Search -->
+=========
                 <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light"></span>{{ Request::is('Admin/Dashboard') ? 'Dashboard' : '' }} </h5>
 
                 <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Health_Center_List') ? 'Health Center /' : '' }}</span>{{ Request::is('Admin/Health_Center_List') ? ' List of Health Center' : '' }} </h5>
@@ -93,6 +126,7 @@
                 {{-- Supplier/Account_Profile --}}
 
 
+>>>>>>>>> Temporary merge branch 2
             </div>
         </div>
         <!-- /Search -->

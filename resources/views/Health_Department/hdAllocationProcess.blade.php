@@ -225,7 +225,7 @@
                             `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
                             i + `][alloprog_price]" id="price" onkeyup="autoCal()"></td>` +
                             `<td>` +
-                            `<div class="float-start"><span class="fw-bold">₱</span></div>` +
+                            `<div class="float-start"><span class="fw-bold">₱</span></div>` + 
                             `<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog[` +
                             i + `][alloprog_pricetotal]" id="totalPrice" value="0" readonly></div>` +
                             `</td>` +
