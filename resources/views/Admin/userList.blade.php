@@ -304,7 +304,8 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Name</th>
-                                                        <th>Email</th>
+                                                        {{-- <th>Name</th>
+                                                        <th>Email</th> --}}
                                                         <th>Role</th>
                                                         <th>Sex</th>
                                                         <th>Contact</th>
@@ -316,42 +317,78 @@
                                                     @foreach ($users as $user)
                                                         <tr>
                                                             <td>{{ $user->id }}</td>
+                                                            <td class="sorting_1"><div class="d-flex justify-content-start align-items-center user-name"><div class="avatar-wrapper"><div class="avatar avatar-sm me-3"><img src="../assets/img/avatars/1.png" alt="Avatar" class="rounded-circle"></div></div><div class="d-flex flex-column"><a href="app-user-view-account.html" class="text-body text-truncate"><span class="fw-medium">{{ $user->lastname }}, {{ $user->firstname }}
+                                                                @if (isset($user->middlename) && !empty($user->middlename))
+                                                                    {{ strtoupper(substr($user->middlename, 0, 1)) }}.
+                                                                    </>
+                                                                @else
+                                                                    No middlename provided
+                                                                @endif</span></a><small class="text-muted">{{ $user->email }}</small></div></div></td>
+                                                           
 
-                                                            <td>{{ $user->lastname }}, {{ $user->firstname }}
+                                                            {{-- <td>{{ $user->lastname }}, {{ $user->firstname }}
                                                                 @if (isset($user->middlename) && !empty($user->middlename))
                                                                     {{ strtoupper(substr($user->middlename, 0, 1)) }}.
                                                                     </>
                                                                 @else
                                                                     No middlename provided
                                                                 @endif
-                                                            </td>
-                                                            <td>{{ $user->email }}</td>
+                                                            </td> --}}
+                                                            {{-- <td>{{ $user->email }}</td> --}}
                                                             <td>
-                                                                @switch($user->role)
+                                                                <span class="text-truncate d-flex align-items-center"><span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
+                                                                    @switch($user->role)
                                                                     @case(1)
-                                                                        Admin
+                                                                    <i class="bx bx-cog bx-xs"></i>
                                                                     @break
 
                                                                     @case(2)
-                                                                        Program Manager
+                                                                    <i class="bx bx-user bx-xs"></i>
                                                                     @break
 
                                                                     @case(3)
-                                                                        Health Department Staff
+                                                                    <i class='bx bxs-first-aid' ></i>
                                                                     @break
 
                                                                     @case(4)
-                                                                        District Staff
+                                                                    <i class='bx bxs-pin'></i>
                                                                     @break
 
                                                                     @case(5)
-                                                                        Brgy. Health Center Staff
+                                                                    <i class='bx bxs-capsule' ></i>
+                                                                    @break
                                                                     @case(6)
-                                                                        Supplier
+                                                                    <i class='bx bx-package bx-s' ></i>
                                                                     @break
 
                                                                     @default
                                                                 @endswitch
+                                                                  </span>  @switch($user->role)
+                                                                @case(1)
+                                                                    Admin
+                                                                @break
+
+                                                                @case(2)
+                                                                    Program Manager
+                                                                @break
+
+                                                                @case(3)
+                                                                    Health Department Staff
+                                                                @break
+
+                                                                @case(4)
+                                                                    District Staff
+                                                                @break
+
+                                                                @case(5)
+                                                                    Brgy. Health Center Staff
+                                                                @break
+                                                                @case(6)
+                                                                    Supplier
+                                                                @break
+
+                                                                @default
+                                                            @endswitch</span>
                                                             </td>
                                                             <td>{{ $user->sex }}</td>
                                                             <td>{{ $user->contact }}</td>
