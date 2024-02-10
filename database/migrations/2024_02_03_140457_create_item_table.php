@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('districts', function (Blueprint $table) {
+        Schema::create('item', function (Blueprint $table) {
             $table->id();
-            $table->integer('number');
-            $table->string('supervisor');
+            $table->string('item_name');
+            $table->text('item_description');
+            $table->decimal('item_price');
+            $table->date('date_creation');
+            $table->date('date_expiration');
+            $table->string('status');
+            $table->string('item_image')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('districts');
+        Schema::dropIfExists('item');
     }
 };

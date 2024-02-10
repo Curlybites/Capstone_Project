@@ -20,11 +20,11 @@
                     @if (session('success'))
                         @include('components.insertnotification')
                     @endif
-                    
+
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Barangay /</span> List of
+                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Barangay /</span> List of
                             Barangays
-                        </h4>
+                        </h4> --}}
 
                         <div class="row">
                             <div class="col-md-12">
@@ -52,28 +52,32 @@
                                                         <div class="modal-body">
 
                                                             <div class="row">
-
                                                                 <h5>Barangay Details</h5>
-                                                                {{-- <div class="col">
-                                                                    <p>District Number</p>                                
-                                                                    <select class="form-select" name="districtNumber" aria-label="Default select example">
-                                                                    @foreach ($barangay as $data)  
-                                                                        <option value="{{ $data->number }}">District {{ $data->number }}</option>
-                                                                    @endforeach
-                                                                      </select>
-                                                                </div> --}}
-
-                                                            </div>
-
-                                                            <div class="col">
-                                                                <p>Barangay Name</p>
-                                                                <div class="input-group mb-3">
-                                                                    <input type="text" class="form-control"
-                                                                        aria-label="Sizing example input"
-                                                                        aria-describedby="inputGroup-sizing-default"
-                                                                        name="barangayName" required>
+                                                                <div class="col">
+                                                                    <p>Barangay Name</p>
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="text" class="form-control"
+                                                                            aria-label="Sizing example input"
+                                                                            aria-describedby="inputGroup-sizing-default"
+                                                                            name="barangayName" required>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
+                                                                <div class="col">
+                                                                    <p>District</p>
+                                                                    <select class="form-select"
+                                                                        name="districtNumber"
+                                                                        aria-label="Default select example">
+                                                                        <option selected>Choose District
+                                                                        </option>
+                                                                        @foreach ($districtData as $barangayRow)
+                                                                            <option
+                                                                                value="{{ $barangayRow->id }}">
+                                                                                {{ $barangayRow->number }}
+                                                                                </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div> 
 
                                                         </div>
                                                         <div class="modal-footer border-1">
@@ -97,7 +101,6 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        {{-- <th>District</th> --}}
                                                         <th>Barangay Name</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -106,9 +109,8 @@
                                                     @foreach ($barangayData as $barangayRow)
                                                         <tr>
                                                             <td>{{ $barangayRow->id }}</td>
-                                                            {{-- <td>{{ $barangayRow->district }}</td> --}}
                                                             <td>{{ $barangayRow->name }}</td>
-                                                            <td class="">
+                                                            <td>
                                                                 {{-- <a
                                                                 type="button" href=/Admin/User_List/1
                                                                 class="text-primary" data-bs-toggle="modal"
@@ -125,31 +127,6 @@
                                                             </td>
                                                         </tr>
 
-                                                        <div class="modal fade" id="exampleModal1" tabindex="-1"
-                                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">
-                                                                            Profile View</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal"
-                                                                            aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Close</button>
-                                                                        <button type="button"
-                                                                            class="btn btn-primary">Save
-                                                                            changes</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
                                                         <div class="modal fade" id="exampleModal2{{ $barangayRow->id }}" tabindex="-1"
                                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered">
@@ -162,38 +139,31 @@
                                                                             aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <form
-                                                                            action={{ "/Admin/Barangay_List/$barangayRow->id" }}
-                                                                            method="POST">
+                                                                        <form action={{ "/Admin/Barangay_List/$barangayRow->id" }} method="POST">
                                                                             @csrf
                                                                             @method('PUT')
-
-                                                                            <div class="row">
-                                                                                <p>Barangay Name</p>
-                                                                                <div class="input-group mb-3">
-                                                                                    
-                                                                                        <input type="text"
-                                                                                            class="form-control"
+                                                                                        
+                                                                                <div class="row">
+                                                                                    <p>Barangay Name</p>
+                                                                                    <div class="input-group mb-3">
+                                                                                        <input type="text" class="form-control"
                                                                                             aria-label="Sizing example input"
                                                                                             aria-describedby="inputGroup-sizing-default"
-                                                                                            name="barangayName"
-                                                                                            value="{{ $barangayRow->name }}">
+                                                                                            name="barangayName" value="{{ $barangayRow->name }}" >
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-
+                                                                     
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <button type="button"
-                                                                            class="btn btn-secondary"
+                                                                        <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Close</button>
                                                                         <button type="submit"
-                                                                            class="btn btn-primary">Save
-                                                                            changes</button>
+                                                                            class="btn btn-primary">Save changes</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        </form>
+                                                    </form>
                                                     @endforeach
                                                 </tbody>
 
