@@ -32,11 +32,11 @@ Route::get('/',[PageController::class,'AdminLogin'])->name('login');
 
 //Route for User Controller 
 Route::controller(UserController::class)->group(function () {
-    // Route::get('/Admin/User_List', 'userlistPage');
-    // Route::post('/Admin/Store', 'store');
-    // Route::get('/Admin/Add_User', 'createUserPage')->middleware('auth');
-    // Route::get('/Admin/User_List', 'userList')->middleware('auth');
-    // Route::get('/Admin/User_List/$id',)->middleware('auth');
+    Route::get('/Admin/User_List', 'userlistPage');
+    Route::post('/Admin/Store', 'store');
+    Route::get('/Admin/Add_User', 'createUserPage')->middleware('auth');
+    Route::get('/Admin/User_List', 'userList')->middleware('auth');
+    Route::get('/Admin/User_List/$id',)->middleware('auth');
     Route::post('/Login/Process', 'LoginProcess');
     Route::post('/Logout', 'logout');
     Route::get('/change-password', 'changePassword')->name('changePassword');
@@ -76,7 +76,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
         Route::get('/Admin/Program_List', 'Programpage');
         Route::post('/Admin/Program_Store', 'programStore');
-        Route::put('Admin/Program_List/{id}', 'programUpdate');
+        Route::put('/Admin/Program_List/{id}', 'programUpdate');
+
+        Route::get('/Admin/Role_List', 'rolePage');
+        Route::post('/Admin/Role_Store', 'roleStore');
+        Route::put('/Admin/Role_List/{id}', 'roleUpdate');
     });
 
 
