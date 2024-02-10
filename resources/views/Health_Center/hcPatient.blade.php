@@ -87,10 +87,10 @@
                                                                         <select class="form-select"
                                                                             aria-label="Default select example"
                                                                             name="gender">
-                                                                            <option selected>Select Gender</option>
+                                                                            <option selected disabled>Select Gender</option>
                                                                             <option value="Male">Male</option>
                                                                             <option value="Female">Female</option>
-                                                                            <option value="Bading">Bading</option>
+                                                                            <option value="Bading">LGBT</option>
                                                                         </select>
                                                                     </div>
 
@@ -126,7 +126,7 @@
                                                                         <select class="form-select"
                                                                             aria-label="Default select example"
                                                                             name="status">
-                                                                            <option selected>Select Status</option>
+                                                                            <option selected disabled>Select Status</option>
                                                                             <option value="1">Active</option>
                                                                             <option value="2">Inactive</option>
                                                                         </select>
@@ -214,11 +214,11 @@
                                                                                 data-bs-target="#exampleModal2{{ $data->id }}">
                                                                                 <i class="bi bi-pencil-square"></i>
                                                                                 Edit</a></li>
-                                                                        <li class="p-2"><a type="button"
+                                                                        {{-- <li class="p-2"><a type="button"
                                                                                 href="{{ url('/Health_Center/Patient_Sent_Item' . $data->id) }}"
                                                                                 class="text-warning"> <i
                                                                                     class='bx bx-arrow-to-right'></i>
-                                                                                Send Items</a></i>
+                                                                                Send Items</a></i> --}}
                                                                     </ul>
                                                                 </div>
                                                             </td>
