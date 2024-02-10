@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('allocateitemtoprogs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('allocateIDprogs');
+            $table->unsignedBigInteger('allocateIDprogs')->nullable();
             $table->integer('alloprog_quan');
             $table->string('alloprog_unit');
             $table->string('alloprog_item');

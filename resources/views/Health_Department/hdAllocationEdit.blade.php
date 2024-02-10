@@ -46,18 +46,12 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Program</label>
                                                             <select class="form-select" name="program"
-                                                                aria-label="Default select example">
+                                                                aria-label="Default select example"
+                                                                value="{{ $allotoprogedit->program }}">
                                                                 <option selected>Select Program</option>
-                                                                <option value="option1"
-                                                                    {{ $allotoprogedit->program == 'option1' ? 'selected' : '' }}>
-                                                                    {{ $allotoprogedit->program }}</option>
-                                                                <option value="option2"
-                                                                    {{ $allotoprogedit->program == 'option2' ? 'selected' : '' }}>
-                                                                    {{ $allotoprogedit->program }}</option>
-                                                                <option value="option3"
-                                                                    {{ $allotoprogedit->program == 'option3' ? 'selected' : '' }}>
-                                                                    {{ $allotoprogedit->program }}</option>
-
+                                                                <option value="One">One</option>
+                                                                <option value="Two">Two</option>
+                                                                <option value="Three">Three</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
@@ -107,14 +101,16 @@
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
                                                                             id="quantItem" name="alloprog_quan"
-                                                                            onkeyup="autoCal()">
+                                                                            onkeyup="autoCal()"
+                                                                            value="{{ $joinedData->alloprog_quan }}">
                                                                     </td>
                                                                     <td
                                                                         class="align-middle
                                                                             p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            name="alloprog_unit">
+                                                                            name="alloprog_unit"
+                                                                            value="{{ $joinedData->alloprog_unit }}">
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <select class="form-select text-center border-0"
@@ -130,13 +126,15 @@
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            name="alloprog_descript">
+                                                                            name="alloprog_descript"
+                                                                            value="{{ $joinedData->alloprog_descript }}">
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
                                                                             name="alloprog_price" id="price"
-                                                                            onkeyup="autoCal()">
+                                                                            onkeyup="autoCal()"
+                                                                            value="{{ $joinedData->alloprog_price }}">
                                                                     </td>
                                                                     <td>
                                                                         <div class="float-start">
@@ -147,7 +145,9 @@
                                                                                 class="text-center border-0 bg-white ms-2 fs-6"
                                                                                 type="text"
                                                                                 name="alloprog_pricetotal"
-                                                                                id="totalPrice" value="0" readonly>
+                                                                                id="totalPrice"
+                                                                                value="{{ $joinedData->alloprog_pricetotal }}"
+                                                                                readonly>
                                                                             {{-- <span id="totalPrice">0</span> --}}
                                                                         </div>
                                                                     </td>
@@ -157,7 +157,8 @@
                                                                 <tr>
                                                                     <th colspan="6" class="text-end">
                                                                         <div class="btn btn-primary me-2"
-                                                                            style="font-size: 10px" onclick="addRow()">
+                                                                            style="font-size: 10px"
+                                                                            onclick="addRow()">
                                                                             Add
                                                                             Row</div><span>Total</span>
                                                                     </th>
@@ -189,18 +190,16 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="">Status</label>
-                                                            <select class="form-select" name="item_status"
-                                                                aria-label="Default select example">
-                                                                <option selected>Select Status</option>
-                                                                <option>{{ $allotoprogedit->item_status }}</option>
-
-                                                            </select>
+                                                            <p class="text-success">{{ $allotoprogedit->item_status }}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                     <div class="col-4">
                                                         <button type="submit" class="btn btn-primary"
                                                             onclick="save()">Save</button>
-                                                        <div class="btn btn-danger">Cancel</div>
+                                                        <a class="btn btn-danger"
+                                                            href="{{ '/Health_Department/Allocation_List' }}">Cancel
+                                                        </a>
                                                     </div>
                                                 </form>
 

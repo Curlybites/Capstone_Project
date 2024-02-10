@@ -93,7 +93,8 @@
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            id="quantItem" name="alloprog_quan"
+                                                                            id="quantItem"
+                                                                            name="alloprog[0][alloprog_quan]"
                                                                             onkeyup="autoCal()">
                                                                     </td>
                                                                     <td
@@ -101,29 +102,28 @@
                                                                             p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            name="alloprog_unit">
+                                                                            name="alloprog[0][alloprog_unit]">
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <select class="form-select text-center border-0"
-                                                                            name="alloprog_item"
+                                                                            name="alloprog[0][alloprog_item]"
                                                                             aria-label="Default select example">
-                                                                            <option selected>Select Item
-                                                                            </option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
+                                                                            <option selected>Select Program</option>
+                                                                            <option value="One">One</option>
+                                                                            <option value="Two">Two</option>
+                                                                            <option value="Three">Three</option>
                                                                         </select>
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            name="alloprog_descript">
+                                                                            name="alloprog[0][alloprog_descript]">
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            name="alloprog_price" id="price"
-                                                                            onkeyup="autoCal()">
+                                                                            name="alloprog[0][alloprog_price]"
+                                                                            id="price" onkeyup="autoCal()">
                                                                     </td>
                                                                     <td>
                                                                         <div class="float-start">
@@ -133,7 +133,7 @@
                                                                             <input
                                                                                 class="text-center border-0 bg-white ms-2 fs-6"
                                                                                 type="text"
-                                                                                name="alloprog_pricetotal"
+                                                                                name="alloprog[0][alloprog_pricetotal]"
                                                                                 id="totalPrice" value="0" readonly>
                                                                             {{-- <span id="totalPrice">0</span> --}}
                                                                         </div>
@@ -200,29 +200,36 @@
                 </div>
 
                 <script>
+                    var i = 0;
+
                     function addRow() {
                         // Clone the first row
-
-                        // Create a new row element
-                        var newRow = '<tr>' +
-                            '<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_quan" id="quantItem" onkeyup="autoCal()"></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_unit"></td>' +
-                            '<td class="align-middle p-0 text-center">' +
-                            '<select class="form-select text-center border-0" name="alloprog_item" aria-label="Default select example">' +
-                            '<option selected>Select Item</option>' +
-                            '<option value="1">One</option>' +
-                            '<option value="2">Two</option>' +
-                            '<option value="3">Three</option>' +
-                            '</select>' +
-                            '</td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_descript"></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_price" id="price" onkeyup="autoCal()"></td>' +
-                            '<td>' +
-                            '<div class="float-start"><span class="fw-bold">₱</span></div>' +
-                            '<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog_pricetotal" id="totalPrice" value="0" readonly></div>' +
-                            '</td>' +
-                            '</tr>';
+                        ++i;
+                        var newRow = `<tr>` +
+                            `<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
+                            i + `][alloprog_quan]" id="quantItem" onkeyup="autoCal()"></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
+                            i + `][alloprog_unit]"></td>` +
+                            `<td class="align-middle p-0 text-center">` +
+                            `<select class="form-select text-center border-0" name="alloprog[` + i +
+                            `][alloprog_item]" aria-label="Default select example">` +
+                            `<option selected>Select Program</option>` +
+                            `<option value="One">One</option>` +
+                            `<option value="Two">Two</option>` +
+                            `<option value="Three">Three</option>` +
+                            `</select>` +
+                            `</td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
+                            i + `][alloprog_descript]"></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
+                            i + `][alloprog_price]" id="price" onkeyup="autoCal()"></td>` +
+                            `<td>` +
+                            `<div class="float-start"><span class="fw-bold">₱</span></div>` +
+                            `<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog[` +
+                            i + `][alloprog_pricetotal]" id="totalPrice" value="0" readonly></div>` +
+                            `</td>` +
+                            `</tr>`;
 
                         // Append the new row to the tbody
                         $('.addTBRow').append(newRow);
