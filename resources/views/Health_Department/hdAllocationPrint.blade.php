@@ -38,23 +38,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{{ $joinedData->alloprog_quan }}</td>
-                        <td>{{ $joinedData->alloprog_unit }}</td>
-                        <td>{{ $joinedData->alloprog_item }}</td>
-                        <td>{{ $joinedData->alloprog_descript }}</td>
-                        <td>{{ $joinedData->alloprog_price }}</td>
-                        <td>
-                            <div class="float-start">
-                                <span class="fw-bold fs-6">₱</span>
-                            </div>
-                            <div class="text-center">
-                                <span class="text-center border-0 bg-white fs-6">
-                                    {{ $joinedData->alloprog_pricetotal }}
-                                </span>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach ($joinedData as $joinedDatas)
+                        <tr>
+                            <td>{{ $joinedDatas->alloprog_quan }}</td>
+                            <td>{{ $joinedDatas->alloprog_unit }}</td>
+                            <td>{{ $joinedDatas->alloprog_item }}</td>
+                            <td>{{ $joinedDatas->alloprog_descript }}</td>
+                            <td>{{ $joinedDatas->alloprog_price }}</td>
+                            <td>
+                                <div class="float-start">
+                                    <span class="fw-bold fs-6">₱</span>
+                                </div>
+                                <div class="text-center">
+                                    <span class="text-center border-0 bg-white fs-6">
+                                        {{ $joinedDatas->alloprog_pricetotal }}
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
