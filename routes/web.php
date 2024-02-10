@@ -11,10 +11,13 @@ use App\Http\Controllers\DistrictController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+<<<<<<< Updated upstream
 use App\Http\Controllers\PatientController;
 
 
 
+=======
+>>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,7 +36,10 @@ use App\Http\Controllers\PatientController;
 
 // Route For Login
 Route::get('/', [PageController::class, 'AdminLogin'])->name('login');
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 //Route for User Controller 
 Route::controller(UserController::class)->group(function () {
@@ -117,6 +123,7 @@ Route::middleware(['auth', 'health_department'])->group(function () {
     Route::get('/Health_Department/Purchase_Order_View', [HdController::class, 'hdPurchaseOrderView']);
     Route::get('/Health_Department/Purchase_Order_List', [HdController::class, 'hdPurchaseOrderList']);
     Route::get('/Health_Department/Profile_Change', [HdController::class, 'hdAccountChange']);
+<<<<<<< Updated upstream
 
     Route::post('/Health_Department/Allocation_Process', [HdController::class, 'hdAllocationtoProg'])->name('allocate');
     Route::put('/Health_Department/Allocation_Edit_{id}', [HdController::class, 'hdAllocationProgUpdate'])->name('updateallocation');
@@ -132,6 +139,23 @@ Route::middleware(['auth', 'district'])->group(function () {
 // Route For Health Center
 Route::middleware(['auth', 'health_center'])->group(function () {
     Route::get('/Health_Center/Dashboard', [PageController::class, 'hcDashboard']);
+=======
+    Route::post('/Health_Department/Allocation_Process', [HdController::class, 'hdAllocationtoProg'])->name('allocate');
+
+
+    Route::put('/Health_Department/Allocation_Edit_{id}', [HdController::class, 'hdAllocationProgUpdate'])->name('updateallocation');
+    Route::delete('/Health_Department/Allocation_List{id}', [HdController::class, 'hdAllocationProgDelete'])->name('deleteallocation');
+    // Route::('/Health_Department/Allocation_List{id}', '')->name('deleteallocation');
+});
+
+
+// Supplier Route
+Route::controller(SupplierController::class)->group(function () {
+    Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
+    Route::get('/Supplier/Account_Profile', 'profileSupplier')->middleware('auth');
+    Route::get('/Supplier/Account_Change_Password', 'profileChangeSupplier')->middleware('auth');
+    Route::get('/Supplier/PPMP_List', 'ppmp')->middleware('auth');
+>>>>>>> Stashed changes
 });
 
 
