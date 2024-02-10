@@ -44,7 +44,24 @@ Route::controller(UserController::class)->group(function () {
 
 
 
+<<<<<<< Updated upstream
 <<<<<<<<< Temporary merge branch 1
+=======
+// Route For Admin
+Route::middleware(['auth', 'admin'])->group(function () {
+
+    Route::get('/Admin/Dashboard', [PageController::class,'adminDashboard']);
+
+    Route::post('/Admin/Store', [UserController::class,'store']);
+    Route::get('/Admin/Add_User', [UserController::class,'createUserPage']);
+    Route::get('/Admin/User_List', [UserController::class,'userList']);
+    Route::get('/Admin/User_List/$id', [UserController::class,'']);
+    
+    // Route::post('/Logout', [UserController::class,'logout']);
+    // Route::get('/change-password', [UserController::class,'changePassword']);
+    // Route::get('/change-password', [UserController::class,'changePass']);
+}
+>>>>>>> Stashed changes
 Route::controller(AdminController::class)->group(function () {
     Route::post('/Admin/District_Store', 'districtStore');
     Route::post('/Admin/Barangay_Store', 'barangayStore');
