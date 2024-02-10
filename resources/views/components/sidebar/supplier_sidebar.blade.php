@@ -1,4 +1,4 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme border border-top-0 border-bottom-0 border-start-0">
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand d-flex align-items-center justify-content-center p-3">
         <a href={{ '/Supplier/Dashboard' }} class="app-brand-link ">
             <img src="../assets/img/download.png" width="100" class="">

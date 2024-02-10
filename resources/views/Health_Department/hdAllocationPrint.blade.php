@@ -1,3 +1,6 @@
+@include('components.header')
+
+<body class="container-fluid">
     <div class="card-body">
         <div class="pb-4">
             <p style="margin-bottom: 0px; font-weight: bold;">Program</p>
@@ -17,7 +20,7 @@
             </div>
             <div class="col-md-4 col-4 mb-md-0 mb-3">
                 <p style="margin-bottom: 0px; font-weight: bold;">P.O #</p>
-                <p style="margin-bottom: 0px;">PO-{{ $allotoprogview->POnum }}</p>
+                <p style="margin-bottom: 0px;">PO-94619964639</p>
             </div>
             <div class="col-md-4 col-4">
                 <p style="margin-bottom: 0px; font-weight: bold;">Date Created:</p>
@@ -28,9 +31,9 @@
             <table id="" class="datatables-basic table border-top table-bordered" style="width:100%">
                 <thead>
                     <tr class="text-center">
-                        <th>Qty</th>
+                        <th>Item Name</th>
                         <th>Unit</th>
-                        <th>Item</th>
+                        <th>Quantity</th>
                         <th>Description</th>
                         <th>Price</th>
                         <th>Total Amount</th>
@@ -39,37 +42,24 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{ $joinedData->alloprog_quan }}</td>
-                        <td>{{ $joinedData->alloprog_unit }}</td>
-                        <td>{{ $joinedData->alloprog_item }}</td>
-                        <td>{{ $joinedData->alloprog_descript }}</td>
-                        <td>{{ $joinedData->alloprog_price }}</td>
-                        <td>
-                            <div class="float-start">
-                                <span class="fw-bold fs-6">₱</span>
-                            </div>
-                            <div class="text-center">
-                                <span class="text-center border-0 bg-white fs-6">
-                                    {{ $joinedData->alloprog_pricetotal }}
-                                </span>
-                            </div>
-                        </td>
+                        <td>Paracetamol</td>
+                        <td>Per Box</td>
+                        <td>30</td>
+                        <td>Sample Item Only. Test 101</td>
+                        <td>12</td>
+                        <td>20</td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
-                        {{-- <th colspan="4" class="text-end"></th> --}}
-                        <th colspan="5" class="fs-6 text-end">Total:</th>
-                        <th class="fs-6 text-center">
-                            <div class="float-start">
-                                <span class="fw-bold fs-6">₱</span>
-                            </div>
-                            <div class="text-center">
-                                <span class="text-center border-0 bg-white fs-6">
-                                    {{ $allotoprogview->items_total }}
-                                </span>
-                            </div>
-                        </th>
+                        <th colspan="4"></th>
+                        <th class="fs-6">Sub Total:</th>
+                        <th class="fs-6">1000</th>
+                    </tr>
+                    <tr>
+                        <th colspan="4"></th>
+                        <th class="fs-6">Total:</th>
+                        <th class="fs-6">255</th>
                     </tr>
                 </tfoot>
             </table>
@@ -78,11 +68,14 @@
         <div class="row mt-5">
             <div class="col-xxl-6 col-6 mb-md-0 mb-2">
                 <p style="margin-bottom: 0px; font-weight: bold;">Note:</p>
-                <p style="margin-bottom: 0px;">{{ $allotoprogview->notes }}</p>
+                <p style="margin-bottom: 0px;">Sample Purchase Order
+                    Only</p>
             </div>
             <div class="col-md-1 col-6">
                 <p style="margin-bottom: 0px; font-weight: bold;">Status:</p>
-                <p class="text-success">{{ $allotoprogview->item_status }}</p>
+                <p class="text-success">Approved</p>
             </div>
         </div>
     </div>
+</body>
+@include('components.footer')

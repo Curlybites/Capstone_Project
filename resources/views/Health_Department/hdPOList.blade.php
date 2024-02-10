@@ -19,21 +19,25 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Purchase Order /</span>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Purchase Order /</span>
                             PO List
-                        </h4> --}}
+                        </h4>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card mb-4">
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
-                                        <h5 class="card-header">Purchase Order List</h5>
+                                        <h5 class="card-header"></h5>
+                                        {{-- <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
+                                            New</button> --}}
+
 
                                     </div>
 
                                     <hr class="my-0">
                                     <!-- Account -->
-                                    <div class="card-body px-5">
+                                    <div class="card-body p-5 ">
                                         <div class="table-responsive text-nowrap">
                                             <table id="dataTable" class="datatables-basic table   border-top "
                                                 style="width:100%">
