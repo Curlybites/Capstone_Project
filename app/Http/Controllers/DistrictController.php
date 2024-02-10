@@ -2,42 +2,59 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
+use App\Models\Barangay;
+use App\Models\District;
 use Illuminate\Http\Request;
-use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class DistrictController extends Controller
 {
-    public function profileDistrict()
+    public function districtlistPage()
     {
+        $districts = District::with('district')->get();
+        $barangays = Barangay::with('barangay')->get();
         $user = Auth::user();
-        return view('District.profile.profile', ['user' => $user]);
-    }
 
-    public function profileChangeDistrict()
+        return view('district.districtList', ['districts' => $districts,'user'=>$user]);
+ 
+    }
+    public function create()
     {
-        $user = Auth::user();
-        return view('District.profile.change_pass', ['user' => $user]);
+        return view('district.create');
     }
-
-    public function inventoryDistrict()
+    public function store(Request $request)
     {
-        return view('District.dtInventory');
+        $request->validate([
+            'number' => 'required|integer',
+        ]);
+
+        District::create($request->all());
+
+        return redirect()->route('district.districtList')->with('success', 'District created successfully!');
     }
 
-    public function allocationlistDistrict()
+    public function edit(District $district)
     {
-        return view('District.dtAllocationList');
+        return view('district.edit', ['district' => $district]);
     }
 
-    public function allocationcreateDistrict()
+    public function update(Request $request, District $district)
     {
-        return view('District.dtAllocationCreate');
+        $request->validate([
+            'number' => 'required|integer',
+        ]);
+
+        $district->update($request->all());
+
+        return redirect()->route('district.districtList')->with('success', 'District updated successfully!');
     }
 
-    public function districtView()
+    public function destroy(District $district)
     {
-        return view('District.dtAllocationView');
-    }
+        $district->delete();
 
+        return redirect()->route('district.districtList')->with('success', 'District deleted successfully!');
+    }
 }

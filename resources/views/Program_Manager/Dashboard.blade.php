@@ -1,5 +1,5 @@
 
-@include('components.header');
+@include('components.header')
 
   <body>
     <!-- Layout wrapper -->
@@ -25,12 +25,12 @@
     <div class="layout-container">
       <!-- Menu -->
 
-      @include('Program_Manager.sidebar.Dashboard_active');
+      @include('components.sidebar.pm_sidebar')
 
       <!-- Layout container -->
       <div class="layout-page">
         <!-- Navbar -->
-        @include('components.navbar.navbar');
+        @include('components.navbar.navbar')
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
@@ -502,4 +502,4 @@
             </div>
             <!--footer-->
          
-@include('components.footer');
+@include('components.footer')

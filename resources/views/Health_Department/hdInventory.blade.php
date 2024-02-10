@@ -1,4 +1,4 @@
-@include('components.header');
+@include('components.header')
 
 <body>
     <!-- Layout wrapper -->
@@ -19,16 +19,16 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Inventory /</span>
+                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Inventory /</span>
                             Item List
-                        </h4>
+                        </h4> --}}
 
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card mb-4">
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
-                                        <h5 class="card-header"></h5>
+                                        <h5 class="card-header">Item List</h5>
                                         {{-- <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
                                             New</button> --}}
@@ -116,7 +116,7 @@
 
                                     <hr class="my-0">
                                     <!-- Account -->
-                                    <div class="card-body p-5 ">
+                                    <div class="card-body px-5 ">
                                         <div class="table-responsive text-nowrap overflow-visible">
                                             <table id="dataTable" class="datatables-basic table   border-top "
                                                 style="width:100%">
@@ -135,9 +135,32 @@
                                                     <tr>
                                                         <td>Paracetamol</td>
                                                         <td>Medicine</td>
-                                                        <td class="avatar me-2"><img
-                                                                src="https://5.imimg.com/data5/SELLER/Default/2022/9/IV/UY/CG/75459511/500mg-paracetamol-tablet.jpg"
-                                                                class="rounded" alt="awts"></td>
+                                                        <td>
+                                                            <ul
+                                                                class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                                    data-bs-placement="top"
+                                                                    class="avatar avatar-xs pull-up"
+                                                                    title="Lilian Fuller">
+                                                                    <img src="../assets/img/avatars/5.png"
+                                                                        alt="Avatar" class="rounded-circle">
+                                                                </li>
+                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                                    data-bs-placement="top"
+                                                                    class="avatar avatar-xs pull-up"
+                                                                    title="Sophia Wilkerson">
+                                                                    <img src="../assets/img/avatars/6.png"
+                                                                        alt="Avatar" class="rounded-circle">
+                                                                </li>
+                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                                    data-bs-placement="top"
+                                                                    class="avatar avatar-xs pull-up"
+                                                                    title="Christina Parker">
+                                                                    <img src="../assets/img/avatars/7.png"
+                                                                        alt="Avatar" class="rounded-circle">
+                                                                </li>
+                                                            </ul>
+                                                        </td>
                                                         <td>100</td>
                                                         <td>Maternity</td>
                                                         <td>12-12-2023</td>
