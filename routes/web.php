@@ -114,8 +114,9 @@ Route::middleware(['auth', 'health_department'])->group(function () {
     Route::post('/Health_Department/Allocation_Process', [HdController::class,'hdAllocationtoProg'])->name('allocate');
 
 
-    Route::put('/Health_Department/Allocation_Edit_{id}', 'hdAllocationProgUpdate')->name('updateallocation')->middleware('auth');
-    Route::delete('/Health_Department/Allocation_List{id}', 'hdAllocationProgDelete')->name('deleteallocation');
+    Route::put('/Health_Department/Allocation_Edit_{id}',[HdController::class,'hdAllocationProgUpdate'] )->name('updateallocation');
+    Route::delete('/Health_Department/Allocation_Edit_{id}',[HdController::class,'hdAllocationProgDelete'] )->name('deleteallocation');
+    // Route::('/Health_Department/Allocation_List{id}', '')->name('deleteallocation');
 });
 
 
