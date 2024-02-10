@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assigned_program_managers', function (Blueprint $table) {
+        Schema::create('itemdistribute', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('program_id');
+            $table->integer('quantity')->nullable;
+            $table->string('unit')->nullable;
+            $table->string('item')->nullable;
+            $table->string('description')->nullable;
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assigned_program_managers');
+        Schema::dropIfExists('itemdistribute');
     }
 };

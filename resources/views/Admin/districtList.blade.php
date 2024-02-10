@@ -13,7 +13,7 @@
                 <!-- Navbar -->
                 @include('components.navbar.navbar')
                 <!-- / Navbar -->
-                
+
                 <div class="content-wrapper">
                     <!-- Content -->
 
@@ -61,30 +61,7 @@
                                                                         <option value="6">6</option>
                                                                     </select>
                                                                 </div>
-                                                                {{-- <div class="col">
-                                                                    <p>Barangay</p>
-                                                                    <select class="form-select" name="barangayName"
-                                                                        aria-label="Default select example">
-                                                                        <option selected>Choose Barangay</option>
-                                                                        @foreach ($barangayData as $barangayRow)
-                                                                            <option value="{{ $barangayRow->name }}">
-                                                                                {{ $barangayRow->name }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div> --}}
-                                                                {{-- <div class="col">
-                                                                    <p>Barangay Health Center</p>
-                                                                    <select class="form-select"
-                                                                        name="healthcenterName"
-                                                                        aria-label="Default select example">
-                                                                        <option selected>Choose Health Center</option>
-                                                                        @foreach ($healthcenterData as $healthcenterRow)
-                                                                            <option
-                                                                                value="{{ $healthcenterRow->id }}">
-                                                                                {{ $healthcenterRow->name }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div> --}}
+
                                                                 <div class="col">
                                                                     <p>District Supervisor</p>
                                                                     <select class="form-select"
@@ -152,8 +129,7 @@
                                                             <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="exampleModalLabel">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
                                                                             Profile View</h5>
                                                                         <button type="button" class="btn-close"
                                                                             data-bs-dismiss="modal"
@@ -163,8 +139,7 @@
 
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <button type="button"
-                                                                            class="btn btn-secondary"
+                                                                        <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Close</button>
                                                                         <button type="button"
                                                                             class="btn btn-primary">Save
@@ -174,47 +149,51 @@
                                                             </div>
                                                         </div>
 
-                                                    <div class="modal fade" id="exampleModal2" tabindex="-1"
-                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                                        Edit Line</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
+                                                        <div class="modal fade" id="exampleModal2{{ $districtRow->id }}"
+                                                            tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                            Edit Line</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form
+                                                                            action={{ "/Admin/District_Update/$districtRow->id" }}
+                                                                            method="POST">
+                                                                            {{ csrf_field() }}
+                                                                            {{ method_field('PUT') }}
+                                                                            <div class="col">
+                                                                                <p>District Number</p>
+                                                                                <div class="mb-3">
+                                                                                    <select class="form-select"
+                                                                                        name="districtSupervisor"
+                                                                                        aria-label="Default select example">
+                                                                                        @foreach ($userData as $districtRow)
+                                                                                            <option
+                                                                                                value="{{ $districtRow->firstname }} {{ $districtRow->lastname }}">
+                                                                                                {{ $districtRow->firstname }}
+                                                                                                {{ $districtRow->lastname }}
+                                                                                            </option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-bs-dismiss="modal">Close</button>
+                                                                                <button type="button"
+                                                                                    class="btn btn-primary">Save
+                                                                                    changes</button>
+                                                                            </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="modal-body">
-                                                                    @foreach ( $userData as $districtRow )   
-                                                                    <form
-                                                                        action={{ "/Admin/District_Update/$districtRow->id" }}
-                                                                        method="POST">
-                                                                        {{ csrf_field() }}
-                                                                        {{ method_field('PUT') }}
-                                                                        <div class="mb-3">
-                                                                            <select class="form-select"
-                                                                                name="districtSupervisor"
-                                                                                aria-label="Default select example">
-                                                                                            
-                                                                                <option
-                                                                                    value="{{ $districtRow->firstname }} {{ $districtRow->lastname }}">
-                                                                                    {{ $districtRow->firstname }}
-                                                                                    {{ $districtRow->lastname }}</option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button"
-                                                                        class="btn btn-primary">Save
-                                                                        changes</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        </form>
+                                                                </form>
                                                     @endforeach
                                                 </tbody>
 

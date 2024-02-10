@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -14,8 +15,8 @@ class UserController extends Controller
     public function userlistPage()
     {
         $user = Auth::user();
-       
-        return view('Admin.userList', ['user' => $user]);
+        $roleData = Role::all();
+        return view('Admin.userList', ['user' => $user, 'roleData'=>$roleData]);
     }
 
     // public function createUserPage(){
@@ -58,7 +59,8 @@ class UserController extends Controller
         $totalSupplier= User::all()->where('role',6)->count();
         $user = Auth::user();
         $data = User::all();
-        return view('Admin.userList', ['users' => $data , 'totalUser' => $totalUser, 'totalAdmin'=>$totalAdmin, 'totalProgram'=>$totalProgram, 'totalDistrict'=>$totalDistrict,'totalHd'=>$totalHd, 'totalHc'=> $totalHc , 'totalSupplier'=>$totalSupplier], ['user' => $user]);
+        $roleData = Role::all();
+        return view('Admin.userList', ['roleData'=>$roleData, 'users' => $data , 'totalUser' => $totalUser, 'totalAdmin'=>$totalAdmin, 'totalProgram'=>$totalProgram, 'totalDistrict'=>$totalDistrict,'totalHd'=>$totalHd, 'totalHc'=> $totalHc , 'totalSupplier'=>$totalSupplier], ['user' => $user]);
     }
 
     public function LoginProcess(Request $request)
@@ -230,6 +232,7 @@ class UserController extends Controller
         $user->save();
         return back()->with('success', "Password Changed Successfully");
     }
+    
 }
 
     
