@@ -157,7 +157,7 @@
                                                                     <div class="avatar m-auto">
                                                                         <img src="{{ asset('storage/images/' . $items->item_image) }}"
                                                                             alt="Uploaded Image"
-                                                                            class="w-px-40 rounded-circle">
+                                                                            class="w-px-50 ">
                                                                     </div>
                                                                 @else
                                                                     <span>No image found!</span>
