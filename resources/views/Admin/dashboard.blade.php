@@ -71,13 +71,13 @@
                                                             aria-labelledby="cardOpt3">
                                                             <a class="dropdown-item" href="javascript:void(0);">View
                                                                 More</a>
-                                                            <a class="dropdown-item"
-                                                                href="javascript:void(0);">Delete</a>
+                                                            {{-- <a class="dropdown-item"
+                                                                href="javascript:void(0);">Delete</a> --}}
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <span class="fw-semibold d-block mb-1">Title</span>
-                                                <h3 class="card-title mb-2">Title</h3>
+                                                <span class="fw-semibold d-block mb-1">{{ $totalUserString }}</span>
+                                                <h3 class="card-title mb-2">{{ $totalUser }}</h3>
                                                 <small class="text-success fw-semibold"><i
                                                         class="bx bx-up-arrow-alt"></i> Title</small>
                                             </div>
@@ -102,13 +102,13 @@
                                                             aria-labelledby="cardOpt6">
                                                             <a class="dropdown-item" href="javascript:void(0);">View
                                                                 More</a>
-                                                            <a class="dropdown-item"
-                                                                href="javascript:void(0);">Delete</a>
+                                                            {{-- <a class="dropdown-item"
+                                                                href="javascript:void(0);">Delete</a> --}}
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <span>Title</span>
-                                                <h3 class="card-title text-nowrap mb-1">Title</h3>
+                                                <span class="fw-semibold d-block mb-1">{{ $totalHealthCenterString }}</span>
+                                                <h3 class="card-title text-nowrap mb-1">{{ $totalHealthCenter }}</h3>
                                                 <small class="text-success fw-semibold"><i
                                                         class="bx bx-up-arrow-alt"></i> Title</small>
                                             </div>
@@ -198,13 +198,13 @@
                                                             aria-labelledby="cardOpt4">
                                                             <a class="dropdown-item" href="javascript:void(0);">View
                                                                 More</a>
-                                                            <a class="dropdown-item"
-                                                                href="javascript:void(0);">Delete</a>
+                                                            {{-- <a class="dropdown-item"
+                                                                href="javascript:void(0);">Delete</a> --}}
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <span class="d-block mb-1">Title</span>
-                                                <h3 class="card-title text-nowrap mb-2">Title</h3>
+                                                <span class="d-block mb-1">{{ $totalBarangayString }}</span>
+                                                <h3 class="card-title text-nowrap mb-2">{{ $totalBarangay }}</h3>
                                                 <small class="text-danger fw-semibold"><i
                                                         class="bx bx-down-arrow-alt"></i> Title</small>
                                             </div>
@@ -233,8 +233,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <span class="fw-semibold d-block mb-1">Title</span>
-                                                <h3 class="card-title mb-2">Title</h3>
+                                                <span class="fw-semibold d-block mb-1">{{ $totalProgramString }}</span>
+                                                <h3 class="card-title mb-2">{{ $totalProgram }}</h3>
                                                 <small class="text-success fw-semibold"><i
                                                         class="bx bx-up-arrow-alt"></i> Title</small>
                                             </div>

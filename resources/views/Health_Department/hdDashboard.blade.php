@@ -11,7 +11,7 @@
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-                @include('components.navbar.navbar');
+                @include('components.navbar.navbar')
                 <!-- Navbar End-->
 
 
@@ -42,7 +42,8 @@
                                     <div class="d-flex align-items-end row">
                                         <div class="col-sm-7">
                                             <div class="card-body">
-                                                <h5 class="card-title text-primary">Welcome to Admin Dashboard John! 🎉
+                                                <h5 class="card-title text-primary">Welcome to Admin Dashboard
+                                                    {{ $user->firstname }} 🎉
                                                 </h5>
                                                 <p class="mb-4">
                                                     You have done <span class="fw-bold"></span> Lorem ipsum dolor, sit

@@ -42,7 +42,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Paracetamol</td>
+                        <td>{{}}</td>
                         <td>Per Box</td>
                         <td>30</td>
                         <td>Sample Item Only. Test 101</td>
