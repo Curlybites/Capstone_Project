@@ -232,6 +232,7 @@ class UserController extends Controller
         $user->save();
         return back()->with('success', "Password Changed Successfully");
     }
+    
 }
 
     
