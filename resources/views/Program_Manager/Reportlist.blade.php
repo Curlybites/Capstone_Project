@@ -1,25 +1,25 @@
-@include('components.header');
+@include('components.header')
 
 <body>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             {{-- sidebar --}}
-            @include('Components.sidebar.pm_sidebar');
+            @include('Components.sidebar.pm_sidebar')
 
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-                @include('components.navbar.navbar');
+                @include('components.navbar.navbar')
                 <!-- / Navbar -->
 
                 <div class="content-wrapper">
                     <!-- Content -->
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Report /</span> List of
+                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Report /</span> List of
                             Report
-                        </h4>
+                        </h4> --}}
 
                         <div class="row">
                             <div class="col-md-12">

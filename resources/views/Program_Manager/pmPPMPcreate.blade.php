@@ -42,8 +42,8 @@
 
                                                     <div class="row mb-3">
                                                         <div class="col-md-4 mb-md-0 mb-3">
-                                                            <label for="exampleFormControlInput1" class="form-label">PO
-                                                                #</label>
+                                                            <label for="exampleFormControlInput1" class="form-label">PPMP
+                                                                </label>
                                                             <input type="text" class="form-control" name="POnum"
                                                                 value="">
                                                         </div>
@@ -59,10 +59,8 @@
                                                                 class="form-label">Department</label>
                                                             <select class="form-select" name="department"
                                                                 aria-label="Default select example" value="">
-                                                                <option selected>Select Department</option>
-                                                                <option value="One">One</option>
-                                                                <option value="Two">Two</option>
-                                                                <option value="Three">Three</option>
+                                                                <option value="Department of Health">Department of Health</option>
+                                                                
                                                             </select>
                                                         </div>
                                                     </div>
@@ -226,9 +224,9 @@
                                                                 <select class="form-select" name="status"
                                                                     aria-label="Default select example">
                                                                     <option selected>Select Status</option>
-                                                                    <option value="">"Approved"</option>
-                                                                    <option value="badge bg-label-danger">"Disapproved"</option>
-                                                                    <option value="badge bg-label-info">"For Evaluation"</option>
+                                                                    <option value="">Approved</option>
+                                                                    <option value="">Disapproved</option>
+                                                                    <option value="">For Evaluation</option>
                                                                 </select>
                                                             </div>
                                                         </div>

@@ -1,16 +1,16 @@
-@include('components.header');
+@include('components.header')
 
 <body>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             {{-- sidebar --}}
-            @include('Components.sidebar.pm_sidebar');
+            @include('Components.sidebar.pm_sidebar')
 
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-                @include('components.navbar.navbar');
+                @include('components.navbar.navbar')
                 <!-- / Navbar -->
                 <div class="content-wrapper">
                     <!-- Content -->

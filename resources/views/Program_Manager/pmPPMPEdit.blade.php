@@ -239,10 +239,10 @@
                                                             <select class="form-select" name="status"
                                                                 aria-label="Default select example">
                                                                 <option selected>Select Status</option>
-                                                                <option value="">"Approved"</option>
-                                                                <option value="badge bg-label-danger">"Disapproved"
+                                                                <option value="">Approved</option>
+                                                                <option value="">Disapproved
                                                                 </option>
-                                                                <option value="badge bg-label-info">"For Evaluation"
+                                                                <option value="">For Evaluation
                                                                 </option>
                                                             </select>
                                                         </div>
