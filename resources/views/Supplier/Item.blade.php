@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="avatar">
                                   <span class="avatar-initial rounded bg-label-primary">
-                                    <i class="bx bx-user bx-sm"></i>
+                                    <i class='bx bx-package'></i>
                                   </span>
                                 </div>
                               </div>
@@ -74,8 +74,8 @@
                                   <p class="mb-0">Active Item</p>
                                 </div>
                                 <div class="avatar">
-                                  <span class="avatar-initial rounded bg-label-danger">
-                                    <i class="bx bx-user-check bx-sm"></i>
+                                  <span class="avatar-initial rounded bg-label-success">
+                                    <i class='bx bx-package'></i>
                                   </span>
                                 </div>
                               </div>
@@ -87,7 +87,7 @@
                             <div class="card-body">
                               <div class="d-flex align-items-start justify-content-between">
                                 <div class="content-left">
-                                  <span>Supplier Inactive Users</span>
+                                  <span>Supplier Inactive Items</span>
                                   <div class="d-flex align-items-end mt-2">
                                     <h4 class="mb-0 me-2">{{ $totalInactive }}</h4>
                                     <small class="text-danger"></small>
@@ -95,8 +95,8 @@
                                   <p class="mb-0">Inactive Item</p>
                                 </div>
                                 <div class="avatar">
-                                  <span class="avatar-initial rounded bg-label-success">
-                                    <i class="bx bx-group bx-sm"></i>
+                                  <span class="avatar-initial rounded bg-label-danger">
+                                    <i class='bx bx-package'></i>
                                   </span>
                                 </div>
                               </div>
@@ -149,7 +149,7 @@
                                                             </div>
 
                                                             <div class="form-floating mt-2">
-                                                                <input type="number" class="form-control "
+                                                                <input type="number" step=0.01 class="form-control "
                                                                     id="floatingInput" name="item_price"
                                                                     placeholder="Item Price"
                                                                     aria-describedby="floatingInputHelp" />
