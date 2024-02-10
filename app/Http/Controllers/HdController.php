@@ -55,7 +55,7 @@ class HdController extends Controller
         $joinedData = DB::table('allocateitemtoprogs')
             ->join('allocatetoprogs', 'allocateitemtoprogs.allocateIDprogs', '=', 'allocatetoprogs.id')
             ->select('allocateitemtoprogs.alloprog_quan', 'allocateitemtoprogs.alloprog_unit', 'allocateitemtoprogs.alloprog_item', 'allocateitemtoprogs.alloprog_descript', 'allocateitemtoprogs.alloprog_price', 'allocateitemtoprogs.alloprog_pricetotal')
-            ->where('allocateitemtoprogs.allocateIDprogs', $id)->first();
+            ->where('allocateitemtoprogs.allocateIDprogs', $id)->get();
         return view('Health_Department.hdAllocationView', ['user' => $user, 'allotoprogview' => $allotoprogview, 'joinedData' => $joinedData]);
     }
 
@@ -66,7 +66,8 @@ class HdController extends Controller
         $joinedData = DB::table('allocateitemtoprogs')
             ->join('allocatetoprogs', 'allocateitemtoprogs.allocateIDprogs', '=', 'allocatetoprogs.id')
             ->select('allocateitemtoprogs.alloprog_quan', 'allocateitemtoprogs.alloprog_unit', 'allocateitemtoprogs.alloprog_item', 'allocateitemtoprogs.alloprog_descript', 'allocateitemtoprogs.alloprog_price', 'allocateitemtoprogs.alloprog_pricetotal')
-            ->where('allocateitemtoprogs.allocateIDprogs', $id)->first();
+            ->where('allocateitemtoprogs.allocateIDprogs', $id)->get();
+        // return view('Health_Department.hdAllocationEdit', ['user' => $user, 'allotoprogedit' => $allotoprogedit, 'joinedData' => $joinedData]);
         return view('Health_Department.hdAllocationEdit', ['user' => $user, 'allotoprogedit' => $allotoprogedit, 'joinedData' => $joinedData]);
     }
 
@@ -88,34 +89,19 @@ class HdController extends Controller
     public function hdAllocationtoProg(Request $request)
     {
         $user = Auth::user();
-        // Validator::make($request->all(), [
-        //     'program' => 'required',
-        //     'poNum' => 'required',
-        //     'itemType' => 'required',
-        //     'items_total' => 'nullable|required',
-        //     'notes' => 'required',
-        //     'item_status' => 'required',
-        // ]);
+        Validator::make($request->all(), [
+            'program' => 'required',
+            'poNum' => 'required',
+            'itemType' => 'required',
+            'items_total' => 'nullable|required',
+            'notes' => 'required',
+            'item_status' => 'required',
+        ]);
 
-        // $allocatetoprogs = Allocatetoprogs::create($request->all());
+        $allocatetoprogs = Allocatetoprogs::create($request->all());
 
-        // // Allocation to program Items info
-        // Validator::make($request->all(), [
-        //     'alloprog.*.quan' => 'required',
-        //     'alloprog.*.unit' => 'required',
-        //     'alloprog.*.item' => 'required',
-        //     'alloprog.*.descript' => 'nullable|required',
-        //     'alloprog.*.price' => 'required',
-        //     'alloprog.*.pricetotal' => 'required',
-        // ]);
-
-        // $allocateitemtoprogsData = $request->all();
-        // $allocateitemtoprogsData['allocateIDprogs'] = $allocatetoprogs->id;
-
-
-        // Allocateitemtoprogs::create($allocateitemtoprogsData);
-
-        $request->validate([
+        // Allocation to program Items info
+        Validator::make($request->all(), [
             'alloprog.*.alloprog_quan' => 'required',
             'alloprog.*.alloprog_unit' => 'required',
             'alloprog.*.alloprog_item' => 'required',
@@ -123,13 +109,28 @@ class HdController extends Controller
             'alloprog.*.alloprog_price' => 'required',
             'alloprog.*.alloprog_pricetotal' => 'required',
         ]);
-
-        foreach ($request->alloprog as  $key => $value) {
-            Allocateitemtoprogs::create($value);
+        foreach ($request->alloprog as $key) {
+            $key['allocateIDprogs'] = $allocatetoprogs->id;
+            Allocateitemtoprogs::create($key);
         }
 
-        // return view('Health_Department.hdAllocationProcess', ['user' => $user, 'allocateitemtoprogsData' => $allocateitemtoprogsData]);
         return view('Health_Department.hdAllocationProcess', ['user' => $user]);
+
+
+        // $request->validate([
+        //     'alloprog.*.alloprog_quan' => 'required',
+        //     'alloprog.*.alloprog_unit' => 'required',
+        //     'alloprog.*.alloprog_item' => 'required',
+        //     'alloprog.*.alloprog_descript' => 'nullable|required',
+        //     'alloprog.*.alloprog_price' => 'required',
+        //     'alloprog.*.alloprog_pricetotal' => 'required',
+        // ]);
+
+        // foreach ($request->alloprog as  $key => $value) {
+        //     Allocateitemtoprogs::create($value);
+        // }
+
+        // return view('Health_Department.hdAllocationProcess', ['user' => $user]);
     }
 
     public function hdAllocationProgUpdate(Request $request, $id)
@@ -138,10 +139,23 @@ class HdController extends Controller
         $allocation = Allocatetoprogs::findOrFail($id);
         $allocation->update($request->all());
 
-        $allocationitem = Allocateitemtoprogs::findOrFail($id);
-        $allocationitem->update($request->all());
-        // Redirect back with success message
-        return back()->with('success', 'Product deleted successfully');
+        // $allocationitem = Allocateitemtoprogs::findOrFail($id);
+        // $allocationitem->update($request->all());
+        // // Redirect back with success message
+        // return back()->with('success', 'Product deleted successfully');
+        Validator::make($request->all(), [
+            'alloprog.*.alloprog_quan' => 'required',
+            'alloprog.*.alloprog_unit' => 'required',
+            'alloprog.*.alloprog_item' => 'required',
+            'alloprog.*.alloprog_descript' => 'nullable|required',
+            'alloprog.*.alloprog_price' => 'required',
+            'alloprog.*.alloprog_pricetotal' => 'required',
+        ]);
+
+        foreach ($request->allocation as $key) {
+            $key['allocateIDprogs'] = $allocatetoprogs->id;
+            Allocateitemtoprogs::update($key);
+        }
     }
 
 
@@ -152,12 +166,9 @@ class HdController extends Controller
         if (!$allocatetoprogs) {
             return back()->with('error', 'Allocatetoprogs not found');
         }
-
-        // Delete Allocatetoprogs record
         $allocatetoprogs->delete();
-
-        // Find and delete related records from Allocateitemtoprogs table
         Allocateitemtoprogs::where('allocateIDprogs', $allocatetoprogs->id)->delete();
+
         return back()->with('success', 'Product deleted successfully');
     }
 }
