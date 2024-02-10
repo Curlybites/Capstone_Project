@@ -13,18 +13,15 @@ return new class extends Migration
     {
         Schema::create('ppmpdatas', function (Blueprint $table) {
             $table->id();
-            $table->integer('year');
+            $table->year('year');
             $table->string('department');
             $table->string('programtitle');
             $table->string('projecttitle');
             $table->string('typeofcontract');
             $table->string('accounttitle');
-            $table->string('itemname');
-            $table->string('description');
-            $table->integer('quantity');
-            $table->integer('unitofissue');
-            $table->integer('unitprice');
             $table->string('schedule');
+            $table->string('note');
+            $table->string('status');
             $table->timestamps();
 
         });

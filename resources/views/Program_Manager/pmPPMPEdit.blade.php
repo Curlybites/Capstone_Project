@@ -18,388 +18,307 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">PPMP / PPMP List /
-                            </span>
-                            PPMP Edit
-                        </h4>--}}
+                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Allocation /</span>
+                            Create Allocation
+                        </h4> --}}
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card mb-4">
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
-                                        <h5 class="card-header">PPMP List</h5>
+                                        <h5 class="card-header">Project Procurement Management Plan Edit</h5>
 
-                                        <!-- PPMP Modal -->
-                                        <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
-                                            PPMP</button>
-                                        <div class="modal fade" id="exampleModal" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-xl modal-dialog-centered">
-                                                <div class="modal-content ">
-                                                    <div
-                                                        class="modal-header justify-content-center d-block text-center">
-                                                        <h1 class="modal-title fs-3" id="exampleModalLabel">QUEZON
-                                                            CITY<br>PROJECT PROCUREMENT MANAGEMENT PLAN</h1>
-                                                        <!-- <h1 class="fs-3">PROJECT PROCUREMENT MANAGEMENT PLAN </h1><br> -->
+                                    </div>
 
-                                                    </div>
-                                                    <!-- <div class="modal-header d-flex justify-content-end">
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div> -->
-                                                    <form action="{{ route('ppmp.create')}}" method="POST">
-                                                        @csrf
-                                                        <div class="modal-body">
+                                    <hr class="my-0">
+                                    <!-- Account -->
+                                    {{-- @foreach ($ppmp as $ppmps) --}}
+                                    <div class="card-body px-5">
+                                        <div class="row">
+                                            <div class="col-md-12">
 
-                                                            <div class="row">
+                                                <form action="{{ route('routes.update',$ppmpdatas->id)  }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('PUT')
 
-                                                                <!-- <h5>Personal Details</h5> -->
-                                                                <div class="col">
-                                                                    <p>Year:</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <select name="year" class="form-control"
-                                                                            id="yearSelect">
-                                                                            <?php for ($year = 2000; $year <= 2024; $year++) : ?>
-                                                                            <option value="<?= $year ?>"><?= $year ?>
-                                                                            </option>
-                                                                            <?php endfor; ?>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <p>Department/Office/Unit:</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing e xample input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="department" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Program Title</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="programtitle" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Project Title</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="projecttitle" required>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row pb-4">
-
-                                                                <div class="col">
-                                                                    <p>Type of Contract</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <select class="form-select"
-                                                                            aria-label="Default select example"
-                                                                            name="typeofcontract">
-                                                                            <option value="goods">Goods</option>
-                                                                            <option value="infra">Infra</option>
-                                                                            <option value="consultingservice">Consulting
-                                                                                Service</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Account Title</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="accounttitle" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Item Name</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="itemname" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Description/Specifications</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="description" required>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-
-                                                            <div class="row pb-4">
-
-                                                                <div class="col">
-                                                                    <p>Quantity</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="number" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="quantity" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Unit of Issue</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="number" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="unitofissue" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col">
-                                                                    <p>Unit Price</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="number" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="unitprice" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row pb-4">
-
-                                                                    <div class="col">
-                                                                        <p>Schedule / Milestone of Activities</p>
-                                                                        <div class="input-group mb-3">
-                                                                            <input type="text" class="form-control"
-                                                                                aria-label="Sizing example input"
-                                                                                aria-describedby="inputGroup-sizing-default"
-                                                                                name="schedule" required>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                {{-- <div class="row">
-                                                                    <div class="d-flex">
-                                                                        <p>Jan</p>
-                                                                        <div class="col-1">
-                                                                            <input type="text"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                        <p>Feb</p>
-                                                                        <div class="col-1">
-                                                                            <input type="text"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                        <p>Mar</p>
-                                                                        <div class="col-1">
-                                                                            <input type="text"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                        <p>Apr</p>
-                                                                        <div class="col-1">
-                                                                            <input type="text"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                        <p>May</p>
-                                                                        <div class="col-1">
-                                                                            <input type="text"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                        <p>Jun</p>
-                                                                        <div class="col-1">
-                                                                            <input type="text"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                        <p>Jul</p>
-                                                                        <div class="col-1">
-                                                                            <input type="text"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                        <p>Aug</p>
-                                                                        <div class="col-1">
-                                                                            <input type="text"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                        <p>Sep</p>
-                                                                        <div class="col-1">
-                                                                            <input type="text"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                        <p>Oct</p>
-                                                                        <div class="col-1">
-                                                                            <input type="text"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                        <p>Nov</p>
-                                                                        <div class="col-1">
-                                                                            <input type="text"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                        <p>Dec</p>
-                                                                        <div class="col-1">
-                                                                            <input type="text"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div> --}}
-                                                                <div class="modal-footer border-1">
-                                                                    <button type="button"
-                                                                        class="btn btn-secondary mt-3"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary mt-3">Save</button>
-                                                                </div>
-                                                            </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-4 mb-md-0 mb-3">
+                                                            <label for="exampleFormControlInput1" class="form-label">PO
+                                                                #</label>
+                                                            <input type="text" class="form-control" name="POnum"
+                                                                value="">
                                                         </div>
-                                                    </form>
-                                                </div>
+                                                        <div class="col-md-4 mb-md-0 mb-3 ">
+                                                            <label for="exampleFormControlInput1"
+                                                                class="form-label">year</label>
+                                                            <input type="text" class="form-control" name="year"
+                                                                value="{{ $ppmpdatas->year }}">
+
+                                                        </div>
+                                                        <div class="col-md-4 mb-md-0 mb-3">
+                                                            <label for="exampleFormControlInput1"
+                                                                class="form-label">Department</label>
+                                                            <select class="form-select" name="department"
+                                                                aria-label="Default select example"
+                                                                >
+                                                                <option >{{ $ppmpdatas->department }}</option>
+                                                                <option value="One">One</option>
+                                                                <option value="Two">Two</option>
+                                                                <option value="Three">Three</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-4 mb-md-0 mb-3">
+                                                            <label for="exampleFormControlInput1"
+                                                                class="form-label">Program Title</label>
+                                                            <input type="text" class="form-control"
+                                                                name="programtitle"
+                                                                value="{{ $ppmpdatas->programtitle }}">
+                                                        </div>
+                                                        <div class="col-md-4 mb-md-0 mb-3">
+                                                            <label for="exampleFormControlInput1"
+                                                                class="form-label">Project Title</label>
+                                                            <input type="text" class="form-control"
+                                                                name="projecttitle"
+                                                                value="{{ $ppmpdatas->projecttitle }}">
+                                                        </div>
+                                                        <div class="col-md-4 mb-md-0 mb-3">
+                                                            <label for="exampleFormControlInput1"
+                                                                class="form-label">Type of Contract</label>
+                                                            <select class="form-select" name="typeofcontract"
+                                                                aria-label="Default select example"
+                                                                >
+                                                                <option >{{ $ppmpdatas->typeofcontract }}</option>
+                                                                <option value="Good"></option>
+                                                                <option value="Infra"></option>
+                                                                <option value="Consulting"></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-4 mb-md-0 mb-3">
+                                                            <label for="exampleFormControlInput1"
+                                                                class="form-label">Account Title</label>
+                                                            <input type="text" class="form-control"
+                                                                name="accounttitle"
+                                                                value="{{ $ppmpdatas->accounttitle }}">
+
+                                                        </div>
+                                                        <div class="col-md-4 mb-md-0 mb-3">
+                                                            <label for="exampleFormControlInput1"
+                                                                class="form-label">Schedule</label>
+                                                            <input type="text" class="form-control" name="schedule"
+                                                                value="{{ $ppmpdatas->schedule }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-bordered"
+                                                            id="myTable">
+                                                            <colgroup>
+                                                                <col width="5%">
+                                                                <col width="5%">
+                                                                <col width="10%">
+                                                                <col width="20%">
+                                                                <col width="30%">
+                                                                <col width="15%">
+                                                                <col width="15%">
+                                                            </colgroup>
+                                                            <thead>
+                                                                <tr class="bg-navy disabled">
+                                                                    <th class="px-1 py-1 text-center"></th>
+                                                                    <th class="px-1 py-1 text-center">Qty</th>
+                                                                    <th class="px-1 py-1 text-center">Unit</th>
+                                                                    <th class="px-1 py-1 text-center">Item</th>
+                                                                    <th class="px-1 py-1 text-center">Description
+                                                                    </th>
+                                                                    <th class="px-1 py-1 text-center">Price</th>
+                                                                    <th class="px-1 py-1 text-center">Total</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody class="addTBRow">
+                                                                <tr>
+                                                                    <td>
+                                                                        <button class="btn btn-sm btn-danger py-0"
+                                                                            onclick="removeRow(this)">X</button>
+                                                                    </td>
+                                                                    <td class="align-middle p-0 text-center">
+                                                                        <input type="text"
+                                                                            class="form-control text-center border-0"
+                                                                            id="quantItem" name="quantity"
+                                                                            onkeyup="autoCal()"
+                                                                            value="{{ $joinedppmpdata->quantity }}">
+                                                                    </td>
+                                                                    <td
+                                                                        class="align-middle
+                                                                            p-0 text-center">
+                                                                        <input type="text"
+                                                                            class="form-control text-center border-0"
+                                                                            name="unit"
+                                                                            value="{{ $joinedppmpdata->unit }}">
+                                                                    </td>
+                                                                    <td class="align-middle p-0 text-center">
+                                                                        <select
+                                                                            class="form-select text-center border-0"
+                                                                            name="itemname"
+                                                                            aria-label="Default select example">
+                                                                            <option selected>Select Item
+                                                                            </option>
+                                                                            <option value="1">One</option>
+                                                                            <option value="2">Two</option>
+                                                                            <option value="3">Three</option>
+                                                                        </select>
+                                                                    </td>
+                                                                    <td class="align-middle p-0 text-center">
+                                                                        <input type="text"
+                                                                            class="form-control text-center border-0"
+                                                                            name="description"
+                                                                            value="{{ $joinedppmpdata->description }}">
+                                                                    </td>
+                                                                    <td class="align-middle p-0 text-center">
+                                                                        <input type="text"
+                                                                            class="form-control text-center border-0"
+                                                                            name="unitprice" id="price"
+                                                                            onkeyup="autoCal()"
+                                                                            value="{{ $joinedppmpdata->unitprice }}">
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="float-start">
+                                                                            <span class="fw-bold ">₱</span>
+                                                                        </div>
+                                                                        <div class="text-center">
+                                                                            <input
+                                                                                class="text-center border-0 bg-white ms-2 fs-6"
+                                                                                type="text" name="total"
+                                                                                id="totalPrice"
+                                                                                value="{{ $joinedppmpdata->total }}"
+                                                                                readonly>
+                                                                            {{-- <span id="totalPrice">0</span> --}}
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                            <tfoot>
+                                                                <tr>
+                                                                    <th colspan="6" class="text-end">
+                                                                        <div class="btn btn-primary me-2"
+                                                                            style="font-size: 10px"
+                                                                            onclick="addRow()">
+                                                                            Add
+                                                                            Row</div><span>Total</span>
+                                                                    </th>
+                                                                    <th class="d-flex align-items-center ">
+                                                                        <div class="float-start">
+                                                                            <span class="fw-bold fs-6">₱</span>
+                                                                        </div>
+                                                                        <div class="text-center">
+                                                                            <input
+                                                                                class="text-center border-0 bg-white ms-2 fs-6"
+                                                                                type="text" name="items_total"
+                                                                                id="total" value=""
+                                                                                readonly>
+                                                                        </div>
+                                                                    </th>
+                                                                </tr>
+                                                            </tfoot>
+                                                            {{-- <input type="number" name="items_total"
+                                                                        id="total"> --}}
+                                                        </table>
+                                                    </div>
+                                                    <div
+                                                        class="row
+                                                                        my-5">
+                                                        <div class="col-md-6 mb-md-0 mb-3">
+                                                            <label for="">Notes</label>
+                                                            <textarea class="form-control" style="height: 100px" name="note">""</textarea>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="">Status</label>
+                                                            <select class="form-select" name="status"
+                                                                aria-label="Default select example">
+                                                                <option selected>Select Status</option>
+                                                                <option value="">"Approved"</option>
+                                                                <option value="badge bg-label-danger">"Disapproved"
+                                                                </option>
+                                                                <option value="badge bg-label-info">"For Evaluation"
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <button type="submit" class="btn btn-primary"
+                                                            onclick="save()">Save</button>
+                                                        <a class="btn btn-danger" href="">Cancel
+                                                        </a>
+                                                    </div>
+                                                </form>
 
                                             </div>
-
-                                            <!-- / Content -->
-
-                                            <div class="content-backdrop fade"></div>
-                                        </div>
-
-                                    </div>
-
-                                    <hr class="">
-                                    <div class="card-body p-5 ">
-                                        <div class="table-responsive text-nowrap">
-                                            <table id="dataTable" class="datatables-basic table   border-top "
-                                                style="width:100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Year</th>
-                                                        <th>Department</th>
-                                                        <th>Program Title</th>
-                                                        <th>Project Title</th>
-                                                        <th>Types of Contract</th>
-                                                        <th>Account Title</th>
-                                                        <th>Item Name</th>
-                                                        <th>Description</th>
-                                                        <th>Quantity</th>
-                                                        <th>Unit of Issue</th>
-                                                        <th>Unit Price</th>
-                                                        <th>Schedule</th>
-                                                        <th>Status</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($ppmp as $ppmps)
-                                                        <tr>
-                                                            <td>{{ $ppmps->id }} </td>
-                                                            <td>{{ $ppmps->department }}</td>
-                                                            <td>{{ $ppmps->programtitle }}</td>
-                                                            <td>{{ $ppmps->projecttitle }}</td>
-                                                            <td>{{ $ppmps->typeofcontract }}</td>
-                                                            <td>{{ $ppmps->accounttitle }}</td>
-                                                            <td>{{ $ppmps->itemname }}</td>
-                                                            <td>{{ $ppmps->description }}</td>
-                                                            <td>{{ $ppmps->quantity }}</td>
-                                                            <td>{{ $ppmps->unitofissue }}</td>
-                                                            <td>{{ $ppmps->unitprice }}</td>
-                                                            <td>{{ $ppmps->schedule }}</td>
-                                                            <td>
-                                                                <span
-                                                                    class="badge bg-label-success me-1">Approved</span>
-                                                            </td>
-                                                            <td>
-                                                                <div class="dropdown">
-                                                                    <button class="btn btn-secondary dropdown-toggle"
-                                                                        type="button" id="dropdownMenuButton1"
-                                                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                                                        Action
-                                                                    </button>
-                                                                    <ul class="dropdown-menu"
-                                                                        aria-labelledby="dropdownMenuButton1">
-                                                                        <li><a class="dropdown-item"
-                                                                                href="{{ '/Program_Manager/pmPPMPView' }}"><i
-                                                                                    class="bi bi-eye-fill fs-5 text-primary"></i>
-                                                                                View</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item"
-                                                                                href="{{ '/Program_Manager/pmPPMPEdit' }}"><i
-                                                                                    class="bi bi-pen-fill fs-5 text-info"></i>
-                                                                                Edit</a>
-                                                                        </li>
-                                                                        <li><a class="dropdown-item" href="#"><i
-                                                                                    class="bi bi-trash-fill fs-5 text-danger"></i>
-                                                                                Delete</a>
-                                                                        </li>
-                                                                    </ul>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-
-                                            </table>
                                         </div>
                                     </div>
+                                    {{-- @endforeach --}}
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
                 <script>
                     function addRow() {
-                        const table = document.getElementById("myTable");
-                        const tbody = table.getElementsByTagName("tbody")[0];
+                        // Clone the first row
 
-                        let cloneRow;
-                        if (tbody.rows.length > 0) {
-                            // Clone an existing row if tbody is not empty
-                            cloneRow = tbody.rows[0].cloneNode(true);
+                        // Create a new row element
+                        var newRow = '<tr>' +
+                            '<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_quan" id="quantItem" onkeyup="autoCal()"></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_unit"></td>' +
+                            '<td class="align-middle p-0 text-center">' +
+                            '<select class="form-select text-center border-0" name="alloprog_item" aria-label="Default select example">' +
+                            '<option selected>Select Item</option>' +
+                            '<option value="1">One</option>' +
+                            '<option value="2">Two</option>' +
+                            '<option value="3">Three</option>' +
+                            '</select>' +
+                            '</td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_descript"></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_price" id="price" onkeyup="autoCal()"></td>' +
+                            '<td>' +
+                            '<div class="float-start"><span class="fw-bold">₱</span></div>' +
+                            '<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog_pricetotal" id="totalPrice" value="0" readonly></div>' +
+                            '</td>' +
+                            '</tr>';
 
-                            // Reset input values to empty strings
-                            const inputs = cloneRow.getElementsByTagName("input");
-                            for (let input of inputs) {
-                                input.value = "";
-                            }
-                        } else {
-                            // Create a new row if tbody is empty
-                            cloneRow = document.createElement("tr");
-                            cloneRow.innerHTML = `
-            <td>
-                <button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button>
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="number" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="text" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="text" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="text" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="number" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="number" class="form-control text-center border-0" disabled>
-            </td>
-        `;
-                        }
-
-                        tbody.appendChild(cloneRow);
+                        // Append the new row to the tbody
+                        $('.addTBRow').append(newRow);
                     }
 
+                    // Remove Row
                     function removeRow(button) {
-                        const row = button.parentNode.parentNode;
-                        row.parentNode.removeChild(row);
+                        var row = $(button).closest("tr");
+                        var total = $("#total").val();
+                        var price = row.find("#totalPrice").val();
+                        total -= price;
+
+                        $("#total").val(total);
+                        row.remove();
+                    }
+
+                    function autoCal() {
+                        var total = 0;
+
+                        $(".addTBRow tr").each(function() {
+                            var quant = $(this).find("#quantItem").val();
+                            var price = $(this).find("#price").val();
+                            var totalPrice = quant * price;
+                            $(this).find("#totalPrice").val(totalPrice);
+                            total += totalPrice;
+                        });
+
+                        // $("#subtotal").text(subtotal.toLocaleString());
+                        $("#total").val(total);
                     }
                 </script>
 

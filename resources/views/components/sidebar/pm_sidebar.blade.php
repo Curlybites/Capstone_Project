@@ -19,7 +19,7 @@
         <!-- Components -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
 
-        <li class="menu-item {{ Request::is('Program_Manager/PPMPlist') || Request::is('Program_Manager/pmPPMPView') ? 'active open' : '' }}">
+        <li class="menu-item {{ Request::is('Program_Manager/PPMPlist') || Request::is('Program_Manager/pmPPMPcreate') ? 'active open' : '' }}">
             <a href="#" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-book-content"></i>
                 <div data-i18n="Extended UI">PPMP</div>
@@ -28,6 +28,11 @@
                 <li class="menu-item {{ Request::is('Program_Manager/PPMPlist') || Request::is('Program_Manager/pmPPMPView') ? 'active' : '' }}">
                     <a href="{{ '/Program_Manager/PPMPlist' }}" class="menu-link">
                         <div data-i18n="Perfect Scrollbar">PPMP List</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('Program_Manager/pmPPMPcreate') || Request::is('Program_Manager/pmPPMPcreate') ? 'active' : '' }}">
+                    <a href="{{ '/Program_Manager/pmPPMPcreate' }}" class="menu-link">
+                        <div data-i18n="Perfect Scrollbar">PPMP Create</div>
                     </a>
                 </li>
             </ul>

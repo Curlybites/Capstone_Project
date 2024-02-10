@@ -17,12 +17,10 @@ class Ppmpdatas extends Model
         'projecttitle',
         'typeofcontract',
         'accounttitle',
-        'itemname',
-        'description',
-        'quantity',
-        'unitofissue',
-        'unitprice',
-        'schedule'
+        'schedule',
+        'note',
+        'status'
+        
     
     ];
 }

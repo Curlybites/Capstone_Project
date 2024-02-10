@@ -1,4 +1,4 @@
-{{-- @include('components.header')
+@include('components.header')
 
 <body class="container-fluid">
     <div class="layout-wrapper layout-content-navbar">
@@ -180,4 +180,4 @@
 
 
 </body>
-@include('components.footer') --}}
+@include('components.footer')
