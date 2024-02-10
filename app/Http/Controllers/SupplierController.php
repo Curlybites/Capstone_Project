@@ -14,7 +14,11 @@ class SupplierController extends Controller
     {
         $user = Auth::user();
         $item = Items::all();
-        return view('Supplier.Item', ['user' => $user, 'item' => $item]);
+        $totalItem = Items::count();
+        $totalItemActive = Items::all()->Where('status',1)->count();
+        $totalItemInactive = Items::all()->where('status', 2)->count();
+
+        return view('Supplier.Item', ['user' => $user, 'item' => $item ,'totalItem'=> $totalItem, 'totalActive'=>$totalItemActive , 'totalInactive'=>$totalItemInactive]);
     }
 
     public function profileSupplier()
@@ -107,4 +111,12 @@ class SupplierController extends Controller
 
         return back()->with('success', 'Product deleted successfully.');
     }
+
+
+
+
+
+
+
+
 }
