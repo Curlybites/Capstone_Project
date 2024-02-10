@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project_Manager;
+use App\Models\Ppmpdatas;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
@@ -28,7 +28,7 @@ class ProgramManagerController extends Controller
     public function PPMPpage()
     {
         $user = Auth::user();
-        $ppmp = Project_Manager::all();
+        $ppmp = Ppmpdatas::all();
         return view('Program_Manager.PPMPlist', ['user' => $user, 'ppmp' => $ppmp]);
 
     }
@@ -59,7 +59,7 @@ class ProgramManagerController extends Controller
     public function PPMPEdit()
     {
         $user = Auth::user();
-        $ppmp = Project_Manager::all();
+        $ppmp = Ppmpdatas::all();
         return view('Program_Manager.pmPPMPEdit', ['user' => $user, 'ppmp' => $ppmp]);
     }
 
@@ -93,13 +93,13 @@ class ProgramManagerController extends Controller
             'schedule' => 'required',
         ]);
 
-        Project_Manager::create($request->all());
+        Ppmpdatas::create($request->all());
         return back()->with('sucess', 'PPMP created successfully');
     }
 
     public function editPPMP(Request $request, $id)
     {
-        $PPMP = Project_Manager::findOrFail($id);
+        $PPMP = Ppmpdatas::findOrFail($id);
         $PPMP->update($request->all());
 
         return back()->with('success', 'PPMP updated successfully.');
@@ -108,7 +108,7 @@ class ProgramManagerController extends Controller
     public function PPMPView($id)
     {
         $user = Auth::user();
-        $ppmp = Project_Manager::find($id);
+        $ppmp = Ppmpdatas::find($id);
         return view('Program_Manager.pmPPMPView', ['user' => $user, 'ppmp' => $ppmp]);
     }
 
@@ -123,12 +123,11 @@ class ProgramManagerController extends Controller
 public function deletePPMP($id)
 {
     $user = Auth::user();
-    $ppmp = Project_Manager::find($id);
+    $ppmp = Ppmpdatas::find($id);
     $ppmp->delete();
-    return view('Program_Manager.PPMPlist', ['user' => $user, 'ppmp' => $ppmp]);
-
-    
-    return redirect()->route('Program_Manager.PPMPlist')->with('success','PPMP is deleted sucessfully');
+    // return view('Program_Manager.PPMPlist', ['user' => $user, 'ppmp' => $ppmp]);
+    return back()->with('sucess', 'PPMP is deleted sucessfully');
+    // return redirect()->route('Program_Manager.PPMPlist')->with('success','PPMP is deleted sucessfully');
 }
 
 }

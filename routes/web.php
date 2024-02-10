@@ -103,7 +103,7 @@ Route::controller(ProgramManagerController::class)->group(function ()
     // Route::get('/Program_Manager/pmPPMPView', 'PPMPView')->name('ppmp.view')->middleware('auth');
     Route::put('/Program_Manager/PPMPlist/{id}','editPPMP')->name('routes.update')->middleware('auth');
     // Route::get('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete')->middleware('auth');
-    Route::get('/Program_Manager/PPMPlist/delete{id}', 'deletePPMP')->name('ppmp.delete')->middleware('auth');
+    Route::delete('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete')->middleware('auth');
 
     
     Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');

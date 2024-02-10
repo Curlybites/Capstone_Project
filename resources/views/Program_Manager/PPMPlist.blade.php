@@ -294,7 +294,6 @@
                                                     @foreach ($ppmp as $ppmps)
                                                         <tr>
                                                             <td>{{ $ppmps->id }} </td>
-
                                                             <td>{{ $ppmps->department }}</td>
                                                             <td>{{ $ppmps->programtitle }}</td>
                                                             <td>{{ $ppmps->projecttitle }}</td>
@@ -339,33 +338,31 @@
 
                                                                     <div class="dropdown-menu">
 
-                                                                        <a class="dropdown-item" 
+                                                                        <a class="dropdown-item"
                                                                             href="{{ url('/Program_Manager/pmPPMPView' . $ppmps->id) }}">
                                                                             <i class="bi bi-eye-fill me-2"></i>View
                                                                         </a>
 
-                                                                        <a class="dropdown-item"
+                                                                        <a  type="submit" class="dropdown-item"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#exampleModal2{{ $ppmps->id }}"><i
                                                                                 class="bx bx-edit-alt me-2"></i>Edit</a>
 
-                                                                        <a class="dropdown-item" href={{ url('/Program_Manager/PPMPlist/delete' . $ppmps->id) }}>
-                                                                        {{--  @foreach ($ppmp as $ppmps) --}} 
+                                                                        <a>
                                                                             <form
-                                                                            action="{{ route('ppmp.delete',  $ppmps->id) }}"
-                                                                            id="deletePPMP{{ $ppmps->id }}"
-                                                                            method="post"> @csrf @method('DELETE') 
-                                                                            <i class="bx bx-trash me-2">
-                                                                            </i>Delete
-                                                                        </form>
+                                                                                action="{{ route('ppmp.delete', $ppmps->id) }}"
+                                                                                method="POST">
+                                                                                @csrf 
+                                                                                @method('DELETE')
+                                                                                <a type="submit" class="dropdown-item">
+                                                                                    <i class="bx bx-trash me-2">
+                                                                                    </i>Delete</a>
+                                                                            </form>
                                                                         </a>
-                                                                        
-                                                                        {{-- @endforeach --}}
-                                                                    </ul>
-                                                                </div>
+                                                                        </ul>
+                                                                    </div>
                                                             </td>
                                                         </tr>
-
                                                 </tbody>
                                                 {{-- Modal for edit --}}
                                                 <div class="modal fade" id="exampleModal2{{ $ppmps->id }}"

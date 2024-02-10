@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('project_procurement_management_plan', function (Blueprint $table) {
+        Schema::create('ppmpdatas', function (Blueprint $table) {
             $table->id();
             $table->integer('year');
             $table->string('department');
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('project_procurement_management_plan');
+        Schema::dropIfExists('ppmpdatas');
     }
 };
