@@ -1,6 +1,7 @@
 <?php
  
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HcController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProgramManagerController;
@@ -9,6 +10,10 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\DistrictController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\PatientController;
+
+
  
 /*
 |--------------------------------------------------------------------------
@@ -176,6 +181,63 @@ Route::middleware(['auth', 'supplier'])->group(function () {
 
 
 
+// Supplier Route
+Route::controller(SupplierController::class)->group(function () {
+    Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
+    Route::get('/Supplier/Account_Profile', 'profileSupplier')->middleware('auth');
+    Route::get('/Supplier/Account_Change_Password', 'profileChangeSupplier')->middleware('auth');
+    Route::get('/Supplier/PPMP_List','ppmp')->middleware('auth');
+});
+
+// Program Manager route
+Route::controller(ProgramManagerController::class)->group(function () {
+    Route::get('/Program_Manager/Inventorylist', 'Inventorypage')->middleware('auth');
+    Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
+    Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
+    Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
+
+});
+
+Route::controller(HcController::class)->group(function () {
+
+    // FOR ROUTING OF TABS
+    Route::get('/Health_Center/Item_List', 'hcInventory')->middleware('auth');
+    Route::get('/Health_Center/Patient_List', 'hcPatient')->middleware('auth');
+    Route::get('/Health_Center/Patient_Item_List', 'hcItemList')->middleware('auth');
+    // Route::get('/Health_Center/Patient_List/view', 'hcPatientView')->middleware('auth');
+    Route::get('/Health_Center/Patient_View{id}', 'hcPatientView')->middleware('auth');
+    Route::get('/Health_Center/Patient_View', 'listPatientPrint')->middleware('auth');
+    Route::get('/Health_Center/Report', 'hcReport')->middleware('auth');
+
+    // FOR CREATION OF PATIENT
+    Route::post('/Health_Center/Patient_List', 'storePatient')->name('patientname')->middleware('auth');
+
+    // FOR PATIENT LIST TABLE
+    Route::get('/Health_Center/Patient_List', 'listPatient');
+
+    //FOR SEND ITEMS
+    Route::get('/Health_Center/Send_Items', 'sendItems');
+
+    // FOR SENDING ITEM TO PATIENT
+    Route::get('/Health_Center/Patient_Sent_Item{id}', 'itemSentPatient')->middleware('auth');
+    Route::post('/Health_Center/Patient_Sent_Item', 'distribute')->name('distribute')->middleware('auth');
+
+    // Route::get('/Health_Center/Patient_Sent_Item', 'index');
+
+    // FOR ACCOUNT
+    Route::get('/Health_Center/Profile', 'hcAccount')->middleware('auth');
+    Route::get('/Health_Center/Profile_Change', 'hcAccountChange')->middleware('auth');
+
+    // Route::get('/Health_Center/Patient_View', 'listPatientnMedicine');
+    // Route::put('/Health_Center/Patient_List/{id}', 'updatePatient')->name('updatePatient')->middleware('auth');
+
+    // FOR UPDATING PATIENT INFO
+    Route::post('/Health_Center/Patient_List/{id}', 'updatePatient')->name('routes.update')->middleware('auth');
+
+    // FOR INVENTORY
+    Route::get('/Health_Center/Item_List', 'listItem');
+
+});
 // // Admin route
 
 // Route::controller(AdminController::class)->group(function () {

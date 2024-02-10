@@ -6,7 +6,7 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('components.sidebar.hd_sidebar')
+            @include('components.sidebar.hc_sidebar')
 
             <!-- Layout container -->
             <div class="layout-page">
