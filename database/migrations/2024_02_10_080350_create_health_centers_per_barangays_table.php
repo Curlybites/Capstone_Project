@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('districts', function (Blueprint $table) {
+        Schema::create('health_centers_per_barangays', function (Blueprint $table) {
             $table->id();
-            $table->integer('number');
-            $table->string('supervisor');
+            $table->integer('health_center_id');
+            $table->integer('barangay_id');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('districts');
+        Schema::dropIfExists('health_centers_per_barangays');
     }
 };

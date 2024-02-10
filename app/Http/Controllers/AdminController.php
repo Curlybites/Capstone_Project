@@ -10,6 +10,7 @@ use App\Models\District;
 use App\Models\Barangay;
 use App\Models\HealthCenters;
 use App\Models\Program;
+use App\Models\HealthCentersPerBarangay;
 use App\Models\AssignedProgramManagerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -87,18 +88,14 @@ class AdminController extends Controller
     {
         $barangay = new Barangay();
         $barangay -> name = $request->input('barangayName');
-        $barangay -> district_number = $request->input('districtNumber');
+        $barangay -> district_id = $request->input('districtNumber');
         $barangay -> save();
-
-        $district = new District();
+        
         $barangayId = $barangay->id;
-        $districtId = $district->id;
 
         $barangayPerDistrict = new BarangaysPerDistrict();
-        $barangayPerDistrict -> barangay_name = $request->input('barangayName');
         $barangayPerDistrict -> barangay_id = $barangayId;
-        $barangayPerDistrict -> district_number = $request->input('districtNumber');
-        $barangayPerDistrict -> district_id = $districtId;
+        $barangayPerDistrict -> district_id = $request->input('districtNumber');
         $barangayPerDistrict-> save();
         
         return redirect('/Admin/Barangay_List')->with('message', 'Barangay created successfully!');
@@ -116,18 +113,27 @@ class AdminController extends Controller
     public function Healthcenterpage()
     {
         $healthcenterData = HealthCenters::all();
+        $barangayData = Barangay::all();
         $user = Auth::user();
-        return view('Admin.HealthCenter', ['healthcenterData' => $healthcenterData,'user'=>$user]);
+        $healthCenterPerBrgyData = HealthCentersPerBarangay::all();
+        return view('Admin.HealthCenter', ['healthcenterData' => $healthcenterData,
+        'user'=> $user, 'barangayData' => $barangayData, 'healthCenterPerBrgyData' => $healthCenterPerBrgyData]);
     }
 
     public function healthcenterStore(Request $request)
     {
         $healthcenter = new HealthCenters();
         $healthcenter -> name = $request->input('healthcenterName');
+        $healthcenter -> barangay_id = $request->input('barangayName');
         $healthcenter-> save();
-        // dd($request->all());
-        // $districtData = $request->all(['districtNumber']);
-        // District::create($districtData);
+
+        $healthcenterId = $healthcenter->id;
+
+        $healthCenterPerBrgy = new HealthCentersPerBarangay();
+        $healthCenterPerBrgy -> health_center_id = $healthcenterId;
+        $healthCenterPerBrgy -> barangay_id = $request->input('barangayName');
+        $healthCenterPerBrgy-> save();
+ 
         
         return redirect('/Admin/Health_Center_List')->with('success', 'Health Center created successfully!');
     }

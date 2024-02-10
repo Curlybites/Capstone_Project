@@ -16,8 +16,8 @@ class Barangay extends Model
         'name'
     ];
 
-    public function district()
-    {
-        return $this->belongsTo(District::class);
-    }
+    // public function district()
+    // {
+    //     return $this->belongsTo(District::class);
+    // }
 }

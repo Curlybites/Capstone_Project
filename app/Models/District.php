@@ -12,15 +12,13 @@ class District extends Model
 
     protected $fillable = [
         'number',
-        'barangay',
-        'healthcenter',
         'supervisor'
     ];
 
-    public function barangays()
-{
-    return $this->hasMany(Barangay::class, 'number');
-}
+//     public function barangays()
+// {
+//     return $this->hasMany(Barangay::class, 'number');
+// }
 
 }
 

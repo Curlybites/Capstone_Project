@@ -49,9 +49,6 @@
                                                         <div class="modal-body">
 
                                                             <div class="row">
-
-
-                                                                
                                                                 <div class="row">
                                                                     <p>Health Center Name</p>
                                                                     <div class="input-group mb-3">
@@ -61,20 +58,20 @@
                                                                             name="healthcenterName" required>
                                                                     </div>
                                                                 </div>
-
-                                                                {{-- <div class="row">
-                                                                    <p>Address</p>
+                                                                <div class="row">
+                                                                    <p>Barangay</p>
                                                                     <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                            aria-label="Sizing example input"
-                                                                            aria-describedby="inputGroup-sizing-default"
-                                                                            name="City" required>
+                                                                        <select class="form-select"
+                                                                            aria-label="Default select example" name="barangayName">
+                                                                            <option selected>Choose Barangay
+                                                                            </option>
+                                                                            @foreach ( $barangayData as $healthcenterRow)
+                                                                            <option value="{{ $healthcenterRow->id }}">{{ $healthcenterRow->name }}</option>
+                                                                            @endforeach
+                                                                        </select>
                                                                     </div>
-                                                                </div> --}}
-
-                                                              
+                                                                </div>       
                                                             </div>
-
                                                         </div>
                                                         <div class="modal-footer border-1">
                                                             <button type="button" class="btn btn-secondary mt-3"
@@ -98,7 +95,6 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Health Center</th>
-                                                        {{-- <th>Address</th> --}}
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -116,32 +112,7 @@
                                                         </td>
                                                     </tr>
                                                  
-                                                    {{-- <div class="modal fade" id="exampleModal1" tabindex="-1"
-                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                                        Profile View</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-
-                                                                   
-
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button"
-                                                                        class="btn btn-primary">Save changes</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div> --}}
-
+                                                
                                                     <div class="modal fade" id="exampleModal2{{ $healthcenterRow->id }}" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">

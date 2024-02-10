@@ -71,7 +71,7 @@
                                                                         </option>
                                                                         @foreach ($districtData as $barangayRow)
                                                                             <option
-                                                                                value="{{ $barangayRow->number }}">
+                                                                                value="{{ $barangayRow->id }}">
                                                                                 {{ $barangayRow->number }}
                                                                                 </option>
                                                                         @endforeach
@@ -102,7 +102,6 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Barangay Name</th>
-                                                        <th>District</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -111,8 +110,6 @@
                                                         <tr>
                                                             <td>{{ $barangayRow->id }}</td>
                                                             <td>{{ $barangayRow->name }}</td>
-                                                            <td>{{ $barangayRow->district_number }}</td>
-                                                            
                                                             <td>
                                                                 {{-- <a
                                                                 type="button" href=/Admin/User_List/1
