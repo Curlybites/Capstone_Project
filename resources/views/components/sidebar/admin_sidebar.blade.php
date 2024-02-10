@@ -175,7 +175,6 @@
                         <div data-i18n="Perfect Scrollbar">Program List</div>
                     </a>
                 </li>
-
             </ul>
         </li>
 

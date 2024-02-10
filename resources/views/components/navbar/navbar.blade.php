@@ -28,19 +28,7 @@
 
                 <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/Account_Change_Password') ? 'Account /' : '' }}</span>{{ Request::is('Admin/Account_Change_Password') ? ' Change Password' : '' }} </h5>
 
-                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Supplier/Account_Change_Password') ? 'Account /' : '' }}</span>{{ Request::is('Supplier/Account_Change_Password') ? ' Change Password' : '' }} </h5>
-
-
-                {{-- Supplier navbar --}}
-                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light"></span>{{ Request::is('Supplier/Dashboard') ? 'Dashboard' : '' }} </h5>
-
-                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Supplier/Item_List') ? 'Item /' : '' }}</span>{{ Request::is('Supplier/Item_List') ? ' List of Items' : '' }} </h5>
-
-                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Supplier/PPMP_List') ? 'PPMP /' : '' }}</span>{{ Request::is('Supplier/PPMP_List') ? ' List of PPMP' : '' }} </h5>
-
-                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Supplier/Account_Profile') ? 'Account /' : '' }}</span>{{ Request::is('Supplier/Account_Profile') ? ' Profile' : '' }} </h5>
-
-                {{-- Supplier/Account_Profile --}}
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Admin/User_List') ? 'Users /' : '' }}</span>{{ Request::is('Admin/User_List') ? ' List of Users' : '' }} </h5>
 
             </div>
         </div>
