@@ -33,7 +33,7 @@
             </ul>
         </li>
 
-        <li class="menu-item {{ Request::is('Health_Center/Patient_List') ? 'active open' : '' }}">
+        <li class="menu-item {{ Request::is('Health_Center/Patient_List') ? 'active open' : '' }} {{ Request::is('Health_Center/Send_Items') ? 'active open' : '' }}">
             <a href="#" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-user-circle"></i>
                 <div data-i18n="Extended UI">Patient</div>

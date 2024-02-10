@@ -138,31 +138,29 @@ class HcController extends Controller
 
 
     // NAG GEGET PERO DI PUMAPASOK SA DB
-    // public function distribute(Request $request)
-    // {
-    //     $request->validate([
+    public function distribute(Request $request)
+    {
+        $request->validate([
 
-    //         'quantity' => 'required',
-    //         'unit' => 'required',
-    //         'item' => 'required',
-    //         'description' => 'required'
+            'quantity' => 'required',
+            'unit' => 'required',
+            'item' => 'required',
+            'description' => 'required'
 
-    //     ]);
+        ]);
 
-    //     Distribute::create($request->all());
+        Distribute::create($request->all());
 
-    //     return back()->with('success', 'ikaw na bahala');
-    // }
+        return back()->with('success', 'ikaw na bahala');
+    }
 
 
-    // FOR SEND ITEMS
+    // FOR SEND ITEMS FILTRATION
     public function sendItems()
     {
         $user = Auth::user();
-
         // Fetch active items
         $tableData = Patient::where('status', true)->get();
-
         return view('Health_Center.hcSendItems', ['user' => $user, 'tableData' => $tableData]);
     }
 
