@@ -154,13 +154,4 @@ class UserController extends Controller
         $user->save();
         return back()->with('success', "Password Changed Successfully");
     }
-<<<<<<< HEAD
-
-    // public function test(){
-    //     return view('Supplier.test')
-    // }
-
-
-=======
->>>>>>> parent of 836d0af (Merge branch 'master' into District_Branch)
 }
