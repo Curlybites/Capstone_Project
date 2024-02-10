@@ -1,19 +1,20 @@
-@include('components.header');
+@include('components.header')
 
 <body>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
-            {{-- sidebar --}}
-            @include('Components.sidebar.pm_sidebar');
+            <!-- Menu -->
+
+            @include('components.sidebar.pm_sidebar')
 
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-                @include('components.navbar.navbar');
-                <!-- / Navbar -->
+                @include('components.navbar.navbar')
+                <!-- Navbar End-->
 
-                
+
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
                     <!-- Content -->
@@ -26,13 +27,13 @@
                             <div class="col-md-12">
                                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#"><i
+                                        <a class="nav-link" href={{ '/Program_Manager/Profile' }}><i
                                                 class="bx
                                             bx-user me-1"></i>
                                             Account</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link d-flex align-items-center justify-content-center"
+                                        <a class="nav-link active d-flex align-items-center justify-content-center"
                                             href={{ '/Program_Manager/Profile_Change' }}>
                                             <i class='bx bx-lock-alt'></i>
                                             <span>Change Password</span>
@@ -181,9 +182,7 @@
                     </div>
                     <!-- / Content -->
 
-                    <div class="content-backdrop fade"></div>
-                </div>
-                <!-- / Content -->
-                <!--footer-->
 
-                @include('components.footer');
+                    <!--footer-->
+
+                    @include('components.footer')

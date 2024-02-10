@@ -102,6 +102,37 @@ Route::middleware(['auth', 'program_manager'])->group(function () {
     Route::get('/Program_Manager/PPMPlist', [ProgramManagerController::class,'PPMPpage']);
     Route::get('/Program_Manager/Profile', [ProgramManagerController::class,'Profilepage']);
 
+    Route::controller(ProgramManagerController::class)->group(function () 
+{
+    // PPMP_Page
+    Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
+    Route::get('/Program_Manager/pmPPMPcreate', 'PPMPcreate')->middleware('auth');
+    Route::get('/Program_Manager/pmPPMPView{id}', 'PPMPView')->middleware('auth');
+    // Route::get('/Program_Manager/pmPPMPView{id}', 'printPPMP')->middleware('auth');
+    
+    Route::get('/Program_Manager/pmPPMPEdit_{id}', 'PPMPEdit')->name('ppmp.edit')->middleware('auth');
+    // Route::get('/Program_Manager/pmPPMPPrint', 'PPMPPrint')->middleware('auth');
+    Route::post('/Program_Manager/PPMPlist', 'storePPMP')->name('ppmp.create')->middleware('auth');
+
+    // Route::get('/Program_Manager/pmPPMPView', 'PPMPView')->name('ppmp.view')->middleware('auth');
+    Route::put('/Program_Manager/pmPPMPEdit_{id}', 'editPPMP')->name('routes.update')->middleware('auth');
+    // Route::get('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete')->middleware('auth');
+    Route::delete('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete')->middleware('auth');
+
+    
+    Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
+    Route::get('/Program_Manager/AllocationView', 'pmAllocationView')->middleware('auth');
+    Route::get('/Program_Manager/AllocationEdit', 'pmAllocationEdit')->middleware('auth');
+    Route::get('/Program_Manager/pmAllocationPrint', 'AllocationPrint')->middleware('auth');
+    Route::get('/Program_Manager/AllocationProcess', 'pmAccountChange')->middleware('auth');
+    // Report_Page
+    Route::get('/Program_Manager/Reportlist', 'Reportpage')->middleware('auth');
+
+// Profile_Page
+    Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
+    Route::get('/Program_Manager/Profile_Change', 'pmAccountChange')->middleware('auth');
+
+});
 });
 
 
@@ -190,13 +221,12 @@ Route::controller(SupplierController::class)->group(function () {
 });
 
 // Program Manager route
-Route::controller(ProgramManagerController::class)->group(function () {
-    Route::get('/Program_Manager/Inventorylist', 'Inventorypage')->middleware('auth');
-    Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
-    Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
-    Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
+// Route::controller(ProgramManagerController::class)->group(function () {
+//     Route::get('/Program_Manager/Inventorylist', 'Inventorypage')->middleware('auth');
+//     Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
+//     Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
+//     Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
 
-});
 
 Route::controller(HcController::class)->group(function () {
 
