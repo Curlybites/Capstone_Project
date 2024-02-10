@@ -20,8 +20,8 @@
                     <!-- Content -->
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Item /</span> List of Items
-                        </h4>
+                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Item /</span> List of Items
+                        </h4> --}}
 
                         <div class="row">
                             <div class="col-md-12">
@@ -90,6 +90,8 @@
                                                                 <label for="floatingInput">Date Expiration</label>
                                                             </div>
 
+                                                            
+
                                                             <div class="form-floating mt-2">
                                                                 <select class="form-select" id="floatingSelect"
                                                                     name="status"
@@ -138,7 +140,6 @@
                                                         <th>#</th>
                                                         <th>Image</th>
                                                         <th>Name</th>
-                                                        <th>Description</th>
                                                         <th>Price</th>
                                                         <th>Date Created</th>
                                                         <th>Date Expiration</th>
@@ -165,9 +166,9 @@
                                                             <td>
                                                                 {{ $items->item_name }}
                                                             </td>
-                                                            <td>
+                                                            {{-- <td>
                                                                 {{ $items->item_description }}
-                                                            </td>
+                                                            </td> --}}
 
                                                             <td>
                                                                 ₱ {{ $items->item_price }}
@@ -235,7 +236,7 @@
                                                         <div class="modal fade" id="viewItem{{ $items->id }}"
                                                             tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-dialog modal-lg modal-dialog-centered">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title"
@@ -247,79 +248,81 @@
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <div class="form-floating">
-                                                                            <input type="text" class="form-control"
-                                                                                id="floatingInput"
-                                                                                placeholder="Item Name"
-                                                                                aria-describedby="floatingInputHelp"
-                                                                                name="item_name"
-                                                                                value="{{ $items->item_name }}"
-                                                                                disabled />
-                                                                            <label for="floatingInput">Name</label>
-                                                                        </div>
-                                                                        <div class="form-floating">
-                                                                            <textarea class="form-control mt-2" placeholder="Leave a description here" id="floatingTextarea"
-                                                                                name="item_description" disabled>{{ $items->item_description }}</textarea>
-                                                                            <label
-                                                                                for="floatingTextarea">Description</label>
-                                                                        </div>
-                                                                        <div class="form-floating mt-2">
-                                                                            <input type="number"
-                                                                                class="form-control "
-                                                                                id="floatingInput" name="item_price"
-                                                                                placeholder="Item Price"
-                                                                                aria-describedby="floatingInputHelp"
-                                                                                value="{{ $items->item_price }}"
-                                                                                disabled />
-                                                                            <label for="floatingInput">Price</label>
-                                                                        </div>
-                                                                        <div class="form-floating mt-2">
-                                                                            <input type="date"
-                                                                                class="form-control "
-                                                                                id="floatingInput"
-                                                                                name="date_creation"
-                                                                                placeholder="Date Creation"
-                                                                                aria-describedby="floatingInputHelp"
-                                                                                value="{{ $items->date_creation }}"
-                                                                                disabled />
-                                                                            <label for="floatingInput">Date
-                                                                                creation</label>
-                                                                        </div>
+                                                                            <div class="row justify-content-center ">
+                                                                                <div class="col-6">
+                                                                                            @if ($items->item_image)
+                                                                                    <div class="" >
+                                                                                        <img src="{{ asset('storage/images/' . $items->item_image) }}"
+                                                                                            alt="Uploaded Image"
+                                                                                            class="w-75">
+                                                                                    </div>
+                                                                                @else
+                                                                                    <span>No image found!</span>
+                                                                                @endif
+                                                                                 </div>
 
-                                                                        <div class="form-floating mt-2">
-                                                                            <input type="date"
-                                                                                class="form-control "
-                                                                                id="floatingInput"
-                                                                                name="date_expiration"
-                                                                                placeholder="Date Expiration"
-                                                                                aria-describedby="floatingInputHelp"
-                                                                                value="{{ $items->date_expiration }}"
-                                                                                disabled />
-                                                                            <label for="floatingInput">Date
-                                                                                Expiration</label>
-                                                                        </div>
+                                                                                 <div class="col-sm-4">
+                                                                                     <div class="container">
+                                                                                        <div class="row">
+                                                                                            <h3>{{ $items->item_name }}</h3>
+                                                                                            <h3>₱ {{ $items->item_price }}</h3>
+                                                                                        </div>
+                                                                                     </div>
 
-                                                                        <div class="form-floating mt-2">
-                                                                            <select class="form-select"
-                                                                                id="floatingSelect" name="status"
-                                                                                aria-label="Floating label select example"
-                                                                                value="{{ $items->status }}" disabled>
+                                                                                    <div class="container">
+                                                                                        <div class="row">
+                                                                                            <p class="text-wrap" style="word-wrap:break-word;max-height: 300px; " >{{ $items->item_description }}</p>
+                                                                                         </div>
+                                                                                    </div>
 
-                                                                                <option value="1">Active
-                                                                                </option>
-                                                                                <option value="2">Inactive
-                                                                                </option>
-                                                                            </select>
-                                                                            <label for="floatingSelect">Status</label>
+                                                                                     <div class="container">
+                                                                                        <div class="row">
+                                                                                            <small class="text-primary">Date Created</small>
+                                                                                        </div>
+    
+                                                                                        <div class="row">
+                                                                                            <span>{{ $items->date_creation }}</span>
+                                                                                        </div>
+                                                                                     </div>
+
+                                                                                     
+                                                                                     <div class="container mt-3 ">
+                                                                                        <div class="row">
+                                                                                            <small class="text-danger">Expiration Date</small>
+                                                                                        </div>
+    
+                                                                                        <div class="row">
+                                                                                            <span>{{ $items->date_expiration }}</span>
+                                                                                        </div>
+                                                                                     </div>
+
+                                                                                     <div class="container mt-4 mb-4">
+                                                                                        <small class="badge bg-label-success me-1">     
+                                                                                            
+                                                                                            @switch($items -> status)
+                                                                                            @case(1)
+                                                                                              Active
+                                                                                                
+                                                                                            @break
+                            
+                                                                                            @case(2)
+                                                                                               Inactive
+                                                                                            @break
+                            
+                                                                                            @default
+                                                                                        @endswitch
+                                                                                            
+                                                                                        </small>
+                                                                                  
+                                                                                     </div>
+    
+    
+                                                                                 </div>
+
+                                                                                
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button"
-                                                                            class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Close</button>
-                                                                        <button type="button"
-                                                                            class="btn btn-primary">Save
-                                                                            changes</button>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
