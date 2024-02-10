@@ -85,6 +85,23 @@ Route::middleware(['auth', 'supplier'])->group(function () {
     
 });
 
+// Route for Disctrict
+
+Route::middleware(['auth','district'])->group(function(){
+
+    Route::get('/District/Dashboard', [PageController::class,'dtDashboard']);
+    Route::controller(DistrictController::class)->group(function (){
+        
+    
+        Route::get('/District/Account_Profile', 'profileDistrict')->middleware('auth');
+        Route::get('/District/Account_Change_Password', 'profileChangeDistrict')->middleware('auth');
+        Route::get('/District/Inventory', 'inventoryDistrict');
+        Route::get('/District/Allocation_List', 'allocationlistDistrict');
+        Route::get('/District/Allocation_Create', 'allocationcreateDistrict');
+        Route::get('/District/Allocation_View', 'districtView');
+    
+    });
+});
 
 
 // Route::controller(PageController::class)->group(function () {
@@ -111,13 +128,6 @@ Route::middleware(['auth', 'supplier'])->group(function () {
 
 
 
-// Supplier Route
-Route::controller(SupplierController::class)->group(function () {
-    Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
-    Route::get('/Supplier/Account_Profile', 'profileSupplier')->middleware('auth');
-    Route::get('/Supplier/Account_Change_Password', 'profileChangeSupplier')->middleware('auth');
-    Route::get('/Supplier/PPMP_List','ppmp')->middleware('auth');
-});
 
 // Program Manager route
 // Route::controller(ProgramManagerController::class)->group(function () {
@@ -168,16 +178,7 @@ Route::controller(HcController::class)->group(function () {
 
 });
 
-// District route
-Route::controller(DistrictController::class)->group(function (){
-    Route::get('/District/Account_Profile', 'profileDistrict')->middleware('auth');
-    Route::get('/District/Account_Change_Password', 'profileChangeDistrict')->middleware('auth');
-    Route::get('/District/Inventory', 'inventoryDistrict');
-    Route::get('/District/Allocation_List', 'allocationlistDistrict');
-    Route::get('/District/Allocation_Create', 'allocationcreateDistrict');
-    Route::get('/District/Allocation_View', 'districtView');
 
-});
 // // Admin route
 
 // Route::controller(AdminController::class)->group(function () {
@@ -228,3 +229,4 @@ Route::controller(DistrictController::class)->group(function (){
 //     // Route::get('/Supplier/PPMP_List', 'ppmp')->middleware('auth');
 // });
 
+});
