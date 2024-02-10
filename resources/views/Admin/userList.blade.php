@@ -16,7 +16,10 @@
                 <!-- / Navbar -->
 
 <<<<<<< HEAD
+<<<<<<< HEAD
      
+=======
+>>>>>>> parent of 836d0af (Merge branch 'master' into District_Branch)
 =======
 >>>>>>> parent of 836d0af (Merge branch 'master' into District_Branch)
 
