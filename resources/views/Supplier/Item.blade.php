@@ -2,7 +2,7 @@
 
 <body>
     <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-wrapper layout-content-navbar ">
         <div class="layout-container">
             <!-- Menu -->
 
@@ -18,16 +18,98 @@
 
                 <div class="content-wrapper">
                     <!-- Content -->
+                    
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Item /</span> List of Items
-                        </h4> --}}
 
+                        
+                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Item /</span> List of Items
+                        </h4> --}}  @if (session('success'))
+                        <div class="alert alert-success" role="alert"> {{ session('success') }}
+                        </div>
+                        {{-- <div class="toast fade show bs-toast align-items-center position-fixed bottom-0 end-0 m-3 bg-success"
+                            role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="d-flex">
+                                <div class="toast-body"> {{ session('success') }} </div> <button
+                                    type="button" class="btn-close me-2 m-auto"
+                                    data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                        </div> --}}
+
+                        
+                    @endif
+                    
+                    <div class="row g-4 mb-4">
+                        <div class="col-sm-6 col-xl-3">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="d-flex align-items-start justify-content-between">
+                                <div class="content-left">
+                                  <span>Supplier Items</span>
+                                  <div class="d-flex align-items-end mt-2">
+                                    <h4 class="mb-0 me-2">{{ $totalItem }}</h4>
+                                    <small class="text-success"></small>
+                                  </div>
+                                  <p class="mb-0">Total Items</p>
+                                </div>
+                                <div class="avatar">
+                                  <span class="avatar-initial rounded bg-label-primary">
+                                    <i class="bx bx-user bx-sm"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="d-flex align-items-start justify-content-between">
+                                <div class="content-left">
+                                  <span>Supplier Active Items</span>
+                                  <div class="d-flex align-items-end mt-2">
+                                    <h4 class="mb-0 me-2">{{ $totalActive }}</h4>
+                                    <small class="text-success"></small>
+                                  </div>
+                                  <p class="mb-0">Active Item</p>
+                                </div>
+                                <div class="avatar">
+                                  <span class="avatar-initial rounded bg-label-danger">
+                                    <i class="bx bx-user-check bx-sm"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="d-flex align-items-start justify-content-between">
+                                <div class="content-left">
+                                  <span>Supplier Inactive Users</span>
+                                  <div class="d-flex align-items-end mt-2">
+                                    <h4 class="mb-0 me-2">{{ $totalInactive }}</h4>
+                                    <small class="text-danger"></small>
+                                  </div>
+                                  <p class="mb-0">Inactive Item</p>
+                                </div>
+                                <div class="avatar">
+                                  <span class="avatar-initial rounded bg-label-success">
+                                    <i class="bx bx-group bx-sm"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                       
+                      </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card mb-4">
                                     <div
-                                        class="title d-flex align-items-center justify-content-between border-top border-success">
+                                        class="title d-flex align-items-center justify-content-between  border-success">
                                         <h5 class="card-header">Item List</h5>
                                         <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
                                             data-bs-target="#createItem"> <i class='bx bxs-add-to-queue'></i> Create
@@ -129,9 +211,9 @@
 
 
 
-                                    <hr class="my-0">
+                                    <hr class="my-0 ">
                                     <!-- Account -->
-                                    <div class="card-body p-5 ">
+                                    <div class="card-body p-5  ">
                                         <div class="table-responsive text-nowrap ">
                                             <table id="dataTable" class="datatables-basic table border-top "
                                                 style="width:100%">
