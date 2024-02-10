@@ -1,4 +1,4 @@
-@include('components.header');
+@include('components.header')
 
 <body>
     <!-- Layout wrapper -->
@@ -110,32 +110,29 @@
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID</th>
-                                                        <th>Medicine Name</th>
+                                                        <th>Name</th>
                                                         <th>Type</th>
                                                         <th>Program</th>
+                                                        <th>Expiration</th>
                                                         <th>Quantity</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>001</td>
-                                                        <td>Amox</td>
-                                                        <td>Antibiotic</td>
-                                                        <td>Family Planning</td>
-                                                        <td>10,000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>002</td>
-                                                        <td>Cond</td>
-                                                        <td>Protection</td>
-                                                        <td>Family Planning</td>
-                                                        <td>69,000</td>
-                                                    </tr>
+                                                    @foreach ($items as $item)
+                                                        <tr>
+                                                            <td>{{ $item->name }}</td>
+                                                            <td>{{ $item->type }}</td>
+                                                            <td>{{ $item->program }}</td>
+                                                            <td>{{ $item->expiration }}</td>
+                                                            <td>{{ $item->quantity }}</td>
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
+
                                                 </tfoot>
                                             </table>
                                         </div>
+
                                     </div>
                                     <hr class="my-0">
                                     <!-- /Account -->

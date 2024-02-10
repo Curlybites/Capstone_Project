@@ -10,7 +10,7 @@
     <div class="menu-inner-shadow"></div>
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item {{ Request::is('/Health_Center/Dashboard') ? 'active' : '' }}">
+        <li class="menu-item {{ Request::is('Health_Center/Dashboard') ? 'active' : '' }}">
             <a href="{{ '/Health_Center/Dashboard' }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-dashboard"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -65,15 +65,15 @@
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Profile</span></li>
         <!-- Forms -->
         <li
-            class="menu-item {{ Request::is('Health_Center/Profile') || Request::is('Health_Department/Profile_Change') ? 'active open' : '' }}">
+            class="menu-item {{ Request::is('Health_Center/Profile') || Request::is('Health_Center/Profile_Change') ? 'active open' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-building"></i>
                 <div data-i18n="User interface">Account</div>
             </a>
             <ul class="menu-sub">
                 <li
-                    class="menu-item {{ Request::is('Health_Department/Profile') || Request::is('Health_Department/Profile_Change') ? 'active' : '' }}">
-                    <a href={{ '/Health_Department/Profile' }} class="menu-link">
+                    class="menu-item {{ Request::is('Health_Center/Profile') || Request::is('Health_Center/Profile_Change') ? 'active' : '' }}">
+                    <a href={{ '/Health_Center/Profile' }} class="menu-link">
                         <div data-i18n="Accordion">Profile</div>
                     </a>
                 </li>

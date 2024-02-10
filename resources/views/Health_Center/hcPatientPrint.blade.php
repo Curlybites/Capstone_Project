@@ -2,8 +2,15 @@
 
 <body class="container-fluid">
     <div class="card-body">
+
         <div class="pb-4">
-            <p style="margin-bottom: 0px; font-weight: bold;">QC Health Center</p>
+            <p style="margin-bottom: 0px; font-weight: bold;">
+                @if ($tableData)
+                    <p>{{ $tableData->healthcenter }}</p>
+                @else
+                    <p>walang data</p>
+                @endif
+            </p>
             <p style="margin-bottom: 0px; font-weight: bold;">qchc@gmail.com</p>
             <p style="margin-bottom: 0px; font-weight: bold;">Sample Address, 23rd St.,
                 Sample City, ####
@@ -11,9 +18,26 @@
         </div>
         <div class="row pb-4 mt-5">
             <div class="col-md-4 col-4 mb-md-0 mb-3">
-                <p style="margin-bottom: 0px; font-weight: bold;">Patient</p>
-                <p style="margin-bottom: 0px;">Patient Name</p>
-                <p style="margin-bottom: 0px;">Program</p>
+                {{-- <p style="margin-bottom: 0px; font-weight: bold;">
+                    @if ($tableData)
+                        <p>{{ $tableData->fname }}</p>
+                    @else
+                        <p>walang data</p>
+                    @endif
+                </p> --}}
+                <p style="margin-bottom: 0px; font-weight: bold;">Patient Name: @if ($tableData)
+                        <p>{{ $tableData->fname }} {{ $tableData->mname }}. {{ $tableData->lname }}</p>
+                    @else
+                        <p>walang data</p>
+                    @endif
+                </p>
+                <p style="margin-bottom: 0px; font-weight: bold;">Program
+                    @if ($tableData)
+                        <p>{{ $tableData->program }}</p>
+                    @else
+                        <p>walang data</p>
+                    @endif
+                </p>
                 {{-- <p style="margin-bottom: 0px;">George Wilson</p>
                 <p style="margin-bottom: 0px;">09123459879</p>
                 <p style="margin-bottom: 0px;">supplier101@gmail.com</p> --}}
@@ -23,20 +47,23 @@
                 <p style="margin-bottom: 0px;">PO-94619964639</p>
             </div> --}}
             <div class="col-md-4 col-4">
-                <p style="margin-bottom: 0px; font-weight: bold;">Date Created:</p>
-                <p style="margin-bottom: 0px;">2021-09-08</p>
+                <p style="margin-bottom: 0px; font-weight: bold;">Date Created:
+                    @if ($tableData)
+                        <p>{{ $tableData->created_at }}</p>
+                    @else
+                        <p>walang data</p>
+                    @endif
+                </p>
             </div>
         </div>
         <div class="text-nowrap">
             <table id="" class="datatables-basic table border-top table-bordered" style="width:100%">
                 <thead>
                     <tr class="text-center">
-                        <th>Item Name</th>
+                        <th>Item Name </th>
                         <th>Unit</th>
                         <th>Quantity</th>
                         <th>Description</th>
-
-
                     </tr>
                 </thead>
                 <tbody>

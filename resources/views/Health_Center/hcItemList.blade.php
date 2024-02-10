@@ -39,15 +39,22 @@
                                             <div class="col-md-12">
                                                 <form action="">
                                                     <div class="row mb-2">
+                                                        @if ($send)
+                                                            <div class="col-md-6 mb-md-0 mb-3">
+                                                                <label for="exampleFormControlInput1"
+                                                                    class="form-label">Name</label>
+                                                                <input class="form-control" type="text"
+                                                                    value="{{ $send->fname }} {{ $send->mname }}. {{ $send->lname }}"
+                                                                    aria-label="Disabled input example" disabled>
+                                                            </div>
+                                                        @endif
+
                                                         <div class="col-md-6 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
-                                                                class="form-label">Name</label>
-                                                                <input class="form-control" type="text" placeholder="Sample O. Name" aria-label="Disabled input example" disabled>
-
-                                                        </div>
-                                                        <div class="col-md-6 mb-md-0 mb-3">
-                                                            <label for="exampleFormControlInput1" class="form-label">Program</label>
-                                                            <input class="form-control" type="text" placeholder="Family Planning" aria-label="Disabled input example" disabled>
+                                                                class="form-label">Program</label>
+                                                            <input class="form-control" type="text"
+                                                                value="{{ $send->program }}"
+                                                                aria-label="Disabled input example" disabled>
                                                         </div>
                                                     </div>
 
@@ -55,12 +62,17 @@
                                                         <div class="col-md-6 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Barangay Health Center</label>
-                                                                <input class="form-control" type="text" placeholder="Commonwealth HC" aria-label="Disabled input example" disabled>
+                                                            <input class="form-control" type="text"
+                                                                value="{{ $send->healthcenter }}"
+                                                                aria-label="Disabled input example" disabled>
 
                                                         </div>
                                                         <div class="col-md-6 mb-md-0 mb-3">
-                                                            <label for="exampleFormControlInput1" class="form-label">District</label>
-                                                            <input class="form-control" type="text" placeholder="2" aria-label="Disabled input example" disabled>
+                                                            <label for="exampleFormControlInput1"
+                                                                class="form-label">District</label>
+                                                            <input class="form-control" type="text"
+                                                                value="{{ $send->district }}"
+                                                                aria-label="Disabled input example" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="table-responsive">
@@ -85,28 +97,33 @@
                                                             <tbody class="addTBRow">
                                                                 <tr>
                                                                     <td>
-                                                                        <button class="btn btn-sm btn-danger py-0 text-start"
+                                                                        <button
+                                                                            class="btn btn-sm btn-danger py-0 text-start"
                                                                             onclick="removeRow(this)">X</button>
                                                                     </td>
+                                                                    {{-- <form action="{{ url('//Health_Center/Patient_Sent_Item') }}" method="GET">
+                                                                        <input type="text" name="search" placeholder="Search by name" value="{{ request('search') }}">
+                                                                        <button type="submit">Search</button>
+                                                                    </form> --}}
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="number"
                                                                             class="form-control text-center border-0"
-                                                                            value="32">
+                                                                            value="Quantity" name="quantity">
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            value="box">
+                                                                            name="type">
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            value="Parasatukmol">
+                                                                            name="name">
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            value="asdsad">
+                                                                            name="program">
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -157,48 +174,16 @@
 
                 <script>
                     function addRow() {
-                        const table = document.getElementById("myTable");
-                        const tbody = table.getElementsByTagName("tbody")[0];
+                        
+                        var newRow = '<tr>' +
+                            '<td><button class="btn btn-sm btn-danger py-0 text-start"onclick="removeRow(this)">X</button></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="number"class="form-control text-center border-0" value=""></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" value=""></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text"class="form-control text-center border-0"value=""></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text"class="form-control text-center border-0"value=""></td>' +
+                            '</tr>';
 
-                        let cloneRow;
-                        if (tbody.rows.length > 0) {
-                            // Clone an existing row if tbody is not empty
-                            cloneRow = tbody.rows[0].cloneNode(true);
-
-                            // Reset input values to empty strings
-                            const inputs = cloneRow.getElementsByTagName("input");
-                            for (let input of inputs) {
-                                input.value = "";
-                            }
-                        } else {
-                            // Create a new row if tbody is empty
-                            cloneRow = document.createElement("tr");
-                            cloneRow.innerHTML = `
-            <td>
-                <button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button>
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="number" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="text" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="text" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="text" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="number" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="number" class="form-control text-center border-0" disabled>
-            </td>
-        `;
-                        }
-
-                        tbody.appendChild(cloneRow);
+                        $('.addTBRow').append(newRow);
                     }
 
                     function removeRow(button) {

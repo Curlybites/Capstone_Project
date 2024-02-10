@@ -6,12 +6,12 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('components.sidebar.hd_sidebar')
+            @include('components.sidebar.hc_sidebar')
 
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-                @include('components.navbar.navbar')
+                @include('components.navbar.navbar');
                 <!-- Navbar End-->
 
 
@@ -27,14 +27,14 @@
                             <div class="col-md-12">
                                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
                                     <li class="nav-item">
-                                        <a class="nav-link" href={{ '/Health_Center/Profile' }}><i
+                                        <a class="nav-link active" href="#"><i
                                                 class="bx
                                             bx-user me-1"></i>
                                             Account</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link active d-flex align-items-center justify-content-center"
-                                            href={{ '/Health_Center/Profile_Change' }}>
+                                        <a class="nav-link d-flex align-items-center justify-content-center"
+                                            href={{ '/Health_Department/Profile_Change' }}>
                                             <i class='bx bx-lock-alt'></i>
                                             <span>Change Password</span>
                                         </a>

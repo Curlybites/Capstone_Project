@@ -11,90 +11,7 @@
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-
-                <nav class="layout-navbar container-fluid  navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-                    id="layout-navbar">
-                    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                            <i class="bx bx-menu bx-sm"></i>
-                        </a>
-                    </div>
-
-                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                        <!-- Search -->
-                        <div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
-                                    aria-label="Search..." />
-                            </div>
-                        </div>
-                        <!-- /Search -->
-
-                        <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            <!-- Place this tag where you want the button to render. -->
-                            <li class="nav-item lh-1 me-3">
-                                <a href="#"><i class='bx bxs-bell'></i></a>
-                            </li>
-
-                            <!-- District -->
-                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
-                                    data-bs-toggle="dropdown">
-                                    <div class="avatar avatar-online">
-                                        <img src="../assets/img/avatars/1.png" alt
-                                            class="w-px-40 h-auto rounded-circle" />
-                                    </div>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <div class="d-flex">
-                                                <div class="flex-shrink-0 me-3">
-                                                    <div class="avatar avatar-online">
-                                                        <img src="../assets/img/avatars/1.png" alt
-                                                            class="w-px-40 h-auto rounded-circle" />
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">John Doe</span>
-                                                    <small class="text-muted">Admin</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="dropdown-divider"></div>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="bx bx-user me-2"></i>
-                                            <span class="align-middle">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="bx bx-cog me-2"></i>
-                                            <span class="align-middle">Settings</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <div class="dropdown-divider"></div>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="../logout.php">
-                                            <i class="bx bx-power-off me-2"></i>
-                                            <span class="align-middle">Log Out</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!--/ District -->
-                        </ul>
-                    </div>
-                </nav>
-
+                @include('components.navbar.navbar')
                 <!-- / Navbar -->
 
                 <div class="content-wrapper">
@@ -197,13 +114,14 @@
                                                                             class="form-label">Health Center</label>
                                                                         <input class="form-control" type="text"
                                                                             name="healthcenter"
+                                                                            placeholder="COMMONWEALTH HC"
                                                                             aria-label="Disabled input example">
                                                                     </div>
                                                                     <div class="col-md-4 mb-3">
                                                                         <label for="exampleFormControlInput1"
                                                                             class="form-label">District</label>
                                                                         <input class="form-control" type="text"
-                                                                            name="district"
+                                                                            name="district" placeholder="2"
                                                                             aria-label="Disabled input example">
 
                                                                     </div>
@@ -244,125 +162,228 @@
                                                     @foreach ($tableData as $data)
                                                         <tr>
                                                             <td>{{ $data->id }}</td>
-                                                            <td>{{ $data->fname }} {{ $data->mname}} {{ $data->lname }}</td>
+                                                            <td>{{ $data->fname }}
+                                                                {{ $data->mname }}
+                                                                {{ $data->lname }}</td>
                                                             <td>{{ $data->age }}</td>
-                                                            <td>{{ $data->gender}}</td>
+                                                            <td>{{ $data->gender }}</td>
                                                             <td>{{ $data->program }}</td>
                                                             <td>{{ $data->district }}</td>
-                                                            <td class="d-flex justify-content-center align-items-center">
-                                                                <a href={{'/Health_Center/Patient_View'}}
-                                                                class="text-primary">
-                                                                <i class="bi bi-eye-fill"></i>
-                                                            </a>
-
-                                                            <a type="button" href=/Admin/User_List/1
-                                                                class="text-primary" data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal2">
-                                                                <i class="bi bi-pencil-square"></i>
-                                                            </a>
-                                                            <a type="button"
-                                                                href={{ '/Health_Center/Patient_Item_List' }}
-                                                                class="text-primary">
-                                                                <i class='bx bx-arrow-to-right'></i>
-                                                            </a>
-                                                        </td>
+                                                            <td
+                                                                class="d-flex justify-content-center align-items-center overflow-visible">
+                                                                <div class="btn-group ">
+                                                                    <button class="btn" type="button"
+                                                                        data-bs-toggle="dropdown"
+                                                                        data-bs-auto-close="true"
+                                                                        aria-expanded="false">
+                                                                        <i class='bx bx-dots-vertical-rounded'></i>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu text-start ">
+                                                                        <li class="p-2">
+                                                                            <a
+                                                                                href="{{ url('/Health_Center/Patient_View' . $data->id) }}"><i
+                                                                                    class="bi bi-eye-fill "></i>
+                                                                                View</a>
+                                                                        </li>
+                                                                        <li class="p-2"><a type="button"
+                                                                                class="text-info"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#exampleModal2{{ $data->id }}">
+                                                                                <i class="bi bi-pencil-square"></i>
+                                                                                Edit</a></li>
+                                                                        <li class="p-2"><a type="button"
+                                                                                href="{{ url('/Health_Center/Patient_Sent_Item' . $data->id) }}"
+                                                                                class="text-warning"> <i
+                                                                                    class='bx bx-arrow-to-right'></i>
+                                                                                Send Items</a></i>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
                                                         </tr>
-                                                    @endforeach
-                                                    {{-- MODAL --}}
-                                                    <div class="modal fade" id="exampleModal1" tabindex="-1"
-                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                                        Profile View</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
 
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button"
-                                                                        class="btn btn-primary">Save changes</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                        {{-- MODAL --}}
+                                                        <div class="modal fade" id="exampleModal1" tabindex="-1"
+                                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="exampleModalLabel">
+                                                                            Profile View</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
 
-                                                    <div class="modal fade" id="exampleModal2" tabindex="-1"
-                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                                        Modal title</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-
-                                                                    <div class="col">
-                                                                        <h5>Patient Details</h5>
-                                                                        <div class="row justify-content-center">
-                                                                            <div class="col-md-6 mb-3">
-                                                                                <label for="exampleFormControlInput1" class="form-label">Name</label>
-                                                                                <input class="form-control" type="text" placeholder="Name" aria-label="Disabled input example" disabled>
-                                                                            </div>
-                                                                    
-                                                                            <div class="col-md-6 mb-3">
-                                                                                <label for="exampleFormControlInput2" class="form-label">Age</label>
-                                                                                <input class="form-control" type="text" placeholder="Age" aria-label="Disabled input example" disabled>
-                                                                            </div>
-                                                                    
-                                                                            <!-- Add more fields for other details -->
-                                                                        </div>
-                                                                    
-                                                                            <div class="col-md-6 mb-3">
-                                                                                <label for="exampleFormControlInput1"
-                                                                                    class="form-label">Program</label>
-                                                                                <input type="email"
-                                                                                    class="form-control"
-                                                                                    id="exampleFormControlInput1"
-                                                                                    placeholder="Program">
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="row justify-content-center">
-                                                                            <div class="col-md-6 mb-3">
-                                                                                <label for="exampleFormControlInput1"
-                                                                                    class="form-label">Item</label>
-                                                                                <input class="form-control"
-                                                                                    type="text" placeholder="Amox"
-                                                                                    aria-label="Disabled input example"
-                                                                                    >
-
-                                                                            </div>
-                                                                            <div class="col-md-6 mb-3">
-                                                                                <label for="exampleFormControlInput1"
-                                                                                    class="form-label">Quantity</label>
-                                                                                <input type="email"
-                                                                                    class="form-control"
-                                                                                    id="exampleFormControlInput1"
-                                                                                    placeholder="Program">
-                                                                            </div>
-                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Close</button>
+                                                                        <button type="button"
+                                                                            class="btn btn-primary">Save
+                                                                            changes</button>
                                                                     </div>
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button"
-                                                                        class="btn btn-primary">Save changes</button>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal fade" id="exampleModal2{{ $data->id }}"
+                                                            tabindex="-1"
+                                                            aria-labelledby="exampleModalLabel{{ $data->id }}"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="exampleModalLabel{{ $data->id }}">
+                                                                            Update Patient</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                        <form
+                                                                            action="{{ route('routes.update', $data->id) }}"
+                                                                            id="editPatient{{ $data->id }}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            <div class="col">
+                                                                                <h5>Patient Details</h5>
+                                                                                <div
+                                                                                    class="row justify-content-center">
+                                                                                    <div class="col-lg-4 mb-3">
+                                                                                        <label
+                                                                                            for="exampleFormControlInput1"
+                                                                                            class="form-label">First
+                                                                                            Name</label>
+                                                                                        <input class="form-control"
+                                                                                            type="text"
+                                                                                            placeholder="fName"
+                                                                                            aria-label="Disabled input example"
+                                                                                            name="fname"
+                                                                                            value="{{ $data->fname }}">
+                                                                                    </div>
+                                                                                    <div class="col-lg-4 mb-3">
+                                                                                        <label
+                                                                                            for="exampleFormControlInput1"
+                                                                                            class="form-label">Middle
+                                                                                            Name</label>
+                                                                                        <input class="form-control"
+                                                                                            type="text"
+                                                                                            placeholder="mName"
+                                                                                            aria-label="Disabled input example"
+                                                                                            name="mname"
+                                                                                            value={{ $data->mname }}>
+                                                                                    </div>
+                                                                                    <div class="col-lg-4 mb-3">
+                                                                                        <label
+                                                                                            for="exampleFormControlInput1"
+                                                                                            class="form-label">Last
+                                                                                            Name</label>
+                                                                                        <input class="form-control"
+                                                                                            type="text"
+                                                                                            placeholder=";Name"
+                                                                                            aria-label="Disabled input example"
+                                                                                            name="lname"
+                                                                                            value={{ $data->lname }}>
+                                                                                    </div>
+
+                                                                                    <div class="col-md-6 mb-3">
+                                                                                        <label
+                                                                                            for="exampleFormControlInput2"
+                                                                                            class="form-label">Age</label>
+                                                                                        <input class="form-control"
+                                                                                            type="text"
+                                                                                            placeholder="Age"
+                                                                                            aria-label="Disabled input example"
+                                                                                            name="age"
+                                                                                            value={{ $data->age }}>
+                                                                                    </div>
+                                                                                    {{-- <div class="col-md-6 mb-3">
+                                                                                        <label
+                                                                                            for="exampleFormControlInput2"
+                                                                                            class="form-label">gender</label>
+                                                                                        <input class="form-control"
+                                                                                            type="text"
+                                                                                            placeholder="Age"
+                                                                                            aria-label="Disabled input example"
+                                                                                            name="gender"
+                                                                                            value={{$data->gender}} >
+                                                                                    </div> --}}
+                                                                                    <div class="col-md-6 mb-3">
+                                                                                        <label
+                                                                                            for="exampleFormControlInput1"
+                                                                                            class="form-label">Gender</label>
+                                                                                        <select class="form-select"
+                                                                                            aria-label="Default select example"
+                                                                                            name="gender"
+                                                                                            value={{ $data->gender }}>
+                                                                                            <option selected>
+                                                                                                {{ $data->gender }}
+                                                                                            </option>
+                                                                                            <option value="Male">Male
+                                                                                            </option>
+                                                                                            <option value="Female">
+                                                                                                Female</option>
+                                                                                            <option value="Bading">
+                                                                                                Bading</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    <div class="col-md-6 mb-3">
+                                                                                        <label
+                                                                                            for="exampleFormControlInput2"
+                                                                                            class="form-label">program</label>
+                                                                                        <input class="form-control"
+                                                                                            type="text"
+                                                                                            placeholder="Age"
+                                                                                            aria-label="Disabled input example"
+                                                                                            name="program"
+                                                                                            value={{ $data->program }}>
+                                                                                    </div>
+                                                                                    <div class="col-md-6 mb-3">
+                                                                                        <label
+                                                                                            for="exampleFormControlInput2"
+                                                                                            class="form-label">hc</label>
+                                                                                        <input class="form-control"
+                                                                                            type="text"
+                                                                                            placeholder="Age"
+                                                                                            aria-label="Disabled input example"
+                                                                                            name="healthcenter"
+                                                                                            value={{ $data->healthcenter }}>
+                                                                                    </div>
+                                                                                    <div class="col-md-6 mb-3">
+                                                                                        <label
+                                                                                            for="exampleFormControlInput2"
+                                                                                            class="form-label">district</label>
+                                                                                        <input class="form-control"
+                                                                                            type="text"
+                                                                                            placeholder="Age"
+                                                                                            aria-label="Disabled input example"
+                                                                                            value={{ $data->district }}>
+                                                                                    </div>
+
+                                                                                    <!-- Add more fields for other details -->
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Close</button>
+                                                                        <button type="submit" class="btn btn-primary"
+                                                                            form="editPatient{{ $data->id }}">Save
+                                                                            changes</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-
+                                                    @endforeach
                                                 </tbody>
 
                                             </table>

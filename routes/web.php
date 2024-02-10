@@ -101,11 +101,37 @@ Route::controller(ProgramManagerController::class)->group(function () {
 });
 
 Route::controller(HcController::class)->group(function () {
+
+    // FOR ROUTING OF TABS
     Route::get('/Health_Center/Item_List', 'hcInventory')->middleware('auth');
     Route::get('/Health_Center/Patient_List', 'hcPatient')->middleware('auth');
     Route::get('/Health_Center/Patient_Item_List', 'hcItemList')->middleware('auth');
-    Route::get('/Health_Center/Patient_View', 'hcPatientView')->middleware('auth');
+    // Route::get('/Health_Center/Patient_List/view', 'hcPatientView')->middleware('auth');
+    Route::get('/Health_Center/Patient_View{id}', 'hcPatientView')->middleware('auth');
+    Route::get('/Health_Center/Patient_View', 'listPatientPrint')->middleware('auth');
     Route::get('/Health_Center/Report', 'hcReport')->middleware('auth');
+
+    // FOR CREATION OF PATIENT
     Route::post('/Health_Center/Patient_List', 'storePatient')->name('patientname')->middleware('auth');
+
+    // FOR PATIENT LIST TABLE
     Route::get('/Health_Center/Patient_List', 'listPatient');
+
+    // FOR SENDING ITEM TO PATIENT
+    Route::get('/Health_Center/Patient_Sent_Item{id}', 'itemSentPatient')->middleware('auth');
+    Route::get('/Health_Center/Patient_Sent_Item', 'index');
+
+    // FOR ACCOUNT
+    Route::get('/Health_Center/Profile', 'hcAccount')->middleware('auth');
+    Route::get('/Health_Center/Profile_Change', 'hcAccountChange')->middleware('auth');
+
+    // Route::get('/Health_Center/Patient_View', 'listPatientnMedicine');
+    // Route::put('/Health_Center/Patient_List/{id}', 'updatePatient')->name('updatePatient')->middleware('auth');
+
+    // FOR UPDATING PATIENT INFO
+    Route::post('/Health_Center/Patient_List/{id}', 'updatePatient')->name('routes.update')->middleware('auth');
+
+    // FOR INVENTORY
+    Route::get('/Health_Center/Item_List', 'listItem');
+
 });
