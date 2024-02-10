@@ -11,7 +11,7 @@
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-                @include('components.navbar.navbar');
+                @include('components.navbar.navbar')
                 <!-- Navbar End-->
 
 
@@ -48,7 +48,7 @@
                                                 <p class="mb-4">
                                                     You have done <span class="fw-bold"></span> Lorem ipsum dolor, sit
                                                     amet consectetur adipisicing elit.
-                                                </p>    
+                                                </p>
 
                                                 <!-- <a href="javascript:;" class="btn btn-sm btn-outline-primary"></a> -->
                                             </div>
