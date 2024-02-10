@@ -18,9 +18,9 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Allocation /</span>
+                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Allocation /</span>
                             Create Allocation
-                        </h4>
+                        </h4> --}}
 
                         <div class="row">
                             <div class="col-md-12">
@@ -36,23 +36,29 @@
                                     <div class="card-body px-5">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <form action="">
+                                                <form action="{{ route('allocate') }}" method="POST">
+                                                    @csrf
                                                     <div class="row mb-5">
-                                                        <div class="col-md-6 mb-md-0 mb-3">
+                                                        <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
-                                                                class="form-label">Supplier</label>
-                                                            <select class="form-select"
+                                                                class="form-label">Program</label>
+                                                            <select class="form-select" name="program"
                                                                 aria-label="Default select example">
-                                                                <option selected>Select Supplier</option>
-                                                                <option value="1">One</option>
-                                                                <option value="2">Two</option>
-                                                                <option value="3">Three</option>
+                                                                <option selected>Select Program</option>
+                                                                <option>One</option>
+                                                                <option>Two</option>
+                                                                <option>Three</option>
                                                             </select>
                                                         </div>
-                                                        <div class="col-md-6 mb-md-0 mb-3">
+                                                        <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1" class="form-label">PO
                                                                 #</label>
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="POnum">
+                                                        </div>
+                                                        <div class="col-md-4 mb-md-0 mb-3">
+                                                            <label for="exampleFormControlInput1"
+                                                                class="form-label">Item Type</label>
+                                                            <input type="text" class="form-control" name="itemType">
                                                         </div>
                                                     </div>
                                                     <div class="table-responsive">
@@ -85,69 +91,101 @@
                                                                             onclick="removeRow(this)">X</button>
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
-                                                                        <input type="number"
-                                                                            class="form-control text-center border-0">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
                                                                         <input type="text"
-                                                                            class="form-control text-center border-0">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="number"
-                                                                            class="form-control text-center border-0">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="number"
                                                                             class="form-control text-center border-0"
-                                                                            disabled>
+                                                                            id="quantItem"
+                                                                            name="alloprog[0][alloprog_quan]"
+                                                                            onkeyup="autoCal()">
+                                                                    </td>
+                                                                    <td
+                                                                        class="align-middle
+                                                                            p-0 text-center">
+                                                                        <input type="text"
+                                                                            class="form-control text-center border-0"
+                                                                            name="alloprog[0][alloprog_unit]">
+                                                                    </td>
+                                                                    <td class="align-middle p-0 text-center">
+                                                                        <select class="form-select text-center border-0"
+                                                                            name="alloprog[0][alloprog_item]"
+                                                                            aria-label="Default select example">
+                                                                            <option selected>Select Program</option>
+                                                                            <option value="One">One</option>
+                                                                            <option value="Two">Two</option>
+                                                                            <option value="Three">Three</option>
+                                                                        </select>
+                                                                    </td>
+                                                                    <td class="align-middle p-0 text-center">
+                                                                        <input type="text"
+                                                                            class="form-control text-center border-0"
+                                                                            name="alloprog[0][alloprog_descript]">
+                                                                    </td>
+                                                                    <td class="align-middle p-0 text-center">
+                                                                        <input type="text"
+                                                                            class="form-control text-center border-0"
+                                                                            name="alloprog[0][alloprog_price]"
+                                                                            id="price" onkeyup="autoCal()">
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="float-start">
+                                                                            <span class="fw-bold ">₱</span>
+                                                                        </div>
+                                                                        <div class="text-center">
+                                                                            <input
+                                                                                class="text-center border-0 bg-white ms-2 fs-6"
+                                                                                type="text"
+                                                                                name="alloprog[0][alloprog_pricetotal]"
+                                                                                id="totalPrice" value="0" readonly>
+                                                                            {{-- <span id="totalPrice">0</span> --}}
+                                                                        </div>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
                                                             <tfoot>
                                                                 <tr>
                                                                     <th colspan="6" class="text-end">
-                                                                        <div class="btn btn-primary"
+                                                                        <div class="btn btn-primary me-2"
                                                                             style="font-size: 10px" onclick="addRow()">
                                                                             Add
-                                                                            Row</div><span> Sub Total</span>
+                                                                            Row</div><span>Total</span>
                                                                     </th>
-                                                                    <th class="text-end">0</th>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th colspan="6" class="text-end">
-                                                                        Total
+                                                                    <th class="d-flex align-items-center ">
+                                                                        <div class="float-start">
+                                                                            <span class="fw-bold fs-6">₱</span>
+                                                                        </div>
+                                                                        <div class="text-center">
+                                                                            <input
+                                                                                class="text-center border-0 bg-white ms-2 fs-6"
+                                                                                type="text" name="items_total"
+                                                                                id="total" value="0"
+                                                                                readonly>
+                                                                        </div>
                                                                     </th>
-                                                                    <th class="text-end">0</th>
                                                                 </tr>
                                                             </tfoot>
+                                                            {{-- <input type="number" name="items_total"
+                                                                        id="total"> --}}
                                                         </table>
                                                     </div>
-                                                    <div class="row my-5">
+                                                    <div
+                                                        class="row
+                                                                        my-5">
                                                         <div class="col-md-6 mb-md-0 mb-3">
                                                             <label for="">Notes</label>
-                                                            <textarea class="form-control" style="height: 100px"></textarea>
+                                                            <textarea class="form-control" style="height: 100px" name="notes"></textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="">Status</label>
-                                                            <select class="form-select"
+                                                            <select class="form-select" name="item_status"
                                                                 aria-label="Default select example">
-                                                                <option selected>Open this select menu</option>
-                                                                <option value="1">One</option>
-                                                                <option value="2">Two</option>
-                                                                <option value="3">Three</option>
+                                                                <option selected>Select Status</option>
+                                                                <option>Approved</option>
+                                                                <option">Declined</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-4">
-                                                        <div class="btn btn-primary">Save</div>
+                                                        <button type="submit" class="btn btn-primary"
+                                                            onclick="save()">Save</button>
                                                         <div class="btn btn-danger">Cancel</div>
                                                     </div>
                                                 </form>
@@ -162,54 +200,65 @@
                 </div>
 
                 <script>
+                    var i = 0;
+
                     function addRow() {
-                        const table = document.getElementById("myTable");
-                        const tbody = table.getElementsByTagName("tbody")[0];
+                        // Clone the first row
+                        ++i;
+                        var newRow = `<tr>` +
+                            `<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
+                            i + `][alloprog_quan]" id="quantItem" onkeyup="autoCal()"></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
+                            i + `][alloprog_unit]"></td>` +
+                            `<td class="align-middle p-0 text-center">` +
+                            `<select class="form-select text-center border-0" name="alloprog[` + i +
+                            `][alloprog_item]" aria-label="Default select example">` +
+                            `<option selected>Select Program</option>` +
+                            `<option value="One">One</option>` +
+                            `<option value="Two">Two</option>` +
+                            `<option value="Three">Three</option>` +
+                            `</select>` +
+                            `</td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
+                            i + `][alloprog_descript]"></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
+                            i + `][alloprog_price]" id="price" onkeyup="autoCal()"></td>` +
+                            `<td>` +
+                            `<div class="float-start"><span class="fw-bold">₱</span></div>` + 
+                            `<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog[` +
+                            i + `][alloprog_pricetotal]" id="totalPrice" value="0" readonly></div>` +
+                            `</td>` +
+                            `</tr>`;
 
-                        let cloneRow;
-                        if (tbody.rows.length > 0) {
-                            // Clone an existing row if tbody is not empty
-                            cloneRow = tbody.rows[0].cloneNode(true);
-
-                            // Reset input values to empty strings
-                            const inputs = cloneRow.getElementsByTagName("input");
-                            for (let input of inputs) {
-                                input.value = "";
-                            }
-                        } else {
-                            // Create a new row if tbody is empty
-                            cloneRow = document.createElement("tr");
-                            cloneRow.innerHTML = `
-            <td>
-                <button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button>
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="number" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="text" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="text" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="text" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="number" class="form-control text-center border-0">
-            </td>
-            <td class="align-middle p-0 text-center">
-                <input type="number" class="form-control text-center border-0" disabled>
-            </td>
-        `;
-                        }
-
-                        tbody.appendChild(cloneRow);
+                        // Append the new row to the tbody
+                        $('.addTBRow').append(newRow);
                     }
 
+                    // Remove Row
                     function removeRow(button) {
-                        const row = button.parentNode.parentNode;
-                        row.parentNode.removeChild(row);
+                        var row = $(button).closest("tr");
+                        var total = $("#total").val();
+                        var price = row.find("#totalPrice").val();
+                        total -= price;
+
+                        $("#total").val(total);
+                        row.remove();
+                    }
+
+                    function autoCal() {
+                        var total = 0;
+
+                        $(".addTBRow tr").each(function() {
+                            var quant = $(this).find("#quantItem").val();
+                            var price = $(this).find("#price").val();
+                            var totalPrice = quant * price;
+                            $(this).find("#totalPrice").val(totalPrice);
+                            total += totalPrice;
+                        });
+
+                        // $("#subtotal").text(subtotal.toLocaleString());
+                        $("#total").val(total);
                     }
                 </script>
 

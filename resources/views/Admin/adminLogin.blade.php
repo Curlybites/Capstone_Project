@@ -86,7 +86,8 @@
                               @endforeach
                       </div>
                   @endif
-              <form id="formAuthentication" class="mb-3" action="/Admin/Login/Process" method="POST">
+                  
+              <form id="formAuthentication" class="mb-3" action="/Login/Process" method="POST">
                 @csrf
               <div class="mb-3">
                       <!-- <label class="form-label" for="selectTypeOpt">Type</label> -->
