@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Distribute extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'quantity',
+        'unit',
+        'item',
+        'description',
+    ];
 }

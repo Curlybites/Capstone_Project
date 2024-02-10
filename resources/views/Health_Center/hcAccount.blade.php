@@ -11,7 +11,7 @@
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-                @include('components.navbar.navbar');
+                @include('components.navbar.navbar')
                 <!-- Navbar End-->
 
 
@@ -34,7 +34,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link d-flex align-items-center justify-content-center"
-                                            href={{ '/Health_Department/Profile_Change' }}>
+                                            href={{ '/Health_Center/Profile_Change' }}>
                                             <i class='bx bx-lock-alt'></i>
                                             <span>Change Password</span>
                                         </a>

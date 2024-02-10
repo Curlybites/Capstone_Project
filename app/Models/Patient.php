@@ -17,7 +17,8 @@ class Patient extends Model
         'gender',
         'program',
         'healthcenter',
-        'district'
+        'district',
+        'status'
     ];
     
 }

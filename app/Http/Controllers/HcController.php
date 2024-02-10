@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use App\Models\Patient;
 use App\Models\Items;
 use App\Models\Send;
+use App\Models\Distribute
+;
+
 
 
 
@@ -82,13 +85,6 @@ class HcController extends Controller
         return back()->with('success', 'ikaw na bahala');
     }
 
-    public function listPatient()
-    {
-        $user = Auth::user();
-        $tableData = Patient::all(); // Replace TableName with your actual model name
-        return view('Health_Center.hcPatient', ['user' => $user, 'tableData' => $tableData]);
-    }
-
     // public function itemSentPatient(Request $request, $id)
     // {
     //     $patients = Patient::find($id);
@@ -115,13 +111,14 @@ class HcController extends Controller
     //     return view('Health_Center.hcPatientPrint', ['tableData' => $tableData]);
     // }
 
-    public function itemSentPatient($id)
+
+    // FOR LIST OF PATIENT AND UPDATE
+    public function listPatient()
     {
         $user = Auth::user();
-        $send = Patient::find($id);
-        return view('Health_Center.hcItemList', ['user' => $user, 'send' => $send]);
+        $tableData = Patient::all(); // Replace TableName with your actual model name
+        return view('Health_Center.hcPatient', ['user' => $user, 'tableData' => $tableData]);
     }
-
     public function updatePatient(Request $request, $id)
     {
         $patients = Patient::findOrFail($id);
@@ -131,30 +128,71 @@ class HcController extends Controller
         return back()->with('success', 'Patient updated successfully.');
     }
 
+    // FOR DISTRIBUTING THE ITEMS FOR PATIENT
+    public function itemSentPatient($id)
+    {
+        $user = Auth::user();
+        $send = Patient::find($id);
+        return view('Health_Center.hcItemList', ['user' => $user, 'send' => $send]);
+    }
+
+
+    // NAG GEGET PERO DI PUMAPASOK SA DB
+    // public function distribute(Request $request)
+    // {
+    //     $request->validate([
+
+    //         'quantity' => 'required',
+    //         'unit' => 'required',
+    //         'item' => 'required',
+    //         'description' => 'required'
+
+    //     ]);
+
+    //     Distribute::create($request->all());
+
+    //     return back()->with('success', 'ikaw na bahala');
+    // }
+
+
+    // FOR SEND ITEMS
+    public function sendItems()
+    {
+        $user = Auth::user();
+
+        // Fetch active items
+        $tableData = Patient::where('status', true)->get();
+
+        return view('Health_Center.hcSendItems', ['user' => $user, 'tableData' => $tableData]);
+    }
+
+    // FOR INVENTORY
     public function listItem()
     {
         $items = Items::all(); // Replace TableName with your actual model name
         return view('Health_Center.hcInventory', ['items' => $items]);
     }
 
-    public function index(Request $request)
-    {
+    // public function index(Request $request)
+    // {
 
-        $search = $request->input('search');
+    //     $search = $request->input('search');
 
-        // Use the where method to filter by the 'name' column
-        $items = Items::where('name', 'like', '%' . $search . '%')->get();
+    //     // Use the where method to filter by the 'name' column
+    //     $items = Items::where('name', 'like', '%' . $search . '%')->get();
 
-        return view('Health_Center.hcItemList', compact('items'));
-    }
+    //     return view('Health_Center.hcItemList', compact('items'));
+    // }
 
+
+    // FOR ACCCOUT
     public function hcAccount()
     {
         $user = Auth::user();
         return view('Health_Center.hcAccount', ['user' => $user]);
     }
 
-    public function hdAccountChange()
+    public function hcAccountChange()
     {
         $user = Auth::user();
         return view('Health_Center.hcAccountChange', ['user' => $user]);

@@ -117,9 +117,14 @@ Route::controller(HcController::class)->group(function () {
     // FOR PATIENT LIST TABLE
     Route::get('/Health_Center/Patient_List', 'listPatient');
 
+    //FOR SEND ITEMS
+    Route::get('/Health_Center/Send_Items', 'sendItems');
+
     // FOR SENDING ITEM TO PATIENT
     Route::get('/Health_Center/Patient_Sent_Item{id}', 'itemSentPatient')->middleware('auth');
-    Route::get('/Health_Center/Patient_Sent_Item', 'index');
+    Route::post('/Health_Center/Patient_Sent_Item', 'distribute')->name('distribute')->middleware('auth');
+
+    // Route::get('/Health_Center/Patient_Sent_Item', 'index');
 
     // FOR ACCOUNT
     Route::get('/Health_Center/Profile', 'hcAccount')->middleware('auth');

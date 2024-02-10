@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('program')->nullable;
             $table->string('healthcenter');
             $table->string('district');
+            $table->integer('status');
             $table->timestamps();
         });
     }

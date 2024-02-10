@@ -75,7 +75,7 @@
                                                                 aria-label="Disabled input example" disabled>
                                                         </div>
                                                     </div>
-                                                    <div class="table-responsive">
+                                                    <div class="table-responsive mb-5">
                                                         <table class="table table-striped table-bordered"
                                                             id="myTable">
                                                             <colgroup>
@@ -95,6 +95,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="addTBRow">
+
                                                                 <tr>
                                                                     <td>
                                                                         <button
@@ -105,26 +106,29 @@
                                                                         <input type="text" name="search" placeholder="Search by name" value="{{ request('search') }}">
                                                                         <button type="submit">Search</button>
                                                                     </form> --}}
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="number"
-                                                                            class="form-control text-center border-0"
-                                                                            value="Quantity" name="quantity">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            name="type">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            name="name">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            name="program">
-                                                                    </td>
+                                                                    <form action="{{ route('distribute') }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        <td class="align-middle p-0 text-center">
+                                                                            <input type="text"
+                                                                                class="form-control text-center border-0"
+                                                                                value="" name="quantity">
+                                                                        </td>
+                                                                        <td class="align-middle p-0 text-center">
+                                                                            <input type="text"
+                                                                                class="form-control text-center border-0"
+                                                                                name="unit">
+                                                                        </td>
+                                                                        <td class="align-middle p-0 text-center">
+                                                                            <input type="text"
+                                                                                class="form-control text-center border-0"
+                                                                                name="item">
+                                                                        </td>
+                                                                        <td class="align-middle p-0 text-center">
+                                                                            <input type="text"
+                                                                                class="form-control text-center border-0"
+                                                                                name="description">
+                                                                        </td>
                                                                 </tr>
                                                             </tbody>
                                                             <tfoot>
@@ -140,7 +144,7 @@
                                                             </tfoot>
                                                         </table>
                                                     </div>
-                                                    <div class="row my-5">
+                                                    {{-- <div class="row my-5">
                                                         <div class="col-md-6 mb-md-0 mb-3">
                                                             <label for="">Notes</label>
                                                             <textarea class="form-control" style="height: 100px"></textarea>
@@ -155,12 +159,13 @@
                                                                 <option value="3">Three</option>
                                                             </select>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="col-4">
-                                                        <div class="btn btn-primary">Save</div>
+                                                        <button class="btn btn-primary" type="submit">Save</button>
                                                         <a class="btn btn-danger"
                                                             href="{{ '/Health_Center/Patient_List' }}">Cancel</a>
                                                     </div>
+                                                </form>
                                                 </form>
                                             </div>
                                         </div>
@@ -174,7 +179,7 @@
 
                 <script>
                     function addRow() {
-                        
+
                         var newRow = '<tr>' +
                             '<td><button class="btn btn-sm btn-danger py-0 text-start"onclick="removeRow(this)">X</button></td>' +
                             '<td class="align-middle p-0 text-center"><input type="number"class="form-control text-center border-0" value=""></td>' +

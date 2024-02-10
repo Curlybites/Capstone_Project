@@ -11,7 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('itemdistribute', function (Blueprint $table) {
+            $table->id();
+            $table->integer('quantity')->nullable;
+            $table->string('unit')->nullable;
+            $table->string('item')->nullable;
+            $table->string('description')->nullable;
+            $table->timestamps();
+        });
     }
 
     /**
@@ -19,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('itmedistribute');
     }
 };

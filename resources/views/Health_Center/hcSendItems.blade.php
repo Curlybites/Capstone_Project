@@ -176,8 +176,8 @@
                                                             <td>{{ $data->gender }}</td>
                                                             <td>{{ $data->program }}</td>
                                                             <td>{{ $data->district }}</td>
-                                                            <td>
-                                                                @switch($data->status)
+                                                            <td>{{ $data->active ? 'Yes' : 'No' }}
+                                                                {{-- @switch($data->status)
                                                                     @case(1)
                                                                         <span class="badge bg-label-success me-1">Active</span>
                                                                     @break
@@ -188,7 +188,7 @@
                                                                     @break
 
                                                                     @default
-                                                                @endswitch
+                                                                @endswitch --}}
                                                             </td>
 
 
