@@ -1,4 +1,4 @@
-@include('components.header')
+@include('components.header');
 
 <body>
     <!-- Layout wrapper -->
@@ -6,11 +6,12 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('components.sidebar.supplier_sidebar')
+            @include('components.sidebar.supplier_sidebar');
+
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-                @include('components.navbar.navbar')
+                @include('components.navbar.navbar');
                 <!-- Navbar End-->
 
 
@@ -18,7 +19,19 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     @if (session('success'))
-                        @include('components.notification')
+                        <div class="bs-toast toast fade show position-fixed bottom-0 end-0 m-3 " role="alert"
+                            aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                                <i class='bx bxs-bell'></i>
+                                <div class="me-auto fw-medium">QCMDS Notification</div>
+                                <small>Just now</small>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                {{ session('success') }}
+                            </div>
+                        </div>
                     @endif
                     <div class="container-fluid  flex-grow-1 container-p-y">
                         <div class="row">

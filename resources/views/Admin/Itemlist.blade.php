@@ -1,11 +1,11 @@
-@include('components.header')
+@include('components.header');
 
 <body>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             {{-- sidebar --}}
-            @include('components.sidebar.admin_sidebar')
+            @include('components.sidebar.admin_sidebar');
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
