@@ -117,8 +117,10 @@ class AdminController extends Controller
         $barangayData = Barangay::all();
         $user = Auth::user();
         $healthCenterPerBrgyData = HealthCentersPerBarangay::all();
+        $userData = DB::table('users')->where('role', 5)->orderBy('id')->get();
         return view('Admin.HealthCenter', ['healthcenterData' => $healthcenterData,
-        'user'=> $user, 'barangayData' => $barangayData, 'healthCenterPerBrgyData' => $healthCenterPerBrgyData]);
+        'user'=> $user, 'barangayData' => $barangayData, 
+        'healthCenterPerBrgyData' => $healthCenterPerBrgyData,'userData'=>$userData]);
     }
 
     public function healthcenterStore(Request $request)
@@ -145,9 +147,11 @@ class AdminController extends Controller
         // $userData = User::join('programs', 'users.id', '=', 'programs.program_manager')
         // ->select('users.firstname', 'users.lastname','programs.id','programs.name')
         // ->get();
-        $programData = Program::all();
+        $usersData = User::all();    
+        $programData = Program::all();  
         $assignedData = AssignedProgramManager::all();
-        return view('Admin.Programslist', ['user'=> $user, 'programData'=>$programData,'userData'=>$userData, 'assignedData'=>$assignedData]);
+        return view('Admin.Programslist', ['user'=> $user, 'programData'=>$programData,
+        'userData'=>$userData, 'assignedData'=>$assignedData,'usersData'=>$usersData]);
 
     }
 
@@ -167,10 +171,15 @@ class AdminController extends Controller
         // $program -> program_manager = $request->input('programManager');
         $program-> save();
 
+        
+
         $programId = $program->id;
 
         $programManager = new AssignedProgramManager();
         $programManager->name = $request->input('programManager');
+        $programManager->program_manager_id = $programManagerId;
+
+        
         $programManager->program_id = $programId;
         $programManager-> save();
 

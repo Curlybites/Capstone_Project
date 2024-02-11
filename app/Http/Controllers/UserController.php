@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Role;
+use App\Models\HealthCenters;
+use App\Models\AssignedHealthCenter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
@@ -16,7 +20,11 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $roleData = Role::all();
-        return view('Admin.userList', ['user' => $user, 'roleData'=>$roleData]);
+        $healthCenterData = HealthCenters::all();
+        $assignedHealthCenterStaffData = AssignedHealthCenter::all();
+        // $healthCenterData = DB::table('health_centers')->select('name','id')->orderBy('id')->get();
+        return view('Admin.userList', ['user' => $user, 'roleData'=>$roleData,
+        'healthCenterData'=>$healthCenterData, 'assignedHealthCenterStaffData'=>$assignedHealthCenterStaffData]);
     }
 
     // public function createUserPage(){
@@ -26,24 +34,57 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $validated = $request->validate([
-            "firstname" => ['required'],
-            "middlename" => ['required'],
-            "lastname" => ['required'],
-            "sex" => ['required'],
-            "birthdate" => ['required'],
-            "address" => ['required'],
-            "contact" => ['required'],
-            "email" => ['required', 'email', Rule::unique('users', 'email')],
-            "password" => 'required|confirmed|min:6',
-            "image",
-            "role" => ['required'],
-        ]);
+        // $validated = $request->validate([
+        //     "firstname" => ['required'],
+        //     "middlename" => ['required'],
+        //     "lastname" => ['required'],
+        //     "sex" => ['required'],
+        //     "birthdate" => ['required'],
+        //     "address" => ['required'],
+        //     "contact" => ['required'],
+        //     "email" => ['required', 'email', Rule::unique('users', 'email')],
+        //     "password" => 'required|confirmed|min:6',
+        //     "image",
+        //     "role" => ['required'],
+        //     "healthCenter" => ['required'],
+
+        // ]);
+
+        $healthcenter = new User();
+        $healthcenter->firstname = $request->firstname;
+        $healthcenter->middlename = $request->middlename;
+        $healthcenter->lastname = $request->lastname;
+        $healthcenter->sex = $request->sex;
+        $healthcenter->birthdate = $request->birthdate;
+        $healthcenter->address = $request->address;
+        $healthcenter->contact = $request->contact;
+        $healthcenter->email = $request->email;
+        $healthcenter->password = $request->password;
+        $healthcenter->image = $request->image;
+        $healthcenter->role = $request->role;
+        $healthcenter->save();
+
+
+        // $assignedHealthCenterStaff = new AssignedHealthCenter();
+        // $assignedHealthCenterStaff->health_center_staff_name = $healthcenter->firstname . ' ' . $healthcenter->lastname;
+        // $assignedHealthCenterStaff->health_center_staff_id = $healthcenter->id;
+        
+        // $healthCenter = HealthCenters::find($request->healthCenter);
+        
+        // $assignedHealthCenterStaff->health_center_name = $healthCenter->name;
+        // $assignedHealthCenterStaff->health_center_id = $healthCenter->id;
+        // $assignedHealthCenterStaff->save();
+        
+
+
+        // $assignedHealthCenter = new HealthCenters();
+        // $assignedHealthCenter->health
+
 
         // @dd($request);
-        $validated['password'] = Hash::make($validated['password']);
+        $healthcenter['password'] = Hash::make($healthcenter['password']);
 
-        $user = User::create($validated);
+        // $user = User::create($healthcenter);
 
         return redirect('/Admin/User_List')->with('message', 'Register successful');
     }
@@ -60,7 +101,10 @@ class UserController extends Controller
         $user = Auth::user();
         $data = User::all();
         $roleData = Role::all();
-        return view('Admin.userList', ['roleData'=>$roleData, 'users' => $data , 'totalUser' => $totalUser, 'totalAdmin'=>$totalAdmin, 'totalProgram'=>$totalProgram, 'totalDistrict'=>$totalDistrict,'totalHd'=>$totalHd, 'totalHc'=> $totalHc , 'totalSupplier'=>$totalSupplier], ['user' => $user]);
+        $healthCenterData = HealthCenters::all();
+        $assignedHealthCenterStaffData = AssignedHealthCenter::all();
+        // $healthCenterData = DB::table('health_centers')->select('name','id')->orderBy('id')->get();
+        return view('Admin.userList', ['assignedHealthCenterStaffData'=> $assignedHealthCenterStaffData, 'healthCenterData'=>$healthCenterData, 'roleData'=>$roleData, 'users' => $data , 'totalUser' => $totalUser, 'totalAdmin'=>$totalAdmin, 'totalProgram'=>$totalProgram, 'totalDistrict'=>$totalDistrict,'totalHd'=>$totalHd, 'totalHc'=> $totalHc , 'totalSupplier'=>$totalSupplier], ['user' => $user]);
     }
 
     public function LoginProcess(Request $request)
@@ -111,63 +155,7 @@ class UserController extends Controller
     }
 }
 
-    // public function LoginProcess(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         "email" => ['required', 'email'],
-    //         "password" => 'required',
-    //     ]);
-
-    //     if (auth()->attempt($validated)) {
-    //         $userRole = auth()->user()->role;
-
-    //         switch ($userRole) {
-    //             case 1:
-    //                 $request->session()->regenerate();
-    //                 return redirect('/Admin/Dashboard')->with('success', 'Login successful!');
-    //                 break;
-
-    //             case 2:
-    //                 $request->session()->regenerate();
-    //                 return redirect('/Program_Manager/Dashboard')->with('success', 'Login successful!');
-    //                 break;
-
-    //             case 3:
-    //                 $request->session()->regenerate();
-    //                 return redirect('/Health_Department/Dashboard')->with('success', 'Login successful!');
-    //                 break;
-
-    //             case 4:
-    //                 $request->session()->regenerate();
-    //                 return redirect('District/Dashboard')->with('success', 'Login successful!');
-    //                 break;
-
-    //             case 5:
-    //                 $request->session()->regenerate();
-    //                 return redirect('Health_Center/Dashboard')->with('success', 'Login successful!');
-    //                 break;
-
-    //             case 6:
-    //                 $request->session()->regenerate();
-    //                 return redirect('Supplier/Dashboard')->with('success', 'Login successful!');
-    //                 break;
-
-    //             case 6:
-    //                 $request->session()->regenerate();
-    //                 return redirect('Supplier/Dashboard')->with('success', 'Login successful!');
-    //                 break;
-
-    //             default:
-    //                 // Handle other roles or redirect as needed
-    //                 // You might want to redirect to a different page or show an error message
-    //                 return back()->withErrors(['email' => 'invalid email or password']);
-    //                 break;
-    //         }
-    //     } else {
-    //         // Authentication failed, return to login with an error message
-    //         return back()->withErrors(['email' => 'invalid email or password']);
-    //     }
-    // }
+    
 
     public function logout(Request $request)
     {
@@ -176,30 +164,6 @@ class UserController extends Controller
         request()->session()->regenerateToken();
         return redirect('/');
     }
-
-
-    // public function LoginProcess(Request $request){
-    //     $validated = $request->validate([
-    //         "email"=> ['required','email'],
-    //         "password" => 'required',
-    //     ]);
-    //     if (auth()->attempt($validated)) {
-    //         // Authentication successful
-    //         $userRole = auth()->user()->role;
-
-    //         if ($userRole == 1) {
-    //             $request->session()->regenerate();
-    //             return redirect('/Admin/Dashboard');
-    //         } else {
-    //             // Handle other roles or redirect as needed
-    //             // You might want to redirect to a different page or show an error message
-    //             return redirect('/')->with('error', 'Unauthorized access');
-    //         }
-    //     } else {
-    //         // Authentication failed, return to login with an error message
-    //         return redirect('/')->with('error', 'Invalid credentials');
-    //     }
-    // }
 
     public function editUser($id)
     {

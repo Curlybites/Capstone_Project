@@ -1,4 +1,4 @@
-@include('components.header');
+@include('components.header')
 
 <body>
     <!-- Layout wrapper -->
@@ -21,7 +21,7 @@
                     @endif
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                      
+
 
                         <div class="row">
                             <div class="col-md-12">
@@ -62,15 +62,32 @@
                                                                     <p>Barangay</p>
                                                                     <div class="input-group mb-3">
                                                                         <select class="form-select"
-                                                                            aria-label="Default select example" name="barangayName">
+                                                                            aria-label="Default select example"
+                                                                            name="barangayName">
                                                                             <option selected>Choose Barangay
                                                                             </option>
-                                                                            @foreach ( $barangayData as $healthcenterRow)
-                                                                            <option value="{{ $healthcenterRow->id }}">{{ $healthcenterRow->name }}</option>
+                                                                            @foreach ($barangayData as $healthcenterRow)
+                                                                                <option
+                                                                                    value="{{ $healthcenterRow->id }}">
+                                                                                    {{ $healthcenterRow->name }}
+                                                                                </option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
-                                                                </div>       
+                                                                </div>
+
+                                                                {{-- <div class="row">
+                                                                    <div class="input-group mb-3">
+                                                                        @foreach($userData as $healthcenterRow)
+                                                                        <div class="form-check">
+                                                                            <input type="checkbox" class="form-check-input" value="{{ $healthcenterRow->id}}" id="user{{ $healthcenterRow->id}}" name="users[]">
+                                                                            <label class="form-check-label" for="user{{ $healthcenterRow->id}}">
+                                                                             {{ $healthcenterRow->name }}
+                                                                            </label>
+                                                                        </div>
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div> --}}
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer border-1">
@@ -100,56 +117,62 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($healthcenterData as $healthcenterRow)
-                                                    <tr>
-                                                        <td>{{ $healthcenterRow->id }}</td>
-                                                        <td>{{ $healthcenterRow->name }}</td>
-                                                        <td class="">
-                                                            <a type="button" href=/Admin/Edit/
-                                                                class="text-primary" data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal2{{ $healthcenterRow->id }}">
-                                                                <i class="bi bi-pencil-square"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                 
-                                                
-                                                    <div class="modal fade" id="exampleModal2{{ $healthcenterRow->id }}" tabindex="-1"
-                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                                        Modal title</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form action={{ "/Admin/Health_Center_List/$healthcenterRow->id" }} method="POST">
-                                                                        @csrf
-                                                                        @method('PUT')
-                                                                                    
+                                                        <tr>
+                                                            <td>{{ $healthcenterRow->id }}</td>
+                                                            <td>{{ $healthcenterRow->name }}</td>
+                                                            <td class="">
+                                                                <a type="button" href=/Admin/Edit/ class="text-primary"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleModal2{{ $healthcenterRow->id }}">
+                                                                    <i class="bi bi-pencil-square"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <div class="modal fade"
+                                                            id="exampleModal2{{ $healthcenterRow->id }}" tabindex="-1"
+                                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                            Modal title</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form
+                                                                            action={{ "/Admin/Health_Center_List/$healthcenterRow->id" }}
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            @method('PUT')
+
                                                                             <div class="row">
                                                                                 <p>Health Center Name</p>
                                                                                 <div class="input-group mb-3">
-                                                                                    <input type="text" class="form-control"
+                                                                                    <input type="text"
+                                                                                        class="form-control"
                                                                                         aria-label="Sizing example input"
                                                                                         aria-describedby="inputGroup-sizing-default"
-                                                                                        name="healthcenterName" value="{{ $healthcenterRow->name }}" >
+                                                                                        name="healthcenterName"
+                                                                                        value="{{ $healthcenterRow->name }}">
                                                                                 </div>
                                                                             </div>
-                                                                 
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary">Save changes</button>
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Close</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary">Save
+                                                                            changes</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </form>
+                                                        </form>
                                                     @endforeach
                                                 </tbody>
                                                 </tfoot>
@@ -158,7 +181,7 @@
                                     </div>
                                     <hr class="my-0">
                                     <div class="card-body">
-                                       
+
                                     </div>
                                     <!-- /Account -->
                                 </div>

@@ -1,4 +1,4 @@
-@include('components.header');
+@include('components.header')
 
 <body>
     <!-- Layout wrapper -->
@@ -69,7 +69,7 @@
                                                                             <option selected>Choose Program Manager
                                                                             </option>
                                                                             @foreach( $userData as $programRow)
-                                                                            <option value="{{ $programRow->firstname }} {{ $programRow->lastname }}">{{ $programRow->firstname }} {{ $programRow->lastname }}</option>
+                                                                            <option value="{{ $programRow->firstname }}">{{ $programRow->firstname }} {{ $programRow->lastname }}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
