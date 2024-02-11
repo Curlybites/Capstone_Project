@@ -46,11 +46,6 @@ class HdController extends Controller
     {
         $user = Auth::user();
         $allotoprogview = Allocatetoprogs::findOrFail($id);
-        // $joinedData = DB::table('Allocatetoprogs')   
-        //     ->join('allocateitemtoprogs', 'Allocatetoprogs.id', '=', 'allocateitemtoprogs.allocateIDprogs')
-        //     ->select('allocateitemtoprogs.allocateIDprogs', 'allocateitemtoprogs.alloprog_item')
-        //     ->where('Allocatetoprogs.id', $id)
-        //     ->first();
 
         $joinedData = DB::table('allocateitemtoprogs')
             ->join('allocatetoprogs', 'allocateitemtoprogs.allocateIDprogs', '=', 'allocatetoprogs.id')
@@ -67,7 +62,7 @@ class HdController extends Controller
             ->join('allocatetoprogs', 'allocateitemtoprogs.allocateIDprogs', '=', 'allocatetoprogs.id')
             ->select('allocateitemtoprogs.alloprog_quan', 'allocateitemtoprogs.alloprog_unit', 'allocateitemtoprogs.alloprog_item', 'allocateitemtoprogs.alloprog_descript', 'allocateitemtoprogs.alloprog_price', 'allocateitemtoprogs.alloprog_pricetotal')
             ->where('allocateitemtoprogs.allocateIDprogs', $id)->get();
-        // return view('Health_Department.hdAllocationEdit', ['user' => $user, 'allotoprogedit' => $allotoprogedit, 'joinedData' => $joinedData]);
+
         return view('Health_Department.hdAllocationEdit', ['user' => $user, 'allotoprogedit' => $allotoprogedit, 'joinedData' => $joinedData]);
     }
 
@@ -115,47 +110,37 @@ class HdController extends Controller
         }
 
         return view('Health_Department.hdAllocationProcess', ['user' => $user]);
-
-
-        // $request->validate([
-        //     'alloprog.*.alloprog_quan' => 'required',
-        //     'alloprog.*.alloprog_unit' => 'required',
-        //     'alloprog.*.alloprog_item' => 'required',
-        //     'alloprog.*.alloprog_descript' => 'nullable|required',
-        //     'alloprog.*.alloprog_price' => 'required',
-        //     'alloprog.*.alloprog_pricetotal' => 'required',
-        // ]);
-
-        // foreach ($request->alloprog as  $key => $value) {
-        //     Allocateitemtoprogs::create($value);
-        // }
-
-        // return view('Health_Department.hdAllocationProcess', ['user' => $user]);
     }
+
+    // public function hdAllocationProgUpdate(Request $request, $id)
+    // {
+    //     $allocation = Allocatetoprogs::findOrFail($id);
+    //     $allocation->update($request->all());
+
+    //     $allocationitem = Allocateitemtoprogs::where('allocateIDprogs', $id)->firstOrFail();
+    //     foreach ($allocationitem as $allocationItem) {
+    //         $allocationItem->update($request->all());
+    //     }
+    //     // $allocationitem->update($request->all());
+    //     // Redirect back with success message
+    //     return back()->with('success', 'Product deleted successfully');
+
+    //     // where('allocateIDprogs', $id)->
+    // }
+
+
+
 
     public function hdAllocationProgUpdate(Request $request, $id)
     {
-        // Validate the request data
         $allocation = Allocatetoprogs::findOrFail($id);
         $allocation->update($request->all());
 
-        // $allocationitem = Allocateitemtoprogs::findOrFail($id);
-        // $allocationitem->update($request->all());
-        // // Redirect back with success message
-        // return back()->with('success', 'Product deleted successfully');
-        Validator::make($request->all(), [
-            'alloprog.*.alloprog_quan' => 'required',
-            'alloprog.*.alloprog_unit' => 'required',
-            'alloprog.*.alloprog_item' => 'required',
-            'alloprog.*.alloprog_descript' => 'nullable|required',
-            'alloprog.*.alloprog_price' => 'required',
-            'alloprog.*.alloprog_pricetotal' => 'required',
-        ]);
+        $allocationitem = Allocateitemtoprogs::where('allocateIDprogs', $id)->firstOrFail();
+        $allocationitem->update($request->all());
 
-        foreach ($request->allocation as $key) {
-            $key['allocateIDprogs'] = $allocatetoprogs->id;
-            Allocateitemtoprogs::update($key);
-        }
+
+        return back()->with('success', 'Records updated successfully');
     }
 
 

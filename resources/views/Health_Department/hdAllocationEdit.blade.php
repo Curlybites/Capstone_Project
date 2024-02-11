@@ -36,7 +36,6 @@
                                     <div class="card-body px-5">
                                         <div class="row">
                                             <div class="col-md-12">
-
                                                 <form action="{{ route('updateallocation', $allotoprogedit->id) }}"
                                                     method="POST">
                                                     @csrf
@@ -101,8 +100,7 @@
                                                                         <td class="align-middle p-0 text-center">
                                                                             <input type="text"
                                                                                 class="form-control text-center border-0"
-                                                                                id="quantItem"
-                                                                                name="alloprog[0][alloprog_quan]"
+                                                                                id="quantItem" name="alloprog_quan"
                                                                                 onkeyup="autoCal()"
                                                                                 value="{{ $joinedDatas->alloprog_quan }}">
                                                                         </td>
@@ -111,13 +109,13 @@
                                                                             p-0 text-center">
                                                                             <input type="text"
                                                                                 class="form-control text-center border-0"
-                                                                                name="alloprog[0][alloprog_unit]"
+                                                                                name="alloprog_unit"
                                                                                 value="{{ $joinedDatas->alloprog_unit }}">
                                                                         </td>
                                                                         <td class="align-middle p-0 text-center">
                                                                             <select
                                                                                 class="form-select text-center border-0"
-                                                                                name="alloprog[0][alloprog_item]"
+                                                                                name="alloprog_item"
                                                                                 aria-label="Default select example">
                                                                                 <option selected>Select Item
                                                                                 </option>
@@ -129,14 +127,14 @@
                                                                         <td class="align-middle p-0 text-center">
                                                                             <input type="text"
                                                                                 class="form-control text-center border-0"
-                                                                                name="alloprog[0][alloprog_descript]"
+                                                                                name="alloprog_descript"
                                                                                 value="{{ $joinedDatas->alloprog_descript }}">
                                                                         </td>
                                                                         <td class="align-middle p-0 text-center">
                                                                             <input type="text"
                                                                                 class="form-control text-center border-0"
-                                                                                name="alloprog[0][alloprog_price]"
-                                                                                id="price" onkeyup="autoCal()"
+                                                                                name="alloprog_price" id="price"
+                                                                                onkeyup="autoCal()"
                                                                                 value="{{ $joinedDatas->alloprog_price }}">
                                                                         </td>
                                                                         <td>
@@ -147,7 +145,7 @@
                                                                                 <input
                                                                                     class="text-center border-0 bg-white ms-2 fs-6"
                                                                                     type="text"
-                                                                                    name="alloprog[0][alloprog_pricetotal]"
+                                                                                    name="alloprog_pricetotal"
                                                                                     id="totalPrice"
                                                                                     value="{{ $joinedDatas->alloprog_pricetotal }}"
                                                                                     readonly>
@@ -194,7 +192,8 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="">Status</label>
-                                                            <p class="text-success">{{ $allotoprogedit->item_status }}
+                                                            <p class="text-success">
+                                                                {{ $allotoprogedit->item_status }}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -205,7 +204,6 @@
                                                         </a>
                                                     </div>
                                                 </form>
-
                                             </div>
                                         </div>
                                     </div>
