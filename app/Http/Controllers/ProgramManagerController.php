@@ -7,6 +7,7 @@ use App\Models\Ppmpitemdatas;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
+use App\Models\Items;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -38,8 +39,9 @@ class ProgramManagerController extends Controller
     public function PPMPcreate()
     {
         $user = Auth::user();
+        $items = Items::all();
         $ppmp = Ppmpdatas::all();
-        return view('Program_Manager.pmPPMPcreate', ['user' => $user, 'ppmp' => $ppmp]);
+        return view('Program_Manager.pmPPMPcreate', ['user' => $user, 'ppmp' => $ppmp, 'item'=> $items]);
 
     }
 
@@ -143,14 +145,17 @@ class ProgramManagerController extends Controller
     }
 
 
-public function deletePPMP($id)
-{
-    $user = Auth::user();
-    $ppmp = Ppmpdatas::find($id);
-    $ppmp->delete();
+        public function deletePPMP($id)
+        {
+            $user = Auth::user();
+            $ppmp = Ppmpdatas::find($id);
+            $ppmp->delete();
 
-    return back()->with('sucess', 'PPMP is deleted sucessfully');
+            return back()->with('sucess', 'PPMP is deleted sucessfully');
 
-}
+        }
+
+
+      
 
 }
