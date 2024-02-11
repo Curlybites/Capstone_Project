@@ -151,27 +151,36 @@
                                                                             name="unit" value="">
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
-                                                                        <select onchange="displaySelectedValue()"
-                                                                            class="form-select text-center border-0"
-                                                                            name="itemname" id="item_id"
-                                                                            aria-label="Default select example">
+                                                                        <select 
+                                                                        class="form-select text-center border-0" name="itemname" id="item_id" aria-label="Default select example">
                                                                             @foreach ($item as $items)
-                                                                                <option value="{{ $items->id }}">
-                                                                                    {{ $items->item_name }}</option>
+                                                                                <option value="{{ $items->id }}" data-description="{{ $items->item_description }}" data-unitprice="{{ $items->item_price }}">
+                                                                                    {{ $items->item_name }}
+                                                                                </option>
                                                                             @endforeach
                                                                         </select>
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
-                                                                        <input type="text" id="item_d"
-                                                                            class="form-control text-center border-0"
-                                                                            name="description" value="">
+                                                                        <input type="text" id="item_d" class="form-control text-center border-0" name="description" value="">
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center" id="descriptionColumn">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            name="unitprice" id="price"
-                                                                            onkeyup="autoCal()" value="">
+                                                                        <input  onkeyup="autoCal()" 
+                                                                        type="text" class="form-control text-center border-0" name="unitprice" id="price" value="">
                                                                     </td>
+                                                                    <script>
+                                                                        document.getElementById('item_id').addEventListener('change', function () {
+                                                                            var selectedItemId = this.value;
+                                                                    
+                                                                          
+                                                                            var selectedItem = document.querySelector('option[value="' + selectedItemId + '"]');
+                                                                            var description = selectedItem.getAttribute('data-description');
+                                                                            var unitprice = selectedItem.getAttribute('data-unitprice');
+                                                                    
+                                                                           
+                                                                            document.getElementById('item_d').value = description;
+                                                                            document.getElementById('price').value = unitprice;
+                                                                        });
+                                                                    </script>
                                                                     <td>
                                                                         <div class="float-start">
                                                                             <span class="fw-bold ">₱</span>
@@ -266,32 +275,50 @@
 
           
                     function addRow() {
-                        // Clone the first row
+    // Clone the first row
 
-                        // Create a new row element
-                        var newRow = '<tr>' +
-                            '<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_quan" id="quantItem" onkeyup="autoCal()"></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_unit"></td>' +
-                            '<td class="align-middle p-0 text-center">' +
-                            '<select class="form-select text-center border-0" name="alloprog_item" aria-label="Default select example">' +
-                            '<option selected>Select Item</option>' +
-                            '<option value="1">One</option>' +
-                            '<option value="2">Two</option>' +
-                            '<option value="3">Three</option>' +
-                            '</select>' +
-                            '</td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_descript"></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_price" id="price" onkeyup="autoCal()"></td>' +
-                            '<td>' +
-                            '<div class="float-start"><span class="fw-bold">₱</span></div>' +
-                            '<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog_pricetotal" id="totalPrice" value="0" readonly></div>' +
-                            '</td>' +
-                            '</tr>';
+    // Create a new row element
+    var newRow = '<tr>' +
+        '<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>' +
+        '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_quan" id="quantItem" onkeyup="autoCal()"></td>' +
+        '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_unit"></td>' +
+        '<td class="align-middle p-0 text-center">' +
+        '<select class="form-select text-center border-0" name="alloprog_item" aria-label="Default select example" onchange="updateItemDetails(this)">' +
+        '<option selected>Select Item</option>';
 
-                        // Append the new row to the tbody
-                        $('.addTBRow').append(newRow);
-                    }
+    // Iterate through your items and add options
+    @foreach ($item as $items)
+        newRow += '<option value="{{ $items->id }}" data-description="{{ $items->item_description }}" data-unitprice="{{ $items->item_price }}">{{ $items->item_name }}</option>';
+    @endforeach
+
+    newRow += '</select>' +
+        '</td>' +
+        '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_descript"></td>' +
+        '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_price" id="price" onkeyup="autoCal()"></td>' +
+        '<td>' +
+        '<div class="float-start"><span class="fw-bold">₱</span></div>' +
+        '<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog_pricetotal" id="totalPrice" value="0" readonly></div>' +
+        '</td>' +
+        '</tr>';
+
+    // Append the new row to the tbody
+    $('.addTBRow').append(newRow);
+}
+
+// Function to update item details based on the selected option
+function updateItemDetails(selectElement) {
+    var selectedOption = selectElement.options[selectElement.selectedIndex];
+    var description = selectedOption.getAttribute('data-description');
+    var unitprice = selectedOption.getAttribute('data-unitprice');
+
+    // Find the corresponding input fields and update their values
+    var descriptionInput = selectElement.closest('tr').querySelector('input[name="alloprog_descript"]');
+    var priceInput = selectElement.closest('tr').querySelector('input[name="alloprog_price"]');
+
+    descriptionInput.value = description;
+    priceInput.value = unitprice;
+}
+
 
                     // Remove Row
                     function removeRow(button) {
