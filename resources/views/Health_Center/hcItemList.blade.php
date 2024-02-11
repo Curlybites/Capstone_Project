@@ -18,10 +18,6 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Patient / Patient List /
-                            </span>
-                            Patient Item Order
-                        </h4>
 
                         <div class="row">
                             <div class="col-md-12">
@@ -36,8 +32,9 @@
                                     <!-- Account -->
                                     <div class="card-body px-5">
                                         <div class="row">
-                                            <div class="col-md-12">
-                                                <form action="">
+                                            <form action="{{ '/Health_Center/Patient_Sent_Item' }}" method="POST">
+                                                @csrf
+                                                <div class="col-md-12">
                                                     <div class="row mb-2">
                                                         @if ($send)
                                                             <div class="col-md-6 mb-md-0 mb-3">
@@ -45,7 +42,7 @@
                                                                     class="form-label">Name</label>
                                                                 <input class="form-control" type="text"
                                                                     value="{{ $send->fname }} {{ $send->mname }}. {{ $send->lname }}"
-                                                                    aria-label="Disabled input example" disabled>
+                                                                    aria-label="Disabled input example" name="fname" disabled>
                                                             </div>
                                                         @endif
 
@@ -54,7 +51,7 @@
                                                                 class="form-label">Program</label>
                                                             <input class="form-control" type="text"
                                                                 value="{{ $send->program }}"
-                                                                aria-label="Disabled input example" disabled>
+                                                                aria-label="Disabled input example" name="program" disabled>
                                                         </div>
                                                     </div>
 
@@ -64,7 +61,7 @@
                                                                 class="form-label">Barangay Health Center</label>
                                                             <input class="form-control" type="text"
                                                                 value="{{ $send->healthcenter }}"
-                                                                aria-label="Disabled input example" disabled>
+                                                                aria-label="Disabled input example" name="healthcenter" disabled>
 
                                                         </div>
                                                         <div class="col-md-6 mb-md-0 mb-3">
@@ -72,7 +69,7 @@
                                                                 class="form-label">District</label>
                                                             <input class="form-control" type="text"
                                                                 value="{{ $send->district }}"
-                                                                aria-label="Disabled input example" disabled>
+                                                                aria-label="Disabled input example" name="district" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="table-responsive mb-5">
@@ -106,29 +103,27 @@
                                                                         <input type="text" name="search" placeholder="Search by name" value="{{ request('search') }}">
                                                                         <button type="submit">Search</button>
                                                                     </form> --}}
-                                                                    <form action="{{ route('distribute') }}"
-                                                                        method="POST">
-                                                                        @csrf
-                                                                        <td class="align-middle p-0 text-center">
-                                                                            <input type="text"
-                                                                                class="form-control text-center border-0"
-                                                                                value="" name="quantity">
-                                                                        </td>
-                                                                        <td class="align-middle p-0 text-center">
-                                                                            <input type="text"
-                                                                                class="form-control text-center border-0"
-                                                                                name="unit">
-                                                                        </td>
-                                                                        <td class="align-middle p-0 text-center">
-                                                                            <input type="text"
-                                                                                class="form-control text-center border-0"
-                                                                                name="item">
-                                                                        </td>
-                                                                        <td class="align-middle p-0 text-center">
-                                                                            <input type="text"
-                                                                                class="form-control text-center border-0"
-                                                                                name="description">
-                                                                        </td>
+
+                                                                    <td class="align-middle p-0 text-center">
+                                                                        <input type="text"
+                                                                            class="form-control text-center border-0"
+                                                                            value="" name="quantity">
+                                                                    </td>
+                                                                    <td class="align-middle p-0 text-center">
+                                                                        <input type="text"
+                                                                            class="form-control text-center border-0"
+                                                                            name="unit">
+                                                                    </td>
+                                                                    <td class="align-middle p-0 text-center">
+                                                                        <input type="text"
+                                                                            class="form-control text-center border-0"
+                                                                            name="item">
+                                                                    </td>
+                                                                    <td class="align-middle p-0 text-center">
+                                                                        <input type="text"
+                                                                            class="form-control text-center border-0"
+                                                                            name="description">
+                                                                    </td>
                                                                 </tr>
                                                             </tbody>
                                                             <tfoot>
@@ -165,10 +160,10 @@
                                                         <a class="btn btn-danger"
                                                             href="{{ '/Health_Center/Patient_List' }}">Cancel</a>
                                                     </div>
-                                                </form>
-                                                </form>
-                                            </div>
+                                                </div>
+                                            </form>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>

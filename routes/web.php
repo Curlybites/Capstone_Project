@@ -137,6 +137,47 @@ Route::middleware(['auth', 'district'])->group(function () {
 // Route For Health Center
 Route::middleware(['auth', 'health_center'])->group(function () {
     Route::get('/Health_Center/Dashboard', [PageController::class,'hcDashboard']);
+
+    Route::controller(HcController::class)->group(function () {
+
+        // FOR ROUTING OF TABS
+        Route::get('/Health_Center/Item_List', 'hcInventory');
+        Route::get('/Health_Center/Patient_List', 'hcPatient');
+        Route::get('/Health_Center/Patient_Item_List', 'hcItemList');
+        // Route::get('/Health_Center/Patient_List/view', 'hcPatientView')->middleware('auth');
+        Route::get('/Health_Center/Patient_View{id}', 'hcPatientView');
+        Route::get('/Health_Center/Patient_View', 'listPatientPrint');
+        Route::get('/Health_Center/Report', 'hcReport');
+    
+        // FOR CREATION OF PATIENT
+        Route::post('/Health_Center/Patient_List', 'storePatient')->name('patientname');
+    
+        // FOR PATIENT LIST TABLE
+        Route::get('/Health_Center/Patient_List', 'listPatient');
+    
+        //FOR SEND ITEMS
+        Route::get('/Health_Center/Send_Items', 'sendItemsActiveList');
+    
+        // FOR SENDING ITEM TO PATIENT
+        Route::get('/Health_Center/Patient_Sent_Item{id}', 'itemSendPatientInfo');
+        Route::post('/Health_Center/Patient_Sent_Item', 'HcSendItemsInput');
+    
+        // Route::get('/Health_Center/Patient_Sent_Item', 'index');
+    
+        // FOR ACCOUNT
+        Route::get('/Health_Center/Profile', 'hcAccount');
+        Route::get('/Health_Center/Profile_Change', 'hcAccountChange');
+    
+        // Route::get('/Health_Center/Patient_View', 'listPatientnMedicine');
+        // Route::put('/Health_Center/Patient_List/{id}', 'updatePatient')->name('updatePatient')->middleware('auth');
+    
+        // FOR UPDATING PATIENT INFO
+        Route::post('/Health_Center/Patient_List/{id}', 'updatePatient')->name('routes.update');
+    
+        // FOR INVENTORY
+        Route::get('/Health_Center/Item_List', 'hcInventoryList');
+    
+    });
 });
 
 
@@ -198,46 +239,7 @@ Route::controller(ProgramManagerController::class)->group(function () {
 
 });
 
-Route::controller(HcController::class)->group(function () {
 
-    // FOR ROUTING OF TABS
-    Route::get('/Health_Center/Item_List', 'hcInventory')->middleware('auth');
-    Route::get('/Health_Center/Patient_List', 'hcPatient')->middleware('auth');
-    Route::get('/Health_Center/Patient_Item_List', 'hcItemList')->middleware('auth');
-    // Route::get('/Health_Center/Patient_List/view', 'hcPatientView')->middleware('auth');
-    Route::get('/Health_Center/Patient_View{id}', 'hcPatientView')->middleware('auth');
-    Route::get('/Health_Center/Patient_View', 'listPatientPrint')->middleware('auth');
-    Route::get('/Health_Center/Report', 'hcReport')->middleware('auth');
-
-    // FOR CREATION OF PATIENT
-    Route::post('/Health_Center/Patient_List', 'storePatient')->name('patientname')->middleware('auth');
-
-    // FOR PATIENT LIST TABLE
-    Route::get('/Health_Center/Patient_List', 'listPatient');
-
-    //FOR SEND ITEMS
-    Route::get('/Health_Center/Send_Items', 'sendItems');
-
-    // FOR SENDING ITEM TO PATIENT
-    Route::get('/Health_Center/Patient_Sent_Item{id}', 'itemSentPatient')->middleware('auth');
-    Route::post('/Health_Center/Patient_Sent_Item', 'distribute')->name('distribute')->middleware('auth');
-
-    // Route::get('/Health_Center/Patient_Sent_Item', 'index');
-
-    // FOR ACCOUNT
-    Route::get('/Health_Center/Profile', 'hcAccount')->middleware('auth');
-    Route::get('/Health_Center/Profile_Change', 'hcAccountChange')->middleware('auth');
-
-    // Route::get('/Health_Center/Patient_View', 'listPatientnMedicine');
-    // Route::put('/Health_Center/Patient_List/{id}', 'updatePatient')->name('updatePatient')->middleware('auth');
-
-    // FOR UPDATING PATIENT INFO
-    Route::post('/Health_Center/Patient_List/{id}', 'updatePatient')->name('routes.update')->middleware('auth');
-
-    // FOR INVENTORY
-    Route::get('/Health_Center/Item_List', 'listItem');
-
-});
 // // Admin route
 
 // Route::controller(AdminController::class)->group(function () {

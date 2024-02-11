@@ -7,10 +7,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\Patient;
-use App\Models\Items;
-use App\Models\Send;
-use App\Models\Distribute
-;
+use App\Models\HcInventoryItems;
+use App\Models\HcSendItems;
+
 
 
 
@@ -21,6 +20,14 @@ class HcController extends Controller
     {
         $user = Auth::user();
         return view('Health_Center.hcInventory', ['user' => $user]);
+    }
+
+    public function hcInventoryList()
+    {
+        $user = Auth::user();
+
+        $hcinventoryitems = HcInventoryItems::all(); // Replace TableName with your actual model name
+        return view('Health_Center.hcInventory', ['hcinventoryitems' => $hcinventoryitems, 'user' => $user]);
     }
     public function hcPatient()
     {
@@ -36,12 +43,16 @@ class HcController extends Controller
     // }
     public function hcPatientView($id)
     {
-        // $user = Auth::user();
-        // return view('Health_Center.hcPatientView', ['user' => $user]);
-
         $user = Auth::user();
-        $tableData = Patient::find($id); // Replace TableName with your actual model name
-        return view('Health_Center.hcPatientView', ['user' => $user, 'tableData' => $tableData]);
+        $tableData = Patient::find($id);
+        
+        $joinedPatientItem = DB::table('hc_send_items')
+            ->join('patients', 'hc_send_items.patient_ID', '=', 'patients.id')
+            ->select('hc_send_items.quantity', 'hc_send_items.unit', 'hc_send_items.item', 'hc_send_items.description')
+            ->where('hc_send_items.patient_ID', $id)
+            ->get(); // Change this to ->first() if you expect only one result
+    
+        return view('Health_Center.hcPatientView', ['user' => $user, 'tableData' => $tableData, 'joinedPatientItem' => $joinedPatientItem]);
     }
 
     public function listPatientPrint()
@@ -129,7 +140,7 @@ class HcController extends Controller
     }
 
     // FOR DISTRIBUTING THE ITEMS FOR PATIENT
-    public function itemSentPatient($id)
+    public function itemSendPatientInfo($id)
     {
         $user = Auth::user();
         $send = Patient::find($id);
@@ -138,25 +149,42 @@ class HcController extends Controller
 
 
     // NAG GEGET PERO DI PUMAPASOK SA DB
-    public function distribute(Request $request)
+    public function HcSendItemsInput(Request $request)
     {
         $request->validate([
 
             'quantity' => 'required',
             'unit' => 'required',
             'item' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'fname' => 'required',
+            'mname' => 'required',
+            'lname' => 'required'
 
         ]);
 
-        Distribute::create($request->all());
+        $data1 = [ 
+            'quantity' => $request->input('quantity'),
+            'unit' => $request->input('unit'),
+            'item' => $request->input('item'),
+            'description' =>  $request->input('description')
+        ];
+        $record1 = HcSendItems::create($data1);
 
+        $data2 = [
+            'fname' => $request->input('fname'),
+            'mname' => $request->input('mname'),
+            'lname' => $request->input('lname')
+            // Add more fields as needed for table2
+        ];
+        $record2 = Patient::create($data2);
+    
         return back()->with('success', 'ikaw na bahala');
     }
 
 
     // FOR SEND ITEMS FILTRATION
-    public function sendItems()
+    public function sendItemsActiveList()
     {
         $user = Auth::user();
         // Fetch active items
@@ -165,11 +193,7 @@ class HcController extends Controller
     }
 
     // FOR INVENTORY
-    public function listItem()
-    {
-        $items = Items::all(); // Replace TableName with your actual model name
-        return view('Health_Center.hcInventory', ['items' => $items]);
-    }
+
 
     // public function index(Request $request)
     // {
@@ -195,4 +219,8 @@ class HcController extends Controller
         $user = Auth::user();
         return view('Health_Center.hcAccountChange', ['user' => $user]);
     }
+
+    // JOIN FOR PATIENT VIEW
+
+    // public function patientView()
 }
