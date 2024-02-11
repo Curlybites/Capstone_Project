@@ -52,6 +52,10 @@
                 <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Program_Manager/pmPPMPcreate') ? 'PPMP /' : '' }}</span>{{ Request::is('Program_Manager/pmPPMPcreate') ? ' Create PPMP' : '' }} </h5>
                 <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Program_Manager/Allocationlist') ? 'Allocation /' : '' }}</span>{{ Request::is('Program_Manager/Allocationlist') ? ' Allocation List' : '' }} </h5>
                 <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Program_Manager/Reportlist') ? 'Report /' : '' }}</span>{{ Request::is('Program_Manager/Reportlist') ? ' List of Report' : '' }} </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Program_Manager/Profile') ? 'Account /' : '' }}</span>{{ Request::is('Program_Manager/Profile') ? ' Profile' : '' }} </h5>
+
+
                 <!-- Search -->
                 <div class="navbar-nav align-items-center">
                     <div class="nav-item d-flex align-items-center">
