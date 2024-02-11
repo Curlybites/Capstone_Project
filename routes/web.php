@@ -163,6 +163,8 @@ Route::middleware(['auth', 'health_department'])->group(function () {
 // Route For Disctrict 
 Route::middleware(['auth', 'district'])->group(function () {
     Route::get('/District/Dashboard', [PageController::class,'dtDashboard']);
+
+    
 });
 
 // Route For Health Center

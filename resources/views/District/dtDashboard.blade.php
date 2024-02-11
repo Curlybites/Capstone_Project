@@ -4,10 +4,15 @@
 <body>
   <!-- Layout wrapper -->
 
-
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      @include('components.sidebar.district_sidebar')
+      <div class="layout-page">
         <!-- Content wrapper -->
         <div class="content-wrapper">
           <!-- Content -->
+
+          @include('components.navbar.navbar')
 
           @if (session('success'))
           @include('components.notification')
