@@ -29,41 +29,10 @@ class HdController extends Controller
         return view('Health_Department.hdPOView', ['user' => $user]);
     }
 
-    public function hdAllocation()
-    {
-        $user = Auth::user();
-        $allotoprog = Allocatetoprogs::all();
-        return view('Health_Department.hdAllocation', ['user' => $user, 'allotoprog' => $allotoprog]);
-    }
-
     public function hdAllocationProcess()
     {
         $user = Auth::user();
         return view('Health_Department.hdAllocationProcess', ['user' => $user]);
-    }
-
-    public function hdAllocationView($id)
-    {
-        $user = Auth::user();
-        $allotoprogview = Allocatetoprogs::findOrFail($id);
-
-        $joinedData = DB::table('allocateitemtoprogs')
-            ->join('allocatetoprogs', 'allocateitemtoprogs.allocateIDprogs', '=', 'allocatetoprogs.id')
-            ->select('allocateitemtoprogs.alloprog_quan', 'allocateitemtoprogs.alloprog_unit', 'allocateitemtoprogs.alloprog_item', 'allocateitemtoprogs.alloprog_descript', 'allocateitemtoprogs.alloprog_price', 'allocateitemtoprogs.alloprog_pricetotal')
-            ->where('allocateitemtoprogs.allocateIDprogs', $id)->get();
-        return view('Health_Department.hdAllocationView', ['user' => $user, 'allotoprogview' => $allotoprogview, 'joinedData' => $joinedData]);
-    }
-
-    public function hdAllocationEdit($id)
-    {
-        $user = Auth::user();
-        $allotoprogedit = Allocatetoprogs::findOrFail($id);
-        $joinedData = DB::table('allocateitemtoprogs')
-            ->join('allocatetoprogs', 'allocateitemtoprogs.allocateIDprogs', '=', 'allocatetoprogs.id')
-            ->select('allocateitemtoprogs.alloprog_quan', 'allocateitemtoprogs.alloprog_unit', 'allocateitemtoprogs.alloprog_item', 'allocateitemtoprogs.alloprog_descript', 'allocateitemtoprogs.alloprog_price', 'allocateitemtoprogs.alloprog_pricetotal')
-            ->where('allocateitemtoprogs.allocateIDprogs', $id)->get();
-
-        return view('Health_Department.hdAllocationEdit', ['user' => $user, 'allotoprogedit' => $allotoprogedit, 'joinedData' => $joinedData]);
     }
 
     public function hdAccount()
@@ -78,8 +47,12 @@ class HdController extends Controller
         return view('Health_Department.hdAccountChange', ['user' => $user]);
     }
 
-
-    // POST METHOD FUNCTION
+    public function hdAllocation()
+    {
+        $user = Auth::user();
+        $allotoprog = Allocatetoprogs::all();
+        return view('Health_Department.hdAllocation', ['user' => $user, 'allotoprog' => $allotoprog]);
+    }
 
     public function hdAllocationtoProg(Request $request)
     {
@@ -129,16 +102,48 @@ class HdController extends Controller
     // }
 
 
+    public function hdAllocationView($id)
+    {
+        $user = Auth::user();
+        $allotoprogview = Allocatetoprogs::findOrFail($id);
 
+        $joinedData = DB::table('allocateitemtoprogs')
+            ->join('allocatetoprogs', 'allocateitemtoprogs.allocateIDprogs', '=', 'allocatetoprogs.id')
+            ->select('allocateitemtoprogs.alloprog_quan', 'allocateitemtoprogs.alloprog_unit', 'allocateitemtoprogs.alloprog_item', 'allocateitemtoprogs.alloprog_descript', 'allocateitemtoprogs.alloprog_price', 'allocateitemtoprogs.alloprog_pricetotal')
+            ->where('allocateitemtoprogs.allocateIDprogs', $id)->get();
+        return view('Health_Department.hdAllocationView', ['user' => $user, 'allotoprogview' => $allotoprogview, 'joinedData' => $joinedData]);
+    }
+
+
+    public function hdAllocationEdit($id)
+    {
+        $user = Auth::user();
+        $allotoprogedit = Allocatetoprogs::findOrFail($id);
+        $joinedData = DB::table('allocateitemtoprogs')
+            ->join('allocatetoprogs', 'allocateitemtoprogs.allocateIDprogs', '=', 'allocatetoprogs.id')
+            ->select('allocateitemtoprogs.alloprog_quan', 'allocateitemtoprogs.alloprog_unit', 'allocateitemtoprogs.alloprog_item', 'allocateitemtoprogs.alloprog_descript', 'allocateitemtoprogs.alloprog_price', 'allocateitemtoprogs.alloprog_pricetotal')
+            ->where('allocateitemtoprogs.allocateIDprogs', $id)->get();
+
+        return view('Health_Department.hdAllocationEdit', ['user' => $user, 'allotoprogedit' => $allotoprogedit, 'joinedData' => $joinedData]);
+    }
 
     public function hdAllocationProgUpdate(Request $request, $id)
     {
         $allocation = Allocatetoprogs::findOrFail($id);
-        $allocation->update($request->all());
+        $allocation->update($request->except('_token', '_method', 'alloprog_quan', 'alloprog_unit', 'alloprog_item', 'alloprog_descript', 'alloprog_price', 'alloprog_pricetotal'));
 
-        $allocationitem = Allocateitemtoprogs::where('allocateIDprogs', $id)->firstOrFail();
-        $allocationitem->update($request->all());
+        $allocationitems = Allocateitemtoprogs::where('allocateIDprogs', $id)->get();
 
+        foreach ($allocationitems as $key => $allocationitem) {
+            $allocationitem->update([
+                'alloprog_quan' => $request->alloprog_quan[$key],
+                'alloprog_unit' => $request->alloprog_unit[$key],
+                'alloprog_item' => $request->alloprog_item[$key],
+                'alloprog_descript' => $request->alloprog_descript[$key],
+                'alloprog_price' => $request->alloprog_price[$key],
+                'alloprog_pricetotal' => $request->alloprog_pricetotal[$key]
+            ]);
+        }
 
         return back()->with('success', 'Records updated successfully');
     }
