@@ -86,7 +86,7 @@ class UserController extends Controller
 
         // $user = User::create($healthcenter);
 
-        return redirect('/Admin/User_List')->with('message', 'Register successful');
+        return redirect('/Admin/User_List')->with('success', 'Register successful');
     }
 
     public function userList()
