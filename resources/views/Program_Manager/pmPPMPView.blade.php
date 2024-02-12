@@ -18,7 +18,7 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                    
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card mb-4">
@@ -39,20 +39,20 @@
                                         <div class="card-body">
                                             <div class="pb-4">
                                                 <p style="margin-bottom: 0px; font-weight: bold;">
-                                                {{ $ppmpdatas->year }}
+                                                    {{ $ppmpdatas->year }}
                                                 </p>
                                                 <p style="margin-bottom: 0px; font-weight: bold;">
-                                                {{ $ppmpdatas->department }}
+                                                    {{ $ppmpdatas->department }}
                                                 </p>
                                                 <p style="margin-bottom: 0px; font-weight: bold;">
-                                                {{ $ppmpdatas->programtitle }}
+                                                    {{ $ppmpdatas->programtitle }}
                                                 </p>
                                                 </p>
                                                 <p style="margin-bottom: 0px; font-weight: bold;">
                                                     {{ $ppmpdatas->projecttitle }}
                                                 </p>
 
-                                                
+
                                             </div>
                                             <div class="row pb-4 mt-5">
                                                 <div class="col-md-4 col-4 mb-md-0 mb-3">
@@ -71,7 +71,7 @@
                                                     </p>
                                                     </p>
                                                 </div>
-                                                
+
                                             </div>
                                             <div class="text-nowrap">
                                                 <table id=""
@@ -109,7 +109,7 @@
                                                                 {{ $joinedppmpdata->total }}
                                                             </td>
                                                         </tr>
-                                                    </tbody>                                  
+                                                    </tbody>
                                                 </table>
                                             </div>
 
@@ -124,7 +124,24 @@
                                                 </div>
                                                 <div class="col-md-1 col-6">
                                                     <p style="margin-bottom: 0px; font-weight: bold;">Status:</p>
-                                                    <p class="text-success">{{ $ppmpdatas->status }}</p>
+                                                    <p class="text-success">
+                                                        @switch($ppmpdatas->status)
+                                                            @case(1)
+                                                                Approved
+                                                            @break
+
+                                                            @case(2)
+                                                                Dissaproved
+                                                            @break
+
+                                                            @case(3)
+                                                                Pending
+                                                            @break
+
+                                                            @default
+                                                        @endswitch
+                                                    </p>
+
                                                 </div>
                                             </div>
                                         </div>

@@ -115,7 +115,7 @@ Route::middleware(['auth', 'program_manager'])->group(function () {
     Route::post('/Program_Manager/PPMPlist', 'storePPMP')->name('ppmp.create')->middleware('auth');
 
     // Route::get('/Program_Manager/pmPPMPView', 'PPMPView')->name('ppmp.view')->middleware('auth');
-    Route::put('/Program_Manager/pmPPMPEdit_{id}', 'editPPMP')->name('routes.update')->middleware('auth');
+    Route::put('/Program_Manager/pmPPMPEdit_{id}', 'editPPMP')->name('routes.ppmpupdate')->middleware('auth');
     // Route::get('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete')->middleware('auth');
     Route::delete('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete')->middleware('auth');
 

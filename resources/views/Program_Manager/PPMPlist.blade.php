@@ -27,7 +27,7 @@
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
                                         <h5 class="card-header">Program Procurement Management Plan List</h5>
 
-<!-- / Content -->
+                                        <!-- / Content -->
                                     </div>
 
                                     <hr class="">
@@ -57,8 +57,29 @@
                                                             <td>{{ $ppmps->typeofcontract }}</td>
                                                             <td>{{ $ppmps->accounttitle }}</td>
                                                             <td>
-                                                                <span
-                                                                    class="badge bg-label-success me-1">Approved</span>
+                                                                
+                                                                    @switch($ppmps->status)
+                                                                        @case(1)
+                                                                            <span class="badge bg-label-success me-1">
+                                                                                Approved
+                                                                            </span>
+                                                                        @break
+
+                                                                        @case(2)
+                                                                             <span class="badge bg-label-danger me-1">
+                                                                             Disaproved
+                                                                             </span>
+                                                                        @break
+                                                                        
+                                                                        @case(3)
+                                                                            <span class="badge bg-label-warning me-1">
+                                                                            pending
+                                                                            </span>
+                                                                        @break
+
+                                                                        @default
+                                                                    @endswitch
+                                                         
                                                             </td>
                                                             <td>
                                                                 <div class="dropdown">
@@ -74,15 +95,15 @@
                                                                             <i class="bi bi-eye-fill me-2"></i>View
                                                                         </a>
 
-                                                                        <a  class="dropdown-item"
-                                                                            href="{{"/Program_Manager/pmPPMPEdit_{$ppmps->id}"}}"><i
+                                                                        <a class="dropdown-item"
+                                                                            href="{{ "/Program_Manager/pmPPMPEdit_{$ppmps->id}" }}"><i
                                                                                 class="bx bx-edit-alt me-2"></i>Edit</a>
 
                                                                         <a>
                                                                             <form
                                                                                 action="{{ route('ppmp.delete', $ppmps->id) }}"
                                                                                 method="POST">
-                                                                                @csrf 
+                                                                                @csrf
                                                                                 @method('DELETE')
                                                                                 <a type="submit" class="dropdown-item">
                                                                                     <i class="bx bx-trash me-2">
@@ -116,8 +137,7 @@
 
                                                             <div class="modal-body">
 
-                                                                <form
-                                                                    action="{{ route('routes.update', $ppmps->id) }}"
+                                                                <form action="{{ route('routes.update', $ppmps->id) }}"
                                                                     id="editPPMP{{ $ppmps->id }}" method="POST">
                                                                     @csrf
                                                                     @method('PUT')

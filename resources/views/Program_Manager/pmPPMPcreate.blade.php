@@ -43,10 +43,29 @@
                                                     <div class="row mb-3">
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
-                                                                class="form-label">PPMP
+                                                                class="form-label">PPMP Code
                                                             </label>
                                                             <input type="text" class="form-control" name="POnum"
-                                                                value="">
+                                                                id="poCode" readonly>
+                                                                <script>
+                                                                    // Function to generate a random PO code
+                                                                    function generatePOCode() {
+                                                                        var length = 8; // Length of the PO code
+                                                                        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                                                                        var result = '';
+                                                            
+                                                                        for (var i = 0; i < length; i++) {
+                                                                            result += characters.charAt(Math.floor(Math.random() * characters.length));
+                                                                        }
+                                                            
+                                                                        // Display the generated PO code in the input field
+                                                                        document.getElementById('poCode').value = result;
+                                                                    }
+                                                            
+                                                                    // Generate the PO code automatically when the page loads
+                                                                    generatePOCode();
+                                                                </script>
+                                                           
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3 ">
                                                             <label for="exampleFormControlInput1"
@@ -131,7 +150,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="addTBRow">
-                                                                
+
                                                                 <tr>
                                                                     <td>
                                                                         <button class="btn btn-sm btn-danger py-0"
@@ -151,32 +170,42 @@
                                                                             name="unit" value="">
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
-                                                                        <select 
-                                                                        class="form-select text-center border-0" name="itemname" id="item_id" aria-label="Default select example">
+                                                                        <select
+                                                                            class="form-select text-center border-0"
+                                                                            name="itemname" id="item_id"
+                                                                            aria-label="Default select example">
+                                                                            <option>Select Item</option>
                                                                             @foreach ($item as $items)
-                                                                                <option value="{{ $items->id }}" data-description="{{ $items->item_description }}" data-unitprice="{{ $items->item_price }}">
+                                                                                <option value="{{ $items->id }}"
+                                                                                    data-description="{{ $items->item_description }}"
+                                                                                    data-unitprice="{{ $items->item_price }}">
                                                                                     {{ $items->item_name }}
                                                                                 </option>
                                                                             @endforeach
                                                                         </select>
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
-                                                                        <input type="text" id="item_d" class="form-control text-center border-0" name="description" value="">
+                                                                        <input type="text" id="item_d"
+                                                                            class="form-control text-center border-0"
+                                                                            name="description" value="">
                                                                     </td>
-                                                                    <td class="align-middle p-0 text-center" id="descriptionColumn">
-                                                                        <input  onkeyup="autoCal()" 
-                                                                        type="text" class="form-control text-center border-0" name="unitprice" id="price" value="">
+                                                                    <td class="align-middle p-0 text-center"
+                                                                        id="descriptionColumn">
+                                                                        <input onkeyup="autoCal()" type="text"
+                                                                            class="form-control text-center border-0"
+                                                                            name="unitprice" id="price"
+                                                                            value="">
                                                                     </td>
                                                                     <script>
-                                                                        document.getElementById('item_id').addEventListener('change', function () {
+                                                                        document.getElementById('item_id').addEventListener('change', function() {
                                                                             var selectedItemId = this.value;
-                                                                    
-                                                                          
+
+
                                                                             var selectedItem = document.querySelector('option[value="' + selectedItemId + '"]');
                                                                             var description = selectedItem.getAttribute('data-description');
                                                                             var unitprice = selectedItem.getAttribute('data-unitprice');
-                                                                    
-                                                                           
+
+
                                                                             document.getElementById('item_d').value = description;
                                                                             document.getElementById('price').value = unitprice;
                                                                         });
@@ -228,16 +257,16 @@
                                                                         my-5">
                                                         <div class="col-md-6 mb-md-0 mb-3">
                                                             <label for="">Notes</label>
-                                                            <textarea class="form-control" style="height: 100px" name="note">""</textarea>
+                                                            <textarea class="form-control" style="height: 100px" name="note"></textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="">Status</label>
                                                             <select class="form-select" name="status"
                                                                 aria-label="Default select example">
                                                                 <option selected>Select Status</option>
-                                                                <option value="">Approved</option>
-                                                                <option value="">Disapproved</option>
-                                                                <option value="">For Evaluation</option>
+                                                                <option value="1">Approved</option>
+                                                                <option value="2">Disapproved</option>
+                                                                <option value="3">Pending</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -261,10 +290,9 @@
                 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                 <script>
-
-                $('$item_id').change(function() {
-                    var selectedValue = $(this).val();
-                })    
+                    $('$item_id').change(function() {
+                        var selectedValue = $(this).val();
+                    })
                     // function displaySelectedValue() {
                     //     // Get the selected value from the <select> tag
                     //     var selectedValue = document.getElementById('item_id').value;
@@ -273,51 +301,52 @@
                     //     document.getElementById('item_d').value = selectedValue;
                     // }
 
-          
+
                     function addRow() {
-    // Clone the first row
+                        // Clone the first row
 
-    // Create a new row element
-    var newRow = '<tr>' +
-        '<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>' +
-        '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_quan" id="quantItem" onkeyup="autoCal()"></td>' +
-        '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_unit"></td>' +
-        '<td class="align-middle p-0 text-center">' +
-        '<select class="form-select text-center border-0" name="alloprog_item" aria-label="Default select example" onchange="updateItemDetails(this)">' +
-        '<option selected>Select Item</option>';
+                        // Create a new row element
+                        var newRow = '<tr>' +
+                            '<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_quan" id="quantItem" onkeyup="autoCal()"></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_unit"></td>' +
+                            '<td class="align-middle p-0 text-center">' +
+                            '<select class="form-select text-center border-0" name="alloprog_item" aria-label="Default select example" onchange="updateItemDetails(this)">' +
+                            '<option selected>Select Item</option>';
 
-    // Iterate through your items and add options
-    @foreach ($item as $items)
-        newRow += '<option value="{{ $items->id }}" data-description="{{ $items->item_description }}" data-unitprice="{{ $items->item_price }}">{{ $items->item_name }}</option>';
-    @endforeach
+                        // Iterate through your items and add options
+                        @foreach ($item as $items)
+                            newRow +=
+                                '<option value="{{ $items->id }}" data-description="{{ $items->item_description }}" data-unitprice="{{ $items->item_price }}">{{ $items->item_name }}</option>';
+                        @endforeach
 
-    newRow += '</select>' +
-        '</td>' +
-        '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_descript"></td>' +
-        '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_price" id="price" onkeyup="autoCal()"></td>' +
-        '<td>' +
-        '<div class="float-start"><span class="fw-bold">₱</span></div>' +
-        '<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog_pricetotal" id="totalPrice" value="0" readonly></div>' +
-        '</td>' +
-        '</tr>';
+                        newRow += '</select>' +
+                            '</td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_descript"></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_price" id="price" onkeyup="autoCal()"></td>' +
+                            '<td>' +
+                            '<div class="float-start"><span class="fw-bold">₱</span></div>' +
+                            '<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog_pricetotal" id="totalPrice" value="0" readonly></div>' +
+                            '</td>' +
+                            '</tr>';
 
-    // Append the new row to the tbody
-    $('.addTBRow').append(newRow);
-}
+                        // Append the new row to the tbody
+                        $('.addTBRow').append(newRow);
+                    }
 
-// Function to update item details based on the selected option
-function updateItemDetails(selectElement) {
-    var selectedOption = selectElement.options[selectElement.selectedIndex];
-    var description = selectedOption.getAttribute('data-description');
-    var unitprice = selectedOption.getAttribute('data-unitprice');
+                    // Function to update item details based on the selected option
+                    function updateItemDetails(selectElement) {
+                        var selectedOption = selectElement.options[selectElement.selectedIndex];
+                        var description = selectedOption.getAttribute('data-description');
+                        var unitprice = selectedOption.getAttribute('data-unitprice');
 
-    // Find the corresponding input fields and update their values
-    var descriptionInput = selectElement.closest('tr').querySelector('input[name="alloprog_descript"]');
-    var priceInput = selectElement.closest('tr').querySelector('input[name="alloprog_price"]');
+                        // Find the corresponding input fields and update their values
+                        var descriptionInput = selectElement.closest('tr').querySelector('input[name="alloprog_descript"]');
+                        var priceInput = selectElement.closest('tr').querySelector('input[name="alloprog_price"]');
 
-    descriptionInput.value = description;
-    priceInput.value = unitprice;
-}
+                        descriptionInput.value = description;
+                        priceInput.value = unitprice;
+                    }
 
 
                     // Remove Row
@@ -342,17 +371,24 @@ function updateItemDetails(selectElement) {
                             total += totalPrice;
                         });
 
-                        // $("#subtotal").text(subtotal.toLocaleString());
                         $("#total").val(total);
                     }
-                    
-                    
 
+                    $(document).ready(function() {
+                        // Trigger autoCal function on input change of #quantItem or #price, or when item selection changes
+                        $(".addTBRow").on("change", "#quantItem, #price, .itemSelect", function() {
+                            autoCal();
+                        });
 
+                        // Reload the page every 5 seconds
+                        setInterval(function() {
+                            location.reload();
+                        }, 1000); // 5000 milliseconds = 5 seconds
+                    });
                 </script>
 
-            
 
-                
+
+
 
                 @include('components.footer');

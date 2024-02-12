@@ -55,6 +55,8 @@
 
                 <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Program_Manager/Profile') ? 'Account /' : '' }}</span>{{ Request::is('Program_Manager/Profile') ? ' Profile' : '' }} </h5>
 
+                <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Program_Manager/pmPPMPEdit_{id}') ? 'Account /' : '' }}</span>{{ Request::is('Program_Manager/pmPPMPEdit_{id}') ? ' Profile' : '' }} </h5>
+
 
                 <!-- Search -->
                 <div class="navbar-nav align-items-center">
@@ -74,9 +76,6 @@
                                 class="text-muted fw-light">{{ Request::is('Health_Department/Item_List') ? 'Inventory /' : '' }}</span>{{ Request::is('Health_Department/Item_List') ? ' Item List' : '' }}
                         </h5>
 
-                        <h5 class="fw-bold py-3 mt-3"><span
-                                class="text-muted fw-light">{{ Request::is('Health_Department/Allocation_List') ? 'Allocation /' : '' }}</span>{{ Request::is('Health_Department/Allocation_List') ? ' Allocation List' : '' }}
-                        </h5>
 
                         @if (isset($allotoprogview))
                             <h5 class="fw-bold py-3 mt-3"><span

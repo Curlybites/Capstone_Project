@@ -70,6 +70,7 @@ class ProgramManagerController extends Controller
 
     public function PPMPEdit($id)
     {
+        $items = Items::all();
         $user = Auth::user();
         $ppmpdatas=Ppmpdatas::findOrfail($id);
         $joinedppmpdata = DB::table('ppmpitemdatas')
@@ -77,7 +78,7 @@ class ProgramManagerController extends Controller
         ->select('ppmpitemdatas.quantity','ppmpitemdatas.unit' , 'ppmpitemdatas.itemname' , 'ppmpitemdatas.description' , 'ppmpitemdatas.unitprice' , 'ppmpitemdatas.total' )
         ->where('ppmpitemdatas.ppmpitemID', $id)->first();
 
-        return view('Program_Manager.pmPPMPEdit', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata]);
+        return view('Program_Manager.pmPPMPEdit', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata, 'item'=> $items]);
     }
 
     public function AllocationPrint()
@@ -89,6 +90,8 @@ class ProgramManagerController extends Controller
 
     public function storePPMP(Request $request)
     {
+        $randomCode = strtoupper(str_random(8));
+        $items = Items::all();
         $user = Auth::user();
         Validator::make($request->all(), [
             'year' => 'required',
@@ -118,18 +121,19 @@ class ProgramManagerController extends Controller
 
         Ppmpitemdatas::create($ppmptosuppdata);
 
-        return view('Program_Manager.pmPPMPcreate', ['user' => $user, 'ppmptosuppdata' => $ppmptosuppdata]);
+        return view('Program_Manager.pmPPMPcreate', ['user' => $user, 'ppmptosuppdata' => $ppmptosuppdata, 'item'=> $items, 'randomCode' => $randomCode]);
     }
 
     public function editPPMP(Request $request, $id)
     {
         $PPMP = Ppmpdatas::findOrFail($id);
         $PPMP->update($request->all());
+        
 
         $ppmpitems=Ppmpitemdatas::findOrfail($id);
         $ppmpitems->update($request->all());
 
-        return back()->with('success', 'PPMP updated successfully.');
+        return redirect('/Program_Manager/PPMPlist')->with('success', 'PPMP updated successfully.');
     }
 
     public function PPMPView($id)

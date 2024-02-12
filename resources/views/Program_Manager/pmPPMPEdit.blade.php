@@ -38,7 +38,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
 
-                                                <form action="{{ route('routes.update',$ppmpdatas->id)  }}"
+                                                <form action="{{ route('routes.ppmpupdate', $ppmpdatas->id) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('PUT')
@@ -61,9 +61,8 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Department</label>
                                                             <select class="form-select" name="department"
-                                                                aria-label="Default select example"
-                                                                >
-                                                                <option >{{ $ppmpdatas->department }}</option>
+                                                                aria-label="Default select example">
+                                                                <option>{{ $ppmpdatas->department }}</option>
                                                                 <option value="One">One</option>
                                                                 <option value="Two">Two</option>
                                                                 <option value="Three">Three</option>
@@ -89,12 +88,11 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Type of Contract</label>
                                                             <select class="form-select" name="typeofcontract"
-                                                                aria-label="Default select example"
-                                                                >
-                                                                <option >{{ $ppmpdatas->typeofcontract }}</option>
-                                                                <option value="Good"></option>
-                                                                <option value="Infra"></option>
-                                                                <option value="Consulting"></option>
+                                                                aria-label="Default select example">
+                                                                <option>{{ $ppmpdatas->typeofcontract }}</option>
+                                                                <option value="Good">Good</option>
+                                                                <option value="Infra">Infra</option>
+                                                                <option value="Consulting">Consulting</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -162,13 +160,17 @@
                                                                     <td class="align-middle p-0 text-center">
                                                                         <select
                                                                             class="form-select text-center border-0"
-                                                                            name="itemname"
+                                                                            name="itemname" id="item_id"
                                                                             aria-label="Default select example">
-                                                                            <option selected>Select Item
+                                                                            <option> {{ $joinedppmpdata->itemname }}
                                                                             </option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
+                                                                            @foreach ($item as $items)
+                                                                                <option value="{{ $items->id }}"
+                                                                                    data-description="{{ $items->item_description }}"
+                                                                                    data-unitprice="{{ $items->item_price }}">
+                                                                                    {{ $items->item_name }}
+                                                                                </option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
@@ -184,6 +186,20 @@
                                                                             onkeyup="autoCal()"
                                                                             value="{{ $joinedppmpdata->unitprice }}">
                                                                     </td>
+                                                                    <script>
+                                                                        document.getElementById('item_id').addEventListener('change', function() {
+                                                                            var selectedItemId = this.value;
+
+
+                                                                            var selectedItem = document.querySelector('option[value="' + selectedItemId + '"]');
+                                                                            var description = selectedItem.getAttribute('data-description');
+                                                                            var unitprice = selectedItem.getAttribute('data-unitprice');
+
+
+                                                                            document.getElementById('item_d').value = description;
+                                                                            document.getElementById('price').value = unitprice;
+                                                                        });
+                                                                    </script>
                                                                     <td>
                                                                         <div class="float-start">
                                                                             <span class="fw-bold ">₱</span>
@@ -232,17 +248,34 @@
                                                                         my-5">
                                                         <div class="col-md-6 mb-md-0 mb-3">
                                                             <label for="">Notes</label>
-                                                            <textarea class="form-control" style="height: 100px" name="note">""</textarea>
+                                                            <textarea class="form-control" style="height: 100px" name="note" v>{{ $ppmpdatas->note }}</textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="">Status</label>
                                                             <select class="form-select" name="status"
                                                                 aria-label="Default select example">
-                                                                <option selected>Select Status</option>
-                                                                <option value="">Approved</option>
-                                                                <option value="">Disapproved
+                                                                <option selected value="{{ $ppmpdatas->status }}" @disabled(true)>
+                                                                    @switch($ppmpdatas->status)
+                                                                        @case(1)
+                                                                            Approved
+                                                                        @break
+
+                                                                        @case(2)
+                                                                            Disapproved
+                                                                        @break
+
+                                                                        @case(3)
+                                                                            Pending
+                                                                        @break
+
+                                                                        @default
+                                                                    @endswitch
                                                                 </option>
-                                                                <option value="">For Evaluation
+
+                                                                <option value="1">Approved</option>
+                                                                <option value="2">Disapproved
+                                                                </option>
+                                                                <option value="3">Pending
                                                                 </option>
                                                             </select>
                                                         </div>
@@ -266,7 +299,21 @@
                     </div>
                 </div>
 
+                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                 <script>
+                    $('$item_id').change(function() {
+                        var selectedValue = $(this).val();
+                    })
+                    // function displaySelectedValue() {
+                    //     // Get the selected value from the <select> tag
+                    //     var selectedValue = document.getElementById('item_id').value;
+
+                    //     // Set the selected value to the input field
+                    //     document.getElementById('item_d').value = selectedValue;
+                    // }
+
+
                     function addRow() {
                         // Clone the first row
 
@@ -276,12 +323,16 @@
                             '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_quan" id="quantItem" onkeyup="autoCal()"></td>' +
                             '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_unit"></td>' +
                             '<td class="align-middle p-0 text-center">' +
-                            '<select class="form-select text-center border-0" name="alloprog_item" aria-label="Default select example">' +
-                            '<option selected>Select Item</option>' +
-                            '<option value="1">One</option>' +
-                            '<option value="2">Two</option>' +
-                            '<option value="3">Three</option>' +
-                            '</select>' +
+                            '<select class="form-select text-center border-0" name="alloprog_item" aria-label="Default select example" onchange="updateItemDetails(this)">' +
+                            '<option selected>Select Item</option>';
+
+                        // Iterate through your items and add options
+                        @foreach ($item as $items)
+                            newRow +=
+                                '<option value="{{ $items->id }}" data-description="{{ $items->item_description }}" data-unitprice="{{ $items->item_price }}">{{ $items->item_name }}</option>';
+                        @endforeach
+
+                        newRow += '</select>' +
                             '</td>' +
                             '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_descript"></td>' +
                             '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_price" id="price" onkeyup="autoCal()"></td>' +
@@ -294,6 +345,21 @@
                         // Append the new row to the tbody
                         $('.addTBRow').append(newRow);
                     }
+
+                    // Function to update item details based on the selected option
+                    function updateItemDetails(selectElement) {
+                        var selectedOption = selectElement.options[selectElement.selectedIndex];
+                        var description = selectedOption.getAttribute('data-description');
+                        var unitprice = selectedOption.getAttribute('data-unitprice');
+
+                        // Find the corresponding input fields and update their values
+                        var descriptionInput = selectElement.closest('tr').querySelector('input[name="alloprog_descript"]');
+                        var priceInput = selectElement.closest('tr').querySelector('input[name="alloprog_price"]');
+
+                        descriptionInput.value = description;
+                        priceInput.value = unitprice;
+                    }
+
 
                     // Remove Row
                     function removeRow(button) {
@@ -317,9 +383,21 @@
                             total += totalPrice;
                         });
 
-                        // $("#subtotal").text(subtotal.toLocaleString());
                         $("#total").val(total);
                     }
+
+                    $(document).ready(function() {
+                        // Trigger autoCal function on input change of #quantItem or #price, or when item selection changes
+                        $(".addTBRow").on("change", "#quantItem, #price, .itemSelect", function() {
+                            autoCal();
+                        });
+
+                        // Reload the page every 5 seconds
+                        setInterval(function() {
+                            location.reload();
+                        }, 1000); // 5000 milliseconds = 5 seconds
+                    });
                 </script>
+
 
                 @include('components.footer');
