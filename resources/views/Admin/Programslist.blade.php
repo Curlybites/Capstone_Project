@@ -69,7 +69,7 @@
                                                                             <option selected>Choose Program Manager
                                                                             </option>
                                                                             @foreach( $userData as $programRow)
-                                                                            <option value="{{ $programRow->firstname }}">{{ $programRow->firstname }} {{ $programRow->lastname }}</option>
+                                                                            <option value="{{ $programRow->id }}">{{ $programRow->firstname }} {{ $programRow->lastname }}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
@@ -101,13 +101,11 @@
                                                     <th>Action</th>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($programData as $programRow)
+                                                    @foreach ($usersData as $programRow)
                                                         <tr>
                                                             <td>{{ $programRow->id }}</td>
-                                                            <td>{{ $programRow->name }}</td>
-                                                            @foreach ( $assignedData as $assignedRow )
-                                                            <td>{{ $assignedRow->name }} </td>
-                                                            @endforeach
+                                                            <td>{{ $programRow->name }}</td>      
+                                                            <td>{{ $programRow->firstname }} {{ $programRow->lastname }}</td>
                                                             <td>
                                                                 <a type="button" href="" class="text-primary"
                                                                     data-bs-toggle="modal"
