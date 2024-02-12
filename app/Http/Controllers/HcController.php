@@ -183,15 +183,15 @@ class HcController extends Controller
 
 
     // FOR ACCCOUT
-    public function hcAccount()
+    public function Account()
     {
         $user = Auth::user();
-        return view('Health_Center.hcAccount', ['user' => $user]);
+        return view('District.dtAccount', ['user' => $user]);
     }
 
-    public function hcAccountChange()
+    public function AccountChange()
     {
         $user = Auth::user();
-        return view('Health_Center.hcAccountChange', ['user' => $user]);
+        return view('District.dtAccountChange', ['user' => $user]);
     }
 }

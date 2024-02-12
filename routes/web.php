@@ -11,6 +11,9 @@ use App\Http\Controllers\DistrictController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Controllers\PatientController;
+use App\Models\District;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -145,16 +148,28 @@ Route::middleware(['auth', 'health_department'])->group(function () {
 
     Route::put('/Health_Department/Allocation_Edit_{id}', [HdController::class, 'hdAllocationProgUpdate'])->name('updateallocation');
     Route::delete('/Health_Department/Allocation_List{id}', [HdController::class, 'hdAllocationProgDelete'])->name('deleteallocation');
-    // Route::('/Health_Department/Allocation_List{id}', '')->name('deleteallocation');
+
 });
 
 
-// Supplier Route
-Route::controller(SupplierController::class)->group(function () {
-    Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
-    Route::get('/Supplier/Account_Profile', 'profileSupplier')->middleware('auth');
-    Route::get('/Supplier/Account_Change_Password', 'profileChangeSupplier')->middleware('auth');
-    Route::get('/Supplier/PPMP_List', 'ppmp')->middleware('auth');
+// Route For Disctrict 
+Route::middleware(['auth', 'district'])->group(function () {
+
+    Route::get('/District/Dashboard', [PageController::class,'dtDashboard']);
+
+    Route::get('/District/District_Receive', [DistrictController::class,'receive']);
+    Route::get('/District/District_InventoryList', [DistrictController::class,'dtInventory_List']);
+    Route::get('/District/District_Allocation', [DistrictController::class,'allocation']);
+    Route::get('/District/District_Report', [DistrictController::class,'Report']);
+    Route::get('/District/District_Account', [DistrictController::class,'Account']);
+    Route::get('/District/District_Change_Account', [DistrictController::class,'AccountChange']);
+
+    
+});
+
+// Route For Health Center
+Route::middleware(['auth', 'health_center'])->group(function () {
+    Route::get('/Health_Center/Dashboard', [PageController::class,'hcDashboard']);
 });
 
 
