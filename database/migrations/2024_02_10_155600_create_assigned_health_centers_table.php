@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assigned_program_managers', function (Blueprint $table) {
+        Schema::create('assigned_health_centers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('program_id');
+            $table->string('health_center_staff_name');
+            $table->integer('health_center_staff_id');
+            $table->string('health_center_name');
+            $table->integer('health_center_id');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assigned_program_managers');
+        Schema::dropIfExists('assigned_health_centers');
     }
 };

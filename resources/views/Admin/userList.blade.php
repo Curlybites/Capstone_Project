@@ -256,11 +256,11 @@
 
                                                             <div class="row border-top pt-4">
                                                                 <h5>Designation / Role Setup</h5>
-
-                                                                <div class="col">
+                                                            
+                                                                <div class="col-md-6">
                                                                     <p>Select Role Type</p>
                                                                     <div class="input-group mb-3">
-                                                                        <select class="form-select"
+                                                                        <select id="role" class="form-select"
                                                                             aria-label="Default select example"
                                                                             name="role">
                                                                             @foreach ($roleData as $userRow)
@@ -269,10 +269,28 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
+                                                                
+                                                                {{-- <div class="col-md-6">
+                                                                    <p>Select Health Center</p>
+                                                                    <div class="input-group mb-3" id="optionHealthCenter" style="display: none;" ">
+                                                                        <select id="healthCenter" class="form-select"
+                                                                            aria-label="Default select example"
+                                                                            name="healthCenter">
+                                                                            <option selected value="">Choose Barangay
+                                                                            </option>
+                                                                            @foreach ($healthCenterData as $userRow)
+                                                                            <option value="{{$userRow->id}}">{{$userRow->name}}</option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div> --}}
+                                                                    
+                                                                
+
+                                    
 
 
                                                             </div>
-
                                                         </div>
                                                         <div class="modal-footer border-1">
                                                             <button type="button" class="btn btn-secondary mt-3"
@@ -501,11 +519,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-
-
-
-
                                                 </tbody>
                                                 </tfoot>
                                             </table>
@@ -531,3 +544,16 @@
                 <!--footer-->
 
                 @include('components.footer');
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                
+                <script>
+                    $('#role').change(function() {
+                        var selectedValue = $(this).val();
+                        if(selectedValue === '5') {
+                            $('#optionHealthCenter').show();
+                        }else {
+                            $('#optionHealthCenter').hide();
+                        }
+                    });
+                </script>

@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AssignedProgramManager extends Model
+class AssignedHealthCenter extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'program_manager_id',
-        'program_id',
+        'user_name',
+        'user_id',
+        'health_center_id',
+        'health_center_name',
     ];
 }
