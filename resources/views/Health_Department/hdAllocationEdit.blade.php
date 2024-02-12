@@ -76,11 +76,11 @@
                                                                 <col width="20%">
                                                                 <col width="30%">
                                                                 <col width="15%">
-                                                                <col width="15%">
+                                                                {{-- <col width="15%"> --}}
                                                             </colgroup>
                                                             <thead>
                                                                 <tr class="bg-navy disabled">
-                                                                    <th class="px-1 py-1 text-center"></th>
+                                                                    {{-- <th class="px-1 py-1 text-center"></th> --}}
                                                                     <th class="px-1 py-1 text-center">Qty</th>
                                                                     <th class="px-1 py-1 text-center">Unit</th>
                                                                     <th class="px-1 py-1 text-center">Item</th>
@@ -91,16 +91,16 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="addTBRow">
-                                                                @foreach ($joinedData as $joinedDatas)
+                                                                @foreach ($joinedData as $key => $joinedDatas)
                                                                     <tr>
-                                                                        <td>
+                                                                        {{-- <td>
                                                                             <button class="btn btn-sm btn-danger py-0"
                                                                                 onclick="removeRow(this)">X</button>
-                                                                        </td>
+                                                                        </td> --}}
                                                                         <td class="align-middle p-0 text-center">
                                                                             <input type="text"
                                                                                 class="form-control text-center border-0"
-                                                                                id="quantItem" name="alloprog_quan"
+                                                                                id="quantItem" name="alloprog_quan[]"
                                                                                 onkeyup="autoCal()"
                                                                                 value="{{ $joinedDatas->alloprog_quan }}">
                                                                         </td>
@@ -109,13 +109,13 @@
                                                                             p-0 text-center">
                                                                             <input type="text"
                                                                                 class="form-control text-center border-0"
-                                                                                name="alloprog_unit"
+                                                                                name="alloprog_unit[]"
                                                                                 value="{{ $joinedDatas->alloprog_unit }}">
                                                                         </td>
                                                                         <td class="align-middle p-0 text-center">
                                                                             <select
                                                                                 class="form-select text-center border-0"
-                                                                                name="alloprog_item"
+                                                                                name="alloprog_item[]"
                                                                                 aria-label="Default select example">
                                                                                 <option selected>Select Item
                                                                                 </option>
@@ -127,13 +127,13 @@
                                                                         <td class="align-middle p-0 text-center">
                                                                             <input type="text"
                                                                                 class="form-control text-center border-0"
-                                                                                name="alloprog_descript"
+                                                                                name="alloprog_descript[]"
                                                                                 value="{{ $joinedDatas->alloprog_descript }}">
                                                                         </td>
                                                                         <td class="align-middle p-0 text-center">
                                                                             <input type="text"
                                                                                 class="form-control text-center border-0"
-                                                                                name="alloprog_price" id="price"
+                                                                                name="alloprog_price[]" id="price"
                                                                                 onkeyup="autoCal()"
                                                                                 value="{{ $joinedDatas->alloprog_price }}">
                                                                         </td>
@@ -145,7 +145,7 @@
                                                                                 <input
                                                                                     class="text-center border-0 bg-white ms-2 fs-6"
                                                                                     type="text"
-                                                                                    name="alloprog_pricetotal"
+                                                                                    name="alloprog_pricetotal[]"
                                                                                     id="totalPrice"
                                                                                     value="{{ $joinedDatas->alloprog_pricetotal }}"
                                                                                     readonly>
@@ -157,14 +157,16 @@
                                                             </tbody>
                                                             <tfoot>
                                                                 <tr>
-                                                                    <th colspan="6" class="text-end">
-                                                                        <div class="btn btn-primary me-2"
+                                                                    <th colspan="5" class="text-end">
+                                                                        {{-- <div class="btn btn-primary me-2"
                                                                             style="font-size: 10px"
                                                                             onclick="addRow()">
                                                                             Add
-                                                                            Row</div><span>Total</span>
+                                                                            Row</div> --}}
+
+                                                                        <span>Total</span>
                                                                     </th>
-                                                                    <th class="d-flex align-items-center ">
+                                                                    <th class="">
                                                                         <div class="float-start">
                                                                             <span class="fw-bold fs-6">₱</span>
                                                                         </div>
@@ -222,27 +224,21 @@
                         ++i;
                         var newRow = `<tr>` +
                             `<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>` +
-                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
-                            i + `][alloprog_quan]" id="quantItem" onkeyup="autoCal()"></td>` +
-                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
-                            i + `][alloprog_unit]"></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_quan[]" id="quantItem" onkeyup="autoCal()"></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_unit[]"></td>` +
                             `<td class="align-middle p-0 text-center">` +
-                            `<select class="form-select text-center border-0" name="alloprog[` + i +
-                            `][alloprog_item]" aria-label="Default select example">` +
-                            `<option selected>Select Program</option>` +
+                            `<select class="form-select text-center border-0" name="alloprog_item[]" aria-label="Default select example">` +
+                            `<option selected>Select Item</option>` +
                             `<option value="One">One</option>` +
                             `<option value="Two">Two</option>` +
                             `<option value="Three">Three</option>` +
                             `</select>` +
                             `</td>` +
-                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
-                            i + `][alloprog_descript]"></td>` +
-                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
-                            i + `][alloprog_price]" id="price" onkeyup="autoCal()"></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_descript[]"></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_price[]" id="price" onkeyup="autoCal()"></td>` +
                             `<td>` +
                             `<div class="float-start"><span class="fw-bold">₱</span></div>` +
-                            `<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog[` +
-                            i + `][alloprog_pricetotal]" id="totalPrice" value="0" readonly></div>` +
+                            `<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog_pricetotal[]" id="totalPrice" value="0" readonly></div>` +
                             `</td>` +
                             `</tr>`;
 
@@ -250,16 +246,16 @@
                         $('.addTBRow').append(newRow);
                     }
 
-                    // Remove Row
-                    function removeRow(button) {
-                        var row = $(button).closest("tr");
-                        var total = $("#total").val();
-                        var price = row.find("#totalPrice").val();
-                        total -= price;
+                    // // Remove Row
+                    // function removeRow(button) {
+                    //     var row = $(button).closest("tr");
+                    //     var total = $("#total").val();
+                    //     var price = row.find("#totalPrice").val();
+                    //     total -= price;
 
-                        $("#total").val(total);
-                        row.remove();
-                    }
+                    //     $("#total").val(total);
+                    //     row.remove();
+                    // }
 
                     function autoCal() {
                         var total = 0;

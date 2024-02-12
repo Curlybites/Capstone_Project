@@ -88,7 +88,7 @@
                                                                 <tr>
                                                                     <td>
                                                                         <button class="btn btn-sm btn-danger py-0"
-                                                                            onclick="removeRow(this)">X</button>
+                                                                            onclick="removeRow(this, {{ $joinedDatas->id })">X</button>
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
@@ -121,7 +121,7 @@
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
-                                                                            class="form-control text-center border-0"
+                                                                            class="form-control text-center border-0 bg-transparent"
                                                                             name="alloprog[0][alloprog_price]"
                                                                             id="price" onkeyup="autoCal()">
                                                                     </td>
@@ -131,7 +131,7 @@
                                                                         </div>
                                                                         <div class="text-center">
                                                                             <input
-                                                                                class="text-center border-0 bg-white ms-2 fs-6"
+                                                                                class="text-center border-0 bg-white ms-2 fs-6 bg-transparent"
                                                                                 type="text"
                                                                                 name="alloprog[0][alloprog_pricetotal]"
                                                                                 id="totalPrice" value="0" readonly>
@@ -222,11 +222,11 @@
                             `</td>` +
                             `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
                             i + `][alloprog_descript]"></td>` +
-                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0 bg-transparent" name="alloprog[` +
                             i + `][alloprog_price]" id="price" onkeyup="autoCal()"></td>` +
                             `<td>` +
-                            `<div class="float-start"><span class="fw-bold">₱</span></div>` + 
-                            `<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog[` +
+                            `<div class="float-start"><span class="fw-bold">₱</span></div>` +
+                            `<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6 bg-transparent" type="text" name="alloprog[` +
                             i + `][alloprog_pricetotal]" id="totalPrice" value="0" readonly></div>` +
                             `</td>` +
                             `</tr>`;
