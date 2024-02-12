@@ -47,7 +47,6 @@ Route::controller(UserController::class)->group(function () {
 });
 
 
-
 // Route For Admin
 Route::middleware(['auth', 'admin'])->group(function () {
 
@@ -86,9 +85,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::post('/Admin/Role_Store', 'roleStore');
         Route::put('/Admin/Role_List/{id}', 'roleUpdate');
     });
-
-
 });
+
 
 // Route For Program Manager
 Route::middleware(['auth', 'program_manager'])->group(function () {
