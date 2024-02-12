@@ -71,8 +71,17 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">year</label>
                                                             <input type="text" class="form-control" name="year"
-                                                                value="">
-
+                                                                value="" id="yearInput">
+                                                                <script>
+                                                                    // Get the current year
+                                                                    var currentYear = new Date().getFullYear();
+                                                                    
+                                                                    // Calculate the next year
+                                                                    var nextYear = currentYear + 1;
+                                                                    
+                                                                    // Set the value of the input field to the next year
+                                                                    document.getElementById('yearInput').value = nextYear;
+                                                                </script>
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
@@ -89,8 +98,14 @@
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Program Title</label>
-                                                            <input type="text" class="form-control"
-                                                                name="programtitle" value="">
+                                                            {{-- <input type="text" class="form-control"
+                                                                name="programtitle" value=""> --}}
+                                                                <select class="form-select" name="typeofcontract"
+                                                                aria-label="Default select example"  name="programtitle" id="">
+                                                                    @foreach ($program as $program)
+                                                                        <option value="">{{ $program->name }}</option>
+                                                                    @endforeach
+                                                                </select>
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
@@ -104,9 +119,9 @@
                                                             <select class="form-select" name="typeofcontract"
                                                                 aria-label="Default select example" value="">
                                                                 <option selected>Select Contract</option>
-                                                                <option value="One">Good</option>
-                                                                <option value="Two">Infra</option>
-                                                                <option value="Three">Consulting</option>
+                                                                <option value="Goods">Goods</option>
+                                                                <option value="Infra">Infra</option>
+                                                                <option value="Consulting">Consulting</option>
                                                             </select>
                                                         </div>
                                                     </div>

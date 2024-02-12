@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Items;
+use App\Models\Program;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -37,11 +38,12 @@ class ProgramManagerController extends Controller
 
     }
     public function PPMPcreate()
-    {
+    {   
+        $program = Program::all();
         $user = Auth::user();
         $items = Items::all();
         $ppmp = Ppmpdatas::all();
-        return view('Program_Manager.pmPPMPcreate', ['user' => $user, 'ppmp' => $ppmp, 'item'=> $items]);
+        return view('Program_Manager.pmPPMPcreate', ['user' => $user, 'ppmp' => $ppmp, 'item'=> $items, 'program'=> $program]);
 
     }
 
@@ -90,7 +92,7 @@ class ProgramManagerController extends Controller
 
     public function storePPMP(Request $request)
     {
-        $randomCode = strtoupper(str_random(8));
+     
         $items = Items::all();
         $user = Auth::user();
         Validator::make($request->all(), [
@@ -121,7 +123,7 @@ class ProgramManagerController extends Controller
 
         Ppmpitemdatas::create($ppmptosuppdata);
 
-        return view('Program_Manager.pmPPMPcreate', ['user' => $user, 'ppmptosuppdata' => $ppmptosuppdata, 'item'=> $items, 'randomCode' => $randomCode]);
+        return view('Program_Manager.pmPPMPcreate', ['user' => $user, 'ppmptosuppdata' => $ppmptosuppdata, 'item'=> $items, ]);
     }
 
     public function editPPMP(Request $request, $id)

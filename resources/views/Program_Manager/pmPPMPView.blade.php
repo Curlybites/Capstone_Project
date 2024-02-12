@@ -124,23 +124,23 @@
                                                 </div>
                                                 <div class="col-md-1 col-6">
                                                     <p style="margin-bottom: 0px; font-weight: bold;">Status:</p>
-                                                    <p class="text-success">
-                                                        @switch($ppmpdatas->status)
-                                                            @case(1)
-                                                                Approved
-                                                            @break
 
-                                                            @case(2)
-                                                                Dissaproved
-                                                            @break
+                                                    @switch($ppmpdatas->status)
+                                                        @case(1)
+                                                            <p class="text-success">Approved</p>
+                                                        @break
 
-                                                            @case(3)
-                                                                Pending
-                                                            @break
+                                                        @case(2)
+                                                            <p class="text-danger">Dissaproved</p>
+                                                        @break
 
-                                                            @default
-                                                        @endswitch
-                                                    </p>
+                                                        @case(3)
+                                                            <p class="text-warning">Pending</p>
+                                                        @break
+
+                                                        @default
+                                                    @endswitch
+
 
                                                 </div>
                                             </div>

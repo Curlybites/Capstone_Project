@@ -254,7 +254,8 @@
                                                             <label for="">Status</label>
                                                             <select class="form-select" name="status"
                                                                 aria-label="Default select example">
-                                                                <option selected value="{{ $ppmpdatas->status }}" @disabled(true)>
+                                                                <option selected value="{{ $ppmpdatas->status }}"
+                                                                    @disabled(true)>
                                                                     @switch($ppmpdatas->status)
                                                                         @case(1)
                                                                             Approved
