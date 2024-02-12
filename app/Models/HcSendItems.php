@@ -8,22 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class HcSendItems extends Model
 {
     use HasFactory;
+    protected $table = 'hc_send_items';
 
     protected $fillable = [
-        'patient_ID',
+        'patient_ID',  
+        'items_id',
         'quantity',
         'unit',
         'item',
-        'description'
+        'description',
+       
     ];
+}  
 
-    public function patient()
-    {
-        return $this->belongsTo(Patient::class, 'patient_ID');
-    }
 
-    // public function category()
-    // {
-    //     return $this->belongsTo(Patient::class);
-    // }
-}
+
+

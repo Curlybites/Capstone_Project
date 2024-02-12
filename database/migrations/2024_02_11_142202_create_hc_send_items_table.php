@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('hc_send_items', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('patient_ID')->nullable();
+            $table->unsignedBigInteger('items_id')->nullable();
             $table->integer('quantity')->nullable();
             $table->string('unit')->nullable();
             $table->string('item')->nullable();

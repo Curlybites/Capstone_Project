@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\Patient;
@@ -143,44 +144,78 @@ class HcController extends Controller
     public function itemSendPatientInfo($id)
     {
         $user = Auth::user();
-        $send = Patient::find($id);
-        return view('Health_Center.hcItemList', ['user' => $user, 'send' => $send]);
+        $patientid = Patient::find($id);
+        $itemid = HcInventoryItems::find($id);
+        return view('Health_Center.hcItemList', ['user' => $user, 'patientid' => $patientid, 'itemid' => $itemid]);
     }
 
 
     // NAG GEGET PERO DI PUMAPASOK SA DB
+    // public function HcSendItemsInput(Request $request)
+    // {
+    //     $request->validate([
+
+    //         'patient_ID' => 'required',
+    //         'items_id' => 'required',
+    //         'quantity' => 'required',
+    //     ]);
+
+    //     try {
+    //         HcSendItems::create($request->all());
+    //         return back()->with('success', 'Data has been saved successfully.');
+    //     } catch (\Exception $e) {
+    //         return back()->with('error', 'An error occurred. Please try again.');
+    //     }
+
+    //     // HcSendItems::create($request->all());
+
+    //     // $data1 = [ 
+    //     //     'quantity' => $request->input('quantity'),
+    //     //     'unit' => $request->input('unit'),
+    //     //     'item' => $request->input('item'),
+    //     //     'description' =>  $request->input('description')
+    //     // ];
+    //     // $record1 = HcSendItems::create($data1);
+
+    //     // $data2 = [
+    //     //     'fname' => $request->input('fname'),
+    //     //     'mname' => $request->input('mname'),
+    //     //     'lname' => $request->input('lname')
+    //     //     // Add more fields as needed for table2
+    //     // ];
+    //     // $record2 = Patient::create($data2);
+    
+    //     // return back()->with('success', 'ikaw na bahala');
+    // }
+
     public function HcSendItemsInput(Request $request)
     {
         $request->validate([
-
-            'quantity' => 'required',
-            'unit' => 'required',
-            'item' => 'required',
-            'description' => 'required',
-            'fname' => 'required',
-            'mname' => 'required',
-            'lname' => 'required'
-
+        'patient_ID' => 'required',
+        'items_id' => 'required',
+        'quantity' => 'required',
+           
         ]);
+        HcSendItems::create($request->all());
 
-        $data1 = [ 
-            'quantity' => $request->input('quantity'),
-            'unit' => $request->input('unit'),
-            'item' => $request->input('item'),
-            'description' =>  $request->input('description')
-        ];
-        $record1 = HcSendItems::create($data1);
+        try {
+            Validator::make($request->all(), [
+                'stp.*.quantity' => 'required',
+                'stp.*.unit' => 'required',
+                'stp.*.item' => 'required',
+                'stp.*.description' => 'required',
+            ]);
 
-        $data2 = [
-            'fname' => $request->input('fname'),
-            'mname' => $request->input('mname'),
-            'lname' => $request->input('lname')
-            // Add more fields as needed for table2
-        ];
-        $record2 = Patient::create($data2);
-    
-        return back()->with('success', 'ikaw na bahala');
+            foreach($request->stp as $stps){
+                HcSendItems::create($stps);
+            }
+
+            return back()->with('success', 'Data has been saved successfully.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'An error occurred. Please try again.');
+        }
     }
+
 
 
     // FOR SEND ITEMS FILTRATION
