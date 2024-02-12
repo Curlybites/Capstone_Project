@@ -9,8 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Patient;
 use App\Models\Items;
 use App\Models\Send;
-use App\Models\Distribute
-;
+use App\Models\Distribute;
 
 
 
