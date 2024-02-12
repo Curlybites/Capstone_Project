@@ -175,12 +175,12 @@ Route::middleware(['auth', 'supplier'])->group(function () {
 // });
 
 // Program Manager route
-// Route::controller(ProgramManagerController::class)->group(function () {
-//     Route::get('/Program_Manager/Inventorylist', 'Inventorypage')->middleware('auth');
-//     Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
-//     Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
-//     Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
-
+Route::controller(ProgramManagerController::class)->group(function () {
+    Route::get('/Program_Manager/Inventorylist', 'Inventorypage')->middleware('auth');
+    Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
+    Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
+    Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
+});
 
 Route::controller(HcController::class)->group(function () {
 
@@ -220,7 +220,6 @@ Route::controller(HcController::class)->group(function () {
 
     // FOR INVENTORY
     Route::get('/Health_Center/Item_List', 'listItem');
-
 });
 // // Admin route
 
