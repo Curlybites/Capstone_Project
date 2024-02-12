@@ -47,21 +47,22 @@ Route::controller(UserController::class)->group(function () {
 });
 
 
+
 // Route For Admin
 Route::middleware(['auth', 'admin'])->group(function () {
 
-    Route::get('/Admin/Dashboard', [PageController::class, 'adminDashboard']);
+    Route::get('/Admin/Dashboard', [PageController::class,'adminDashboard']);
 
-    Route::post('/Admin/Store', [UserController::class, 'store']);
-    Route::get('/Admin/Add_User', [UserController::class, 'createUserPage']);
-    Route::get('/Admin/User_List', [UserController::class, 'userList']);
-    Route::get('/Admin/User_List/$id', [UserController::class, '']);
-
+    Route::post('/Admin/Store', [UserController::class,'store']);
+    Route::get('/Admin/Add_User', [UserController::class,'createUserPage']);
+    Route::get('/Admin/User_List', [UserController::class,'userList']);
+    Route::get('/Admin/User_List/$id', [UserController::class,'']);
+    
     // Route::post('/Logout', [UserController::class,'logout']);
     // Route::get('/change-password', [UserController::class,'changePassword']);
     // Route::get('/change-password', [UserController::class,'changePass']);
 
-    Route::controller(AdminController::class)->group(function () {
+        Route::controller(AdminController::class)->group(function () {
         Route::get('/Admin/District_List', 'districtListpage');
         Route::post('/Admin/District_Store', 'districtStore');
         Route::put('/Admin/District_List/{id}', 'updateDistrict');
@@ -75,14 +76,19 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
         Route::get('/Admin/Health_Center_List', 'Healthcenterpage');
         Route::post('/Admin/Health_Center_Store', 'healthcenterStore');
-        Route::put('/Admin/Health_Center_List/{id}', 'updatehc');
+        Route::put('/Admin/Health_Center_List/{id}','updatehc');
 
         Route::get('/Admin/Program_List', 'Programpage');
         Route::post('/Admin/Program_Store', 'programStore');
-        Route::put('Admin/Program_List/{id}', 'programUpdate');
-    });
-});
+        Route::put('/Admin/Program_List/{id}', 'programUpdate');
 
+        Route::get('/Admin/Role_List', 'rolePage');
+        Route::post('/Admin/Role_Store', 'roleStore');
+        Route::put('/Admin/Role_List/{id}', 'roleUpdate');
+    });
+
+
+});
 
 // Route For Program Manager
 Route::middleware(['auth', 'program_manager'])->group(function () {
