@@ -111,7 +111,7 @@
                                                                     data-bs-toggle="dropdown"><i
                                                                         class="bx bx-dots-vertical-rounded"></i></button>
                                                                 <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" <a
+                                                                    <a class="dropdown-item"
                                                                         href="{{ '/Program_Manager/AllocationView' }}">
                                                                         <i class="bi bi-eye-fill me-2"></i>View
                                                                     </a>

@@ -88,6 +88,7 @@ class ProgramManagerController extends Controller
     public function storePPMP(Request $request)
     {
         $user = Auth::user();
+        
         Validator::make($request->all(), [
             'year' => 'required',
             'department' => 'required',
