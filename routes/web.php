@@ -50,18 +50,18 @@ Route::controller(UserController::class)->group(function () {
 // Route For Admin
 Route::middleware(['auth', 'admin'])->group(function () {
 
-    Route::get('/Admin/Dashboard', [PageController::class,'adminDashboard']);
+    Route::get('/Admin/Dashboard', [PageController::class, 'adminDashboard']);
 
-    Route::post('/Admin/Store', [UserController::class,'store']);
-    Route::get('/Admin/Add_User', [UserController::class,'createUserPage']);
-    Route::get('/Admin/User_List', [UserController::class,'userList']);
-    Route::get('/Admin/User_List/$id', [UserController::class,'']);
-    
+    Route::post('/Admin/Store', [UserController::class, 'store']);
+    Route::get('/Admin/Add_User', [UserController::class, 'createUserPage']);
+    Route::get('/Admin/User_List', [UserController::class, 'userList']);
+    Route::get('/Admin/User_List/$id', [UserController::class, '']);
+
     // Route::post('/Logout', [UserController::class,'logout']);
     // Route::get('/change-password', [UserController::class,'changePassword']);
     // Route::get('/change-password', [UserController::class,'changePass']);
 
-        Route::controller(AdminController::class)->group(function () {
+    Route::controller(AdminController::class)->group(function () {
         Route::get('/Admin/District_List', 'districtListpage');
         Route::post('/Admin/District_Store', 'districtStore');
         Route::put('/Admin/District_List/{id}', 'updateDistrict');
@@ -75,7 +75,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
         Route::get('/Admin/Health_Center_List', 'Healthcenterpage');
         Route::post('/Admin/Health_Center_Store', 'healthcenterStore');
-        Route::put('/Admin/Health_Center_List/{id}','updatehc');
+        Route::put('/Admin/Health_Center_List/{id}', 'updatehc');
 
         Route::get('/Admin/Program_List', 'Programpage');
         Route::post('/Admin/Program_Store', 'programStore');
@@ -91,44 +91,42 @@ Route::middleware(['auth', 'admin'])->group(function () {
 // Route For Program Manager
 Route::middleware(['auth', 'program_manager'])->group(function () {
 
-    Route::get('/Program_Manager/Dashboard', [PageController::class,'pmDashboard']);
+    Route::get('/Program_Manager/Dashboard', [PageController::class, 'pmDashboard']);
 
-    Route::get('/Program_Manager/Inventorylist', [ProgramManagerController::class,'Inventorypage']);
-    Route::get('/Program_Manager/Allocationlist', [ProgramManagerController::class,'Allocationpage']);
-    Route::get('/Program_Manager/PPMPlist', [ProgramManagerController::class,'PPMPpage']);
-    Route::get('/Program_Manager/Profile', [ProgramManagerController::class,'Profilepage']);
+    Route::get('/Program_Manager/Inventorylist', [ProgramManagerController::class, 'Inventorypage']);
+    Route::get('/Program_Manager/Allocationlist', [ProgramManagerController::class, 'Allocationpage']);
+    Route::get('/Program_Manager/PPMPlist', [ProgramManagerController::class, 'PPMPpage']);
+    Route::get('/Program_Manager/Profile', [ProgramManagerController::class, 'Profilepage']);
 
-    Route::controller(ProgramManagerController::class)->group(function () 
-{
-    // PPMP_Page
-    Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
-    Route::get('/Program_Manager/pmPPMPcreate', 'PPMPcreate')->middleware('auth');
-    Route::get('/Program_Manager/pmPPMPView{id}', 'PPMPView')->middleware('auth');
-    // Route::get('/Program_Manager/pmPPMPView{id}', 'printPPMP')->middleware('auth');
-    
-    Route::get('/Program_Manager/pmPPMPEdit_{id}', 'PPMPEdit')->name('ppmp.edit')->middleware('auth');
-    // Route::get('/Program_Manager/pmPPMPPrint', 'PPMPPrint')->middleware('auth');
-    Route::post('/Program_Manager/PPMPlist', 'storePPMP')->name('ppmp.create')->middleware('auth');
+    Route::controller(ProgramManagerController::class)->group(function () {
+        // PPMP_Page
+        Route::get('/Program_Manager/PPMPlist', 'PPMPpage');
+        Route::get('/Program_Manager/pmPPMPcreate', 'PPMPcreate');
+        Route::get('/Program_Manager/pmPPMPView{id}', 'PPMPView');
+        // Route::get('/Program_Manager/pmPPMPView{id}', 'printPPMP');
 
-    // Route::get('/Program_Manager/pmPPMPView', 'PPMPView')->name('ppmp.view')->middleware('auth');
-    Route::put('/Program_Manager/pmPPMPEdit_{id}', 'editPPMP')->name('routes.ppmpupdate')->middleware('auth');
-    // Route::get('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete')->middleware('auth');
-    Route::delete('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete')->middleware('auth');
+        Route::get('/Program_Manager/pmPPMPEdit_{id}', 'PPMPEdit')->name('ppmp.edit');
+        // Route::get('/Program_Manager/pmPPMPPrint', 'PPMPPrint');
+        Route::post('/Program_Manager/pmPPMPcreate', 'storePPMP')->name('ppmp.create');
 
-    
-    Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
-    Route::get('/Program_Manager/AllocationView', 'pmAllocationView')->middleware('auth');
-    Route::get('/Program_Manager/AllocationEdit', 'pmAllocationEdit')->middleware('auth');
-    Route::get('/Program_Manager/pmAllocationPrint', 'AllocationPrint')->middleware('auth');
-    Route::get('/Program_Manager/AllocationProcess', 'pmAccountChange')->middleware('auth');
-    // Report_Page
-    Route::get('/Program_Manager/Reportlist', 'Reportpage')->middleware('auth');
+        // Route::get('/Program_Manager/pmPPMPView', 'PPMPView')->name('ppmp.view');
+        Route::put('/Program_Manager/pmPPMPEdit_{id}', 'editPPMP')->name('routes.ppmpupdate');
+        // Route::get('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete');
+        Route::delete('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete');
 
-// Profile_Page
-    Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
-    Route::get('/Program_Manager/Profile_Change', 'pmAccountChange')->middleware('auth');
 
-});
+        Route::get('/Program_Manager/Allocationlist', 'Allocationpage');
+        Route::get('/Program_Manager/AllocationView', 'pmAllocationView');
+        Route::get('/Program_Manager/AllocationEdit', 'pmAllocationEdit');
+        Route::get('/Program_Manager/pmAllocationPrint', 'AllocationPrint');
+        Route::get('/Program_Manager/AllocationProcess', 'pmAccountChange');
+        // Report_Page
+        Route::get('/Program_Manager/Reportlist', 'Reportpage');
+
+        // Profile_Page
+        Route::get('/Program_Manager/Profile', 'Profilepage');
+        Route::get('/Program_Manager/Profile_Change', 'pmAccountChange');
+    });
 });
 
 
@@ -152,28 +150,25 @@ Route::middleware(['auth', 'health_department'])->group(function () {
 
     Route::put('/Health_Department/Allocation_Edit_{id}', [HdController::class, 'hdAllocationProgUpdate'])->name('updateallocation');
     Route::delete('/Health_Department/Allocation_List{id}', [HdController::class, 'hdAllocationProgDelete'])->name('deleteallocation');
-
 });
 
 
 // Route For Disctrict 
 Route::middleware(['auth', 'district'])->group(function () {
 
-    Route::get('/District/Dashboard', [PageController::class,'dtDashboard']);
+    Route::get('/District/Dashboard', [PageController::class, 'dtDashboard']);
 
-    Route::get('/District/District_Receive', [DistrictController::class,'receive']);
-    Route::get('/District/District_InventoryList', [DistrictController::class,'dtInventory_List']);
-    Route::get('/District/District_Allocation', [DistrictController::class,'allocation']);
-    Route::get('/District/District_Report', [DistrictController::class,'Report']);
-    Route::get('/District/District_Account', [DistrictController::class,'Account']);
-    Route::get('/District/District_Change_Account', [DistrictController::class,'AccountChange']);
-
-    
+    Route::get('/District/District_Receive', [DistrictController::class, 'receive']);
+    Route::get('/District/District_InventoryList', [DistrictController::class, 'dtInventory_List']);
+    Route::get('/District/District_Allocation', [DistrictController::class, 'allocation']);
+    Route::get('/District/District_Report', [DistrictController::class, 'Report']);
+    Route::get('/District/District_Account', [DistrictController::class, 'Account']);
+    Route::get('/District/District_Change_Account', [DistrictController::class, 'AccountChange']);
 });
 
 // Route For Health Center
 Route::middleware(['auth', 'health_center'])->group(function () {
-    Route::get('/Health_Center/Dashboard', [PageController::class,'hcDashboard']);
+    Route::get('/Health_Center/Dashboard', [PageController::class, 'hcDashboard']);
 });
 
 
