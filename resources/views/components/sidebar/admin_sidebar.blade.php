@@ -22,98 +22,7 @@
             </a>
         </li>
 
-        {{-- <li class="menu-header small text-uppercase">
-          <span class="menu-header-text">Pages</span>
-        </li>
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-cart-alt"></i>
-            <div data-i18n="Account Settings">Purchase Order</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="Purchase_order_list.php" class="menu-link">
-                <div data-i18n="Account">Purchase Order List</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="pages-account-settings-notifications.html" class="menu-link">
-                <div data-i18n="Notifications">Add Purchase Order</div>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-exit"></i>
-            <div data-i18n="Authentications">Receive</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="Receive_order_list.php" class="menu-link" target="_blank">
-                <div data-i18n="Basic">Receive Order List</div>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-food-menu"></i>
-            <div data-i18n="Misc">Back Order</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="Back_order_list.php" class="menu-link">
-                <div data-i18n="Error">Back Order List</div>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-box"></i>
-            <div data-i18n="Misc">Stocks</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="Stocks_list.php" class="menu-link">
-                <div data-i18n="Error">List of Stocks</div>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bxs-truck"></i>
-            <div data-i18n="Misc">Distribution</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="Distribution_list.php" class="menu-link">
-                <div data-i18n="Error">Distribution List</div>
-              </a>
-               <a href="Add_distribution_list.php" class="menu-link">
-                <div data-i18n="Error">Add Distribution</div>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-notepad"></i>
-            <div data-i18n="Misc">Request Order</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="pages-misc-error.html" class="menu-link">
-                <div data-i18n="Error">Request List</div>
-              </a>
-            </li>
-          </ul>
-        </li> --}}
-
+   
         <!-- Components -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
 
@@ -180,7 +89,8 @@
 
         <li class="menu-item {{ Request::is('Admin/Role_List') ? 'active open' : '' }}">
           <a href="javascript:void(0)" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-user"></i>
+            <i class='menu-icon tf-icons bx bxs-user-detail'></i>
+            {{-- <i class="menu-icon tf-icons bx bx-user"></i> --}}
             <div data-i18n="Extended UI">Roles</div>
           </a>
           <ul class="menu-sub">

@@ -1,4 +1,4 @@
-<div class="bs-toast toast position-fixed bottom-0 end-0 m-3 fade show" role="alert" aria-live="assertive" aria-atomic="true" id="alert" data-bs-autohide="true" data-bs-delay="5000">
+<div class="bs-toast toast position-fixed bottom-0 end-0 m-3 fade show bg-primary" role="alert" aria-live="assertive" aria-atomic="true" id="alert" data-bs-autohide="true" data-bs-delay="3000">
     <div class="toast-header">
         <i class='bx bx-check d-block w-px-20 h-auto rounded me-2'></i>
         <div class="me-auto fw-medium">QCMDS</div>
