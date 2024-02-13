@@ -71,7 +71,7 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">year</label>
                                                             <input type="text" class="form-control" name="year"
-                                                                value="" id="yearInput">
+                                                                value="" id="yearInput" required>
                                                             <script>
                                                                 // Get the current year
                                                                 var currentYear = new Date().getFullYear();
@@ -87,7 +87,7 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Department</label>
                                                             <select class="form-select" name="department"
-                                                                aria-label="Default select example" value="">
+                                                                aria-label="Default select example" value="" required>
                                                                 <option value="Department of Health">Department of
                                                                     Health</option>
 
@@ -99,7 +99,7 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Program Title</label>
                                                      
-                                                            <select name="programtitle" id="" class="form-select">
+                                                            <select name="programtitle" id="" class="form-select" required>
                                                                 @foreach ($program as $programs)
                                                                     <option value="{{ $programs->name }}">{{ $programs->name }}</option>
                                                                 @endforeach
@@ -110,12 +110,12 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Project Title</label>
                                                             <input type="text" class="form-control"
-                                                                name="projecttitle" value="">
+                                                                name="projecttitle" value="" required>
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Type of Contract</label>
-                                                            <select class="form-select" name="typeofcontract"
+                                                            <select class="form-select" name="typeofcontract" required
                                                                 aria-label="Default select example" value="">
                                                                 <option selected>Select Contract</option>
                                                                 <option value="Goods">Goods</option>
@@ -129,14 +129,14 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Account Title</label>
                                                             <input type="text" class="form-control"
-                                                                name="accounttitle" value="">
+                                                                name="accounttitle" value="" required>
 
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Schedule</label>
                                                             <input type="text" class="form-control" name="schedule"
-                                                                value="">
+                                                                value="" required>
                                                         </div>
                                                     </div>
                                                     <div class="table-responsive">
@@ -174,20 +174,20 @@
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
                                                                             id="quantItem" name="quantity"
-                                                                            onkeyup="autoCal()" value="">
+                                                                            onkeyup="autoCal()" value="" required>
                                                                     </td>
                                                                     <td
                                                                         class="align-middle
                                                                             p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            name="unit" value="">
+                                                                            name="unit" value="" required>
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <select
                                                                             class="form-select text-center border-0"
                                                                             name="itemname" id="item_id"
-                                                                            aria-label="Default select example">
+                                                                            aria-label="Default select example" required>
                                                                             <option>Select Item</option>
                                                                             @foreach ($item as $items)
                                                                                 <option value="{{ $items->id }}"
@@ -208,7 +208,7 @@
                                                                         <input onkeyup="autoCal()" type="text"
                                                                             class="form-control text-center border-0"
                                                                             name="unitprice" id="price"
-                                                                            value="" readonly>
+                                                                            value="" readonly required>
                                                                     </td>
                                                                     <script>
                                                                         document.getElementById('item_id').addEventListener('change', function() {
@@ -233,7 +233,7 @@
                                                                                 class="text-center border-0 bg-white ms-2 fs-6"
                                                                                 type="text" name="total"
                                                                                 id="totalPrice" value=""
-                                                                                readonly>
+                                                                                readonly required>
                                                                             {{-- <span id="totalPrice">0</span> --}}
                                                                         </div>
                                                                     </td>
@@ -257,7 +257,7 @@
                                                                                 class="text-center border-0 bg-white ms-2 fs-6"
                                                                                 type="text" name="items_total"
                                                                                 id="total" value=""
-                                                                                readonly>
+                                                                                readonly required>
                                                                         </div>
                                                                     </th>
                                                                 </tr>
@@ -271,12 +271,12 @@
                                                                         my-5">
                                                         <div class="col-md-6 mb-md-0 mb-3">
                                                             <label for="">Notes</label>
-                                                            <textarea class="form-control" style="height: 100px" name="note"></textarea>
+                                                            <textarea class="form-control" style="height: 100px" name="note" required></textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="">Status</label>
-                                                            <select class="form-select" name="status"
-                                                                aria-label="Default select example">
+                                                            <select class="form-select" name="status" 
+                                                                aria-label="Default select example" required>
                                                                 <option selected>Select Status</option>
                                                                 <option value="1">Approved</option>
                                                                 <option value="2">Disapproved</option>
