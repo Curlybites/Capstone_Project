@@ -10,7 +10,8 @@ class Ppmpdatas extends Model
     use HasFactory;
 
     protected $fillable = 
-    [
+    [   
+        'ppmp_code',
         'year',
         'department',
         'programtitle',
@@ -19,7 +20,7 @@ class Ppmpdatas extends Model
         'accounttitle',
         'schedule',
         'note',
-        'status'
+        'status',
         
     
     ];

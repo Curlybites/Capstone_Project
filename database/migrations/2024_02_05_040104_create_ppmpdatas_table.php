@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('ppmpdatas', function (Blueprint $table) {
             $table->id();
+            $table->string('ppmp_code');
             $table->year('year');
             $table->string('department');
             $table->string('programtitle');

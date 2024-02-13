@@ -33,7 +33,7 @@
 
                                     <hr class="my-0">
                                     <!-- Account -->
-                                    {{-- @foreach ($ppmp as $ppmps) --}}
+
                                     <div class="card-body px-5">
                                         <div class="row">
                                             <div class="col-md-12">
@@ -162,7 +162,8 @@
                                                                             class="form-select text-center border-0"
                                                                             name="itemname" id="item_id"
                                                                             aria-label="Default select example">
-                                                                            <option> {{ $joinedppmpdata->itemname }}
+                                                                            <option>
+                                                                                {{ $joinedppmpdata->itemname }}
                                                                             </option>
                                                                             @foreach ($item as $items)
                                                                                 <option value="{{ $items->id }}"
@@ -292,7 +293,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- @endforeach --}}
+
                                 </div>
                             </div>
 

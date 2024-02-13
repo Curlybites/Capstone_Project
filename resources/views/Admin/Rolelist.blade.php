@@ -13,8 +13,6 @@
                 @include('components.navbar.navbar')
                 <!-- / Navbar -->
 
-
-
                 <div class="content-wrapper">
                     <!-- Content -->
                     @if (session('success'))

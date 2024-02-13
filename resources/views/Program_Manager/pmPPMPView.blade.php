@@ -39,6 +39,9 @@
                                         <div class="card-body">
                                             <div class="pb-4">
                                                 <p style="margin-bottom: 0px; font-weight: bold;">
+                                                    PPMP CODE: {{ $ppmpdatas->ppmp_code }}
+                                                </p>
+                                                <p style="margin-bottom: 0px; font-weight: bold;">
                                                     {{ $ppmpdatas->year }}
                                                 </p>
                                                 <p style="margin-bottom: 0px; font-weight: bold;">
@@ -89,26 +92,28 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr class="text-center">
-                                                            <td>
-                                                                {{ $joinedppmpdata->quantity }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $joinedppmpdata->unit }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $joinedppmpdata->itemname }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $joinedppmpdata->description }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $joinedppmpdata->unitprice }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $joinedppmpdata->total }}
-                                                            </td>
-                                                        </tr>
+                                                        @foreach ($joinedppmpdata as $joinedppmpdatas)
+                                                            <tr class="text-center">
+                                                                <td>
+                                                                    {{ $joinedppmpdatas->quantity }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $joinedppmpdatas->unit }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $joinedppmpdatas->itemname }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $joinedppmpdatas->description }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $joinedppmpdatas->unitprice }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $joinedppmpdatas->total }}
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

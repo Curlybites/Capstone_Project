@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ppmpitemdatas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('ppmpitemID');
-            $table->integer('quantity');
+            $table->integer('quantity')->nullable();
             $table->integer('unit');
             $table->string('itemname');
             $table->string('description');

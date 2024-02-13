@@ -56,3 +56,29 @@
 
 
 </head>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        function fetchData() {
+            $.ajax({
+                url: '/fetch-data',
+                method: 'GET',
+                success: function(response) {
+                    // Replace the entire body with the fetched data
+                    $('body').html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        // Call the fetchData function initially
+        fetchData();
+
+        // Call the fetchData function periodically to update the data
+        setInterval(fetchData, 1000); // Update every 5 seconds (adjust as needed)
+    });
+</script>

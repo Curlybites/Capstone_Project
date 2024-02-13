@@ -45,8 +45,27 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">PPMP Code
                                                             </label>
-                                                            <input type="text" class="form-control" name="POnum"
+                                                            <input type="text" class="form-control" name="ppmp_code"
                                                                 id="poCode" readonly>
+                                                            <script>
+                                                                // Function to generate a random PO code
+                                                                function generatePOCode() {
+                                                                    var length = 8; // Length of the PO code
+                                                                    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                                                                    var result = '';
+
+                                                                    for (var i = 0; i < length; i++) {
+                                                                        result += characters.charAt(Math.floor(Math.random() * characters.length));
+                                                                    }
+
+                                                                    // Display the generated PO code in the input field
+                                                                    document.getElementById('poCode').value = result;
+                                                                }
+
+                                                                // Generate the PO code automatically when the page loads
+                                                                generatePOCode();
+                                                            </script>
+
                                                             <script>
                                                                 // Function to generate a random PO code
                                                                 function generatePOCode() {
@@ -71,7 +90,7 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">year</label>
                                                             <input type="text" class="form-control" name="year"
-                                                                value="" id="yearInput">
+                                                                value="" id="yearInput" required>
                                                             <script>
                                                                 // Get the current year
                                                                 var currentYear = new Date().getFullYear();
@@ -87,7 +106,8 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Department</label>
                                                             <select class="form-select" name="department"
-                                                                aria-label="Default select example" value="">
+                                                                aria-label="Default select example" value=""
+                                                                required>
                                                                 <option value="Department of Health">Department of
                                                                     Health</option>
 
@@ -115,12 +135,12 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Project Title</label>
                                                             <input type="text" class="form-control"
-                                                                name="projecttitle" value="">
+                                                                name="projecttitle" value="" required>
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Type of Contract</label>
-                                                            <select class="form-select" name="typeofcontract"
+                                                            <select class="form-select" name="typeofcontract" required
                                                                 aria-label="Default select example" value="">
                                                                 <option selected>Select Contract</option>
                                                                 <option value="Goods">Goods</option>
@@ -134,14 +154,14 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Account Title</label>
                                                             <input type="text" class="form-control"
-                                                                name="accounttitle" value="">
+                                                                name="accounttitle" value="" required>
 
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Schedule</label>
                                                             <input type="text" class="form-control" name="schedule"
-                                                                value="">
+                                                                value="" required>
                                                         </div>
                                                     </div>
                                                     <div class="table-responsive">
@@ -242,7 +262,7 @@
                                                                                 class="text-center border-0 bg-white ms-2 fs-6"
                                                                                 type="text" name="ppmp[0][total]"
                                                                                 id="totalPrice" value=""
-                                                                                readonly>
+                                                                                readonly required>
                                                                             {{-- <span id="totalPrice">0</span> --}}
                                                                         </div>
                                                                     </td>
@@ -265,8 +285,8 @@
                                                                             <input
                                                                                 class="text-center border-0 bg-white ms-2 fs-6"
                                                                                 type="text" name="items_total"
-                                                                                id="total" value=""
-                                                                                readonly>
+                                                                                id="total" value="" readonly
+                                                                                required>
                                                                         </div>
                                                                     </th>
                                                                 </tr>
@@ -280,12 +300,12 @@
                                                                         my-5">
                                                         <div class="col-md-6 mb-md-0 mb-3">
                                                             <label for="">Notes</label>
-                                                            <textarea class="form-control" style="height: 100px" name="note"></textarea>
+                                                            <textarea class="form-control" style="height: 100px" name="note" required></textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="">Status</label>
                                                             <select class="form-select" name="status"
-                                                                aria-label="Default select example">
+                                                                aria-label="Default select example" required>
                                                                 <option selected>Select Status</option>
                                                                 <option value="1">Approved</option>
                                                                 <option value="2">Disapproved</option>

@@ -32,8 +32,8 @@
 
                                     <hr class="">
                                     <div class="card-body p-5 ">
-                                        <div class="table-responsive text-nowrap">
-                                            <table id="dataTable" class="datatables-basic table   border-top "
+                                        <div class="table-responsive text-nowrap overflow-visible">
+                                            <table id="dataTable" class="datatables-basic table border-top "
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
@@ -57,29 +57,29 @@
                                                             <td>{{ $ppmps->typeofcontract }}</td>
                                                             <td>{{ $ppmps->accounttitle }}</td>
                                                             <td>
-                                                                
-                                                                    @switch($ppmps->status)
-                                                                        @case(1)
-                                                                            <span class="badge bg-label-success me-1">
-                                                                                Approved
-                                                                            </span>
-                                                                        @break
 
-                                                                        @case(2)
-                                                                             <span class="badge bg-label-danger me-1">
-                                                                             Disaproved
-                                                                             </span>
-                                                                        @break
-                                                                        
-                                                                        @case(3)
-                                                                            <span class="badge bg-label-warning me-1">
+                                                                @switch($ppmps->status)
+                                                                    @case(1)
+                                                                        <span class="badge bg-label-success me-1">
+                                                                            Approved
+                                                                        </span>
+                                                                    @break
+
+                                                                    @case(2)
+                                                                        <span class="badge bg-label-danger me-1">
+                                                                            Disaproved
+                                                                        </span>
+                                                                    @break
+
+                                                                    @case(3)
+                                                                        <span class="badge bg-label-warning me-1">
                                                                             pending
-                                                                            </span>
-                                                                        @break
+                                                                        </span>
+                                                                    @break
 
-                                                                        @default
-                                                                    @endswitch
-                                                         
+                                                                    @default
+                                                                @endswitch
+
                                                             </td>
                                                             <td>
                                                                 <div class="dropdown">
@@ -90,12 +90,12 @@
 
                                                                     <div class="dropdown-menu">
 
-                                                                        <a class="dropdown-item"
+                                                                        <a class="dropdown-item text-primary"
                                                                             href="{{ url('/Program_Manager/pmPPMPView' . $ppmps->id) }}">
                                                                             <i class="bi bi-eye-fill me-2"></i>View
                                                                         </a>
 
-                                                                        <a class="dropdown-item"
+                                                                        <a class="dropdown-item text-info"
                                                                             href="{{ "/Program_Manager/pmPPMPEdit_{$ppmps->id}" }}"><i
                                                                                 class="bx bx-edit-alt me-2"></i>Edit</a>
 
@@ -105,9 +105,10 @@
                                                                                 method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
-                                                                                <a type="submit" class="dropdown-item">
-                                                                                    <i class="bx bx-trash me-2">
-                                                                                    </i>Delete</a>
+                                                                                <button type="submit"
+                                                                                    class="dropdown-item text-danger"><i
+                                                                                        class="bi bi-trash-fill fs-5"></i>
+                                                                                    Delete</button>
                                                                             </form>
                                                                         </a>
                                                                         </ul>

@@ -32,9 +32,10 @@ class ProgramManagerController extends Controller
 
     public function PPMPpage()
     {
+        $program = Program::all();
         $user = Auth::user();
         $ppmp = Ppmpdatas::all();
-        return view('Program_Manager.PPMPlist', ['user' => $user, 'ppmp' => $ppmp]);
+        return view('Program_Manager.PPMPlist', ['user' => $user, 'ppmp' => $ppmp, 'program' => $program]);
     }
     public function PPMPcreate()
     {
@@ -96,6 +97,7 @@ class ProgramManagerController extends Controller
         $program = Program::all();
         $user = Auth::user();
         Validator::make($request->all(), [
+            'ppmp_code' => 'required',
             'year' => 'required',
             'department' => 'required',
             'programtitle' => 'required',
@@ -150,7 +152,7 @@ class ProgramManagerController extends Controller
         $joinedppmpdata = DB::table('ppmpitemdatas')
             ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
             ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total')
-            ->where('ppmpitemdatas.ppmpitemID', $id)->first();
+            ->where('ppmpitemdatas.ppmpitemID', $id)->get();
 
         return view('Program_Manager.pmPPMPView', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata]);
     }
@@ -158,9 +160,9 @@ class ProgramManagerController extends Controller
 
     public function deletePPMP($id)
     {
-        $user = Auth::user();
         $ppmp = Ppmpdatas::find($id);
         $ppmp->delete();
+        Ppmpitemdatas::where('ppmpitemID', $ppmp->id)->delete();
 
         return back()->with('sucess', 'PPMP is deleted sucessfully');
     }
