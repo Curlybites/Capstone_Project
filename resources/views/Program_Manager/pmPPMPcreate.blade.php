@@ -98,15 +98,13 @@
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Program Title</label>
-                                                                @foreach ($program as $program)
-                                                                <input type="text" class="form-control" value="{{ $program->name }}" name="programtitle" >
+                                                     
+                                                            <select name="programtitle" id="" class="form-select">
+                                                                @foreach ($program as $programs)
+                                                                    <option value="{{ $programs->name }}">{{ $programs->name }}</option>
                                                                 @endforeach
-                                                            {{-- <select class="form-select"
-                                                                aria-label="Default select example" name="programtitle" id="">
-                                                                @foreach ($program as $program)
-                                                                    <option value="">{{ $program->name }}</option>
-                                                                @endforeach
-                                                            </select> --}}
+                                                            </select>
+                                                    
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"

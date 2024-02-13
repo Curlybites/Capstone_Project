@@ -31,10 +31,10 @@ class ProgramManagerController extends Controller
     }
 
     public function PPMPpage()
-    {
+    {   $program = Program::all();
         $user = Auth::user();
         $ppmp = Ppmpdatas::all();
-        return view('Program_Manager.PPMPlist', ['user' => $user, 'ppmp' => $ppmp]);
+        return view('Program_Manager.PPMPlist', ['user' => $user, 'ppmp' => $ppmp, 'program'=> $program]);
 
     }
     public function PPMPcreate()
@@ -92,39 +92,39 @@ class ProgramManagerController extends Controller
 
     public function storePPMP(Request $request)
     {
-     dd($request);
-        // $items = Items::all();
-        // $user = Auth::user();
-        // Validator::make($request->all(), [
-        //     'ppmp_code' => 'required',
-        //     'year' => 'required',
-        //     'department' => 'required',
-        //     'programtitle' => 'required',
-        //     'projecttitle' => 'required',
-        //     'typeofcontract' => 'required',
-        //     'accounttitle' => 'required',
-        //     'schedule',
-        //     'note',
-        //     'status' => 'required',
-        // ]);
+
+        $items = Items::all();
+        $user = Auth::user();
+        Validator::make($request->all(), [
+            'ppmp_code' => 'required',
+            'year' => 'required',
+            'department' => 'required',
+            'programtitle' => 'required',
+            'projecttitle' => 'required',
+            'typeofcontract' => 'required',
+            'accounttitle' => 'required',
+            'schedule',
+            'note',
+            'status' => 'required',
+        ]);
         
-        // $ppmptosupplier = Ppmpdatas::create($request->all());
+        $ppmptosupplier = Ppmpdatas::create($request->all());
 
-        // Validator::make($request->all(), [
-        // 'quantity' => 'required',
-        // 'unit' => 'required',
-        // 'itemname' => 'required', 
-        // 'description' => 'required',
-        // 'unitprice' => 'required',
-        // 'total' => 'required',
-        // ]);
+        Validator::make($request->all(), [
+        'quantity' => 'required',
+        'unit' => 'required',
+        'itemname' => 'required', 
+        'description' => 'required',
+        'unitprice' => 'required',
+        'total' => 'required',
+        ]);
 
-        // $ppmptosuppdata = $request->all();
-        // $ppmptosuppdata['ppmpitemID'] = $ppmptosupplier->id;
+        $ppmptosuppdata = $request->all();
+        $ppmptosuppdata['ppmpitemID'] = $ppmptosupplier->id;
 
-        // Ppmpitemdatas::create($ppmptosuppdata);
+        Ppmpitemdatas::create($ppmptosuppdata);
 
-        // return view('Program_Manager.pmPPMPcreate', ['user' => $user, 'ppmptosuppdata' => $ppmptosuppdata, 'item'=> $items, ]);
+        return redirect('/Program_Manager/PPMPlist');
     }
 
     public function editPPMP(Request $request, $id)

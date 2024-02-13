@@ -39,6 +39,9 @@
                                         <div class="card-body">
                                             <div class="pb-4">
                                                 <p style="margin-bottom: 0px; font-weight: bold;">
+                                                  PPMP CODE:   {{ $ppmpdatas->ppmp_code }}
+                                                </p>
+                                                <p style="margin-bottom: 0px; font-weight: bold;">
                                                     {{ $ppmpdatas->year }}
                                                 </p>
                                                 <p style="margin-bottom: 0px; font-weight: bold;">
