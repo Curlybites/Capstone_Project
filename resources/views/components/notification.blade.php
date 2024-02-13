@@ -16,5 +16,5 @@
         var alert = document.getElementById('alert');
         var bsToast = new bootstrap.Toast(alert);
         bsToast.hide();
-    }, 1000);
+    }, 2000);
 </script>

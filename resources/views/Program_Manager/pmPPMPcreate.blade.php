@@ -45,43 +45,43 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">PPMP Code
                                                             </label>
-                                                            <input type="text" class="form-control" name="POnum"
+                                                            <input type="text" class="form-control" name="ppmp_code"
                                                                 id="poCode" readonly>
-                                                                <script>
-                                                                    // Function to generate a random PO code
-                                                                    function generatePOCode() {
-                                                                        var length = 8; // Length of the PO code
-                                                                        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-                                                                        var result = '';
-                                                            
-                                                                        for (var i = 0; i < length; i++) {
-                                                                            result += characters.charAt(Math.floor(Math.random() * characters.length));
-                                                                        }
-                                                            
-                                                                        // Display the generated PO code in the input field
-                                                                        document.getElementById('poCode').value = result;
+                                                            <script>
+                                                                // Function to generate a random PO code
+                                                                function generatePOCode() {
+                                                                    var length = 8; // Length of the PO code
+                                                                    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                                                                    var result = '';
+
+                                                                    for (var i = 0; i < length; i++) {
+                                                                        result += characters.charAt(Math.floor(Math.random() * characters.length));
                                                                     }
-                                                            
-                                                                    // Generate the PO code automatically when the page loads
-                                                                    generatePOCode();
-                                                                </script>
-                                                           
+
+                                                                    // Display the generated PO code in the input field
+                                                                    document.getElementById('poCode').value = result;
+                                                                }
+
+                                                                // Generate the PO code automatically when the page loads
+                                                                generatePOCode();
+                                                            </script>
+
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3 ">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">year</label>
                                                             <input type="text" class="form-control" name="year"
                                                                 value="" id="yearInput">
-                                                                <script>
-                                                                    // Get the current year
-                                                                    var currentYear = new Date().getFullYear();
-                                                                    
-                                                                    // Calculate the next year
-                                                                    var nextYear = currentYear + 1;
-                                                                    
-                                                                    // Set the value of the input field to the next year
-                                                                    document.getElementById('yearInput').value = nextYear;
-                                                                </script>
+                                                            <script>
+                                                                // Get the current year
+                                                                var currentYear = new Date().getFullYear();
+
+                                                                // Calculate the next year
+                                                                var nextYear = currentYear + 1;
+
+                                                                // Set the value of the input field to the next year
+                                                                document.getElementById('yearInput').value = nextYear;
+                                                            </script>
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
@@ -98,14 +98,15 @@
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Program Title</label>
-                                                            {{-- <input type="text" class="form-control"
-                                                                name="programtitle" value=""> --}}
-                                                                <select class="form-select" name="typeofcontract"
-                                                                aria-label="Default select example"  name="programtitle" id="">
-                                                                    @foreach ($program as $program)
-                                                                        <option value="">{{ $program->name }}</option>
-                                                                    @endforeach
-                                                                </select>
+                                                                @foreach ($program as $program)
+                                                                <input type="text" class="form-control" value="{{ $program->name }}" name="programtitle" >
+                                                                @endforeach
+                                                            {{-- <select class="form-select"
+                                                                aria-label="Default select example" name="programtitle" id="">
+                                                                @foreach ($program as $program)
+                                                                    <option value="">{{ $program->name }}</option>
+                                                                @endforeach
+                                                            </select> --}}
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
@@ -209,7 +210,7 @@
                                                                         <input onkeyup="autoCal()" type="text"
                                                                             class="form-control text-center border-0"
                                                                             name="unitprice" id="price"
-                                                                            value="">
+                                                                            value="" readonly>
                                                                     </td>
                                                                     <script>
                                                                         document.getElementById('item_id').addEventListener('change', function() {
