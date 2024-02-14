@@ -13,7 +13,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-
+use PhpParser\Node\Stmt\Return_;
 
 class ProgramManagerController extends Controller
 {
@@ -129,8 +129,8 @@ class ProgramManagerController extends Controller
         // $ppmptosuppdata['ppmpitemID'] = $ppmptosupplier->id;
 
         // Ppmpitemdatas::create($ppmptosuppdata);
-
-        return view('Program_Manager.pmPPMPcreate', ['user' => $user, 'ppmp' => $ppmp, 'item' => $items, 'program' => $program]);
+        return redirect('/Program_Manager/PPMPlist')->with('succses', 'PPMP Created Successfully.');
+        // return view('Program_Manager.pmPPMPcreate', ['user' => $user, 'ppmp' => $ppmp, 'item' => $items, 'program' => $program]);
     }
 
     public function editPPMP(Request $request, $id)
@@ -138,8 +138,7 @@ class ProgramManagerController extends Controller
         $PPMP = Ppmpdatas::findOrFail($id);
         $PPMP->update($request->all());
 
-
-        $ppmpitems = Ppmpitemdatas::findOrfail($id);
+        $ppmpitems = Ppmpitemdatas::findOrFail($id);
         $ppmpitems->update($request->all());
 
         return redirect('/Program_Manager/PPMPlist')->with('success', 'PPMP updated successfully.');
@@ -153,6 +152,8 @@ class ProgramManagerController extends Controller
             ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
             ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total')
             ->where('ppmpitemdatas.ppmpitemID', $id)->get();
+
+
 
         return view('Program_Manager.pmPPMPView', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata]);
     }

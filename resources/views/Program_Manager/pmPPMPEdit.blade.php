@@ -48,7 +48,7 @@
                                                             <label for="exampleFormControlInput1" class="form-label">PO
                                                                 #</label>
                                                             <input type="text" class="form-control" name="POnum"
-                                                                value="">
+                                                                value="{{ $ppmpdatas->ppmp_code }}" readonly>
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3 ">
                                                             <label for="exampleFormControlInput1"
@@ -285,7 +285,7 @@
                                                     <div class="col-4">
                                                         <button type="submit" class="btn btn-primary"
                                                             onclick="save()">Save</button>
-                                                        <a class="btn btn-danger" href="">Cancel
+                                                        <a class="btn btn-danger" href="{{ '/Program_Manager/PPMPlist' }}">Cancel
                                                         </a>
                                                     </div>
                                                 </form>

@@ -16,19 +16,27 @@
 
                 <div class="content-wrapper">
                     <!-- Content -->
+                    @if (session('success'))
+                        @include('components.notification')
+                    @endif
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
 
 
                         <div class="row">
                             <div class="col-md-12">
+
                                 <div class="card mb-4">
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
                                         <h5 class="card-header">Program Procurement Management Plan List</h5>
-
+                                        <a href="{{ '/Program_Manager/pmPPMPcreate' }}"
+                                            class="btn-success mx-4 px-4 py-1 border-0"> <i
+                                                class='bx bxs-add-to-queue'></i> Create
+                                            New</a>
                                         <!-- / Content -->
                                     </div>
+
 
                                     <hr class="">
                                     <div class="card-body p-5 ">
