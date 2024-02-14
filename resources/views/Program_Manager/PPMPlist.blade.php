@@ -16,24 +16,32 @@
 
                 <div class="content-wrapper">
                     <!-- Content -->
+                    @if (session('success'))
+                        @include('components.notification')
+                    @endif
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
 
 
                         <div class="row">
                             <div class="col-md-12">
+
                                 <div class="card mb-4">
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
                                         <h5 class="card-header">Program Procurement Management Plan List</h5>
-
+                                        <a href="{{ '/Program_Manager/pmPPMPcreate' }}"
+                                            class="btn-success mx-4 px-4 py-1 border-0"> <i
+                                                class='bx bxs-add-to-queue'></i> Create
+                                            New</a>
                                         <!-- / Content -->
                                     </div>
 
+
                                     <hr class="">
                                     <div class="card-body p-5 ">
-                                        <div class="table-responsive text-nowrap">
-                                            <table id="dataTable" class="datatables-basic table   border-top "
+                                        <div class="table-responsive text-nowrap overflow-visible">
+                                            <table id="dataTable" class="datatables-basic table border-top "
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
@@ -57,29 +65,29 @@
                                                             <td>{{ $ppmps->typeofcontract }}</td>
                                                             <td>{{ $ppmps->accounttitle }}</td>
                                                             <td>
-                                                                
-                                                                    @switch($ppmps->status)
-                                                                        @case(1)
-                                                                            <span class="badge bg-label-success me-1">
-                                                                                Approved
-                                                                            </span>
-                                                                        @break
 
-                                                                        @case(2)
-                                                                             <span class="badge bg-label-danger me-1">
-                                                                             Disaproved
-                                                                             </span>
-                                                                        @break
-                                                                        
-                                                                        @case(3)
-                                                                            <span class="badge bg-label-warning me-1">
+                                                                @switch($ppmps->status)
+                                                                    @case(1)
+                                                                        <span class="badge bg-label-success me-1">
+                                                                            Approved
+                                                                        </span>
+                                                                    @break
+
+                                                                    @case(2)
+                                                                        <span class="badge bg-label-danger me-1">
+                                                                            Disaproved
+                                                                        </span>
+                                                                    @break
+
+                                                                    @case(3)
+                                                                        <span class="badge bg-label-warning me-1">
                                                                             pending
-                                                                            </span>
-                                                                        @break
+                                                                        </span>
+                                                                    @break
 
-                                                                        @default
-                                                                    @endswitch
-                                                         
+                                                                    @default
+                                                                @endswitch
+
                                                             </td>
                                                             <td>
                                                                 <div class="dropdown">
@@ -90,12 +98,12 @@
 
                                                                     <div class="dropdown-menu">
 
-                                                                        <a class="dropdown-item"
+                                                                        <a class="dropdown-item text-primary"
                                                                             href="{{ url('/Program_Manager/pmPPMPView' . $ppmps->id) }}">
                                                                             <i class="bi bi-eye-fill me-2"></i>View
                                                                         </a>
 
-                                                                        <a class="dropdown-item"
+                                                                        <a class="dropdown-item text-info"
                                                                             href="{{ "/Program_Manager/pmPPMPEdit_{$ppmps->id}" }}"><i
                                                                                 class="bx bx-edit-alt me-2"></i>Edit</a>
 
@@ -105,9 +113,10 @@
                                                                                 method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
-                                                                                <a type="submit" class="dropdown-item">
-                                                                                    <i class="bx bx-trash me-2">
-                                                                                    </i>Delete</a>
+                                                                                <button type="submit"
+                                                                                    class="dropdown-item text-danger"><i
+                                                                                        class="bi bi-trash-fill fs-5"></i>
+                                                                                    Delete</button>
                                                                             </form>
                                                                         </a>
                                                                         </ul>
@@ -312,70 +321,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        {{-- <div class="row">
-                                                                        <div class="d-flex">
-                                                                            <p>Jan</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Feb</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Mar</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Apr</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>May</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Jun</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Jul</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Aug</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Sep</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Oct</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Nov</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Dec</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> --}}
+                                                                       
                                                                         <div class="modal-footer border-1">
                                                                             <button type="button"
                                                                                 class="btn btn-secondary mt-3"

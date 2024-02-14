@@ -14,9 +14,13 @@
                 @include('components.navbar.navbar')
                 <!-- Navbar End-->
 
+
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
                     <!-- Content -->
+                    @if (session('success'))
+                        @include('components.notification')
+                    @endif
                     <div class="container-fluid  flex-grow-1 container-p-y">
                         {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Allocation /</span>
                             Create Allocation
@@ -87,7 +91,8 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Department</label>
                                                             <select class="form-select" name="department"
-                                                                aria-label="Default select example" value="" required>
+                                                                aria-label="Default select example" value=""
+                                                                required>
                                                                 <option value="Department of Health">Department of
                                                                     Health</option>
 
@@ -98,13 +103,18 @@
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Program Title</label>
-                                                     
-                                                            <select name="programtitle" id="" class="form-select" required>
-                                                                @foreach ($program as $programs)
-                                                                    <option value="{{ $programs->name }}">{{ $programs->name }}</option>
-                                                                @endforeach
+                                                            {{-- <input type="text" class="form-control"
+                                                                name="programtitle" value=""> --}}
+                                                            <select class="form-select"
+                                                                aria-label="Default select example" name="programtitle"
+                                                                id="">
+                                                                @if (isset($program))
+                                                                    @foreach ($program as $programs)
+                                                                        <option value="{{ $programs->name }}">
+                                                                            {{ $programs->name }}</option>
+                                                                    @endforeach
+                                                                @endif
                                                             </select>
-                                                    
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
@@ -164,7 +174,6 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="addTBRow">
-
                                                                 <tr>
                                                                     <td>
                                                                         <button class="btn btn-sm btn-danger py-0"
@@ -173,7 +182,7 @@
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            id="quantItem" name="quantity"
+                                                                            id="quantItem" name="ppmp[0][quantity]"
                                                                             onkeyup="autoCal()" value="" required>
                                                                     </td>
                                                                     <td
@@ -181,36 +190,41 @@
                                                                             p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            name="unit" value="" required>
+                                                                            name="ppmp[0][unit]" value="" required>
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <select
                                                                             class="form-select text-center border-0"
-                                                                            name="itemname" id="item_id"
-                                                                            aria-label="Default select example" required>
+                                                                            name="ppmp[0][itemname]" id="item_id"
+                                                                            aria-label="Default select example"
+                                                                            onchange="updateItemDetails(this)">
                                                                             <option>Select Item</option>
-                                                                            @foreach ($item as $items)
-                                                                                <option value="{{ $items->id }}"
-                                                                                    data-description="{{ $items->item_description }}"
-                                                                                    data-unitprice="{{ $items->item_price }}">
-                                                                                    {{ $items->item_name }}
-                                                                                </option>
-                                                                            @endforeach
+                                                                            @if (@isset($item))
+                                                                                @foreach ($item as $items)
+                                                                                    <option value="{{ $items->id }}"
+                                                                                        data-description="{{ $items->item_description }}"
+                                                                                        data-unitprice="{{ $items->item_price }}">
+                                                                                        {{ $items->item_name }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            @endif
+
                                                                         </select>
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text" id="item_d"
                                                                             class="form-control text-center border-0"
-                                                                            name="description" value="">
+                                                                            name="ppmp[0][description]"
+                                                                            value="">
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center"
                                                                         id="descriptionColumn">
                                                                         <input onkeyup="autoCal()" type="text"
                                                                             class="form-control text-center border-0"
-                                                                            name="unitprice" id="price"
-                                                                            value="" readonly required>
+                                                                            name="ppmp[0][unitprice]" id="price"
+                                                                            value="" required>
                                                                     </td>
-                                                                    <script>
+                                                                    {{-- <script>
                                                                         document.getElementById('item_id').addEventListener('change', function() {
                                                                             var selectedItemId = this.value;
 
@@ -223,7 +237,7 @@
                                                                             document.getElementById('item_d').value = description;
                                                                             document.getElementById('price').value = unitprice;
                                                                         });
-                                                                    </script>
+                                                                    </script> --}}
                                                                     <td>
                                                                         <div class="float-start">
                                                                             <span class="fw-bold ">₱</span>
@@ -231,7 +245,7 @@
                                                                         <div class="text-center">
                                                                             <input
                                                                                 class="text-center border-0 bg-white ms-2 fs-6"
-                                                                                type="text" name="total"
+                                                                                type="text" name="ppmp[0][total]"
                                                                                 id="totalPrice" value=""
                                                                                 readonly required>
                                                                             {{-- <span id="totalPrice">0</span> --}}
@@ -256,8 +270,8 @@
                                                                             <input
                                                                                 class="text-center border-0 bg-white ms-2 fs-6"
                                                                                 type="text" name="items_total"
-                                                                                id="total" value=""
-                                                                                readonly required>
+                                                                                id="total" value="" readonly
+                                                                                required>
                                                                         </div>
                                                                     </th>
                                                                 </tr>
@@ -275,7 +289,7 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="">Status</label>
-                                                            <select class="form-select" name="status" 
+                                                            <select class="form-select" name="status"
                                                                 aria-label="Default select example" required>
                                                                 <option selected>Select Status</option>
                                                                 <option value="1">Approved</option>
@@ -285,8 +299,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-4">
-                                                        <button type="submit" class="btn btn-primary"
-                                                            onclick="save()">Save</button>
+                                                        <button type="submit" class="btn btn-primary">Save</button>
                                                         <a class="btn btn-danger" href="">Cancel
                                                         </a>
                                                     </div>
@@ -304,6 +317,50 @@
                 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                 <script>
+                    var i = 0;
+
+                    function addRow() {
+                        // Clone the first row
+                        // alloprog_item
+                        ++i;
+                        // Create a new row element
+                        var newRow = '<tr>' +
+                            `<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="ppmp[` +
+                            i + `][quantity]" id="quantItem" onkeyup="autoCal()"></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="ppmp[` +
+                            i + `][unit]"></td>` +
+                            `<td class="align-middle p-0 text-center">` +
+                            `<select class="form-select text-center border-0" name="ppmp[` +
+                            i + `][itemname]" aria-label="Default select example" onchange="updateItemDetails(this)">` +
+                            `<option selected>Select Item</option>`;
+
+                        // Iterate through your items and add options
+                        @if (isset($item))
+                            @foreach ($item as $items)
+                                newRow +=
+                                    `<option value="{{ $items->id }}" data-description="{{ $items->item_description }}" data-unitprice="{{ $items->item_price }}">{{ $items->item_name }}</option>`;
+                            @endforeach
+                        @endif
+
+                        newRow += `</select>` +
+                            `</td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="ppmp[` +
+                            i + `][description]" id="item_d"></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="ppmp[` +
+                            i + `][unitprice]" id="price" onkeyup="autoCal()"></td>` +
+                            `<td>` +
+                            `<div class="float-start"><span class="fw-bold">₱</span></div>` +
+                            `<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="ppmp[` +
+                            i + `][total]" id="totalPrice" value="0" readonly></div>` +
+                            `</td>` +
+                            `</tr>`;
+
+                        // Append the new row to the tbody
+                        $('.addTBRow').append(newRow);
+                    }
+
+
                     $('$item_id').change(function() {
                         var selectedValue = $(this).val();
                     })
@@ -315,51 +372,27 @@
                     //     document.getElementById('item_d').value = selectedValue;
                     // }
 
-
-                    function addRow() {
-                        // Clone the first row
-
-                        // Create a new row element
-                        var newRow = '<tr>' +
-                            '<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_quan" id="quantItem" onkeyup="autoCal()"></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_unit"></td>' +
-                            '<td class="align-middle p-0 text-center">' +
-                            '<select class="form-select text-center border-0" name="alloprog_item" aria-label="Default select example" onchange="updateItemDetails(this)">' +
-                            '<option selected>Select Item</option>';
-
-                        // Iterate through your items and add options
-                        @foreach ($item as $items)
-                            newRow +=
-                                '<option value="{{ $items->id }}" data-description="{{ $items->item_description }}" data-unitprice="{{ $items->item_price }}">{{ $items->item_name }}</option>';
-                        @endforeach
-
-                        newRow += '</select>' +
-                            '</td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_descript"></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_price" id="price" onkeyup="autoCal()"></td>' +
-                            '<td>' +
-                            '<div class="float-start"><span class="fw-bold">₱</span></div>' +
-                            '<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog_pricetotal" id="totalPrice" value="0" readonly></div>' +
-                            '</td>' +
-                            '</tr>';
-
-                        // Append the new row to the tbody
-                        $('.addTBRow').append(newRow);
-                    }
-
                     // Function to update item details based on the selected option
-                    function updateItemDetails(selectElement) {
-                        var selectedOption = selectElement.options[selectElement.selectedIndex];
-                        var description = selectedOption.getAttribute('data-description');
-                        var unitprice = selectedOption.getAttribute('data-unitprice');
+                    // function updateItemDetails(selectElement) {
+                    //     var selectedOption = selectElement.options[selectElement.selectedIndex];
+                    //     var description = selectedOption.getAttribute('data-description');
+                    //     var unitprice = selectedOption.getAttribute('data-unitprice');
 
-                        // Find the corresponding input fields and update their values
-                        var descriptionInput = selectElement.closest('tr').querySelector('input[name="alloprog_descript"]');
-                        var priceInput = selectElement.closest('tr').querySelector('input[name="alloprog_price"]');
+                    //     // Find the corresponding input fields and update their values
+                    //     var descriptionInput = selectElement.closest('tr').querySelector('input[name="alloprog_descript"]');
+                    //     var priceInput = selectElement.closest('tr').querySelector('input[name="alloprog_price"]');
 
-                        descriptionInput.value = description;
-                        priceInput.value = unitprice;
+                    //     descriptionInput.value = description;
+                    //     priceInput.value = unitprice;
+                    // }
+
+                    function updateItemDetails(selectItem) {
+                        var selectedItemId = $(selectItem).val();
+                        var selectedItem = $('option[value="' + selectedItemId + '"]');
+                        var description = selectedItem.attr('data-description');
+                        var unitprice = selectedItem.attr('data-unitprice');
+                        $(selectItem).closest('tr').find('#item_d').val(description);
+                        $(selectItem).closest('tr').find('#price').val(unitprice);
                     }
 
 

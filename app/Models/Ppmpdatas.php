@@ -9,8 +9,8 @@ class Ppmpdatas extends Model
 {
     use HasFactory;
 
-    protected $fillable = 
-    [   
+    protected $fillable =
+    [
         'ppmp_code',
         'year',
         'department',
@@ -21,7 +21,7 @@ class Ppmpdatas extends Model
         'schedule',
         'note',
         'status',
-        
-    
     ];
+
+  
 }
