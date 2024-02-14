@@ -284,7 +284,7 @@
                                                     </div>
                                                     <div class="col-4">
                                                         <button type="submit" class="btn btn-primary"
-                                                            onclick="save()">Save</button>
+                                                            onclick="save()" >Save</button>
                                                         <a class="btn btn-danger" href="{{ '/Program_Manager/PPMPlist' }}">Cancel
                                                         </a>
                                                     </div>

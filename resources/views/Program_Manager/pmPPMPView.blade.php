@@ -1,6 +1,6 @@
 @include('components.header')
 
-<body class="container-fluid">
+<body >
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -101,7 +101,7 @@
                                                                     {{ $joinedppmpdatas->unit }}
                                                                 </td>
                                                                 <td>
-                                                                    {{ $joinedppmpdatas->itemname }}
+                                                                    {{ $joinedppmpdatas->item_name }}
                                                                 </td>
                                                                 <td>
                                                                     {{ $joinedppmpdatas->description }}

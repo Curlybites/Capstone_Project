@@ -64,7 +64,6 @@ class ProgramManagerController extends Controller
     public function pmAllocationEdit()
     {
         $user = Auth::user();
-
         return view('Program_Manager.pmAllocationEdit', ['user' => $user]);
     }
 
@@ -78,6 +77,7 @@ class ProgramManagerController extends Controller
             ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
             ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total')
             ->where('ppmpitemdatas.ppmpitemID', $id)->first();
+            
 
         return view('Program_Manager.pmPPMPEdit', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata, 'item' => $items]);
     }
@@ -85,7 +85,6 @@ class ProgramManagerController extends Controller
     public function AllocationPrint()
     {
         $user = Auth::user();
-
         return view('Program_Manager.pmAllocationPrint', ['user' => $user]);
     }
 
@@ -124,13 +123,7 @@ class ProgramManagerController extends Controller
             $item['ppmpitemID'] = $ppmptosupplier->id;
             Ppmpitemdatas::create($item);
         }
-
-        // $ppmptosuppdata = $request->all();
-        // $ppmptosuppdata['ppmpitemID'] = $ppmptosupplier->id;
-
-        // Ppmpitemdatas::create($ppmptosuppdata);
         return redirect('/Program_Manager/PPMPlist')->with('succses', 'PPMP Created Successfully.');
-        // return view('Program_Manager.pmPPMPcreate', ['user' => $user, 'ppmp' => $ppmp, 'item' => $items, 'program' => $program]);
     }
 
     public function editPPMP(Request $request, $id)
@@ -150,10 +143,13 @@ class ProgramManagerController extends Controller
         $ppmpdatas = Ppmpdatas::findOrfail($id);
         $joinedppmpdata = DB::table('ppmpitemdatas')
             ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
-            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total')
+            ->join('items','ppmpitemdatas.itemname', '=','items.id')
+            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total','items.item_name')
             ->where('ppmpitemdatas.ppmpitemID', $id)->get();
 
-
+        // $itemAndppmp = DB::table('ppmpitemdatas')
+        // ->join('ppmpitemdatas.')
+     
 
         return view('Program_Manager.pmPPMPView', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata]);
     }

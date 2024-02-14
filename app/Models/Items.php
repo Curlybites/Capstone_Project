@@ -16,4 +16,8 @@ class Items extends Model
         'expiration',
         'quantity',
     ];
+
+    
+
+    
 }

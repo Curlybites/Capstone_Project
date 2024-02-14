@@ -70,25 +70,6 @@
                                                                 generatePOCode();
                                                             </script>
 
-                                                            <script>
-                                                                // Function to generate a random PO code
-                                                                function generatePOCode() {
-                                                                    var length = 8; // Length of the PO code
-                                                                    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-                                                                    var result = '';
-
-                                                                    for (var i = 0; i < length; i++) {
-                                                                        result += characters.charAt(Math.floor(Math.random() * characters.length));
-                                                                    }
-
-                                                                    // Display the generated PO code in the input field
-                                                                    document.getElementById('poCode').value = result;
-                                                                }
-
-                                                                // Generate the PO code automatically when the page loads
-                                                                generatePOCode();
-                                                            </script>
-
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3 ">
                                                             <label for="exampleFormControlInput1"
@@ -202,14 +183,14 @@
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
                                                                             id="quantItem" name="ppmp[0][quantity]"
-                                                                            onkeyup="autoCal()" value="">
+                                                                            onkeyup="autoCal()" value="" required>
                                                                     </td>
                                                                     <td
                                                                         class="align-middle
                                                                             p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            name="ppmp[0][unit]" value="">
+                                                                            name="ppmp[0][unit]" value="" required>
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <select
@@ -241,7 +222,7 @@
                                                                         <input onkeyup="autoCal()" type="text"
                                                                             class="form-control text-center border-0"
                                                                             name="ppmp[0][unitprice]" id="price"
-                                                                            value="">
+                                                                            value="" required>
                                                                     </td>
                                                                     {{-- <script>
                                                                         document.getElementById('item_id').addEventListener('change', function() {

@@ -321,70 +321,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        {{-- <div class="row">
-                                                                        <div class="d-flex">
-                                                                            <p>Jan</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Feb</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Mar</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Apr</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>May</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Jun</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Jul</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Aug</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Sep</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Oct</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Nov</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                            <p>Dec</p>
-                                                                            <div class="col-1">
-                                                                                <input type="text"
-                                                                                    class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> --}}
+                                                                       
                                                                         <div class="modal-footer border-1">
                                                                             <button type="button"
                                                                                 class="btn btn-secondary mt-3"
