@@ -68,20 +68,6 @@ class ProgramManagerController extends Controller
     }
 
 
-    public function PPMPEdit($id)
-    {
-        $items = Items::all();
-        $user = Auth::user();
-        $ppmpdatas = Ppmpdatas::findOrfail($id);
-        $joinedppmpdata = DB::table('ppmpitemdatas')
-            ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
-            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total')
-            ->where('ppmpitemdatas.ppmpitemID', $id)->first();
-            
-
-        return view('Program_Manager.pmPPMPEdit', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata, 'item' => $items]);
-    }
-
     public function AllocationPrint()
     {
         $user = Auth::user();
@@ -109,7 +95,7 @@ class ProgramManagerController extends Controller
         ]);
 
         $ppmptosupplier = Ppmpdatas::create($request->all());
-
+        
         Validator::make($request->all(), [
             'ppmp.*.quantity' => 'required',
             'ppmp.*.unit' => 'required',
@@ -123,7 +109,7 @@ class ProgramManagerController extends Controller
             $item['ppmpitemID'] = $ppmptosupplier->id;
             Ppmpitemdatas::create($item);
         }
-        return redirect('/Program_Manager/PPMPlist')->with('succses', 'PPMP Created Successfully.');
+        return redirect('/Program_Manager/PPMPlist')->with('success', 'PPMP Created Successfully.');
     }
 
     public function editPPMP(Request $request, $id)
@@ -136,6 +122,24 @@ class ProgramManagerController extends Controller
 
         return redirect('/Program_Manager/PPMPlist')->with('success', 'PPMP updated successfully.');
     }
+
+    public function PPMPEdit($id)
+    {
+        $program = Program::all();
+        $ppmp = Ppmpdatas::all();
+        $items = Items::all();
+        $user = Auth::user();
+        $ppmpdatas = Ppmpdatas::findOrfail($id);
+        $joinedppmpdata = DB::table('ppmpitemdatas')
+            ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
+            ->join('items','ppmpitemdatas.itemname', '=','items.id')
+            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total','items.item_name')
+            ->where('ppmpitemdatas.ppmpitemID', $id)->get();
+            
+
+        return view('Program_Manager.pmPPMPEdit', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata, 'item' => $items, 'ppmp' => $ppmp, 'program' => $program]);
+    }
+
 
     public function PPMPView($id)
     {
@@ -161,6 +165,6 @@ class ProgramManagerController extends Controller
         $ppmp->delete();
         Ppmpitemdatas::where('ppmpitemID', $ppmp->id)->delete();
 
-        return back()->with('sucess', 'PPMP is deleted sucessfully');
+        return back()->with('success', 'PPMP is deleted sucessfully');
     }
 }

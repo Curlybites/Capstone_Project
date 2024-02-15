@@ -137,85 +137,91 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="addTBRow">
-                                                                <tr>
-                                                                    <td>
-                                                                        <button class="btn btn-sm btn-danger py-0"
-                                                                            onclick="removeRow(this)">X</button>
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            id="quantItem" name="quantity"
-                                                                            onkeyup="autoCal()"
-                                                                            value="{{ $joinedppmpdata->quantity }}">
-                                                                    </td>
-                                                                    <td
-                                                                        class="align-middle
+                                                                @foreach ($joinedppmpdata as $key => $joinedData)
+                                                                    <tr>
+                                                                        <td>
+                                                                            <button class="btn btn-sm btn-danger py-0"
+                                                                                onclick="removeRow(this)">X</button>
+                                                                        </td>
+
+                                                                        <td class="align-middle p-0 text-center">
+                                                                            <input type="text"
+                                                                                class="form-control text-center border-0"
+                                                                                id="quantItem" name="quantity"
+                                                                                onkeyup="autoCal()"
+                                                                                value="{{ $joinedData->quantity }}">
+                                                                        </td>
+
+                                                                        <td
+                                                                            class="align-middle
                                                                             p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            name="unit"
-                                                                            value="{{ $joinedppmpdata->unit }}">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <select
-                                                                            class="form-select text-center border-0"
-                                                                            name="itemname" id="item_id"
-                                                                            aria-label="Default select example">
-                                                                            <option>
-                                                                                {{ $joinedppmpdata->itemname }}
-                                                                            </option>
-                                                                            @foreach ($item as $items)
-                                                                                <option value="{{ $items->id }}"
-                                                                                    data-description="{{ $items->item_description }}"
-                                                                                    data-unitprice="{{ $items->item_price }}">
-                                                                                    {{ $items->item_name }}
+                                                                            <input type="text"
+                                                                                class="form-control text-center border-0"
+                                                                                name="unit"
+                                                                                value="{{ $joinedData->unit }}">
+                                                                        </td>
+                                                                        <td class="align-middle p-0 text-center">
+                                                                            <select
+                                                                                class="form-select text-center border-0"
+                                                                                name="itemname" id="item_id"
+                                                                                aria-label="Default select example">
+                                                                                <option readonly>
+                                                                                    {{ $joinedData->item_name }}
                                                                                 </option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            name="description"
-                                                                            value="{{ $joinedppmpdata->description }}">
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            name="unitprice" id="price"
-                                                                            onkeyup="autoCal()"
-                                                                            value="{{ $joinedppmpdata->unitprice }}">
-                                                                    </td>
-                                                                    <script>
-                                                                        document.getElementById('item_id').addEventListener('change', function() {
-                                                                            var selectedItemId = this.value;
+                                                                                @if (@isset($item))
+                                                                                    @foreach ($item as $items)
+                                                                                        <option
+                                                                                            value="{{ $items->id }}"
+                                                                                            data-description="{{ $items->item_description }}"
+                                                                                            data-unitprice="{{ $items->item_price }}">
+                                                                                            {{ $items->item_name }}
+                                                                                        </option>
+                                                                                    @endforeach
+                                                                                @endif
+                                                                            </select>
+                                                                        </td>
+                                                                        <td class="align-middle p-0 text-center">
+                                                                            <input type="text"
+                                                                                class="form-control text-center border-0"
+                                                                                name="description" value="{{ $joinedData->description }}">
+                                                                        </td>
+                                                                        <td class="align-middle p-0 text-center">
+                                                                            <input type="text"
+                                                                                class="form-control text-center border-0"
+                                                                                name="unitprice" id="price"
+                                                                                onkeyup="autoCal()"
+                                                                                value="{{ $joinedData->unitprice }}">
+                                                                        </td>
+                                                                        <script>
+                                                                            document.getElementById('item_id').addEventListener('change', function() {
+                                                                                var selectedItemId = this.value;
 
 
-                                                                            var selectedItem = document.querySelector('option[value="' + selectedItemId + '"]');
-                                                                            var description = selectedItem.getAttribute('data-description');
-                                                                            var unitprice = selectedItem.getAttribute('data-unitprice');
+                                                                                var selectedItem = document.querySelector('option[value="' + selectedItemId + '"]');
+                                                                                var description = selectedItem.getAttribute('data-description');
+                                                                                var unitprice = selectedItem.getAttribute('data-unitprice');
 
 
-                                                                            document.getElementById('item_d').value = description;
-                                                                            document.getElementById('price').value = unitprice;
-                                                                        });
-                                                                    </script>
-                                                                    <td>
-                                                                        <div class="float-start">
-                                                                            <span class="fw-bold ">₱</span>
-                                                                        </div>
-                                                                        <div class="text-center">
-                                                                            <input
-                                                                                class="text-center border-0 bg-white ms-2 fs-6"
-                                                                                type="text" name="total"
-                                                                                id="totalPrice"
-                                                                                value="{{ $joinedppmpdata->total }}"
-                                                                                readonly>
-                                                                            {{-- <span id="totalPrice">0</span> --}}
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
+                                                                                document.getElementById('item_d').value = description;
+                                                                                document.getElementById('price').value = unitprice;
+                                                                            });
+                                                                        </script>
+                                                                        <td>
+                                                                            <div class="float-start">
+                                                                                <span class="fw-bold ">₱</span>
+                                                                            </div>
+                                                                            <div class="text-center">
+                                                                                <input
+                                                                                    class="text-center border-0 bg-white ms-2 fs-6"
+                                                                                    type="text" name="total"
+                                                                                    id="totalPrice"
+                                                                                    value="{{ $joinedData->total }}"
+                                                                                    readonly>
+                                                                                {{-- <span id="totalPrice">0</span> --}}
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
                                                             </tbody>
                                                             <tfoot>
                                                                 <tr>
@@ -284,8 +290,9 @@
                                                     </div>
                                                     <div class="col-4">
                                                         <button type="submit" class="btn btn-primary"
-                                                            onclick="save()" >Save</button>
-                                                        <a class="btn btn-danger" href="{{ '/Program_Manager/PPMPlist' }}">Cancel
+                                                            onclick="save()">Save</button>
+                                                        <a class="btn btn-danger"
+                                                            href="{{ '/Program_Manager/PPMPlist' }}">Cancel
                                                         </a>
                                                     </div>
                                                 </form>
@@ -304,6 +311,50 @@
                 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                 <script>
+                    var i = 0;
+
+                    function addRow() {
+                        // Clone the first row
+                        // alloprog_item
+                        ++i;
+                        // Create a new row element
+                        var newRow = '<tr>' +
+                            `<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="ppmp[` +
+                            i + `][quantity]" id="quantItem" onkeyup="autoCal()"></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="ppmp[` +
+                            i + `][unit]"></td>` +
+                            `<td class="align-middle p-0 text-center">` +
+                            `<select class="form-select text-center border-0" name="ppmp[` +
+                            i + `][itemname]" aria-label="Default select example" onchange="updateItemDetails(this)">` +
+                            `<option selected>Select Item</option>`;
+
+                        // Iterate through your items and add options
+                        @if (isset($item))
+                            @foreach ($item as $items)
+                                newRow +=
+                                    `<option value="{{ $items->id }}" data-description="{{ $items->item_description }}" data-unitprice="{{ $items->item_price }}">{{ $items->item_name }}</option>`;
+                            @endforeach
+                        @endif
+
+                        newRow += `</select>` +
+                            `</td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="ppmp[` +
+                            i + `][description]" id="item_d"></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="ppmp[` +
+                            i + `][unitprice]" id="price" onkeyup="autoCal()"></td>` +
+                            `<td>` +
+                            `<div class="float-start"><span class="fw-bold">₱</span></div>` +
+                            `<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="ppmp[` +
+                            i + `][total]" id="totalPrice" value="0" readonly></div>` +
+                            `</td>` +
+                            `</tr>`;
+
+                        // Append the new row to the tbody
+                        $('.addTBRow').append(newRow);
+                    }
+
+
                     $('$item_id').change(function() {
                         var selectedValue = $(this).val();
                     })
@@ -315,51 +366,27 @@
                     //     document.getElementById('item_d').value = selectedValue;
                     // }
 
-
-                    function addRow() {
-                        // Clone the first row
-
-                        // Create a new row element
-                        var newRow = '<tr>' +
-                            '<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_quan" id="quantItem" onkeyup="autoCal()"></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_unit"></td>' +
-                            '<td class="align-middle p-0 text-center">' +
-                            '<select class="form-select text-center border-0" name="alloprog_item" aria-label="Default select example" onchange="updateItemDetails(this)">' +
-                            '<option selected>Select Item</option>';
-
-                        // Iterate through your items and add options
-                        @foreach ($item as $items)
-                            newRow +=
-                                '<option value="{{ $items->id }}" data-description="{{ $items->item_description }}" data-unitprice="{{ $items->item_price }}">{{ $items->item_name }}</option>';
-                        @endforeach
-
-                        newRow += '</select>' +
-                            '</td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_descript"></td>' +
-                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog_price" id="price" onkeyup="autoCal()"></td>' +
-                            '<td>' +
-                            '<div class="float-start"><span class="fw-bold">₱</span></div>' +
-                            '<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6" type="text" name="alloprog_pricetotal" id="totalPrice" value="0" readonly></div>' +
-                            '</td>' +
-                            '</tr>';
-
-                        // Append the new row to the tbody
-                        $('.addTBRow').append(newRow);
-                    }
-
                     // Function to update item details based on the selected option
-                    function updateItemDetails(selectElement) {
-                        var selectedOption = selectElement.options[selectElement.selectedIndex];
-                        var description = selectedOption.getAttribute('data-description');
-                        var unitprice = selectedOption.getAttribute('data-unitprice');
+                    // function updateItemDetails(selectElement) {
+                    //     var selectedOption = selectElement.options[selectElement.selectedIndex];
+                    //     var description = selectedOption.getAttribute('data-description');
+                    //     var unitprice = selectedOption.getAttribute('data-unitprice');
 
-                        // Find the corresponding input fields and update their values
-                        var descriptionInput = selectElement.closest('tr').querySelector('input[name="alloprog_descript"]');
-                        var priceInput = selectElement.closest('tr').querySelector('input[name="alloprog_price"]');
+                    //     // Find the corresponding input fields and update their values
+                    //     var descriptionInput = selectElement.closest('tr').querySelector('input[name="alloprog_descript"]');
+                    //     var priceInput = selectElement.closest('tr').querySelector('input[name="alloprog_price"]');
 
-                        descriptionInput.value = description;
-                        priceInput.value = unitprice;
+                    //     descriptionInput.value = description;
+                    //     priceInput.value = unitprice;
+                    // }
+
+                    function updateItemDetails(selectItem) {
+                        var selectedItemId = $(selectItem).val();
+                        var selectedItem = $('option[value="' + selectedItemId + '"]');
+                        var description = selectedItem.attr('data-description');
+                        var unitprice = selectedItem.attr('data-unitprice');
+                        $(selectItem).closest('tr').find('#item_d').val(description);
+                        $(selectItem).closest('tr').find('#price').val(unitprice);
                     }
 
 
@@ -399,6 +426,8 @@
                             location.reload();
                         }, 1000); // 5000 milliseconds = 5 seconds
                     });
+                </script>
+
                 </script>
 
 

@@ -22,9 +22,7 @@
                         @include('components.notification')
                     @endif
                     <div class="container-fluid  flex-grow-1 container-p-y">
-                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Allocation /</span>
-                            Create Allocation
-                        </h4> --}}
+               
 
                         <div class="row">
                             <div class="col-md-12">
@@ -183,14 +181,16 @@
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
                                                                             id="quantItem" name="ppmp[0][quantity]"
-                                                                            onkeyup="autoCal()" value="" required>
+                                                                            onkeyup="autoCal()" value=""
+                                                                            required>
                                                                     </td>
                                                                     <td
                                                                         class="align-middle
                                                                             p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0"
-                                                                            name="ppmp[0][unit]" value="" required>
+                                                                            name="ppmp[0][unit]" value=""
+                                                                            required>
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <select

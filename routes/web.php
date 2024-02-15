@@ -100,23 +100,23 @@ Route::middleware(['auth', 'program_manager'])->group(function () {
 
     Route::controller(ProgramManagerController::class)->group(function () {
         // PPMP_Page
-        Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
-        Route::get('/Program_Manager/pmPPMPcreate', 'PPMPcreate')->middleware('auth');
-        Route::get('/Program_Manager/pmPPMPView{id}', 'PPMPView')->middleware('auth');
-        Route::get('/Program_Manager/pmPPMPEdit_{id}', 'PPMPEdit')->name('ppmp.edit')->middleware('auth');
-        Route::put('/Program_Manager/pmPPMPEdit_{id}', 'editPPMP')->name('routes.ppmpupdate')->middleware('auth');
-        Route::post('/Program_Manager/PPMPlist', 'storePPMP')->name('ppmp.create')->middleware('auth');
-        Route::delete('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete')->middleware('auth');
-        Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
-        Route::get('/Program_Manager/AllocationView', 'pmAllocationView')->middleware('auth');
-        Route::get('/Program_Manager/AllocationEdit', 'pmAllocationEdit')->middleware('auth');
-        Route::get('/Program_Manager/pmAllocationPrint', 'AllocationPrint')->middleware('auth');
-        Route::get('/Program_Manager/AllocationProcess', 'pmAccountChange')->middleware('auth');
+        Route::get('/Program_Manager/PPMPlist', 'PPMPpage');
+        Route::get('/Program_Manager/pmPPMPcreate', 'PPMPcreate');
+        Route::get('/Program_Manager/pmPPMPView{id}', 'PPMPView');
+        Route::get('/Program_Manager/pmPPMPEdit_{id}', 'PPMPEdit');
+        Route::put('/Program_Manager/pmPPMPEdit_{id}', 'editPPMP')->name('routes.ppmpupdate');
+        Route::post('/Program_Manager/PPMPlist', 'storePPMP')->name('ppmp.create');
+        Route::delete('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete');
+        Route::get('/Program_Manager/Allocationlist', 'Allocationpage');
+        Route::get('/Program_Manager/AllocationView', 'pmAllocationView');
+        Route::get('/Program_Manager/AllocationEdit', 'pmAllocationEdit');
+        Route::get('/Program_Manager/pmAllocationPrint', 'AllocationPrint');
+        Route::get('/Program_Manager/AllocationProcess', 'pmAccountChange');
         // Report_Page
-        Route::get('/Program_Manager/Reportlist', 'Reportpage')->middleware('auth');
+        Route::get('/Program_Manager/Reportlist', 'Reportpage');
         // Profile_Page
-        Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
-        Route::get('/Program_Manager/Profile_Change', 'pmAccountChange')->middleware('auth');
+        Route::get('/Program_Manager/Profile', 'Profilepage');
+        Route::get('/Program_Manager/Profile_Change', 'pmAccountChange');
     });
 });
 

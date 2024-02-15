@@ -1,6 +1,6 @@
 @include('components.header')
 
-<body >
+<body>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -28,6 +28,22 @@
                                         <div class="mx-3 px-3 py-1">
                                             <button type="button" class="btn btn-info text-white"
                                                 onclick="printPage()">Print</button>
+                                            <script>
+                                                function printPage() {
+                                                    var printContent = document.getElementById("printSection").innerHTML;
+                                                    var originalContent = document.body.innerHTML;
+                                                    document.body.innerHTML = printContent;
+
+                                                    var style = document.createElement('style');
+                                                    style.innerHTML = '@media print { @page { size: landscape; } }';
+                                                    document.head.appendChild(style);
+
+                                                    window.print();
+
+                                                    // Reset the document content to its original state
+                                                    document.body.innerHTML = originalContent;
+                                                }
+                                            </script>
                                             <a type="button" class="btn btn-danger"
                                                 href="{{ '/Program_Manager/PPMPlist' }}">Back</a>
                                         </div>
@@ -39,20 +55,20 @@
                                         <div class="card-body">
                                             <div class="pb-4">
                                                 <p style="margin-bottom: 0px; font-weight: bold;">
-                                                    PPMP CODE: {{ $ppmpdatas->ppmp_code }}
+                                                    Ppmp Code: {{ $ppmpdatas->ppmp_code }}
                                                 </p>
                                                 <p style="margin-bottom: 0px; font-weight: bold;">
-                                                    {{ $ppmpdatas->year }}
+                                                    Year: {{ $ppmpdatas->year }}
                                                 </p>
                                                 <p style="margin-bottom: 0px; font-weight: bold;">
-                                                    {{ $ppmpdatas->department }}
+                                                    Department: {{ $ppmpdatas->department }}
                                                 </p>
                                                 <p style="margin-bottom: 0px; font-weight: bold;">
-                                                    {{ $ppmpdatas->programtitle }}
+                                                    Program title: {{ $ppmpdatas->programtitle }}
                                                 </p>
-                                                </p>
+
                                                 <p style="margin-bottom: 0px; font-weight: bold;">
-                                                    {{ $ppmpdatas->projecttitle }}
+                                                    Project Title: {{ $ppmpdatas->projecttitle }}
                                                 </p>
 
 
@@ -157,15 +173,7 @@
                         </div>
                     </div>
 
-                    <script>
-                        function printPage() {
-                            var printContent = document.getElementById("printSection").innerHTML;
-                            var originalContent = document.body.innerHTML;
-                            document.body.innerHTML = printContent;
-                            window.print();
-                            document.body.innerHTML = originalContent;
-                        }
-                    </script>
+
                     <!--footer-->
 
                     @include('components.footer')
