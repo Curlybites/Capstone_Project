@@ -23,9 +23,9 @@ return new class extends Migration
             $table->string('schedule');
             $table->string('note');
             $table->string('status');
+            $table->float('items_total');
             $table->timestamps();
-
-        });
+        }); 
     }
 
     /**

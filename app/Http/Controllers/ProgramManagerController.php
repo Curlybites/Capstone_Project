@@ -92,6 +92,7 @@ class ProgramManagerController extends Controller
             'schedule',
             'note',
             'status' => 'required',
+            'items_total'=> 'required',
         ]);
 
         $ppmptosupplier = Ppmpdatas::create($request->all());
@@ -135,7 +136,7 @@ class ProgramManagerController extends Controller
             ->join('items','ppmpitemdatas.itemname', '=','items.id')
             ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total','items.item_name')
             ->where('ppmpitemdatas.ppmpitemID', $id)->get();
-            
+
         return view('Program_Manager.pmPPMPEdit', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata, 'item' => $items, 'ppmp' => $ppmp, 'program' => $program]);
     }
 
