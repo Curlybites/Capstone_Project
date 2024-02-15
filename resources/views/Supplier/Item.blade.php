@@ -18,16 +18,16 @@
 
                 <div class="content-wrapper">
                     <!-- Content -->
-                    
+
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
 
-                        
+
                         {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Item /</span> List of Items
-                        </h4> --}}  @if (session('success'))
-                        <div class="alert alert-success" role="alert"> {{ session('success') }}
-                        </div>
-                        {{-- <div class="toast fade show bs-toast align-items-center position-fixed bottom-0 end-0 m-3 bg-success"
+                        </h4> --}} @if (session('success'))
+                            <div class="alert alert-success" role="alert"> {{ session('success') }}
+                            </div>
+                            {{-- <div class="toast fade show bs-toast align-items-center position-fixed bottom-0 end-0 m-3 bg-success"
                             role="alert" aria-live="assertive" aria-atomic="true">
                             <div class="d-flex">
                                 <div class="toast-body"> {{ session('success') }} </div> <button
@@ -35,76 +35,74 @@
                                     data-bs-dismiss="toast" aria-label="Close"></button>
                             </div>
                         </div> --}}
+                        @endif
 
-                        
-                    @endif
-                    
-                    <div class="row g-4 mb-4">
-                        <div class="col-sm-6 col-xl-3">
-                          <div class="card">
-                            <div class="card-body">
-                              <div class="d-flex align-items-start justify-content-between">
-                                <div class="content-left">
-                                  <span>Supplier Items</span>
-                                  <div class="d-flex align-items-end mt-2">
-                                    <h4 class="mb-0 me-2">{{ $totalItem }}</h4>
-                                    <small class="text-success"></small>
-                                  </div>
-                                  <p class="mb-0">Total Items</p>
+                        <div class="row g-4 mb-4">
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <span>Supplier Items</span>
+                                                <div class="d-flex align-items-end mt-2">
+                                                    <h4 class="mb-0 me-2">{{ $totalItem }}</h4>
+                                                    <small class="text-success"></small>
+                                                </div>
+                                                <p class="mb-0">Total Items</p>
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-primary">
+                                                    <i class='bx bx-package'></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="avatar">
-                                  <span class="avatar-initial rounded bg-label-primary">
-                                    <i class='bx bx-package'></i>
-                                  </span>
-                                </div>
-                              </div>
                             </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-xl-3">
-                          <div class="card">
-                            <div class="card-body">
-                              <div class="d-flex align-items-start justify-content-between">
-                                <div class="content-left">
-                                  <span>Supplier Active Items</span>
-                                  <div class="d-flex align-items-end mt-2">
-                                    <h4 class="mb-0 me-2">{{ $totalActive }}</h4>
-                                    <small class="text-success"></small>
-                                  </div>
-                                  <p class="mb-0">Active Item</p>
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <span>Supplier Active Items</span>
+                                                <div class="d-flex align-items-end mt-2">
+                                                    <h4 class="mb-0 me-2">{{ $totalActive }}</h4>
+                                                    <small class="text-success"></small>
+                                                </div>
+                                                <p class="mb-0">Active Item</p>
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-success">
+                                                    <i class='bx bx-package'></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="avatar">
-                                  <span class="avatar-initial rounded bg-label-success">
-                                    <i class='bx bx-package'></i>
-                                  </span>
-                                </div>
-                              </div>
                             </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-xl-3">
-                          <div class="card">
-                            <div class="card-body">
-                              <div class="d-flex align-items-start justify-content-between">
-                                <div class="content-left">
-                                  <span>Supplier Inactive Items</span>
-                                  <div class="d-flex align-items-end mt-2">
-                                    <h4 class="mb-0 me-2">{{ $totalInactive }}</h4>
-                                    <small class="text-danger"></small>
-                                  </div>
-                                  <p class="mb-0">Inactive Item</p>
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <span>Supplier Inactive Items</span>
+                                                <div class="d-flex align-items-end mt-2">
+                                                    <h4 class="mb-0 me-2">{{ $totalInactive }}</h4>
+                                                    <small class="text-danger"></small>
+                                                </div>
+                                                <p class="mb-0">Inactive Item</p>
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-danger">
+                                                    <i class='bx bx-package'></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="avatar">
-                                  <span class="avatar-initial rounded bg-label-danger">
-                                    <i class='bx bx-package'></i>
-                                  </span>
-                                </div>
-                              </div>
                             </div>
-                          </div>
+
                         </div>
-                       
-                      </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card mb-4">
@@ -172,7 +170,7 @@
                                                                 <label for="floatingInput">Date Expiration</label>
                                                             </div>
 
-                                                            
+
 
                                                             <div class="form-floating mt-2">
                                                                 <select class="form-select" id="floatingSelect"
@@ -221,11 +219,11 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Image</th>
-                                                        <th>Name</th>
+                                                        {{-- <th>Name</th> --}}
                                                         <th>Price</th>
                                                         <th>Date Created</th>
                                                         <th>Date Expiration</th>
-                                                        <th>Status</th>
+                                                        {{-- <th>Status</th> --}}
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -235,7 +233,38 @@
                                                             <td>{{ $items->id }}</td>
 
                                                             <td>
-                                                                @if ($items->item_image)
+
+                                                                <div
+                                                                    class="d-flex justify-content-start align-items-center user-name">
+                                                                    <div class="avatar-wrapper">
+                                                                        <div class="avatar avatar-sm me-3"><img
+                                                                                src="{{ asset('storage/images/' . $items->item_image) }}"
+                                                                                alt="Avatar" class="rounded-circle">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-flex flex-column"><a
+                                                                            href="app-user-view-account.html"
+                                                                            class="text-body text-truncate"><span
+                                                                                class="fw-medium">
+                                                                                {{ $items->item_name }}
+                                                                            </span>
+                                                                        </a>
+                                                                        
+                                                                            @switch($items -> status)
+                                                                                @case(1)
+                                                                                <small class="text-success"> Active </small>
+                                                                                @break
+
+                                                                                @case(2)
+                                                                                <small class="text-danger"> Inactive </small>
+                                                                                @break
+
+                                                                                @default
+                                                                            @endswitch
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                                {{-- @if ($items->item_image)
                                                                     <div class="avatar m-auto">
                                                                         <img src="{{ asset('storage/images/' . $items->item_image) }}"
                                                                             alt="Uploaded Image"
@@ -243,11 +272,11 @@
                                                                     </div>
                                                                 @else
                                                                     <span>No image found!</span>
-                                                                @endif
+                                                                @endif --}}
                                                             </td>
-                                                            <td>
+                                                            {{-- <td>
                                                                 {{ $items->item_name }}
-                                                            </td>
+                                                            </td> --}}
                                                             {{-- <td>
                                                                 {{ $items->item_description }}
                                                             </td> --}}
@@ -264,7 +293,7 @@
 
                                                             </td>
 
-                                                            @switch($items -> status)
+                                                            {{-- @switch($items -> status)
                                                                 @case(1)
                                                                     <td><span class="badge bg-label-success me-1">Active</span>
                                                                     </td>
@@ -277,7 +306,7 @@
                                                                 @break
 
                                                                 @default
-                                                            @endswitch
+                                                            @endswitch --}}
 
 
 
@@ -332,79 +361,89 @@
                                                                         <div class="form-floating">
                                                                             <div class="row justify-content-center ">
                                                                                 <div class="col-6">
-                                                                                            @if ($items->item_image)
-                                                                                    <div class="" >
-                                                                                        <img src="{{ asset('storage/images/' . $items->item_image) }}"
-                                                                                            alt="Uploaded Image"
-                                                                                            class="w-75">
-                                                                                    </div>
-                                                                                @else
-                                                                                    <span>No image found!</span>
-                                                                                @endif
-                                                                                 </div>
-
-                                                                                 <div class="col-sm-4">
-                                                                                     <div class="container">
-                                                                                        <div class="row">
-                                                                                            <h3>{{ $items->item_name }}</h3>
-                                                                                            <h3>₱ {{ $items->item_price }}</h3>
+                                                                                    @if ($items->item_image)
+                                                                                        <div class="">
+                                                                                            <img src="{{ asset('storage/images/' . $items->item_image) }}"
+                                                                                                alt="Uploaded Image"
+                                                                                                class="w-75">
                                                                                         </div>
-                                                                                     </div>
+                                                                                    @else
+                                                                                        <span>No image found!</span>
+                                                                                    @endif
+                                                                                </div>
+
+                                                                                <div class="col-sm-4">
+                                                                                    <div class="container">
+                                                                                        <div class="row">
+                                                                                            <h3>{{ $items->item_name }}
+                                                                                            </h3>
+                                                                                            <h3>₱
+                                                                                                {{ $items->item_price }}
+                                                                                            </h3>
+                                                                                        </div>
+                                                                                    </div>
 
                                                                                     <div class="container">
                                                                                         <div class="row">
-                                                                                            <p class="text-wrap" style="word-wrap:break-word;max-height: 300px; " >{{ $items->item_description }}</p>
-                                                                                         </div>
+                                                                                            <p class="text-wrap"
+                                                                                                style="word-wrap:break-word;max-height: 300px; ">
+                                                                                                {{ $items->item_description }}
+                                                                                            </p>
+                                                                                        </div>
                                                                                     </div>
 
-                                                                                     <div class="container">
+                                                                                    <div class="container">
                                                                                         <div class="row">
-                                                                                            <small class="text-primary">Date Created</small>
+                                                                                            <small
+                                                                                                class="text-primary">Date
+                                                                                                Created</small>
                                                                                         </div>
-    
+
                                                                                         <div class="row">
                                                                                             <span>{{ $items->date_creation }}</span>
                                                                                         </div>
-                                                                                     </div>
+                                                                                    </div>
 
-                                                                                     
-                                                                                     <div class="container mt-3 ">
+
+                                                                                    <div class="container mt-3 ">
                                                                                         <div class="row">
-                                                                                            <small class="text-danger">Expiration Date</small>
+                                                                                            <small
+                                                                                                class="text-danger">Expiration
+                                                                                                Date</small>
                                                                                         </div>
-    
+
                                                                                         <div class="row">
                                                                                             <span>{{ $items->date_expiration }}</span>
                                                                                         </div>
-                                                                                     </div>
+                                                                                    </div>
 
-                                                                                     <div class="container mt-4 mb-4">
-                                                                                        <small class="badge bg-label-success me-1">     
-                                                                                            
+                                                                                    <div class="container mt-4 mb-4">
+                                                                                        <small
+                                                                                            class="badge bg-label-success me-1">
+
                                                                                             @switch($items -> status)
-                                                                                            @case(1)
-                                                                                              Active
-                                                                                                
-                                                                                            @break
-                            
-                                                                                            @case(2)
-                                                                                               Inactive
-                                                                                            @break
-                            
-                                                                                            @default
-                                                                                        @endswitch
-                                                                                            
-                                                                                        </small>
-                                                                                  
-                                                                                     </div>
-    
-    
-                                                                                 </div>
+                                                                                                @case(1)
+                                                                                                    Active
+                                                                                                @break
 
-                                                                                
+                                                                                                @case(2)
+                                                                                                    Inactive
+                                                                                                @break
+
+                                                                                                @default
+                                                                                            @endswitch
+
+                                                                                        </small>
+
+                                                                                    </div>
+
+
                                                                                 </div>
+
+
                                                                             </div>
                                                                         </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
