@@ -43,6 +43,7 @@
                                         <div class="table-responsive text-nowrap overflow-visible">
                                             <table id="dataTable" class="datatables-basic table border-top "
                                                 style="width:100%">
+
                                                 <thead>
                                                     <tr>
                                                         <th>id</th>
@@ -321,7 +322,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                       
+
                                                                         <div class="modal-footer border-1">
                                                                             <button type="button"
                                                                                 class="btn btn-secondary mt-3"
@@ -355,5 +356,6 @@
 </body>
 <!-- / Content -->
 <!--footer-->
+
 
 @include('components.footer')
