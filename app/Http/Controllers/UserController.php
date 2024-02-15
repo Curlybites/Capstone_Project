@@ -27,29 +27,9 @@ class UserController extends Controller
         'healthCenterData'=>$healthCenterData, 'assignedHealthCenterStaffData'=>$assignedHealthCenterStaffData]);
     }
 
-    // public function createUserPage(){
-    //     return view('Admin.createUser');
-    // }
 
     public function store(Request $request)
     {
-        // dd($request);
-        // $validated = $request->validate([
-        //     "firstname" => ['required'],
-        //     "middlename" => ['required'],
-        //     "lastname" => ['required'],
-        //     "sex" => ['required'],
-        //     "birthdate" => ['required'],
-        //     "address" => ['required'],
-        //     "contact" => ['required'],
-        //     "email" => ['required', 'email', Rule::unique('users', 'email')],
-        //     "password" => 'required|confirmed|min:6',
-        //     "image",
-        //     "role" => ['required'],
-        //     "healthCenter" => ['required'],
-
-        // ]);
-
         $healthcenter = new User();
         $healthcenter->firstname = $request->firstname;
         $healthcenter->middlename = $request->middlename;
@@ -63,28 +43,7 @@ class UserController extends Controller
         $healthcenter->image = $request->image;
         $healthcenter->role = $request->role;
         $healthcenter->save();
-
-
-        // $assignedHealthCenterStaff = new AssignedHealthCenter();
-        // $assignedHealthCenterStaff->health_center_staff_name = $healthcenter->firstname . ' ' . $healthcenter->lastname;
-        // $assignedHealthCenterStaff->health_center_staff_id = $healthcenter->id;
-        
-        // $healthCenter = HealthCenters::find($request->healthCenter);
-        
-        // $assignedHealthCenterStaff->health_center_name = $healthCenter->name;
-        // $assignedHealthCenterStaff->health_center_id = $healthCenter->id;
-        // $assignedHealthCenterStaff->save();
-        
-
-
-        // $assignedHealthCenter = new HealthCenters();
-        // $assignedHealthCenter->health
-
-
-        // @dd($request);
         $healthcenter['password'] = Hash::make($healthcenter['password']);
-
-        // $user = User::create($healthcenter);
 
         return redirect('/Admin/User_List')->with('success', 'Register successful');
     }
@@ -201,27 +160,3 @@ class UserController extends Controller
 
     
 
-        // In a controller
-    // public function index(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //                 "email"=> ['required','email'],
-    //                 "password" => 'required',
-    //             ]);
-
-    //     if (auth()->user()->role == User::ROLE_ADMIN) {
-    //         // Logic for admin
-    //     } elseif (auth()->user()->role == User::ROLE_HEALTH_DEPARTMENT) {
-    //         // Logic for manager
-    //     } elseif (auth()->user()->role == User::ROLE_PROGRAM_MANAGER) {
-
-    //     } elseif (auth()->user()->role == User::ROLE_DISTRICT_SUPERVISOR) {
-
-    //     } elseif (auth()->user()->role == User::ROLE_HEALTH_CENTER) {
-    //        // Logic for user
-    //     } else {
-    //         // Logic for guest
-    //     }
-
-    //     // ...
-    // }

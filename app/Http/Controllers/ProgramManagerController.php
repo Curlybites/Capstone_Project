@@ -136,10 +136,8 @@ class ProgramManagerController extends Controller
             ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total','items.item_name')
             ->where('ppmpitemdatas.ppmpitemID', $id)->get();
             
-
         return view('Program_Manager.pmPPMPEdit', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata, 'item' => $items, 'ppmp' => $ppmp, 'program' => $program]);
     }
-
 
     public function PPMPView($id)
     {
@@ -149,15 +147,10 @@ class ProgramManagerController extends Controller
             ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
             ->join('items','ppmpitemdatas.itemname', '=','items.id')
             ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total','items.item_name')
-            ->where('ppmpitemdatas.ppmpitemID', $id)->get();
-
-        // $itemAndppmp = DB::table('ppmpitemdatas')
-        // ->join('ppmpitemdatas.')
-     
+            ->where('ppmpitemdatas.ppmpitemID', $id)->get();     
 
         return view('Program_Manager.pmPPMPView', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata]);
     }
-
 
     public function deletePPMP($id)
     {
