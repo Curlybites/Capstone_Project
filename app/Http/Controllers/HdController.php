@@ -82,7 +82,9 @@ class HdController extends Controller
             Allocateitemtoprogs::create($key);
         }
 
-        return view('Health_Department.hdAllocationProcess', ['user' => $user]);
+        return redirect('/Health_Department/Allocation_List')->with('success', 'Allocation successfuly ');
+
+        // return view('Health_Department.hdAllocationProcess', ['user' => $user]);
     }
 
     // public function hdAllocationProgUpdate(Request $request, $id)
