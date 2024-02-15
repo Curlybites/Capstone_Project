@@ -103,7 +103,6 @@ class HdController extends Controller
     //     // where('allocateIDprogs', $id)->
     // }
 
-
     public function hdAllocationView($id)
     {
         $user = Auth::user();
@@ -115,7 +114,6 @@ class HdController extends Controller
             ->where('allocateitemtoprogs.allocateIDprogs', $id)->get();
         return view('Health_Department.hdAllocationView', ['user' => $user, 'allotoprogview' => $allotoprogview, 'joinedData' => $joinedData]);
     }
-
 
     public function hdAllocationEdit($id)
     {
@@ -147,9 +145,31 @@ class HdController extends Controller
             ]);
         }
 
-        return back()->with('success', 'Records updated successfully');
-    }
+        // Add row to sa allocation edit
+        $validator = Validator::make($request->all(), [
+            'alloprog.*.alloprog_quan' => 'required',
+            'alloprog.*.alloprog_unit' => 'required',
+            'alloprog.*.alloprog_item' => 'required',
+            'alloprog.*.alloprog_descript' => 'nullable|required',
+            'alloprog.*.alloprog_price' => 'required',
+            'alloprog.*.alloprog_pricetotal' => 'required',
+        ]);
 
+        // Check if validation fails
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+
+        // Check if $request->alloprog is not null and is an array
+        if ($request->has('alloprog') && is_array($request->alloprog)) {
+            foreach ($request->alloprog as $key) {
+                $key['allocateIDprogs'] = $allocation->id;
+                Allocateitemtoprogs::create($key);
+            }
+        }
+
+        return redirect('/Health_Department/Allocation_List')->with('success', 'Allocation update successfuly ');
+    }
 
     public function hdAllocationProgDelete($id)
     {
