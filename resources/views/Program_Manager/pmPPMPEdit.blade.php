@@ -240,7 +240,7 @@
                                                                             <input
                                                                                 class="text-center border-0 bg-white ms-2 fs-6"
                                                                                 type="text" name="items_total"
-                                                                                id="total" value=""
+                                                                                id="total" value="{{  $ppmpdatas->items_total}}"
                                                                                 readonly>
                                                                         </div>
                                                                     </th>

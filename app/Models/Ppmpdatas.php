@@ -21,6 +21,7 @@ class Ppmpdatas extends Model
         'schedule',
         'note',
         'status',
+        'items_total',
     ];
 
   
