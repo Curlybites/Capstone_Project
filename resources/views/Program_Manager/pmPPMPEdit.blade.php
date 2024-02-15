@@ -358,28 +358,7 @@
                     $('$item_id').change(function() {
                         var selectedValue = $(this).val();
                     })
-                    // function displaySelectedValue() {
-                    //     // Get the selected value from the <select> tag
-                    //     var selectedValue = document.getElementById('item_id').value;
-
-                    //     // Set the selected value to the input field
-                    //     document.getElementById('item_d').value = selectedValue;
-                    // }
-
-                    // Function to update item details based on the selected option
-                    // function updateItemDetails(selectElement) {
-                    //     var selectedOption = selectElement.options[selectElement.selectedIndex];
-                    //     var description = selectedOption.getAttribute('data-description');
-                    //     var unitprice = selectedOption.getAttribute('data-unitprice');
-
-                    //     // Find the corresponding input fields and update their values
-                    //     var descriptionInput = selectElement.closest('tr').querySelector('input[name="alloprog_descript"]');
-                    //     var priceInput = selectElement.closest('tr').querySelector('input[name="alloprog_price"]');
-
-                    //     descriptionInput.value = description;
-                    //     priceInput.value = unitprice;
-                    // }
-
+       
                     function updateItemDetails(selectItem) {
                         var selectedItemId = $(selectItem).val();
                         var selectedItem = $('option[value="' + selectedItemId + '"]');
