@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 
-<html
-  lang="en"
-  class="light-style customizer-hide"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="./assets/"
-  data-template="vertical-menu-template-free"
->
-  <head>
+<html lang="en" class="light-style customizer-hide" dir="ltr" data-theme="theme-default"
+    data-assets-path="./assets/" data-template="vertical-menu-template-free">
+
+<head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
     <title>QC Login | Medicine Supply Distribution</title>
 
@@ -26,9 +19,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
@@ -50,113 +42,116 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <!-- Content -->
 
     <div class="container-xxl">
-      <div class="authentication-wrapper authentication-basic container-p-y">
-        <div class="authentication-inner">
-          <!-- Register -->
-          <div class="card">
-            <div class="card-body">
-              <!-- Logo -->
-              <div class="app-brand justify-content-center">
-                <a href="index.html" class="app-brand-link gap-2">
-                  <span class="app-brand-logo demo">
-                   
-                  </span>
-                  <span class="app-brand-text demo text-body fw-bolder">
-                    <img src="../assets/img/qc.png" alt="" width="100" class="d-flex align-items-center">
-                  </span>
-                </a>
-              </div>
+        <div class="authentication-wrapper authentication-basic container-p-y">
+            <div class="authentication-inner">
+                <!-- Register -->
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Logo -->
+                        <div class="app-brand justify-content-center">
+                            <a href="index.html" class="app-brand-link gap-2">
+                                <span class="app-brand-logo demo">
 
-              
-              <!-- /Logo -->
-              <h5 class="mb-2 text-center">Welcome to QC Medicine & Supply Distribution System!👋</h5>
-              <p class="mb-4 text-center">Please sign-in to your account and start the adventure</p>
+                                </span>
+                                <span class="app-brand-text demo text-body fw-bolder">
+                                    <img src="../assets/img/qc.png" alt="" width="100"
+                                        class="d-flex align-items-center">
+                                </span>
+                            </a>
+                        </div>
 
-              
-                  @if ($errors->any())
-                      <div class="alert alert-danger alert-dismissible " role="alert">
-                              @foreach ($errors->all() as $error)
-                                  <p>{{ $error }}</p>
-                              @endforeach
-                      </div>
-                  @endif
-                  
-              <form id="formAuthentication" class="mb-3" action="/Login/Process" method="POST">
-                @csrf
-              <div class="mb-3">
-                      <!-- <label class="form-label" for="selectTypeOpt">Type</label> -->
-                      {{-- <a href="{{ '/' }}" class="form-control text-center d-flex align-items-center justify-content-center"><i class='bx bxs-share px-1' ></i>
+
+                        <!-- /Logo -->
+                        <h5 class="mb-2 text-center">Welcome to QC Medicine & Supply Distribution System!👋</h5>
+                        <p class="mb-4 text-center">Please sign-in to your account and start the adventure</p>
+
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger alert-dismissible " role="alert">
+                                @foreach ($errors->all() as $error)
+                                    <p>{{ $error }}</p>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        <form id="formAuthentication" class="mb-3" action="/Login/Process" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <!-- <label class="form-label" for="selectTypeOpt">Type</label> -->
+                                {{-- <a href="{{ '/' }}" class="form-control text-center d-flex align-items-center justify-content-center"><i class='bx bxs-share px-1' ></i>
                       BACK
                       </a> --}}
-                      <!-- <select id="selectTypeOpt" class="form-select color-dropdown">
+                                <!-- <select id="selectTypeOpt" class="form-select color-dropdown">
                         <option value="bg-primary" selected><a href="">Health Department</a></option>
                         <option value="bg-secondary">Program Manager</option>
                         <option value="bg-success">District</option>
                         <option value="bg-danger">Health Center</option>
                       </select> -->
-              </div>
+                            </div>
 
 
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email or Username</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email or username"
-                    autofocus
-                    required
-                  />
-                </div>
-                <div class="mb-3 form-password-toggle">
-                  <div class="d-flex justify-content-between">
-                    <label class="form-label" for="password">Password</label>
-                    <a href="auth-forgot-password-basic.html">
-                      <small>Forgot Password?</small>
-                    </a>
-                  </div>
-                  <div class="input-group input-group-merge">
-                    <input
-                      type="password"
-                      id="password"
-                      class="form-control"
-                      name="password"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                      aria-describedby="password"
-                    required
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email or Username</label>
+                                <input type="text"
+                                    class="form-control @if (session('error')) is-invalid @endif"
+                                    id="email" name="email" placeholder="Enter your email or username" autofocus
+                                    required />
+                                @if (session('error'))
+                                    <div class="invalid-feedback" id="emailFeedback">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+                            </div>
 
-                    />
-                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <div class="form-check">
-                  
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" name="login" type="submit">Sign in</button>
-                </div>
-              </form>
 
-           
+
+                            <div class="mb-3 form-password-toggle">
+                                <div class="d-flex justify-content-between">
+                                    <label class="form-label" for="password">Password</label>
+                                    <a href="auth-forgot-password-basic.html">
+                                        <small>Forgot Password?</small>
+                                    </a>
+                                </div>
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="password" class="form-control @if (session('error')) is-invalid @endif" " name="password"
+                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                        aria-describedby="password" required />
+                                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                    @if (session('error'))
+                                    <div class="invalid-feedback" id="emailFeedback">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-primary d-grid w-100" name="login" type="submit">Sign
+                                    in</button>
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+                <!-- /Register -->
             </div>
-          </div>
-          <!-- /Register -->
         </div>
-      </div>
     </div>
 
     <!-- / Content -->
 
-   
+
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -177,5 +172,6 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </body>
+</body>
+
 </html>

@@ -110,7 +110,7 @@ class UserController extends Controller
         }
     } else {
         // Authentication failed, return to login with an error message
-        return back()->withErrors(['email' => 'Invalid email or password']);
+        return back()->with(['error' => 'Invalid email or password']);
     }
 }
 
