@@ -35,13 +35,7 @@ class HcController extends Controller
         $user = Auth::user();
         return view('Health_Center.hcPatient', ['user' => $user]);
     }
-    // public function hcPatientView()
-    // {
-    //     $user = Auth::user();
-    //     // return view('Health_Center.hcPatientView', ['user' => $user]);
-    //     // $tableData = Patient::all($id); // Replace TableName with your actual model name
-    //     return view('Health_Center.hcPatientView');
-    // }
+
     public function hcPatientView($id)
     {
         $user = Auth::user();
@@ -58,10 +52,6 @@ class HcController extends Controller
 
     public function listPatientPrint()
     {
-        // $user = Auth::user();
-        // $tableData = Patient::find($id); // Replace TableName with your actual model name
-        // return view('Health_Center.hcPatientPrint', ['user' => $user, 'tableData' => $tableData]);
-
         $user = Auth::user();
         return view('Health_Center.hcPatientPrint', ['user' => $user]);
     }
@@ -97,33 +87,6 @@ class HcController extends Controller
         return back()->with('success', 'ikaw na bahala');
     }
 
-    // public function itemSentPatient(Request $request, $id)
-    // {
-    //     $patients = Patient::find($id);
-
-    //     $request->validate([
-
-    //         'quantity' => 'required',
-    //         'type' => 'required',
-    //         'name' => 'required',
-    //         'program' => 'required',
-    //         'expiration' => 'required',
-
-    //     ]);
-
-    //     Send::create($request->all());
-
-    //     return back()->with('success', 'ikaw na bahala');
-    // }
-
-
-    // public function listPatientnMedicine()
-    // {
-    //     $tableData = Patient::all(); // Replace TableName with your actual model name
-    //     return view('Health_Center.hcPatientPrint', ['tableData' => $tableData]);
-    // }
-
-
     // FOR LIST OF PATIENT AND UPDATE
     public function listPatient()
     {
@@ -148,45 +111,6 @@ class HcController extends Controller
         $itemid = HcInventoryItems::find($id);
         return view('Health_Center.hcItemList', ['user' => $user, 'patientid' => $patientid, 'itemid' => $itemid]);
     }
-
-
-    // NAG GEGET PERO DI PUMAPASOK SA DB
-    // public function HcSendItemsInput(Request $request)
-    // {
-    //     $request->validate([
-
-    //         'patient_ID' => 'required',
-    //         'items_id' => 'required',
-    //         'quantity' => 'required',
-    //     ]);
-
-    //     try {
-    //         HcSendItems::create($request->all());
-    //         return back()->with('success', 'Data has been saved successfully.');
-    //     } catch (\Exception $e) {
-    //         return back()->with('error', 'An error occurred. Please try again.');
-    //     }
-
-    //     // HcSendItems::create($request->all());
-
-    //     // $data1 = [ 
-    //     //     'quantity' => $request->input('quantity'),
-    //     //     'unit' => $request->input('unit'),
-    //     //     'item' => $request->input('item'),
-    //     //     'description' =>  $request->input('description')
-    //     // ];
-    //     // $record1 = HcSendItems::create($data1);
-
-    //     // $data2 = [
-    //     //     'fname' => $request->input('fname'),
-    //     //     'mname' => $request->input('mname'),
-    //     //     'lname' => $request->input('lname')
-    //     //     // Add more fields as needed for table2
-    //     // ];
-    //     // $record2 = Patient::create($data2);
-
-    //     // return back()->with('success', 'ikaw na bahala');
-    // }
 
     public function HcSendItemsInput(Request $request)
     {
@@ -218,20 +142,6 @@ class HcController extends Controller
         return view('Health_Center.hcSendItems', ['user' => $user, 'tableData' => $tableData]);
     }
 
-    // FOR INVENTORY
-
-
-    // public function index(Request $request)
-    // {
-
-    //     $search = $request->input('search');
-
-    //     // Use the where method to filter by the 'name' column
-    //     $items = Items::where('name', 'like', '%' . $search . '%')->get();
-
-    //     return view('Health_Center.hcItemList', compact('items'));
-    // }
-
 
     // FOR ACCCOUT
     public function hcAccount()
@@ -245,8 +155,4 @@ class HcController extends Controller
         $user = Auth::user();
         return view('Health_Center.hcAccountChange', ['user' => $user]);
     }
-
-    // JOIN FOR PATIENT VIEW
-
-    // public function patientView()
 }
