@@ -6,7 +6,7 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('Components.sidebar.pm_sidebar')
+            @include('components.sidebar.supplier_sidebar')
 
             <!-- Layout container -->
             <div class="layout-page">
@@ -45,7 +45,7 @@
                                                 }
                                             </script>
                                             <a type="button" class="btn btn-danger"
-                                                href="{{ '/Program_Manager/PPMPlist' }}">Back</a>
+                                                href="{{ '/Supplier/PPMP_List' }}">Back</a>
                                         </div>
                                     </div>
                                     <hr class="my-0">

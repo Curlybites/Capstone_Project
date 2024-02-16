@@ -9,6 +9,7 @@ use App\Models\Items;
 use App\Models\Program;
 use App\Models\Ppmpdatas;
 use App\Models\Ppmpitemdatas;
+use Illuminate\Support\Facades\DB;
 // use Faker\Core\File;
 
 class SupplierController extends Controller
@@ -43,6 +44,58 @@ class SupplierController extends Controller
         $ppmp = Ppmpdatas::all();
         return view('Supplier.Po', ['user' => $user, 'ppmp' => $ppmp, 'program' => $program]);
     }
+
+    public function ppmp_view($id)
+    {
+        $user = Auth::user();
+        $ppmpdatas = Ppmpdatas::findOrfail($id);
+        $joinedppmpdata = DB::table('ppmpitemdatas')
+            ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
+            ->join('items','ppmpitemdatas.itemname', '=','items.id')
+            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total','items.item_name')
+            ->where('ppmpitemdatas.ppmpitemID', $id)->get();     
+
+        return view('Supplier.Po_view', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata]);
+    }
+
+    public function ppmp_update(Request $request, $id)
+    {
+        $PPMP = Ppmpdatas::findOrFail($id);
+        $PPMP->update($request->all());
+
+        $ppmpitems = Ppmpitemdatas::findOrFail($id);
+        $ppmpitems->update($request->all());
+
+        return redirect('/Supplier/PPMP_List')->with('success', 'PPMP updated successfully.');
+    }
+
+
+    public function ppmp_edit($id)
+    {
+        $program = Program::all();
+        $ppmp = Ppmpdatas::all();
+        $items = Items::all();
+        $user = Auth::user();
+        $ppmpdatas = Ppmpdatas::findOrfail($id);
+        $joinedppmpdata = DB::table('ppmpitemdatas')
+            ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
+            ->join('items','ppmpitemdatas.itemname', '=','items.id')
+            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total','items.item_name')
+            ->where('ppmpitemdatas.ppmpitemID', $id)->get();
+
+        return view('Supplier.Po_edit', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata, 'item' => $items, 'ppmp' => $ppmp, 'program' => $program]);
+    }
+
+    
+    public function deletePPMP($id)
+    {
+        $ppmp = Ppmpdatas::find($id);
+        $ppmp->delete();
+        Ppmpitemdatas::where('ppmpitemID', $ppmp->id)->delete();
+
+        return back()->with('success', 'PPMP is deleted sucessfully');
+    }
+
 
     public function storeItem(Request $request)
     {
@@ -91,20 +144,6 @@ class SupplierController extends Controller
         }
         $item->save();
 
-        // $model = Items::findOrFail($id);
-
-        // // Check if a new image file is uploaded
-        // if ($request->hasFile('item_image')) {
-        //     // Upload the new image file
-        //     $imagePath = $request->file('item_image')->store('public/images');
-
-        //     // Update the image field with the new image path
-        //     $model->item_image = $imagePath;
-        // }
-
-        // Save the model
-        // $model->save();
-
         return back()->with('success', 'Product updated successfully.');
     }
 
@@ -116,4 +155,8 @@ class SupplierController extends Controller
 
         return back()->with('success', 'Product deleted successfully.');
     }
+
+
+
+
 }

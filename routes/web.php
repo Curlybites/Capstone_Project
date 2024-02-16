@@ -172,15 +172,12 @@ Route::middleware(['auth', 'supplier'])->group(function () {
     Route::get('/Supplier/Account_Profile', [SupplierController::class, 'profileSupplier']);
     Route::get('/Supplier/Account_Change_Password', [SupplierController::class, 'profileChangeSupplier']);
     Route::get('/Supplier/PPMP_List', [SupplierController::class, 'ppmp']);
+    Route::get('/Supplier/PPMP_View{id}',[SupplierController::class,'ppmp_view']);
+    Route::get('/Supplier/PPMP_Edit{id}',[SupplierController::class,'ppmp_edit']);
+    Route::put('/Supplier/PPMP_Edit{id}',[SupplierController::class,'ppmp_update'])->name('supplier_ppmp.update');
+    Route::delete('/Supplier/PPMP_List{id}', [SupplierController::class,'deletePPMP'])->name('supplier_ppmp.delete');
 });
 
-// Program Manager route
-Route::controller(ProgramManagerController::class)->group(function () {
-    Route::get('/Program_Manager/Inventorylist', 'Inventorypage')->middleware('auth');
-    Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
-    Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
-    Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
-});
 
 Route::controller(HcController::class)->group(function () {
 

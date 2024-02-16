@@ -61,6 +61,7 @@ class ProgramManagerController extends Controller
         $user = Auth::user();
         return view('Program_Manager.pmAllocationView', ['user' => $user]);
     }
+    
     public function pmAllocationEdit()
     {
         $user = Auth::user();
