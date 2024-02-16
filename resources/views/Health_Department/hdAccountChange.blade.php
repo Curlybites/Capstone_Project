@@ -19,21 +19,21 @@
                     <!-- Content -->
 
                     <div class="container-fluid flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account /</span> Profile
-                        </h4>
+                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account /</span> Profile
+                        </h4> --}}
 
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
                                     <li class="nav-item">
-                                        <a class="nav-link" href={{ '/Health_Department/Profile' }}><i
+                                        <a class="nav-link" href={{ '/Health_Center/Profile' }}><i
                                                 class="bx
                                             bx-user me-1"></i>
                                             Account</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link active d-flex align-items-center justify-content-center"
-                                            href={{ '/Health_Department/Profile_Change' }}>
+                                            href={{ '/Health_Center/Profile_Change' }}>
                                             <i class='bx bx-lock-alt'></i>
                                             <span>Change Password</span>
                                         </a>

@@ -10,7 +10,7 @@ class AssignedProgramManager extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'program_manager_id',
         'program_id',
     ];
 }

@@ -10,6 +10,7 @@ class HealthCenters extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'barangay_id',
     ];
 }

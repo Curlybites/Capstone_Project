@@ -49,14 +49,14 @@
         </li>
 
         <li
-            class="menu-item {{ ((Request::is('Health_Department/Allocation_List') || Request::is('Health_Department/Allocation_Process') ? 'active open' : '' || Request::is('Health_Department/Allocation_View')) ? 'active open' : '' || Request::is('Health_Department/Allocation_Edit')) ? 'active open' : '' }}">
+            class="menu-item {{ Request::is('Health_Department/Allocation_List') || Request::is('Health_Department/Allocation_Process') || (isset($allotoprogview) && Request::is('Health_Department/Allocation_View_' . $allotoprogview->id)) || (isset($allotoprogedit) && Request::is('Health_Department/Allocation_Edit_' . $allotoprogedit->id)) ? 'active open' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class='menu-icon tf-icons bx bxs-right-arrow-square'></i>
                 <div data-i18n="Extended UI">Allocation</div>
             </a>
             <ul class="menu-sub">
                 <li
-                    class="menu-item {{ ((Request::is('Health_Department/Allocation_List') ? 'active' : '' || Request::is('Health_Department/Allocation_View')) ? 'active open' : '' || Request::is('Health_Department/Allocation_Edit')) ? 'active open' : '' }}  ">
+                    class="menu-item {{ Request::is('Health_Department/Allocation_List') || (isset($allotoprogview) && Request::is('Health_Department/Allocation_View_' . $allotoprogview->id)) || (isset($allotoprogedit) && Request::is('Health_Department/Allocation_Edit_' . $allotoprogedit->id)) ? 'active open' : '' }}">
                     <a href="{{ '/Health_Department/Allocation_List' }}" class="menu-link">
                         <div data-i18n="Perfect Scrollbar">Allocation List</div>
                     </a>

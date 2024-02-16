@@ -57,4 +57,40 @@ class DistrictController extends Controller
 
         return redirect()->route('district.districtList')->with('success', 'District deleted successfully!');
     }
+
+
+    //Blade Pages//
+    public function receive()
+    {
+        $user = Auth::user();
+        return view('District.dtReceive', ['user' => $user]);
+    }
+
+    public function dtInventory_List()
+    {
+        $user = Auth::user();
+        return view('District.dtInventory', ['user' => $user]);
+    }
+
+    public function allocation()
+    {
+        $user = Auth::user();
+        return view('District.dtAllocation', ['user' => $user]);
+    }
+    public function Report()
+    {
+        $user = Auth::user();
+        return view('District.dtReports', ['user' => $user]);
+    }
+
+    public function Account()
+    {
+        $user = Auth::user();
+        return view('District.dtAccount', ['user' => $user]);
+    }
+    public function AccountChange()
+    {
+        $user = Auth::user();
+        return view('District.dtAccountChange', ['user' => $user]);
+    }
 }

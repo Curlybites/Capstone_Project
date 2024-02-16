@@ -7,7 +7,6 @@
             {{-- sidebar --}}
             @include('components.sidebar.admin_sidebar')
 
-
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->

@@ -1,4 +1,4 @@
-@include('components.header');
+@include('components.header')
 
 <body>
     <!-- Layout wrapper -->
@@ -69,7 +69,7 @@
                                                                             <option selected>Choose Program Manager
                                                                             </option>
                                                                             @foreach( $userData as $programRow)
-                                                                            <option value="{{ $programRow->firstname }} {{ $programRow->lastname }}">{{ $programRow->firstname }} {{ $programRow->lastname }}</option>
+                                                                            <option value="{{ $programRow->id }}">{{ $programRow->firstname }} {{ $programRow->lastname }}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
@@ -101,13 +101,11 @@
                                                     <th>Action</th>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($programData as $programRow)
+                                                    @foreach ($usersData as $programRow)
                                                         <tr>
                                                             <td>{{ $programRow->id }}</td>
-                                                            <td>{{ $programRow->name }}</td>
-                                                            @foreach ( $assignedData as $assignedRow )
-                                                            <td>{{ $assignedRow->name }} </td>
-                                                            @endforeach
+                                                            <td>{{ $programRow->name }}</td>      
+                                                            <td>{{ $programRow->firstname }} {{ $programRow->lastname }}</td>
                                                             <td>
                                                                 <a type="button" href="" class="text-primary"
                                                                     data-bs-toggle="modal"
@@ -122,29 +120,7 @@
                                                             </td>
                                                         </tr>
 
-                                                        {{-- <div class="modal fade" id="exampleModal1" tabindex="-1"
-                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                                        Profile View</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                    <button type="submit" class="btn btn-primary">Save
-                                                                        changes</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div> --}}
+                                                    
 
                                                         <div class="modal fade" id="exampleModal2{{ $programRow->id }}"
                                                             tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -182,19 +158,19 @@
                                                                             <div class="col">
                                                                                 <p>Program Manager</p>
                                                                                 <div class="input-group mb-3">
-                                                                                    @foreach ($userData as $programRow)
                                                                                         <select class="form-select"
                                                                                             aria-label="Default select example"
                                                                                             name="programManager">
                                                                                             <option selected>Assign to
                                                                                                 Program Manager</option>
+                                                                                     @foreach ($userData as $programRow)
                                                                                             <option
                                                                                                 value="{{ $programRow->id }}">
                                                                                                 {{ $programRow->firstname }}
                                                                                                 {{ $programRow->lastname }}
                                                                                             </option>
-                                                                                        </select>
                                                                                     @endforeach
+                                                                                        </select>
                                                                                 </div>
                                                                             </div>
 
@@ -211,50 +187,7 @@
                                                         </div>
                                                         </form>
 
-                                                        {{-- Assigning to Program Manager --}}
-
-                                                        {{-- <div class="modal fade" id="exampleModal3{{ $programRow->id }}"
-                                                            tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">
-                                                                            Assign to Program Manager</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal"
-                                                                            aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form
-                                                                            action={{ "/Admin/Program_List/$programRow->id" }}
-                                                                            method="POST">
-                                                                            @csrf
-                                                                            @method('PUT')
-                                                                            <div class="col">
-                                                                                <p>Program Name</p>
-                                                                                <div class="input-group mb-3">
-                                                                                    @foreach ($userData as $programRow)
-                                                                                    <select class="form-select" aria-label="Default select example" name="programManager">
-                                                                                        <option selected>Assign to Program Manager</option>
-                                                                                        <option value="{{ $programRow->id }}">{{ $programRow->firstname }} {{ $programRow->lastname }}</option>
-                                                                                      </select>
-                                                                                    @endforeach
-                                                                                </div>
-                                                                            </div>
-
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit"
-                                                                            class="btn btn-primary">Save
-                                                                            changes</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        </form> --}}
+                                                       
                                                     @endforeach
                                                 </tbody>
                                                 </tfoot>

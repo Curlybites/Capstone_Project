@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Models\Items;
+use App\Models\Program;
+use App\Models\Ppmpdatas;
+use App\Models\Ppmpitemdatas;
 // use Faker\Core\File;
 
 class SupplierController extends Controller
@@ -15,10 +18,10 @@ class SupplierController extends Controller
         $user = Auth::user();
         $item = Items::all();
         $totalItem = Items::count();
-        $totalItemActive = Items::all()->Where('status',1)->count();
+        $totalItemActive = Items::all()->Where('status', 1)->count();
         $totalItemInactive = Items::all()->where('status', 2)->count();
 
-        return view('Supplier.Item', ['user' => $user, 'item' => $item ,'totalItem'=> $totalItem, 'totalActive'=>$totalItemActive , 'totalInactive'=>$totalItemInactive]);
+        return view('Supplier.Item', ['user' => $user, 'item' => $item, 'totalItem' => $totalItem, 'totalActive' => $totalItemActive, 'totalInactive' => $totalItemInactive]);
     }
 
     public function profileSupplier()
@@ -35,8 +38,10 @@ class SupplierController extends Controller
 
     public function ppmp()
     {
+        $program = Program::all();
         $user = Auth::user();
-        return view('Supplier.Po', ['user' => $user]);
+        $ppmp = Ppmpdatas::all();
+        return view('Supplier.Po', ['user' => $user, 'ppmp' => $ppmp, 'program' => $program]);
     }
 
     public function storeItem(Request $request)
@@ -111,12 +116,4 @@ class SupplierController extends Controller
 
         return back()->with('success', 'Product deleted successfully.');
     }
-
-
-
-
-
-
-
-
 }

@@ -6,6 +6,8 @@
         <div class="layout-container">
             <!-- Menu -->
 
+            
+
             @include('components.sidebar.admin_sidebar')
             <!-- / Menu -->
 
@@ -15,12 +17,12 @@
                 @include('components.navbar.navbar')
                 <!-- / Navbar -->
 
-
-
                 <div class="content-wrapper">
                     <!-- Content -->
-
-
+                    @if (session('success'))
+                        @include('components.notification')
+                    @endif
+                    
                     <div class="container-fluid  flex-grow-1 container-p-y">
                         {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Users /</span> List of Users
                         </h4> --}}
@@ -256,31 +258,41 @@
 
                                                             <div class="row border-top pt-4">
                                                                 <h5>Designation / Role Setup</h5>
-
-                                                                <div class="col">
+                                                            
+                                                                <div class="col-md-6">
                                                                     <p>Select Role Type</p>
                                                                     <div class="input-group mb-3">
-                                                                        <select class="form-select"
+                                                                        <select id="role" class="form-select"
                                                                             aria-label="Default select example"
                                                                             name="role">
-                                                                            <option value="1">Admin</option>
-                                                                            <option value="2">Program Manager
-                                                                            </option>
-                                                                            <option value="3">Health Department
-                                                                                Staff
-                                                                            </option>
-                                                                            <option value="4">District Stafff
-                                                                            </option>
-                                                                            <option value="5">Brgy. Health Center
-                                                                                Staff</option>
-                                                                            <option value="6">Supplier</option>
+                                                                            @foreach ($roleData as $userRow)
+                                                                            <option value="{{ $userRow->id }}">{{ $userRow->name}}</option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </div>
                                                                 </div>
+                                                                
+                                                                {{-- <div class="col-md-6">
+                                                                    <p>Select Health Center</p>
+                                                                    <div class="input-group mb-3" id="optionHealthCenter" style="display: none;" ">
+                                                                        <select id="healthCenter" class="form-select"
+                                                                            aria-label="Default select example"
+                                                                            name="healthCenter">
+                                                                            <option selected value="">Choose Barangay
+                                                                            </option>
+                                                                            @foreach ($healthCenterData as $userRow)
+                                                                            <option value="{{$userRow->id}}">{{$userRow->name}}</option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div> --}}
+                                                                    
+                                                                
+
+                                    
 
 
                                                             </div>
-
                                                         </div>
                                                         <div class="modal-footer border-1">
                                                             <button type="button" class="btn btn-secondary mt-3"
@@ -509,11 +521,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-
-
-
-
                                                 </tbody>
                                                 </tfoot>
                                             </table>
@@ -539,3 +546,16 @@
                 <!--footer-->
 
                 @include('components.footer');
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                
+                <script>
+                    $('#role').change(function() {
+                        var selectedValue = $(this).val();
+                        if(selectedValue === '5') {
+                            $('#optionHealthCenter').show();
+                        }else {
+                            $('#optionHealthCenter').hide();
+                        }
+                    });
+                </script>

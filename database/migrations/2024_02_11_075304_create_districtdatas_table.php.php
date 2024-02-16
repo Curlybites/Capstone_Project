@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('barangays', function (Blueprint $table) {
+        Schema::create('districtdatas', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->year('PO#');
+            $table->string('datacreated');
+            $table->string('programtitle');
+            $table->string('itemname');
+            $table->string('total');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -23,6 +28,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('barangays');
+        Schema::dropIfExists('districtdatas');
     }
+    
+
 };

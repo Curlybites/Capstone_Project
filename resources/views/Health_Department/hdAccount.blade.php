@@ -6,12 +6,12 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('components.sidebar.hd_sidebar')
+            @include('components.sidebar.hd_sidebar');
 
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-                @include('components.navbar.navbar');
+                @include('components.navbar.navbar')
                 <!-- Navbar End-->
 
 
@@ -20,8 +20,8 @@
                     <!-- Content -->
 
                     <div class="container-fluid flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account /</span> Profile
-                        </h4>
+                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account /</span> Profile
+                        </h4> --}}
 
                         <div class="row">
                             <div class="col-md-12">
