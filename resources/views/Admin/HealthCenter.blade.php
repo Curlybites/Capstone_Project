@@ -69,7 +69,7 @@
                                                                             @foreach ($barangayData as $healthcenterRow)
                                                                                 <option
                                                                                     value="{{ $healthcenterRow->id }}">
-                                                                                    {{ $healthcenterRow->name }}
+                                                                                    {{ $healthcenterRow->barangay_name }}
                                                                                 </option>
                                                                             @endforeach
                                                                         </select>
@@ -120,8 +120,8 @@
                                                     @foreach ($healthCentersData as $healthCenterRow)
                                                         <tr>
                                                             {{-- <td>{{ $healthCenterRow->id }}</td> --}}
-                                                            <td>{{ $healthCenterRow->name }}</td>
-                                                            <td>{{ $healthCenterRow->name }}</td>
+                                                            <td>{{ $healthCenterRow->health_center_name }}</td>
+                                                            <td>{{ $healthCenterRow->barangay_name }}</td>
                                                             <td class="">
                                                                 <a type="button" href=/Admin/Edit/ class="text-primary"
                                                                     data-bs-toggle="modal"

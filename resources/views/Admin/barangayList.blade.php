@@ -110,7 +110,7 @@
                                                     @foreach ($barangaysData as $barangayRow)
                                                         <tr>
                                                             {{-- <td>{{ $barangayRow->id }}</td> --}}
-                                                            <td>{{ $barangayRow->name }}</td>
+                                                            <td>{{ $barangayRow->barangay_name }}</td>
                                                             <td>{{ $barangayRow->number }}</td>
                                                             <td>
                                                                 {{-- <a
