@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('ppmpitemID');
             $table->integer('quantity')->nullable();
-            $table->integer('unit');
+            $table->string('unit');
             $table->string('itemname');
             $table->string('description');
             $table->integer('unitprice');
