@@ -28,10 +28,21 @@ use App\Models\District;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-
 // Route For Login
 Route::get('/', [PageController::class, 'AdminLogin'])->name('login');
+
+//Route for User Controller 
+Route::controller(UserController::class)->group(function () {
+    Route::get('/Admin/User_List', 'userlistPage');
+    Route::post('/Admin/Store', 'store');
+    Route::get('/Admin/Add_User', 'createUserPage')->middleware('auth');
+    Route::get('/Admin/User_List', 'userList')->middleware('auth');
+    Route::get('/Admin/User_List/$id',)->middleware('auth');
+    Route::post('/Login/Process', 'LoginProcess');
+    Route::post('/Logout', 'logout');
+    Route::get('/change-password', 'changePassword')->name('changePassword');
+    Route::post('/change-password', 'ChangePasswordSave')->name('changePass');
+});
 
 // Route For Admin
 Route::middleware(['auth', 'admin'])->group(function () {
