@@ -315,7 +315,7 @@
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
+                                                        {{-- <th>#</th> --}}
                                                         <th>Name</th>
                                                         {{-- <th>Name</th>
                                                         <th>Email</th> --}}
@@ -329,7 +329,7 @@
                                                 <tbody>
                                                     @foreach ($users as $user)
                                                         <tr>
-                                                            <td>{{ $user->id }}</td>
+                                                            {{-- <td>{{ $user->id }}</td> --}}
                                                             <td class="sorting_1">
                                                                 <div
                                                                     class="d-flex justify-content-start align-items-center user-name">

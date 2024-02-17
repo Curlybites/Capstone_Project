@@ -100,16 +100,18 @@
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
+                                                        {{-- <th>#</th> --}}
                                                         <th>Barangay Name</th>
+                                                        <th>District</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($barangayData as $barangayRow)
+                                                    @foreach ($barangaysData as $barangayRow)
                                                         <tr>
-                                                            <td>{{ $barangayRow->id }}</td>
+                                                            {{-- <td>{{ $barangayRow->id }}</td> --}}
                                                             <td>{{ $barangayRow->name }}</td>
+                                                            <td>{{ $barangayRow->number }}</td>
                                                             <td>
                                                                 {{-- <a
                                                                 type="button" href=/Admin/User_List/1
