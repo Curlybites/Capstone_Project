@@ -168,6 +168,7 @@ Route::middleware(['auth', 'health_center'])->group(function () {
 Route::middleware(['auth', 'supplier'])->group(function () {
     Route::get('/Supplier/Dashboard', [PageController::class, 'supplierDashboard']);
 
+    Route::get('/Supplier/Dashboard', [PageController::class, 'supplierDashboard']);
 
     Route::post('/Supplier/Item_List', [SupplierController::class, 'storeItem'])->name('products.store');
     Route::put('/Supplier/Item_List/{id}', [SupplierController::class, 'updateItem'])->name('products.update');
@@ -176,6 +177,10 @@ Route::middleware(['auth', 'supplier'])->group(function () {
     Route::get('/Supplier/Account_Profile', [SupplierController::class, 'profileSupplier']);
     Route::get('/Supplier/Account_Change_Password', [SupplierController::class, 'profileChangeSupplier']);
     Route::get('/Supplier/PPMP_List', [SupplierController::class, 'ppmp']);
+    Route::get('/Supplier/PPMP_View{id}',[SupplierController::class,'ppmp_view']);
+    Route::get('/Supplier/PPMP_Edit{id}',[SupplierController::class,'ppmp_edit']);
+    Route::put('/Supplier/PPMP_Edit{id}',[SupplierController::class,'ppmp_update'])->name('supplier_ppmp.update');
+    Route::delete('/Supplier/PPMP_List{id}', [SupplierController::class,'deletePPMP'])->name('supplier_ppmp.delete');
 });
 
 
