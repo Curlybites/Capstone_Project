@@ -120,6 +120,43 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style= "text-align: center" >
+                                                            <div class="dropdown">
+                                                                <button type="button"
+                                                                    class="btn p-0 dropdown-toggle hide-arrow"
+                                                                    data-bs-toggle="dropdown"><i
+                                                                        class="bx bx-dots-vertical-rounded"></i></button>
+                                                                <div class="dropdown-menu">
+                                                                    <a class="dropdown-item"
+                                                                        href="{{ '/District/District_Allocation_View' }}">
+                                                                        <i class="bi bi-eye-fill me-2"></i>View
+                                                                    </a>
+                                                                    <a class="dropdown-item" {{-- data-bs-toggle="modal" --}}
+                                                                        {{-- data-bs-target="#exampleModal2"  --}}
+                                                                        href="{{ '/District/District_Allocation_Edit' }}"><i
+                                                                            class="bx bx-edit-alt me-2"></i>Edit</a>
+                                                                    <a class="dropdown-item" href=""><i
+                                                                            class="bx bx-trash me-2"></i>Delete</a>
+                                                                </div>
+                                                        </td>
+                                                        {{-- @foreach ($items as $item)
+                                                        
+                                                            <td>{{ $item->name }}</td>
+                                                            <td>{{ $item->type }}</td>
+                                                            <td>{{ $item->program }}</td>
+                                                            <td>{{ $item->expiration }}</td>
+                                                            <td>{{ $item->quantity }}</td>
+                                                        
+                                                    @endforeach --}}
+                                                        
+                                                    </tr>
                                                     {{-- @foreach ($items as $item)
                                                         <tr>
                                                             <td>{{ $item->name }}</td>
