@@ -210,7 +210,7 @@
                                                                     <td
                                                                         class="align-middle p-0 text-center text-wrap ">
 
-                                                                        <textarea type="text" id="item_d" class="form-control text-center text-wrap text-break border-0"
+                                                                        <textarea type="text" id="item_d" class="form-control text-start text-wrap text-break border-0"
                                                                             name="ppmp[0][description]" value="" cols="30" rows="2"></textarea>
                                                                     </td>
                                                                     <td
@@ -356,7 +356,7 @@
 
                         newRow += `</select>` +
                             `</td>` +
-                            `<td class="align-middle p-0 text-center"><textarea class="form-control text-center border-0" name="ppmp[` +
+                            `<td class="align-middle p-0 text-center"><textarea class="form-control text-start border-0" name="ppmp[` +
                             i + `][description]" id="item_d"></textarea> </td>` +
                             `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="ppmp[` +
                             i + `][unit]"></td>` +
