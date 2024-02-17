@@ -387,7 +387,7 @@
                                                         </td>
                                                     </tr>
                                             </tbody>
-                                            Modal for edit
+                                        
                                             <div class="modal fade" id="exampleModal2{{ $ppmps->id }}"
                                                 tabindex="-1"
                                                 aria-labelledby="exampleModalLabel{{ $ppmps->id }}"
