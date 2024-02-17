@@ -22,16 +22,104 @@
                     <div class="container-fluid  flex-grow-1 container-p-y">
                         {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">PPMP /</span> List of PPMP
                         </h4> --}}
+                        <div class="row g-4 mb-4">
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <span>ALL PPMP</span>
+                                                <div class="d-flex align-items-end mt-2">
+                                                    <h4 class="mb-0 me-2">{{ $totalPPMP }}</h4>
+                                                    <small class="text-primary">Total PPMP</small>
+                                                </div>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-primary">
+                                                    <i class='bx bx-package'></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <span>PPMP Approve</span>
+                                                <div class="d-flex align-items-end mt-2">
+                                                    <h4 class="mb-0 me-2">{{ $totalApprove }}</h4>
+                                                    <small class="text-success">Total Approve</small>
+                                                </div>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-primary">
+                                                    <i class='bx bx-package'></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <span>PPMP Pending</span>
+                                                <div class="d-flex align-items-end mt-2">
+                                                    <h4 class="mb-0 me-2">{{ $totalPending }}</h4>
+                                                    <small class="text-warning">Total Pending</small>
+                                                </div>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-success">
+                                                    <i class='bx bx-package'></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <span>PPMP Disapprove</span>
+                                                <div class="d-flex align-items-end mt-2">
+                                                    <h4 class="mb-0 me-2">{{ $totalDisapprove }}</h4>
+                                                    <small class="text-danger">Total Dissaprove</small>
+                                                </div>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-danger">
+                                                    <i class='bx bx-package'></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
                         <div class="row">
                             <div class="col-md-12">
+                            
                                 <div class="card mb-4">
+                                    
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
                                         <h5 class="card-header">PPMP List</h5>
-                                        <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
+                                        {{-- <button class="btn btn-outline-success mx-4 px-4 py-2 " data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
-                                            New</button>
+                                            New</button> --}}
 
                                         <div class="modal fade" id="exampleModal" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -214,7 +302,7 @@
 
                                     <hr class="my-0">
                                     <!-- Account -->
-                                    <div class="card-body p-5 ">
+                                    <div class="card-body p-3 ">
                                         <div class="table-responsive text-nowrap overflow-visible">
                                             <table id="dataTable" class="datatables-basic table   border-top "
                                                 style="width:100%">
@@ -280,9 +368,9 @@
 
                                                                     <a class="dropdown-item text-info"
                                                                         href="{{ "/Supplier/PPMP_Edit{$ppmps->id}" }}"><i
-                                                                            class="bx bx-edit-alt me-2"></i>Edit</a>
+                                                                            class="bx bx-edit-alt me-2"></i>Check</a>
 
-                                                                    <a>
+                                                                    {{-- <a>
                                                                         <form
                                                                             action="{{ route('supplier_ppmp.delete', $ppmps->id) }}"
                                                                             method="POST">
@@ -293,7 +381,7 @@
                                                                                     class="bi bi-trash-fill fs-5"></i>
                                                                                 Delete</button>
                                                                         </form>
-                                                                    </a>
+                                                                    </a> --}}
                                                                     </ul>
                                                                 </div>
                                                         </td>
