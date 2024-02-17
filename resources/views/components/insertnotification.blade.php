@@ -3,7 +3,7 @@
     <i class='bx bx-bell d-block w-px-20 h-auto rounded me-2' ></i>
     {{-- <i class='bx bxs-bell  d-block w-px-20 h-auto rounded me-2'></i> --}}
     <div class="me-auto fw-medium text-white">QCMDS Notification</div>
-        <small>Just now</small>
+        <small class="text-white">Just now</small>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
      <div class="toast-body text-white">

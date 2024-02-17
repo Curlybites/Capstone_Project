@@ -92,9 +92,9 @@
                                                 </div>
 
                                             </div>
-                                            <div class="text-nowrap">
+                                            <div class="text-nowrap ">
                                                 <table id=""
-                                                    class="datatables-basic table border-top table-bordered"
+                                                    class="datatables-basic table border-top table-bordered "
                                                     style="width:100%">
                                                     <thead>
                                                         <tr class="text-center">
@@ -109,7 +109,7 @@
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($joinedppmpdata as $joinedppmpdatas)
-                                                            <tr class="text-center">
+                                                            <tr class="text-center ">
                                                                 <td>
                                                                     {{ $joinedppmpdatas->quantity }}
                                                                 </td>
@@ -119,7 +119,7 @@
                                                                 <td>
                                                                     {{ $joinedppmpdatas->item_name }}
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-wrap text-break" >
                                                                     {{ $joinedppmpdatas->description }}
                                                                 </td>
                                                                 <td>

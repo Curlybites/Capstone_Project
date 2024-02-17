@@ -25,8 +25,7 @@
 
                         {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Item /</span> List of Items
                         </h4> --}} @if (session('success'))
-                            <div class="alert alert-success" role="alert"> {{ session('success') }}
-                            </div>
+                            @include('components.notification')
                             {{-- <div class="toast fade show bs-toast align-items-center position-fixed bottom-0 end-0 m-3 bg-success"
                             role="alert" aria-live="assertive" aria-atomic="true">
                             <div class="d-flex">
