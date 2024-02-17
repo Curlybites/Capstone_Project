@@ -92,8 +92,12 @@
                 </h5>
 
                 <h5 class="fw-bold py-3 mt-3"><span
-                        class="text-muted fw-light">{{ Request::is('Health_Center/Account_Profile') ? 'Account /' : '' }}</span>{{ Request::is('Health_Center/Account_Profile') ? ' Profile' : '' }}
+                        class="text-muted fw-light">{{ Request::is('Health_Center/Profile') ? 'Account /' : '' }}</span>{{ Request::is('Health_Center/Profile') ? ' Profile' : '' }}
                 </h5>
+
+                <h5 class="fw-bold py-3 mt-3"><span
+                    class="text-muted fw-light">{{ Request::is('Health_Center/Profile_Change') ? 'Account /' : '' }}</span>{{ Request::is('Health_Center/Profile_Change') ? ' Change Password' : '' }}
+            </h5>
 
 
 
