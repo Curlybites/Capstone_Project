@@ -27,7 +27,7 @@
                                 <div class="card mb-4">
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
-                                        <h5 class="card-header">Project Procurement Management Plan Edit</h5>
+                                        <h5 class="card-header">Project Procurement Management Plan</h5>
 
                                     </div>
 
