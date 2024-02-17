@@ -106,11 +106,11 @@
                                                                             <i class="bi bi-eye-fill me-2"></i>View
                                                                         </a>
 
-                                                                        <a class="dropdown-item text-info"
+                                                                        {{-- <a class="dropdown-item text-info"
                                                                             href="{{ "/Program_Manager/pmPPMPEdit_{$ppmps->id}" }}"><i
                                                                                 class="bx bx-edit-alt me-2"></i>Edit</a>
 
-                                                                        <a>
+                                                                        <a> --}}
                                                                             <form
                                                                                 action="{{ route('ppmp.delete', $ppmps->id) }}"
                                                                                 method="POST">
