@@ -47,6 +47,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>id</th>
+                                                        <th>Date Created</th>
                                                         <th>Department</th>
                                                         <th>Program Title</th>
                                                         <th>Project Title</th>
@@ -59,7 +60,8 @@
                                                 <tbody>
                                                     @foreach ($ppmp as $ppmps)
                                                         <tr>
-                                                            <td>{{ $ppmps->id }} </td>
+                                                            <td>{{ $ppmps->id }}</td>
+                                                            <td>{{ $ppmps->created_at }}</td>
                                                             <td>{{ $ppmps->department }}</td>
                                                             <td>{{ $ppmps->programtitle }}</td>
                                                             <td>{{ $ppmps->projecttitle }}</td>

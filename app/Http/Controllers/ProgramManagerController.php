@@ -34,7 +34,7 @@ class ProgramManagerController extends Controller
     {
         $program = Program::all();
         $user = Auth::user();
-        $ppmp = Ppmpdatas::all();
+        $ppmp = Ppmpdatas::orderBy('created_at', 'desc')->get();
         return view('Program_Manager.PPMPlist', ['user' => $user, 'ppmp' => $ppmp, 'program' => $program]);
     }
     public function PPMPcreate()
