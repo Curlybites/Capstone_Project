@@ -44,14 +44,15 @@
                         <div data-i18n="Perfect Scrollbar">Patient List</div>
                     </a>
                 </li>
-            </ul>
-            <ul class="menu-sub">
                 <li class="menu-item {{ Request::is('Health_Center/Send_Items') ? 'active' : '' }}">
                     <a href="{{ '/Health_Center/Send_Items' }}" class="menu-link">
                         <div data-i18n="Perfect Scrollbar">Send Items</div>
                     </a>
                 </li>
             </ul>
+         
+        
+      
         </li>
 
         <li class="menu-item {{ Request::is('/Health_Center/Report') ? 'active open' : '' }}">
