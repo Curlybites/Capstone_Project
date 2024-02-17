@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('ppmp_code');
             $table->year('year');
-            $table->longText('department');
+            $table->string('department');
             $table->string('programtitle');
             $table->string('projecttitle');
             $table->string('typeofcontract');
