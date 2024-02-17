@@ -98,7 +98,7 @@
 
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email or Username</label>
-                                <input type="text"
+                                <input type="email"
                                     class="form-control @if (session('error')) is-invalid @endif"
                                     id="email" name="email" placeholder="Enter your email or username" autofocus
                                     required />
@@ -119,7 +119,7 @@
                                     </a>
                                 </div>
                                 <div class="input-group input-group-merge">
-                                    <input type="password" id="password" class="form-control @if (session('error')) is-invalid @endif" " name="password"
+                                    <input type="password" id="password" class="form-control @if (session('error')) is-invalid @endif  " " name="password"
                                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                         aria-describedby="password" required />
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
@@ -130,13 +130,13 @@
                                 @endif
                                 </div>
                             </div>
-                            <div class="mb-3">
+                            {{-- <div class="">
                                 <div class="form-check">
 
                                 </div>
-                            </div>
-                            <div class="mb-3">
-                                <button class="btn btn-primary d-grid w-100" name="login" type="submit">Sign
+                            </div> --}}
+                            <div class="pt-3 ">
+                                <button class="btn btn-primary  d-grid w-100" name="login" type="submit">Sign
                                     in</button>
                             </div>
                         </form>

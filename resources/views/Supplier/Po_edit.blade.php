@@ -45,8 +45,8 @@
 
                                                     <div class="row mb-3">
                                                         <div class="col-md-4 mb-md-0 mb-3">
-                                                            <label for="exampleFormControlInput1" class="form-label">PO
-                                                                #</label>
+                                                            <label for="exampleFormControlInput1" class="form-label">PPMP
+                                                                CODE</label>
                                                             <input type="text" class="form-control" name="POnum"
                                                                 value="{{ $ppmpdatas->ppmp_code }}" readonly>
                                                         </div>
@@ -54,19 +54,20 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">year</label>
                                                             <input type="text" class="form-control" name="year"
-                                                                value="{{ $ppmpdatas->year }}">
+                                                                value="{{ $ppmpdatas->year }}" readonly>
 
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Department</label>
-                                                            <select class="form-select" name="department"
+                                                                <input type="text" class="form-control" value="{{ $ppmpdatas->department }}" name="department" readonly>
+                                                            {{-- <select class="form-select" name="department"
                                                                 aria-label="Default select example">
                                                                 <option>{{ $ppmpdatas->department }}</option>
                                                                 <option value="One">One</option>
                                                                 <option value="Two">Two</option>
                                                                 <option value="Three">Three</option>
-                                                            </select>
+                                                            </select> --}}
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
@@ -75,25 +76,26 @@
                                                                 class="form-label">Program Title</label>
                                                             <input type="text" class="form-control"
                                                                 name="programtitle"
-                                                                value="{{ $ppmpdatas->programtitle }}">
+                                                                value="{{ $ppmpdatas->programtitle }}"  readonly>
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Project Title</label>
                                                             <input type="text" class="form-control"
                                                                 name="projecttitle"
-                                                                value="{{ $ppmpdatas->projecttitle }}">
+                                                                value="{{ $ppmpdatas->projecttitle }}"  readonly>
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Type of Contract</label>
-                                                            <select class="form-select" name="typeofcontract"
+                                                                <input type="text" value="{{ $ppmpdatas->typeofcontract }}" class="form-control" name="typeofcontract"   readonly>
+                                                            {{-- <select class="form-select" name="typeofcontract"
                                                                 aria-label="Default select example">
                                                                 <option>{{ $ppmpdatas->typeofcontract }}</option>
                                                                 <option value="Good">Good</option>
                                                                 <option value="Infra">Infra</option>
                                                                 <option value="Consulting">Consulting</option>
-                                                            </select>
+                                                            </select> --}}
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
@@ -102,153 +104,56 @@
                                                                 class="form-label">Account Title</label>
                                                             <input type="text" class="form-control"
                                                                 name="accounttitle"
-                                                                value="{{ $ppmpdatas->accounttitle }}">
+                                                                value="{{ $ppmpdatas->accounttitle }}"readonly>
 
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Schedule</label>
                                                             <input type="text" class="form-control" name="schedule"
-                                                                value="{{ $ppmpdatas->schedule }}">
+                                                                value="{{ $ppmpdatas->schedule }}"  readonly>
                                                         </div>
                                                     </div>
                                                     <div class="table-responsive">
-                                                        <table class="table table-striped table-bordered"
-                                                            id="myTable">
-                                                            <colgroup>
-                                                                <col width="5%">
-                                                                <col width="5%">
-                                                                <col width="10%">
-                                                                <col width="20%">
-                                                                <col width="30%">
-                                                                <col width="15%">
-                                                                <col width="15%">
-                                                            </colgroup>
-                                                            <thead>
-                                                                <tr class="bg-navy disabled">
-                                                                    <th class="px-1 py-1 text-center"></th>
-                                                                    <th class="px-1 py-1 text-center">Qty</th>
-                                                                    <th class="px-1 py-1 text-center">Unit</th>
-                                                                    <th class="px-1 py-1 text-center">Item</th>
-                                                                    <th class="px-1 py-1 text-center">Description
-                                                                    </th>
-                                                                    <th class="px-1 py-1 text-center">Price</th>
-                                                                    <th class="px-1 py-1 text-center">Total</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody class="addTBRow">
-                                                                @foreach ($joinedppmpdata as $key => $joinedData)
-                                                                    <tr>
-                                                                        <td>
-                                                                            <button class="btn btn-sm btn-danger py-0"
-                                                                                onclick="removeRow(this)">X</button>
-                                                                        </td>
+                                                        <table id=""
+                                                    class="datatables-basic table border-top table-bordered"
+                                                    style="width:100%">
+                                                    <thead>
+                                                        <tr class="text-center">
+                                                            <th>Quantity</th>
+                                                            <th>Unit</th>
+                                                            <th>Item Name</th>
+                                                            <th>Description</th>
+                                                            <th>Price</th>
+                                                            <th>Total</th>
 
-                                                                        <td class="align-middle p-0 text-center">
-                                                                            <input type="text"
-                                                                                class="form-control text-center border-0"
-                                                                                id="quantItem" name="quantity"
-                                                                                onkeyup="autoCal()"
-                                                                                value="{{ $joinedData->quantity }}">
-                                                                        </td>
-
-                                                                        <td
-                                                                            class="align-middle
-                                                                            p-0 text-center">
-                                                                            <input type="text"
-                                                                                class="form-control text-center border-0"
-                                                                                name="unit"
-                                                                                value="{{ $joinedData->unit }}">
-                                                                        </td>
-                                                                        <td class="align-middle p-0 text-center">
-                                                                            <select
-                                                                                class="form-select text-center border-0"
-                                                                                name="itemname" id="item_id"
-                                                                                aria-label="Default select example">
-                                                                                <option readonly>
-                                                                                    {{ $joinedData->item_name }}
-                                                                                </option>
-                                                                                @if (@isset($item))
-                                                                                    @foreach ($item as $items)
-                                                                                        <option
-                                                                                            value="{{ $items->id }}"
-                                                                                            data-description="{{ $items->item_description }}"
-                                                                                            data-unitprice="{{ $items->item_price }}">
-                                                                                            {{ $items->item_name }}
-                                                                                        </option>
-                                                                                    @endforeach
-                                                                                @endif
-                                                                            </select>
-                                                                        </td>
-                                                                        <td class="align-middle p-0 text-center">
-                                                                            <input type="text"
-                                                                                class="form-control text-center border-0"
-                                                                                name="description" value="{{ $joinedData->description }}">
-                                                                        </td>
-                                                                        <td class="align-middle p-0 text-center">
-                                                                            <input type="text"
-                                                                                class="form-control text-center border-0"
-                                                                                name="unitprice" id="price"
-                                                                                onkeyup="autoCal()"
-                                                                                value="{{ $joinedData->unitprice }}">
-                                                                        </td>
-                                                                        <script>
-                                                                            document.getElementById('item_id').addEventListener('change', function() {
-                                                                                var selectedItemId = this.value;
-
-
-                                                                                var selectedItem = document.querySelector('option[value="' + selectedItemId + '"]');
-                                                                                var description = selectedItem.getAttribute('data-description');
-                                                                                var unitprice = selectedItem.getAttribute('data-unitprice');
-
-
-                                                                                document.getElementById('item_d').value = description;
-                                                                                document.getElementById('price').value = unitprice;
-                                                                            });
-                                                                        </script>
-                                                                        <td>
-                                                                            <div class="float-start">
-                                                                                <span class="fw-bold ">₱</span>
-                                                                            </div>
-                                                                            <div class="text-center">
-                                                                                <input
-                                                                                    class="text-center border-0 bg-white ms-2 fs-6"
-                                                                                    type="text" name="total"
-                                                                                    id="totalPrice"
-                                                                                    value="{{ $joinedData->total }}"
-                                                                                    readonly>
-                                                                                {{-- <span id="totalPrice">0</span> --}}
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                @endforeach
-                                                            </tbody>
-                                                            <tfoot>
-                                                                <tr>
-                                                                    <th colspan="6" class="text-end">
-                                                                        <div class="btn btn-primary me-2"
-                                                                            style="font-size: 10px"
-                                                                            onclick="addRow()">
-                                                                            Add
-                                                                            Row</div><span>Total</span>
-                                                                    </th>
-                                                                    <th class="d-flex align-items-center ">
-                                                                        <div class="float-start">
-                                                                            <span class="fw-bold fs-6">₱</span>
-                                                                        </div>
-                                                                        <div class="text-center">
-                                                                            <input
-                                                                                class="text-center border-0 bg-white ms-2 fs-6"
-                                                                                type="text" name="items_total"
-                                                                                id="total" value="{{  $ppmpdatas->items_total}}"
-                                                                                readonly>
-                                                                        </div>
-                                                                    </th>
-                                                                </tr>
-                                                            </tfoot>
-                                                            {{-- <input type="number" name="items_total"
-                                                                        id="total"> --}}
-                                                        </table>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($joinedppmpdata as $joinedppmpdatas)
+                                                            <tr class="text-center">
+                                                                <td>
+                                                                    {{ $joinedppmpdatas->quantity }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $joinedppmpdatas->unit }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $joinedppmpdatas->item_name }}
+                                                                </td>
+                                                                <td class="text-wrap text-break">
+                                                                    {{ $joinedppmpdatas->description }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $joinedppmpdatas->unitprice }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $joinedppmpdatas->total }}
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
                                                     </div>
                                                     <div
                                                         class="row

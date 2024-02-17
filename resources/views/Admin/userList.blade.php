@@ -299,7 +299,7 @@
                                                             <button type="button" class="btn btn-secondary mt-3"
                                                                 data-bs-dismiss="modal">Close</button>
                                                             <button type="submit"
-                                                                class="btn btn-primary mt-3">Save</button>
+                                                                class="btn btn-info mt-3">Save</button>
                                                         </div>
                                                 </div>
                                             </div>
