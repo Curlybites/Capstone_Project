@@ -47,6 +47,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>id</th>
+                                                        <th>Date Created</th>
                                                         <th>Department</th>
                                                         <th>Program Title</th>
                                                         <th>Project Title</th>
@@ -59,7 +60,8 @@
                                                 <tbody>
                                                     @foreach ($ppmp as $ppmps)
                                                         <tr>
-                                                            <td>{{ $ppmps->id }} </td>
+                                                            <td>{{ $ppmps->id }}</td>
+                                                            <td>{{ $ppmps->created_at }}</td>
                                                             <td>{{ $ppmps->department }}</td>
                                                             <td>{{ $ppmps->programtitle }}</td>
                                                             <td>{{ $ppmps->projecttitle }}</td>
@@ -104,11 +106,11 @@
                                                                             <i class="bi bi-eye-fill me-2"></i>View
                                                                         </a>
 
-                                                                        <a class="dropdown-item text-info"
+                                                                        {{-- <a class="dropdown-item text-info"
                                                                             href="{{ "/Program_Manager/pmPPMPEdit_{$ppmps->id}" }}"><i
                                                                                 class="bx bx-edit-alt me-2"></i>Edit</a>
 
-                                                                        <a>
+                                                                        <a> --}}
                                                                             <form
                                                                                 action="{{ route('ppmp.delete', $ppmps->id) }}"
                                                                                 method="POST">

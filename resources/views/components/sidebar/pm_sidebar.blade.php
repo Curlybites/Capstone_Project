@@ -54,12 +54,12 @@
         <li class="menu-item {{ Request::is('Program_Manager/Reportlist') || Request::is('Program_Manager/Reportlist') ? 'active open' : '' }}">
             <a href="#" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
-                <div data-i18n="Extended UI">Report</div>
+                <div data-i18n="Extended UI">Inventory</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::is('Program_Manager/Reportlist') || Request::is('Program_Manager/Reportlist') ? 'active' : '' }}">
                     <a href="{{ '/Program_Manager/Reportlist' }}" class="menu-link">
-                        <div data-i18n="Perfect Scrollbar">Report List</div>
+                        <div data-i18n="Perfect Scrollbar">Inventory List</div>
                     </a>
                 </li>
             </ul>
