@@ -5,12 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HealthCenters extends Model
+class HdInventory extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'health_center_name',
-        'barangay_id',
+        'item_img',
+        'item_quan',
+        'item_name',
+        'program_title',
+        'item_description',
+        'item_price',
     ];
 }

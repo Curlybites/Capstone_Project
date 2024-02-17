@@ -22,16 +22,104 @@
                     <div class="container-fluid  flex-grow-1 container-p-y">
                         {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">PPMP /</span> List of PPMP
                         </h4> --}}
+                        <div class="row g-4 mb-4">
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <span>ALL PPMP</span>
+                                                <div class="d-flex align-items-end mt-2">
+                                                    <h4 class="mb-0 me-2">{{ $totalPPMP }}</h4>
+                                                    <small class="text-primary">Total PPMP</small>
+                                                </div>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-primary">
+                                                    <i class='bx bx-package'></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <span>PPMP Approve</span>
+                                                <div class="d-flex align-items-end mt-2">
+                                                    <h4 class="mb-0 me-2">{{ $totalApprove }}</h4>
+                                                    <small class="text-success">Total Approve</small>
+                                                </div>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-primary">
+                                                    <i class='bx bx-package'></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <span>PPMP Pending</span>
+                                                <div class="d-flex align-items-end mt-2">
+                                                    <h4 class="mb-0 me-2">{{ $totalPending }}</h4>
+                                                    <small class="text-warning">Total Pending</small>
+                                                </div>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-success">
+                                                    <i class='bx bx-package'></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <span>PPMP Disapprove</span>
+                                                <div class="d-flex align-items-end mt-2">
+                                                    <h4 class="mb-0 me-2">{{ $totalDisapprove }}</h4>
+                                                    <small class="text-danger">Total Dissaprove</small>
+                                                </div>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-danger">
+                                                    <i class='bx bx-package'></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
                         <div class="row">
                             <div class="col-md-12">
+
                                 <div class="card mb-4">
+
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
                                         <h5 class="card-header">PPMP List</h5>
-                                        <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
+                                        {{-- <button class="btn btn-outline-success mx-4 px-4 py-2 " data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
-                                            New</button>
+                                            New</button> --}}
 
                                         <div class="modal fade" id="exampleModal" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -214,7 +302,7 @@
 
                                     <hr class="my-0">
                                     <!-- Account -->
-                                    <div class="card-body p-5 ">
+                                    <div class="card-body p-3 ">
                                         <div class="table-responsive text-nowrap overflow-visible">
                                             <table id="dataTable" class="datatables-basic table   border-top "
                                                 style="width:100%">
@@ -232,57 +320,57 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($ppmp as $ppmps)
-                                                    <tr>
-                                                        <td>{{ $ppmps->id }} </td>
-                                                        <td>{{ $ppmps->department }}</td>
-                                                        <td>{{ $ppmps->programtitle }}</td>
-                                                        <td>{{ $ppmps->projecttitle }}</td>
-                                                        <td>{{ $ppmps->typeofcontract }}</td>
-                                                        <td>{{ $ppmps->accounttitle }}</td>
-                                                        <td>
+                                                        <tr>
+                                                            <td>{{ $ppmps->id }} </td>
+                                                            <td>{{ $ppmps->department }}</td>
+                                                            <td>{{ $ppmps->programtitle }}</td>
+                                                            <td>{{ $ppmps->projecttitle }}</td>
+                                                            <td>{{ $ppmps->typeofcontract }}</td>
+                                                            <td>{{ $ppmps->accounttitle }}</td>
+                                                            <td>
 
-                                                            @switch($ppmps->status)
-                                                                @case(1)
-                                                                    <span class="badge bg-label-success me-1">
-                                                                        Approved
-                                                                    </span>
-                                                                @break
+                                                                @switch($ppmps->status)
+                                                                    @case(1)
+                                                                        <span class="badge bg-label-success me-1">
+                                                                            Approved
+                                                                        </span>
+                                                                    @break
 
-                                                                @case(2)
-                                                                    <span class="badge bg-label-danger me-1">
-                                                                        Disaproved
-                                                                    </span>
-                                                                @break
+                                                                    @case(2)
+                                                                        <span class="badge bg-label-danger me-1">
+                                                                            Disaproved
+                                                                        </span>
+                                                                    @break
 
-                                                                @case(3)
-                                                                    <span class="badge bg-label-warning me-1">
-                                                                        pending
-                                                                    </span>
-                                                                @break
+                                                                    @case(3)
+                                                                        <span class="badge bg-label-warning me-1">
+                                                                            pending
+                                                                        </span>
+                                                                    @break
 
-                                                                @default
-                                                            @endswitch
+                                                                    @default
+                                                                @endswitch
 
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <button type="button"
-                                                                    class="btn p-0 dropdown-toggle hide-arrow"
-                                                                    data-bs-toggle="dropdown"><i
-                                                                        class="bx bx-dots-vertical-rounded"></i></button>
+                                                            </td>
+                                                            <td>
+                                                                <div class="dropdown">
+                                                                    <button type="button"
+                                                                        class="btn p-0 dropdown-toggle hide-arrow"
+                                                                        data-bs-toggle="dropdown"><i
+                                                                            class="bx bx-dots-vertical-rounded"></i></button>
 
-                                                                <div class="dropdown-menu">
+                                                                    <div class="dropdown-menu">
 
-                                                                    <a class="dropdown-item text-primary"
-                                                                        href="{{ url('/Supplier/PPMP_View' . $ppmps->id) }}">
-                                                                        <i class="bi bi-eye-fill me-2"></i>View
-                                                                    </a>
+                                                                        <a class="dropdown-item text-primary"
+                                                                            href="{{ url('/Supplier/PPMP_View' . $ppmps->id) }}">
+                                                                            <i class="bi bi-eye-fill me-2"></i>View
+                                                                        </a>
 
-                                                                    <a class="dropdown-item text-info"
-                                                                        href="{{ "/Supplier/PPMP_Edit{$ppmps->id}" }}"><i
-                                                                            class="bx bx-edit-alt me-2"></i>Edit</a>
+                                                                        <a class="dropdown-item text-info"
+                                                                            href="{{ "/Supplier/PPMP_Edit{$ppmps->id}" }}"><i
+                                                                                class="bx bx-edit-alt me-2"></i>Check</a>
 
-                                                                    <a>
+                                                                        {{-- <a>
                                                                         <form
                                                                             action="{{ route('supplier_ppmp.delete', $ppmps->id) }}"
                                                                             method="POST">
@@ -293,229 +381,230 @@
                                                                                     class="bi bi-trash-fill fs-5"></i>
                                                                                 Delete</button>
                                                                         </form>
-                                                                    </a>
-                                                                    </ul>
-                                                                </div>
-                                                        </td>
-                                                    </tr>
-                                            </tbody>
-                                            Modal for edit
-                                            <div class="modal fade" id="exampleModal2{{ $ppmps->id }}"
-                                                tabindex="-1"
-                                                aria-labelledby="exampleModalLabel{{ $ppmps->id }}"
-                                                aria-hidden="true">
-                                                <div class="modal-dialog modal-xl modal-dialog-centered">
-                                                    <div class="modal-content ">
-                                                        <div
-                                                            class="modal-header justify-content-center d-block text-center">
-                                                            <h1 class="modal-title fs-3"
-                                                                id="exampleModalLabel{{ $ppmps->id }}">
-                                                                QUEZON
-                                                                CITY<br>PROJECT PROCUREMENT MANAGEMENT PLAN</h1>
-                                                            <!-- <h1 class="fs-3">PROJECT PROCUREMENT MANAGEMENT PLAN </h1><br> -->
+                                                                    </a> --}}
+                                                                        </ul>
+                                                                    </div>
+                                                            </td>
+                                                        </tr>
+                                                </tbody>
+                    
+                                                <div class="modal fade" id="exampleModal2{{ $ppmps->id }}"
+                                                    tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel{{ $ppmps->id }}"
+                                                    aria-hidden="true">
+                                                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                                                        <div class="modal-content ">
+                                                            <div
+                                                                class="modal-header justify-content-center d-block text-center">
+                                                                <h1 class="modal-title fs-3"
+                                                                    id="exampleModalLabel{{ $ppmps->id }}">
+                                                                    QUEZON
+                                                                    CITY<br>PROJECT PROCUREMENT MANAGEMENT PLAN</h1>
+                                                                <!-- <h1 class="fs-3">PROJECT PROCUREMENT MANAGEMENT PLAN </h1><br> -->
 
-                                                        </div>
-                                                        <!-- <div class="modal-header d-flex justify-content-end">
+                                                            </div>
+                                                            <!-- <div class="modal-header d-flex justify-content-end">
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div> -->
 
-                                                        <div class="modal-body">
+                                                            <div class="modal-body">
 
-                                                            <form action="{{ route('supplier_ppmp.update', $ppmps->id) }}"
-                                                                id="editPPMP{{ $ppmps->id }}" method="POST">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <div class="row">
+                                                                <form
+                                                                    action="{{ route('supplier_ppmp.update', $ppmps->id) }}"
+                                                                    id="editPPMP{{ $ppmps->id }}" method="POST">
+                                                                    @csrf
+                                                                    @method('PUT')
+                                                                    <div class="row">
 
-                                                                    <!-- <h5>Personal Details</h5> -->
-                                                                    <div class="col">
-                                                                        <p>Year:</p>
-                                                                        <div class="input-group mb-3">
-                                                                            <select name="year"
-                                                                                class="form-control"
-                                                                                id="yearSelect">
-                                                                                <?php for ($year = 2000; $year <= 2024; $year++) : ?>
+                                                                        <!-- <h5>Personal Details</h5> -->
+                                                                        <div class="col">
+                                                                            <p>Year:</p>
+                                                                            <div class="input-group mb-3">
+                                                                                <select name="year"
+                                                                                    class="form-control"
+                                                                                    id="yearSelect">
+                                                                                    <?php for ($year = 2000; $year <= 2024; $year++) : ?>
 
-                                                                                <option value="<?= $year ?>">
-                                                                                    <?= $year ?>
-                                                                                </option>
-                                                                                <?php endfor; ?>
-                                                                                <option selected>
-                                                                                    {{ $ppmps->year }}</option>
-                                                                            </select>
+                                                                                    <option value="<?= $year ?>">
+                                                                                        <?= $year ?>
+                                                                                    </option>
+                                                                                    <?php endfor; ?>
+                                                                                    <option selected>
+                                                                                        {{ $ppmps->year }}</option>
+                                                                                </select>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <p>Department/Office/Unit:</p>
-                                                                        <div class="input-group mb-3">
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                aria-label="Sizing e xample input"
-                                                                                aria-describedby="inputGroup-sizing-default"
-                                                                                name="department" required
-                                                                                value={{ $ppmps->department }}>
+                                                                        <div class="col">
+                                                                            <p>Department/Office/Unit:</p>
+                                                                            <div class="input-group mb-3">
+                                                                                <input type="text"
+                                                                                    class="form-control"
+                                                                                    aria-label="Sizing e xample input"
+                                                                                    aria-describedby="inputGroup-sizing-default"
+                                                                                    name="department" required
+                                                                                    value={{ $ppmps->department }}>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
 
-                                                                    <div class="col">
-                                                                        <p>Program Title</p>
-                                                                        <div class="input-group mb-3">
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                aria-label="Sizing example input"
-                                                                                aria-describedby="inputGroup-sizing-default"
-                                                                                name="programtitle" required
-                                                                                value={{ $ppmps->programtitle }}>
+                                                                        <div class="col">
+                                                                            <p>Program Title</p>
+                                                                            <div class="input-group mb-3">
+                                                                                <input type="text"
+                                                                                    class="form-control"
+                                                                                    aria-label="Sizing example input"
+                                                                                    aria-describedby="inputGroup-sizing-default"
+                                                                                    name="programtitle" required
+                                                                                    value={{ $ppmps->programtitle }}>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
 
-                                                                    <div class="col">
-                                                                        <p>Project Title</p>
-                                                                        <div class="input-group mb-3">
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                aria-label="Sizing example input"
-                                                                                aria-describedby="inputGroup-sizing-default"
-                                                                                name="projecttitle" required
-                                                                                value={{ $ppmps->projecttitle }}>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row pb-4">
-
-                                                                    <div class="col">
-                                                                        <p>Type of Contract</p>
-                                                                        <div class="input-group mb-3">
-                                                                            <select class="form-select"
-                                                                                aria-label="Default select example"
-                                                                                name="typeofcontract"
-                                                                                value={{ $ppmps->typeofcontract }}>
-                                                                                <option
-                                                                                    value={{ $ppmps->typeofcontract }}>
-                                                                                    select</option>
-                                                                                <option value="goods">Goods
-                                                                                </option>
-                                                                                <option value="infra">Infra
-                                                                                </option>
-                                                                                <option value="consultingservice">
-                                                                                    Consulting
-                                                                                    Service</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="col">
-                                                                        <p>Account Title</p>
-                                                                        <div class="input-group mb-3">
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                aria-label="Sizing example input"
-                                                                                aria-describedby="inputGroup-sizing-default"
-                                                                                name="accounttitle" required
-                                                                                value={{ $ppmps->accounttitle }}>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="col">
-                                                                        <p>Item Name</p>
-                                                                        <div class="input-group mb-3">
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                aria-label="Sizing example input"
-                                                                                aria-describedby="inputGroup-sizing-default"
-                                                                                name="itemname" required
-                                                                                value={{ $ppmps->itemname }}>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="col">
-                                                                        <p>Description/Specifications</p>
-                                                                        <div class="input-group mb-3">
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                aria-label="Sizing example input"
-                                                                                aria-describedby="inputGroup-sizing-default"
-                                                                                name="description" required
-                                                                                value={{ $ppmps->description }}>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="row pb-4">
-
-                                                                    <div class="col">
-                                                                        <p>Quantity</p>
-                                                                        <div class="input-group mb-3">
-                                                                            <input type="number"
-                                                                                class="form-control"
-                                                                                aria-label="Sizing example input"
-                                                                                aria-describedby="inputGroup-sizing-default"
-                                                                                name="quantity" required
-                                                                                value={{ $ppmps->quantity }}>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="col">
-                                                                        <p>Unit of Issue</p>
-                                                                        <div class="input-group mb-3">
-                                                                            <input type="number"
-                                                                                class="form-control"
-                                                                                aria-label="Sizing example input"
-                                                                                aria-describedby="inputGroup-sizing-default"
-                                                                                name="unitofissue" required
-                                                                                value={{ $ppmps->unitofissue }}>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="col">
-                                                                        <p>Unit Price</p>
-                                                                        <div class="input-group mb-3">
-                                                                            <input type="number"
-                                                                                class="form-control"
-                                                                                aria-label="Sizing example input"
-                                                                                aria-describedby="inputGroup-sizing-default"
-                                                                                name="unitprice" required
-                                                                                value={{ $ppmps->unitprice }}>
+                                                                        <div class="col">
+                                                                            <p>Project Title</p>
+                                                                            <div class="input-group mb-3">
+                                                                                <input type="text"
+                                                                                    class="form-control"
+                                                                                    aria-label="Sizing example input"
+                                                                                    aria-describedby="inputGroup-sizing-default"
+                                                                                    name="projecttitle" required
+                                                                                    value={{ $ppmps->projecttitle }}>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="row pb-4">
 
                                                                         <div class="col">
-                                                                            <p>Schedule / Milestone of Activities
-                                                                            </p>
+                                                                            <p>Type of Contract</p>
+                                                                            <div class="input-group mb-3">
+                                                                                <select class="form-select"
+                                                                                    aria-label="Default select example"
+                                                                                    name="typeofcontract"
+                                                                                    value={{ $ppmps->typeofcontract }}>
+                                                                                    <option
+                                                                                        value={{ $ppmps->typeofcontract }}>
+                                                                                        select</option>
+                                                                                    <option value="goods">Goods
+                                                                                    </option>
+                                                                                    <option value="infra">Infra
+                                                                                    </option>
+                                                                                    <option value="consultingservice">
+                                                                                        Consulting
+                                                                                        Service</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col">
+                                                                            <p>Account Title</p>
                                                                             <div class="input-group mb-3">
                                                                                 <input type="text"
                                                                                     class="form-control"
                                                                                     aria-label="Sizing example input"
                                                                                     aria-describedby="inputGroup-sizing-default"
-                                                                                    name="schedule" required
-                                                                                    value={{ $ppmps->schedule }}>
+                                                                                    name="accounttitle" required
+                                                                                    value={{ $ppmps->accounttitle }}>
                                                                             </div>
                                                                         </div>
+
+                                                                        <div class="col">
+                                                                            <p>Item Name</p>
+                                                                            <div class="input-group mb-3">
+                                                                                <input type="text"
+                                                                                    class="form-control"
+                                                                                    aria-label="Sizing example input"
+                                                                                    aria-describedby="inputGroup-sizing-default"
+                                                                                    name="itemname" required
+                                                                                    value={{ $ppmps->itemname }}>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col">
+                                                                            <p>Description/Specifications</p>
+                                                                            <div class="input-group mb-3">
+                                                                                <input type="text"
+                                                                                    class="form-control"
+                                                                                    aria-label="Sizing example input"
+                                                                                    aria-describedby="inputGroup-sizing-default"
+                                                                                    name="description" required
+                                                                                    value={{ $ppmps->description }}>
+                                                                            </div>
+                                                                        </div>
+
                                                                     </div>
 
-                                                                    <div class="modal-footer border-1">
-                                                                        <button type="button"
-                                                                            class="btn btn-secondary mt-3"
-                                                                            data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit"
-                                                                            class="btn btn-primary mt-3">Save</button>
+                                                                    <div class="row pb-4">
+
+                                                                        <div class="col">
+                                                                            <p>Quantity</p>
+                                                                            <div class="input-group mb-3">
+                                                                                <input type="number"
+                                                                                    class="form-control"
+                                                                                    aria-label="Sizing example input"
+                                                                                    aria-describedby="inputGroup-sizing-default"
+                                                                                    name="quantity" required
+                                                                                    value={{ $ppmps->quantity }}>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col">
+                                                                            <p>Unit of Issue</p>
+                                                                            <div class="input-group mb-3">
+                                                                                <input type="number"
+                                                                                    class="form-control"
+                                                                                    aria-label="Sizing example input"
+                                                                                    aria-describedby="inputGroup-sizing-default"
+                                                                                    name="unitofissue" required
+                                                                                    value={{ $ppmps->unitofissue }}>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col">
+                                                                            <p>Unit Price</p>
+                                                                            <div class="input-group mb-3">
+                                                                                <input type="number"
+                                                                                    class="form-control"
+                                                                                    aria-label="Sizing example input"
+                                                                                    aria-describedby="inputGroup-sizing-default"
+                                                                                    name="unitprice" required
+                                                                                    value={{ $ppmps->unitprice }}>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row pb-4">
+
+                                                                            <div class="col">
+                                                                                <p>Schedule / Milestone of Activities
+                                                                                </p>
+                                                                                <div class="input-group mb-3">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        aria-label="Sizing example input"
+                                                                                        aria-describedby="inputGroup-sizing-default"
+                                                                                        name="schedule" required
+                                                                                        value={{ $ppmps->schedule }}>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="modal-footer border-1">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary mt-3"
+                                                                                data-bs-dismiss="modal">Close</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-primary mt-3">Save</button>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
+                                                            </div>
+                                                            </form>
                                                         </div>
-                                                        </form>
+
                                                     </div>
 
+                                                    <!-- / Content -->
+
+                                                    <div class="content-backdrop fade"></div>
                                                 </div>
-
-                                                <!-- / Content -->
-
-                                                <div class="content-backdrop fade"></div>
-                                            </div>
-                                            @endforeach
+                                                @endforeach
                                             </table>
                                         </div>
                                     </div>

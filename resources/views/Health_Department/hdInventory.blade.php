@@ -122,19 +122,16 @@
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
+                                                        <th>Item Image</th>
+                                                        <th>Quantity</th>
                                                         <th>Item Name</th>
-                                                        <th>Type</th>
-                                                        <th>Image</th>
-                                                        <th>Price</th>
                                                         <th>Program</th>
-                                                        <th>Date of Manufactured</th>
-                                                        <th>Date of Expiration</th>
+                                                        <th>Description</th>
+                                                        <th>Price</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>Paracetamol</td>
-                                                        <td>Medicine</td>
                                                         <td>
                                                             <ul
                                                                 class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
@@ -161,10 +158,11 @@
                                                                 </li>
                                                             </ul>
                                                         </td>
+                                                        <td>Paracetamol</td>
+                                                        <td>Medicine</td>
                                                         <td>100</td>
                                                         <td>Maternity</td>
                                                         <td>12-12-2023</td>
-                                                        <td>12-12-2024</td>
                                                     </tr>
                                                 </tbody>
 

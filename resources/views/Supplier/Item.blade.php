@@ -108,7 +108,7 @@
                                     <div
                                         class="title d-flex align-items-center justify-content-between  border-success">
                                         <h5 class="card-header">Item List</h5>
-                                        <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
+                                        <button class="btn btn-outline-success mx-4 px-4 py-2 rounded" data-bs-toggle="modal"
                                             data-bs-target="#createItem"> <i class='bx bxs-add-to-queue'></i> Create
                                             New</button>
 

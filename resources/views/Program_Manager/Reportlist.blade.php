@@ -26,7 +26,7 @@
                                 <div class="card mb-4">
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
-                                        <h5 class="card-header">Report List</h5>
+                                        <h5 class="card-header">Inventory List</h5>
 
                     <!-- / Content -->
 

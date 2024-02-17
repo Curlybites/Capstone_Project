@@ -69,7 +69,7 @@
                                                                             @foreach ($barangayData as $healthcenterRow)
                                                                                 <option
                                                                                     value="{{ $healthcenterRow->id }}">
-                                                                                    {{ $healthcenterRow->name }}
+                                                                                    {{ $healthcenterRow->barangay_name }}
                                                                                 </option>
                                                                             @endforeach
                                                                         </select>
@@ -110,16 +110,18 @@
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
+                                                        {{-- <th>#</th> --}}
                                                         <th>Health Center</th>
+                                                        <th>Barangay</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($healthcenterData as $healthcenterRow)
+                                                    @foreach ($healthCentersData as $healthCenterRow)
                                                         <tr>
-                                                            <td>{{ $healthcenterRow->id }}</td>
-                                                            <td>{{ $healthcenterRow->name }}</td>
+                                                            {{-- <td>{{ $healthCenterRow->id }}</td> --}}
+                                                            <td>{{ $healthCenterRow->health_center_name }}</td>
+                                                            <td>{{ $healthCenterRow->barangay_name }}</td>
                                                             <td class="">
                                                                 <a type="button" href=/Admin/Edit/ class="text-primary"
                                                                     data-bs-toggle="modal"

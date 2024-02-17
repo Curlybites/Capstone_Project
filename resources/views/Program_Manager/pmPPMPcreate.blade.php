@@ -22,7 +22,7 @@
                         @include('components.notification')
                     @endif
                     <div class="container-fluid  flex-grow-1 container-p-y">
-               
+
 
                         <div class="row">
                             <div class="col-md-12">
@@ -114,6 +114,16 @@
                                                                 @endif
                                                             </select>
                                                         </div>
+                                                        <style>
+                                                            .form-control:focus {
+                                                                border-color: #ff80ff;
+                                                                box-shadow: none;
+                                                            }
+
+                                                            .form-select:focus {
+                                                                box-shadow: none;
+                                                            }
+                                                        </style>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Project Title</label>
@@ -152,20 +162,20 @@
                                                             id="myTable">
                                                             <colgroup>
                                                                 <col width="5%">
-                                                                <col width="5%">
-                                                                <col width="10%">
                                                                 <col width="20%">
                                                                 <col width="30%">
+                                                                <col width="5%">
+                                                                <col width="5%">
                                                                 <col width="15%">
                                                                 <col width="15%">
                                                             </colgroup>
                                                             <thead>
                                                                 <tr class="bg-navy disabled">
                                                                     <th class="px-1 py-1 text-center"></th>
-                                                                    <th class="px-1 py-1 text-center">Qty</th>
-                                                                    <th class="px-1 py-1 text-center">Unit</th>
                                                                     <th class="px-1 py-1 text-center">Item</th>
-                                                                    <th class="px-1 py-1 text-center">Description
+                                                                    <th class="px-1 py-1 text-center">Description</th>
+                                                                    <th class="px-1 py-1 text-center">Unit</th>
+                                                                    <th class="px-1 py-1 text-center">Quantity
                                                                     </th>
                                                                     <th class="px-1 py-1 text-center">Price</th>
                                                                     <th class="px-1 py-1 text-center">Total</th>
@@ -178,23 +188,8 @@
                                                                             onclick="removeRow(this)">X</button>
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            id="quantItem" name="ppmp[0][quantity]"
-                                                                            onkeyup="autoCal()" value=""
-                                                                            required>
-                                                                    </td>
-                                                                    <td
-                                                                        class="align-middle
-                                                                            p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            name="ppmp[0][unit]" value=""
-                                                                            required>
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
                                                                         <select
-                                                                            class="form-select text-center border-0"
+                                                                            class="form-select text-center bg-transparent border-0 "
                                                                             name="ppmp[0][itemname]" id="item_id"
                                                                             aria-label="Default select example"
                                                                             onchange="updateItemDetails(this)">
@@ -211,19 +206,38 @@
 
                                                                         </select>
                                                                     </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text" id="item_d"
-                                                                            class="form-control text-center border-0"
-                                                                            name="ppmp[0][description]"
-                                                                            value="">
+
+                                                                    <td
+                                                                        class="align-middle p-0 text-center text-wrap ">
+
+                                                                        <textarea type="text" id="item_d" class="form-control text-start text-wrap text-break border-0"
+                                                                            name="ppmp[0][description]" value="" cols="30" rows="2"></textarea>
                                                                     </td>
+                                                                    <td
+                                                                        class="align-middle
+                                                                        p-0 text-center">
+                                                                        <input type="text"
+                                                                            class="form-control text-center border-0 bg-transparent"
+                                                                            name="ppmp[0][unit]" value=""
+                                                                            required>
+                                                                    </td>
+                                                                    <td class="align-middle p-0 text-center">
+                                                                        <input type="text"
+                                                                            class="form-control text-center bg-transparent border-0"
+                                                                            id="quantItem" name="ppmp[0][quantity]"
+                                                                            onkeyup="autoCal()" value=""
+                                                                            required>
+                                                                    </td>
+
                                                                     <td class="align-middle p-0 text-center"
                                                                         id="descriptionColumn">
                                                                         <input onkeyup="autoCal()" type="text"
-                                                                            class="form-control text-center border-0"
+                                                                            class="form-control text-center bg-transparent border-0"
                                                                             name="ppmp[0][unitprice]" id="price"
                                                                             value="" required>
                                                                     </td>
+
+
                                                                     {{-- <script>
                                                                         document.getElementById('item_id').addEventListener('change', function() {
                                                                             var selectedItemId = this.value;
@@ -244,7 +258,7 @@
                                                                         </div>
                                                                         <div class="text-center">
                                                                             <input
-                                                                                class="text-center border-0 bg-white ms-2 fs-6"
+                                                                                class="text-center border-0 bg-white ms-2 fs-6 bg-transparent"
                                                                                 type="text" name="ppmp[0][total]"
                                                                                 id="totalPrice" value=""
                                                                                 readonly required>
@@ -300,7 +314,8 @@
                                                     </div>
                                                     <div class="col-4">
                                                         <button type="submit" class="btn btn-primary">Save</button>
-                                                        <a class="btn btn-danger" href="{{ '/Program_Manager/PPMPlist' }}">Cancel
+                                                        <a class="btn btn-danger"
+                                                            href="{{ '/Program_Manager/PPMPlist' }}">Cancel
                                                         </a>
                                                     </div>
                                                 </form>
@@ -326,13 +341,9 @@
                         // Create a new row element
                         var newRow = '<tr>' +
                             `<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>` +
-                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="ppmp[` +
-                            i + `][quantity]" id="quantItem" onkeyup="autoCal()"></td>` +
-                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="ppmp[` +
-                            i + `][unit]"></td>` +
                             `<td class="align-middle p-0 text-center">` +
-                            `<select class="form-select text-center border-0" name="ppmp[` +
-                            i + `][itemname]" aria-label="Default select example" onchange="updateItemDetails(this)">` +
+                            `<select class="form-select text-center border-0" name="ppmp[` + i +
+                            `][itemname]" aria-label="Default select example" onchange="updateItemDetails(this)">` +
                             `<option selected>Select Item</option>`;
 
                         // Iterate through your items and add options
@@ -345,8 +356,12 @@
 
                         newRow += `</select>` +
                             `</td>` +
+                            `<td class="align-middle p-0 text-center"><textarea class="form-control text-start border-0" name="ppmp[` +
+                            i + `][description]" id="item_d"></textarea> </td>` +
                             `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="ppmp[` +
-                            i + `][description]" id="item_d"></td>` +
+                            i + `][unit]"></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="ppmp[` +
+                            i + `][quantity]" id="quantItem" onkeyup="autoCal()"></td>` +
                             `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="ppmp[` +
                             i + `][unitprice]" id="price" onkeyup="autoCal()"></td>` +
                             `<td>` +

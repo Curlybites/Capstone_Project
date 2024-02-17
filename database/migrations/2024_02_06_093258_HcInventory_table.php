@@ -11,11 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-<<<<<<<< HEAD:database/migrations/2024_02_06_093258_HcInventory_table.php
-        Schema::create('HcInventory', function (Blueprint $table) {
-========
         Schema::create('hc_inventory_items', function (Blueprint $table) {
->>>>>>>> Health_Center_Branch:database/migrations/2024_02_10_150400_create_hc_inventory_items_table.php
             $table->id();
             $table->string('name')->nullable;
             $table->string('type')->nullable;
@@ -31,10 +27,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-<<<<<<<< HEAD:database/migrations/2024_02_06_093258_HcInventory_table.php
         Schema::dropIfExists('HcInventory');
-========
         Schema::dropIfExists('hc_inventory_items');
->>>>>>>> Health_Center_Branch:database/migrations/2024_02_10_150400_create_hc_inventory_items_table.php
     }
 };

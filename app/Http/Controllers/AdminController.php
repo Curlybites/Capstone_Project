@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AssignedHealthCenter;
 use App\Models\AssignedProgramManager;
 use App\Models\BarangaysPerDistrict;
 use Illuminate\Support\Facades\Auth;
@@ -75,7 +76,17 @@ class AdminController extends Controller
         $barangayData = Barangay::all();
         $districtData = District::all();
         $barangayPerDistrictData = BarangaysPerDistrict::all();
-        return view('Admin.barangayList', ['user' => $user, 'barangayData' => $barangayData, 'districtData' => $districtData, 'barangayPerDistrictData' => $barangayPerDistrictData]);
+        $barangaysData = BarangaysPerDistrict::join('districts', 'barangays_per_districts.district_id', '=', 'districts.id')
+            ->join('barangays', 'barangays_per_districts.barangay_id', '=', 'barangays.id')
+            ->select('barangays.*', 'districts.*')
+            ->get();
+        return view('Admin.barangayList', [
+            'user' => $user,
+            'barangayData' => $barangayData,
+            'districtData' => $districtData,
+            'barangayPerDistrictData' => $barangayPerDistrictData,
+            'barangaysData' => $barangaysData
+        ]);
     }
 
     public function updateBarangay(Request $request, Barangay $barangay)
@@ -90,7 +101,7 @@ class AdminController extends Controller
     public function barangayStore(Request $request)
     {
         $barangay = new Barangay();
-        $barangay->name = $request->input('barangayName');
+        $barangay->barangay_name = $request->input('barangayName');
         $barangay->district_id = $request->input('districtNumber');
         $barangay->save();
 
@@ -121,19 +132,24 @@ class AdminController extends Controller
         $user = Auth::user();
         $healthCenterPerBrgyData = HealthCentersPerBarangay::all();
         $userData = DB::table('users')->where('role', 5)->orderBy('id')->get();
+        $healthCentersData = HealthCentersPerBarangay::join('health_centers', 'health_centers_per_barangays.health_center_id', '=', 'health_centers.id')
+            ->join('barangays', 'health_centers_per_barangays.barangay_id', '=', 'barangays.id')
+            ->select('barangays.*', 'health_centers.*')
+            ->get();
         return view('Admin.HealthCenter', [
             'healthcenterData' => $healthcenterData,
             'user' => $user,
             'barangayData' => $barangayData,
             'healthCenterPerBrgyData' => $healthCenterPerBrgyData,
-            'userData' => $userData
+            'userData' => $userData,
+            'healthCentersData' => $healthCentersData
         ]);
     }
 
     public function healthcenterStore(Request $request)
     {
         $healthcenter = new HealthCenters();
-        $healthcenter->name = $request->input('healthcenterName');
+        $healthcenter->health_center_name = $request->input('healthcenterName');
         $healthcenter->barangay_id = $request->input('barangayName');
         $healthcenter->save();
 
@@ -151,11 +167,11 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $userData = DB::table('users')->where('role', 2)->orderBy('id')->get();
-        
+
         $usersData = AssignedProgramManager::join('programs', 'assigned_program_managers.program_id', '=', 'programs.id')
-        ->join('users', 'assigned_program_managers.program_manager_id', '=', 'users.id')
-        ->select('users.*', 'programs.*')
-        ->get();
+            ->join('users', 'assigned_program_managers.program_manager_id', '=', 'users.id')
+            ->select('users.*', 'programs.*')
+            ->get();
         // $usersData = User::all();    
         $programData = Program::all();
         $assignedData = AssignedProgramManager::all();

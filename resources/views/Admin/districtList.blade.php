@@ -99,7 +99,7 @@
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
+                                                        {{-- <th>#</th> --}}
                                                         <th>District Number</th>
                                                         {{-- <th>Barangay</th> --}}
                                                         {{-- <th>Barangay Health Center</th> --}}
@@ -110,7 +110,7 @@
                                                 <tbody>
                                                     @foreach ($districtData as $districtRow)
                                                         <tr>
-                                                            <td>{{ $districtRow->id }}</td>
+                                                            {{-- <td>{{ $districtRow->id }}</td> --}}
                                                             <td>{{ $districtRow->number }}</td>
                                                             {{-- <td>{{ $districtRow->barangay }}</td> --}}
                                                             {{-- <td>{{ $districtRow->healthcenter }}</td> --}}

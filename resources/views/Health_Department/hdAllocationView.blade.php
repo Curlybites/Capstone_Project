@@ -35,7 +35,6 @@
                                             <a type="button" class="btn btn-danger"
                                                 href="{{ '/Health_Department/Allocation_List' }}">Back</a>
                                         </div>
-
                                     </div>
 
                                     <hr class="my-0">
@@ -55,7 +54,14 @@
                             var printContent = document.getElementById("printSection").innerHTML;
                             var originalContent = document.body.innerHTML;
                             document.body.innerHTML = printContent;
+
+                            var style = document.createElement('style');
+                            style.innerHTML = '@media print { @page { size: landscape; } }';
+                            document.head.appendChild(style);
+
                             window.print();
+
+                            // Reset the document content to its original state
                             document.body.innerHTML = originalContent;
                         }
                     </script>

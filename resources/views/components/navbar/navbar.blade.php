@@ -125,7 +125,7 @@
                         class="text-muted fw-light">{{ Request::is('Program_Manager/Allocationlist') ? 'Allocation /' : '' }}</span>{{ Request::is('Program_Manager/Allocationlist') ? ' Allocation List' : '' }}
                 </h5>
                 <h5 class="fw-bold py-3 mt-3"><span
-                        class="text-muted fw-light">{{ Request::is('Program_Manager/Reportlist') ? 'Report /' : '' }}</span>{{ Request::is('Program_Manager/Reportlist') ? ' List of Report' : '' }}
+                        class="text-muted fw-light">{{ Request::is('Program_Manager/Reportlist') ? 'Inventory /' : '' }}</span>{{ Request::is('Program_Manager/Reportlist') ? ' Inventory List' : '' }}
                 </h5>
 
                 <h5 class="fw-bold py-3 mt-3"><span

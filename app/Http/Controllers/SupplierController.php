@@ -41,8 +41,12 @@ class SupplierController extends Controller
     {
         $program = Program::all();
         $user = Auth::user();
-        $ppmp = Ppmpdatas::all();
-        return view('Supplier.Po', ['user' => $user, 'ppmp' => $ppmp, 'program' => $program]);
+        $ppmp = Ppmpdatas::orderBy('created_at', 'desc')->get();
+        $totalPPMP = Ppmpdatas::all()->count();
+        $totalApprove = Ppmpdatas::all()->Where('status', 1)->count();
+        $totalDisapprove = Ppmpdatas::all()->Where('status', 2)->count();
+        $totalPending = Ppmpdatas::all()->Where('status', 3)->count();
+        return view('Supplier.Po', ['user' => $user, 'ppmp' => $ppmp, 'program' => $program, 'totalApprove' => $totalApprove, 'totalPending' => $totalPending, 'totalDisapprove' => $totalDisapprove, 'totalPPMP' =>  $totalPPMP]);
     }
 
     public function ppmp_view($id)
@@ -51,9 +55,9 @@ class SupplierController extends Controller
         $ppmpdatas = Ppmpdatas::findOrfail($id);
         $joinedppmpdata = DB::table('ppmpitemdatas')
             ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
-            ->join('items','ppmpitemdatas.itemname', '=','items.id')
-            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total','items.item_name')
-            ->where('ppmpitemdatas.ppmpitemID', $id)->get();     
+            ->join('items', 'ppmpitemdatas.itemname', '=', 'items.id')
+            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total', 'items.item_name')
+            ->where('ppmpitemdatas.ppmpitemID', $id)->get();
 
         return view('Supplier.Po_view', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata]);
     }
@@ -79,14 +83,14 @@ class SupplierController extends Controller
         $ppmpdatas = Ppmpdatas::findOrfail($id);
         $joinedppmpdata = DB::table('ppmpitemdatas')
             ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
-            ->join('items','ppmpitemdatas.itemname', '=','items.id')
-            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total','items.item_name')
+            ->join('items', 'ppmpitemdatas.itemname', '=', 'items.id')
+            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total', 'items.item_name')
             ->where('ppmpitemdatas.ppmpitemID', $id)->get();
 
         return view('Supplier.Po_edit', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata, 'item' => $items, 'ppmp' => $ppmp, 'program' => $program]);
     }
 
-    
+
     public function deletePPMP($id)
     {
         $ppmp = Ppmpdatas::find($id);
@@ -155,8 +159,4 @@ class SupplierController extends Controller
 
         return back()->with('success', 'Product deleted successfully.');
     }
-
-
-
-
 }
