@@ -8,25 +8,61 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Models\Allocatetoprogs;
 use App\Models\Allocateitemtoprogs;
+use App\Models\HdInventory;
+
+use App\Models\Program;
+use App\Models\Ppmpdatas;
+use App\Models\Ppmpitemdatas;
+
 
 class HdController extends Controller
 {
     public function hdInventory()
     {
+        $program = Program::all();
         $user = Auth::user();
-        return view('Health_Department.hdInventory', ['user' => $user]);
+        $ppmp = Ppmpdatas::all();
+        return view('Health_Department.hdInventory', ['user' => $user, 'ppmp' => $ppmp, 'program' => $program]);
     }
 
     public function hdPurchaseOrderList()
     {
+        $program = Program::all();
         $user = Auth::user();
-        return view('Health_Department.hdPOList', ['user' => $user]);
+        $ppmp = Ppmpdatas::all();
+        return view('Health_Department.hdPOList', ['user' => $user, 'ppmp' => $ppmp, 'program' => $program]);
     }
 
-    public function hdPurchaseOrderView()
+
+    public function hdReceive($id)
+    { // Example: Storing data in the OtherTable
+        $ppmp = Ppmpitemdatas::findOrFail($id);
+
+        // Store the PPMP data into the other table
+        HdInventory::create([
+            'item_quan' => $ppmp->quantity,
+            'item_name' => $ppmp->itemname,
+            'item_description' => $ppmp->description,
+            'item_price' => $ppmp->unitprice,
+            // Add other fields as needed
+        ]);
+
+        return redirect()->back()->with('success', 'PPMP received successfully.');
+    }
+
+    public function hdPurchaseOrderView($id)
     {
         $user = Auth::user();
-        return view('Health_Department.hdPOView', ['user' => $user]);
+        $ppmpdatas = Ppmpdatas::findOrfail($id);
+        $joinedppmpdata = DB::table('ppmpitemdatas')
+            ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
+            ->join('items', 'ppmpitemdatas.itemname', '=', 'items.id')
+            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total', 'items.item_name')
+            ->where('ppmpitemdatas.ppmpitemID', $id)->get();
+
+        return view('Health_Department.hdPOView', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata]);
+        // $user = Auth::user();
+        // return view('Health_Department.hdPOView', ['user' => $user]);
     }
 
     public function hdAllocationProcess()

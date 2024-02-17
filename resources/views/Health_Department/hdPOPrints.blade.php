@@ -2,78 +2,118 @@
 
 <body class="container-fluid">
     <div class="card-body">
-        <div class="pb-4">
-            <p style="margin-bottom: 0px; font-weight: bold;">QC Health Dept</p>
-            <p style="margin-bottom: 0px; font-weight: bold;">qchd@gmail.com</p>
-            <p style="margin-bottom: 0px; font-weight: bold;">Sample Address, 23rd St.,
-                Sample City, ####
-            </p>
-        </div>
-        <div class="row pb-4 mt-5">
-            <div class="col-md-4 col-4 mb-md-0 mb-3">
-                <p style="margin-bottom: 0px; font-weight: bold;">Vendor</p>
-                <p style="margin-bottom: 0px;">Supplier 101</p>
-                <p style="margin-bottom: 0px;">Sample Address Only</p>
-                <p style="margin-bottom: 0px;">George Wilson</p>
-                <p style="margin-bottom: 0px;">09123459879</p>
-                <p style="margin-bottom: 0px;">supplier101@gmail.com</p>
-            </div>
-            <div class="col-md-4 col-4 mb-md-0 mb-3">
-                <p style="margin-bottom: 0px; font-weight: bold;">P.O #</p>
-                <p style="margin-bottom: 0px;">PO-94619964639</p>
-            </div>
-            <div class="col-md-4 col-4">
-                <p style="margin-bottom: 0px; font-weight: bold;">Date Created:</p>
-                <p style="margin-bottom: 0px;">2021-09-08</p>
-            </div>
-        </div>
-        <div class="text-nowrap">
-            <table id="" class="datatables-basic table border-top table-bordered" style="width:100%">
-                <thead>
-                    <tr class="text-center">
-                        <th>Item Name</th>
-                        <th>Unit</th>
-                        <th>Quantity</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Total Amount</th>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{}}</td>
-                        <td>Per Box</td>
-                        <td>30</td>
-                        <td>Sample Item Only. Test 101</td>
-                        <td>12</td>
-                        <td>20</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="4"></th>
-                        <th class="fs-6">Sub Total:</th>
-                        <th class="fs-6">1000</th>
-                    </tr>
-                    <tr>
-                        <th colspan="4"></th>
-                        <th class="fs-6">Total:</th>
-                        <th class="fs-6">255</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
 
-        <div class="row mt-5">
-            <div class="col-xxl-6 col-6 mb-md-0 mb-2">
-                <p style="margin-bottom: 0px; font-weight: bold;">Note:</p>
-                <p style="margin-bottom: 0px;">Sample Purchase Order
-                    Only</p>
+        <div class="card-body">
+            <div class="pb-4">
+                <p style="margin-bottom: 0px; font-weight: bold;">
+                    Ppmp Code: {{ $ppmpdatas->ppmp_code }}
+                </p>
+                <p style="margin-bottom: 0px; font-weight: bold;">
+                    Year: {{ $ppmpdatas->year }}
+                </p>
+                <p style="margin-bottom: 0px; font-weight: bold;">
+                    Department: {{ $ppmpdatas->department }}
+                </p>
+                <p style="margin-bottom: 0px; font-weight: bold;">
+                    Program title: {{ $ppmpdatas->programtitle }}
+                </p>
+
+                <p style="margin-bottom: 0px; font-weight: bold;">
+                    Project Title: {{ $ppmpdatas->projecttitle }}
+                </p>
+
+
             </div>
-            <div class="col-md-1 col-6">
-                <p style="margin-bottom: 0px; font-weight: bold;">Status:</p>
-                <p class="text-success">Approved</p>
+            <div class="row pb-4 mt-5">
+                <div class="col-md-4 col-4 mb-md-0 mb-3">
+                    <p style="margin-bottom: 0px; font-weight: bold;">Types of Contract
+                    </p>
+                    <p style="margin-bottom: 0px;">
+                        {{ $ppmpdatas->typeofcontract }}
+                    </p>
+                    </p>
+                    </p>
+                </div>
+                <div class="col-md-4 col-4 mb-md-0 mb-3">
+                    <p style="margin-bottom: 0px; font-weight: bold;">Account Title:</p>
+                    <p style="margin-bottom: 0px;">
+                        {{ $ppmpdatas->accounttitle }}
+                    </p>
+                    </p>
+                </div>
+
+            </div>
+            <div class="text-nowrap">
+                <table id="" class="datatables-basic table border-top table-bordered" style="width:100%">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Item Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Total</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($joinedppmpdata as $joinedppmpdatas)
+                            <tr class="text-center">
+                                <td>
+                                    {{ $joinedppmpdatas->quantity }}
+                                </td>
+                                <td>
+                                    {{ $joinedppmpdatas->unit }}
+                                </td>
+                                <td>
+                                    {{ $joinedppmpdatas->item_name }}
+                                </td>
+                                <td class="text-wrap text-break">
+                                    {{ $joinedppmpdatas->description }}
+                                </td>
+                                <td>
+                                    {{ $joinedppmpdatas->unitprice }}
+                                </td>
+                                <td>
+                                    {{ $joinedppmpdatas->total }}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-xxl-6 col-6 mb-md-0 mb-2">
+                    <p style="margin-bottom: 0px; font-weight: bold;">Schedule /
+                        Milestone of Activities:</p>
+                    <p style="margin-bottom: 0px;">
+                        {{ $ppmpdatas->schedule }}
+                    </p>
+                    </p>
+                </div>
+                <div class="col-md-1 col-6">
+                    <p style="margin-bottom: 0px; font-weight: bold;">Status:</p>
+
+                    @switch($ppmpdatas->status)
+                        @case(1)
+                            <p class="text-success">Approved</p>
+                        @break
+
+                        @case(2)
+                            <p class="text-danger">Dissaproved</p>
+                        @break
+
+                        @case(3)
+                            <p class="text-warning">Pending</p>
+                        @break
+
+                        @default
+                    @endswitch
+
+
+                </div>
             </div>
         </div>
     </div>

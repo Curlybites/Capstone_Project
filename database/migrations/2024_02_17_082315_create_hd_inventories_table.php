@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hc_inventory_items', function (Blueprint $table) {
+        Schema::create('hd_inventories', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable;
-            $table->string('type')->nullable;
-            $table->string('program')->nullable;
-            $table->integer('expiration')->nullable;
-            $table->integer('quantity')->nullable;
+            $table->string('item_img')->nullable();
+            $table->integer('item_quan');
+            $table->string('item_name');
+            $table->string('program_title')->nullable();
+            $table->string('item_description');
+            $table->float('item_price');
             $table->timestamps();
         });
     }
@@ -27,7 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('HcInventory');
-        Schema::dropIfExists('hc_inventory_items');
+        Schema::dropIfExists('hd_inventories');
     }
 };
