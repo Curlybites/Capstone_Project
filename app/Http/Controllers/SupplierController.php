@@ -42,7 +42,11 @@ class SupplierController extends Controller
         $program = Program::all();
         $user = Auth::user();
         $ppmp = Ppmpdatas::all();
-        return view('Supplier.Po', ['user' => $user, 'ppmp' => $ppmp, 'program' => $program]);
+        $totalPPMP = Ppmpdatas::all()->count();
+        $totalApprove = Ppmpdatas::all()->Where('status', 1)->count();
+        $totalDisapprove = Ppmpdatas::all()->Where('status', 2)->count();
+        $totalPending = Ppmpdatas::all()->Where('status', 3)->count();
+        return view('Supplier.Po', ['user' => $user, 'ppmp' => $ppmp, 'program' => $program, 'totalApprove' => $totalApprove, 'totalPending'=>$totalPending, 'totalDisapprove'=> $totalDisapprove, 'totalPPMP'=>  $totalPPMP]);
     }
 
     public function ppmp_view($id)
