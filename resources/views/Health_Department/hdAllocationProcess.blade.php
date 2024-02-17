@@ -88,7 +88,7 @@
                                                                 <tr>
                                                                     <td>
                                                                         <button class="btn btn-sm btn-danger py-0"
-                                                                            onclick="removeRow(this, {{ $joinedDatas->id })">X</button>
+                                                                            onclick="removeRow(this)">X</button>
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"

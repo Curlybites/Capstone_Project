@@ -8,6 +8,9 @@
 
             @include('components.sidebar.hd_sidebar')
 
+            <!-- Notification success created -->
+            @include('components.insertnotification')
+
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
