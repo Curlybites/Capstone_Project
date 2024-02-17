@@ -90,12 +90,31 @@
                                                                         </select>
                                                                     </div>
 
-                                                                    <div class="col-md-4 mb-3">
+                                                                    {{-- <div class="col-md-4 mb-3">
                                                                         <label for="exampleFormControlInput1"
                                                                             class="form-label">Program</label>
                                                                         <input type="text" class="form-control"
                                                                             name="program" id="exampleFormControlInput1"
                                                                             placeholder="Program">
+                                                                    </div> --}}
+                                                                    <div class="col-md-4 mb-3">
+                                                                        <label
+                                                                            for="exampleFormControlInput1"
+                                                                            class="form-label">Program</label>
+                                                                        <select class="form-select"
+                                                                            aria-label="Default select example"
+                                                                            name="program"
+                                                                            >
+                                                                            <option selected disabled>
+                                                                                Select Program
+                                                                            </option>
+                                                                            <option value="Family Planning">Family Planning
+                                                                            </option>
+                                                                            <option value="Sample Program">
+                                                                                Sample Program</option>
+                                                                            <option value="Sample Program1">
+                                                                                Sample Program1</option>
+                                                                        </select>
                                                                     </div>
 
                                                                 </div>
@@ -351,7 +370,7 @@
                                                                                                 Bading</option>
                                                                                         </select>
                                                                                     </div>
-                                                                                    <div class="col-md-6 mb-3">
+                                                                                    {{-- <div class="col-md-6 mb-3">
                                                                                         <label
                                                                                             for="exampleFormControlInput2"
                                                                                             class="form-label">program</label>
@@ -361,6 +380,25 @@
                                                                                             aria-label="Disabled input example"
                                                                                             name="program"
                                                                                             value={{ $data->program }}>
+                                                                                    </div> --}}
+                                                                                    <div class="col-md-6 mb-3">
+                                                                                        <label
+                                                                                            for="exampleFormControlInput1"
+                                                                                            class="form-label">Program</label>
+                                                                                        <select class="form-select"
+                                                                                            aria-label="Default select example"
+                                                                                            name="program"
+                                                                                            value={{ $data->program }}>
+                                                                                            <option selected>
+                                                                                                {{ $data->program }}
+                                                                                            </option>
+                                                                                            <option value="Family Planning">Family Planning
+                                                                                            </option>
+                                                                                            <option value="Sample Program">
+                                                                                                Sample Program</option>
+                                                                                            <option value="Sample Program1">
+                                                                                                Sample Program1</option>
+                                                                                        </select>
                                                                                     </div>
                                                                                     <div class="col-md-6 mb-3">
                                                                                         <label
