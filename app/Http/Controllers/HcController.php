@@ -61,12 +61,6 @@ class HcController extends Controller
         $user = Auth::user();
         return view('Health_Center.hcItemList', ['user' => $user]);
     }
-    public function hcReport()
-    {
-        $user = Auth::user();
-        return view('Health_Center.hcReport', ['user' => $user]);
-    }
-
     public function storePatient(Request $request)
     {
         $request->validate([

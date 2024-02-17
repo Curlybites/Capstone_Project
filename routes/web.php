@@ -168,7 +168,6 @@ Route::middleware(['auth', 'health_center'])->group(function () {
         // Route::get('/Health_Center/Patient_List/view', 'hcPatientView')->middleware('auth');
         Route::get('/Health_Center/Patient_View{id}', 'hcPatientView');
         Route::get('/Health_Center/Patient_View', 'listPatientPrint');
-        Route::get('/Health_Center/Report', 'hcReport');
     
         // FOR CREATION OF PATIENT
         Route::post('/Health_Center/Patient_List', 'storePatient')->name('patientname');

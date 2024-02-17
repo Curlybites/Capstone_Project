@@ -55,20 +55,6 @@
       
         </li>
 
-        <li class="menu-item {{ Request::is('/Health_Center/Report') ? 'active open' : '' }}">
-            <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-notepad"></i>
-                <div data-i18n="Extended UI">Report</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item {{ Request::is('/Health_Center/Report') ? 'active' : '' }}">
-                    <a href="{{ '/Health_Center/Report' }}" class="menu-link">
-                        <div data-i18n="Perfect Scrollbar">Report</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
         <!-- Forms & Tables -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Profile</span></li>
         <!-- Forms -->
