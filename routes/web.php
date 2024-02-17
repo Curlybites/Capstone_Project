@@ -129,14 +129,17 @@ Route::middleware(['auth', 'health_department'])->group(function () {
     Route::get('/Health_Department/Allocation_View_{id}', [HdController::class, 'hdAllocationView']);
     Route::get('/Health_Department/Allocation_Edit_{id}', [HdController::class, 'hdAllocationEdit']);
     Route::get('/Health_Department/Profile', [HdController::class, 'hdAccount']);
-    Route::get('/Health_Department/Purchase_Order_View', [HdController::class, 'hdPurchaseOrderView']);
+    Route::get('/Health_Department/Purchase_Order_View{id}', [HdController::class, 'hdPurchaseOrderView']);
     Route::get('/Health_Department/Purchase_Order_List', [HdController::class, 'hdPurchaseOrderList']);
     Route::get('/Health_Department/Profile_Change', [HdController::class, 'hdAccountChange']);
     Route::post('/Health_Department/Allocation_Process', [HdController::class, 'hdAllocationtoProg'])->name('allocate');
 
     Route::put('/Health_Department/Allocation_Edit_{id}', [HdController::class, 'hdAllocationProgUpdate'])->name('updateallocation');
     Route::delete('/Health_Department/Allocation_List{id}', [HdController::class, 'hdAllocationProgDelete'])->name('deleteallocation');
+
+    Route::post('/Health_Department/Allocation_List{id}', [HdController::class, 'hdReceive'])->name('receivehd');
 });
+
 
 
 // Route For Disctrict 
