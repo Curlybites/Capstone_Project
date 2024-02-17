@@ -382,25 +382,25 @@
                                                                                 Delete</button>
                                                                         </form>
                                                                     </a> --}}
-                                                                        </ul>
-                                                                    </div>
-                                                            </td>
-                                                        </tr>
-                                                </tbody>
-                    
-                                                <div class="modal fade" id="exampleModal2{{ $ppmps->id }}"
-                                                    tabindex="-1"
-                                                    aria-labelledby="exampleModalLabel{{ $ppmps->id }}"
-                                                    aria-hidden="true">
-                                                    <div class="modal-dialog modal-xl modal-dialog-centered">
-                                                        <div class="modal-content ">
-                                                            <div
-                                                                class="modal-header justify-content-center d-block text-center">
-                                                                <h1 class="modal-title fs-3"
-                                                                    id="exampleModalLabel{{ $ppmps->id }}">
-                                                                    QUEZON
-                                                                    CITY<br>PROJECT PROCUREMENT MANAGEMENT PLAN</h1>
-                                                                <!-- <h1 class="fs-3">PROJECT PROCUREMENT MANAGEMENT PLAN </h1><br> -->
+                                                                    </ul>
+                                                                </div>
+                                                        </td>
+                                                    </tr>
+                                            </tbody>
+                                        
+                                            <div class="modal fade" id="exampleModal2{{ $ppmps->id }}"
+                                                tabindex="-1"
+                                                aria-labelledby="exampleModalLabel{{ $ppmps->id }}"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog modal-xl modal-dialog-centered">
+                                                    <div class="modal-content ">
+                                                        <div
+                                                            class="modal-header justify-content-center d-block text-center">
+                                                            <h1 class="modal-title fs-3"
+                                                                id="exampleModalLabel{{ $ppmps->id }}">
+                                                                QUEZON
+                                                                CITY<br>PROJECT PROCUREMENT MANAGEMENT PLAN</h1>
+                                                            <!-- <h1 class="fs-3">PROJECT PROCUREMENT MANAGEMENT PLAN </h1><br> -->
 
                                                             </div>
                                                             <!-- <div class="modal-header d-flex justify-content-end">
