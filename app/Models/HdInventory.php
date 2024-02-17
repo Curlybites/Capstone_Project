@@ -15,5 +15,6 @@ class HdInventory extends Model
         'program_title',
         'item_description',
         'item_price',
+        'item_total'
     ];
 }

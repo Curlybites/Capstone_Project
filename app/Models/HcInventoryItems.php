@@ -10,6 +10,7 @@ class HcInventoryItems extends Model
     use HasFactory;
 
     protected $fillable = [
+        'po_code',
         'item_name',
         'item_description',
         'item_price',
@@ -18,8 +19,4 @@ class HcInventoryItems extends Model
         'expiration',
         'quantity',
     ];
-
-    
-
-    
 }
