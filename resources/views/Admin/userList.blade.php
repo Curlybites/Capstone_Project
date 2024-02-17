@@ -6,7 +6,7 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            
+
 
             @include('components.sidebar.admin_sidebar')
             <!-- / Menu -->
@@ -22,7 +22,7 @@
                     @if (session('success'))
                         @include('components.notification')
                     @endif
-                    
+
                     <div class="container-fluid  flex-grow-1 container-p-y">
                         {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Users /</span> List of Users
                         </h4> --}}
@@ -110,10 +110,10 @@
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
                                         <h5 class="card-header d-flex align-items-center "><i
-                                                class='bx bx-user text-primary fs-3'>
-                                            </i> <span class="badge bg-primary">{{ $totalUser }}</span></h5>
-                                        <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
+                                                class='bx bx-user text-info fs-3'>
+                                            </i> <span class="badge bg-info">{{ $totalUser }}</span></h5>
+                                        <button class="btn btn-outline-info mx-4 px-4 " data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal"> <i class='tf-icons bx bx-user-plus  me-1'></i> Create
                                             New</button>
 
                                         <div class="modal fade" id="exampleModal" tabindex="-1"
@@ -258,7 +258,7 @@
 
                                                             <div class="row border-top pt-4">
                                                                 <h5>Designation / Role Setup</h5>
-                                                            
+
                                                                 <div class="col-md-6">
                                                                     <p>Select Role Type</p>
                                                                     <div class="input-group mb-3">
@@ -266,12 +266,13 @@
                                                                             aria-label="Default select example"
                                                                             name="role">
                                                                             @foreach ($roleData as $userRow)
-                                                                            <option value="{{ $userRow->id }}">{{ $userRow->name}}</option>
+                                                                                <option value="{{ $userRow->id }}">
+                                                                                    {{ $userRow->name }}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                
+
                                                                 {{-- <div class="col-md-6">
                                                                     <p>Select Health Center</p>
                                                                     <div class="input-group mb-3" id="optionHealthCenter" style="display: none;" ">
@@ -286,10 +287,10 @@
                                                                         </select>
                                                                     </div>
                                                                 </div> --}}
-                                                                    
-                                                                
 
-                                    
+
+
+
 
 
                                                             </div>
@@ -310,11 +311,11 @@
                                     <!-- Account -->
                                     <div class="card-body p-5 ">
                                         <div class="table-responsive text-nowrap">
-                                            <table id="dataTable" class="datatables-basic table   border-top "
+                                            <table id="dataTable" class="datatables-basic table border-top "
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
+                                                        {{-- <th>#</th> --}}
                                                         <th>Name</th>
                                                         {{-- <th>Name</th>
                                                         <th>Email</th> --}}
@@ -328,7 +329,7 @@
                                                 <tbody>
                                                     @foreach ($users as $user)
                                                         <tr>
-                                                            <td>{{ $user->id }}</td>
+                                                            {{-- <td>{{ $user->id }}</td> --}}
                                                             <td class="sorting_1">
                                                                 <div
                                                                     class="d-flex justify-content-start align-items-center user-name">
@@ -548,13 +549,13 @@
                 @include('components.footer');
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                
+
                 <script>
                     $('#role').change(function() {
                         var selectedValue = $(this).val();
-                        if(selectedValue === '5') {
+                        if (selectedValue === '5') {
                             $('#optionHealthCenter').show();
-                        }else {
+                        } else {
                             $('#optionHealthCenter').hide();
                         }
                     });

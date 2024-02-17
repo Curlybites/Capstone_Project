@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('assigned_health_centers', function (Blueprint $table) {
             $table->id();
-            $table->string('health_center_staff_name');
             $table->integer('health_center_staff_id');
-            $table->string('health_center_name');
             $table->integer('health_center_id');
             $table->timestamps();
         });

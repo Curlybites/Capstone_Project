@@ -80,14 +80,14 @@
                                             <table id="dataTable" class="datatables-basic table   border-top "
                                                 style="width:100%">
                                                 <thead>
-                                                    <th>#</th>
+                                                    {{-- <th>#</th> --}}
                                                     <th>Role Name</th>
                                                     <th>Action</th>
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($roleData as $roleRow)
                                                         <tr>
-                                                            <td>{{ $roleRow->id }}</td>
+                                                            {{-- <td>{{ $roleRow->id }}</td> --}}
                                                             <td>{{ $roleRow->name }}</td>
                                                             <td>
                                                                 <a type="button" href="" class="text-primary"
