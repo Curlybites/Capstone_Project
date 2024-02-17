@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('hd_inventories', function (Blueprint $table) {
             $table->id();
+            $table->string('po_code');
             $table->string('item_img')->nullable();
             $table->integer('item_quan');
             $table->string('item_name');
             $table->string('program_title')->nullable();
-            $table->string('item_description');
+            $table->text('item_description');
             $table->float('item_price');
+            $table->float('item_total');
             $table->timestamps();
         });
     }
