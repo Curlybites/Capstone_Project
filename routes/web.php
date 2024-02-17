@@ -97,32 +97,23 @@ Route::middleware(['auth', 'program_manager'])->group(function () {
 
     Route::controller(ProgramManagerController::class)->group(function () {
         // PPMP_Page
-        Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
-        Route::get('/Program_Manager/pmPPMPcreate', 'PPMPcreate')->middleware('auth');
-        Route::get('/Program_Manager/pmPPMPView{id}', 'PPMPView')->middleware('auth');
-        // Route::get('/Program_Manager/pmPPMPView{id}', 'printPPMP')->middleware('auth');
-
-        Route::get('/Program_Manager/pmPPMPEdit_{id}', 'PPMPEdit')->name('ppmp.edit')->middleware('auth');
-        // Route::get('/Program_Manager/pmPPMPPrint', 'PPMPPrint')->middleware('auth');
-        Route::post('/Program_Manager/PPMPlist', 'storePPMP')->name('ppmp.create')->middleware('auth');
-
-        // Route::get('/Program_Manager/pmPPMPView', 'PPMPView')->name('ppmp.view')->middleware('auth');
-        Route::put('/Program_Manager/pmPPMPEdit_{id}', 'editPPMP')->name('routes.update')->middleware('auth');
-        // Route::get('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete')->middleware('auth');
-        Route::delete('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete')->middleware('auth');
-
-
-        Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
-        Route::get('/Program_Manager/AllocationView', 'pmAllocationView')->middleware('auth');
-        Route::get('/Program_Manager/AllocationEdit', 'pmAllocationEdit')->middleware('auth');
-        Route::get('/Program_Manager/pmAllocationPrint', 'AllocationPrint')->middleware('auth');
-        Route::get('/Program_Manager/AllocationProcess', 'pmAccountChange')->middleware('auth');
+        Route::get('/Program_Manager/PPMPlist', 'PPMPpage');
+        Route::get('/Program_Manager/pmPPMPcreate', 'PPMPcreate');
+        Route::get('/Program_Manager/pmPPMPView{id}', 'PPMPView');
+        Route::get('/Program_Manager/pmPPMPEdit_{id}', 'PPMPEdit');
+        Route::put('/Program_Manager/pmPPMPEdit_{id}', 'editPPMP')->name('routes.ppmpupdate');
+        Route::post('/Program_Manager/PPMPlist', 'storePPMP')->name('ppmp.create');
+        Route::delete('/Program_Manager/PPMPlist{id}', 'deletePPMP')->name('ppmp.delete');
+        Route::get('/Program_Manager/Allocationlist', 'Allocationpage');
+        Route::get('/Program_Manager/AllocationView', 'pmAllocationView');
+        Route::get('/Program_Manager/AllocationEdit', 'pmAllocationEdit');
+        Route::get('/Program_Manager/pmAllocationPrint', 'AllocationPrint');
+        Route::get('/Program_Manager/AllocationProcess', 'pmAccountChange');
         // Report_Page
-        Route::get('/Program_Manager/Reportlist', 'Reportpage')->middleware('auth');
-
+        Route::get('/Program_Manager/Reportlist', 'Reportpage');
         // Profile_Page
-        Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
-        Route::get('/Program_Manager/Profile_Change', 'pmAccountChange')->middleware('auth');
+        Route::get('/Program_Manager/Profile', 'Profilepage');
+        Route::get('/Program_Manager/Profile_Change', 'pmAccountChange');
     });
 });
 
@@ -131,7 +122,6 @@ Route::middleware(['auth', 'program_manager'])->group(function () {
 Route::middleware(['auth', 'health_department'])->group(function () {
 
     Route::get('/Health_Department/Dashboard', [PageController::class, 'hdDashboard']);
-
 
     Route::get('/Health_Department/Item_List', [HdController::class, 'hdInventory']);
     Route::get('/Health_Department/Allocation_List', [HdController::class, 'hdAllocation']);
@@ -143,7 +133,6 @@ Route::middleware(['auth', 'health_department'])->group(function () {
     Route::get('/Health_Department/Purchase_Order_List', [HdController::class, 'hdPurchaseOrderList']);
     Route::get('/Health_Department/Profile_Change', [HdController::class, 'hdAccountChange']);
     Route::post('/Health_Department/Allocation_Process', [HdController::class, 'hdAllocationtoProg'])->name('allocate');
-
 
     Route::put('/Health_Department/Allocation_Edit_{id}', [HdController::class, 'hdAllocationProgUpdate'])->name('updateallocation');
     Route::delete('/Health_Department/Allocation_List{id}', [HdController::class, 'hdAllocationProgDelete'])->name('deleteallocation');
@@ -158,12 +147,6 @@ Route::middleware(['auth', 'district'])->group(function () {
     Route::get('/District/District_Receive', [DistrictController::class, 'receive']);
     Route::get('/District/District_InventoryList', [DistrictController::class, 'dtInventory_List']);
     Route::get('/District/District_Allocation', [DistrictController::class, 'allocation']);
-    //Allocation CRUD//
-    Route::get('/District/District_Allocation_View', [DistrictController::class, 'AllocationView']);
-    Route::get('/District/Allocation_Print', [DistrictController::class, 'AllocationPrint']);
-    Route::get('/District/District_Allocation_Edit', [DistrictController::class, 'AllocationEdit']);
-    Route::delete('/District/District_Allocation{id}', [DistrictController::class, 'deleteAllocation']);
-    //----//
     Route::get('/District/District_Report', [DistrictController::class, 'Report']);
     Route::get('/District/District_Account', [DistrictController::class, 'Account']);
     Route::get('/District/District_Change_Account', [DistrictController::class, 'AccountChange']);
@@ -171,14 +154,52 @@ Route::middleware(['auth', 'district'])->group(function () {
 
 // Route For Health Center
 Route::middleware(['auth', 'health_center'])->group(function () {
-    Route::get('/Health_Center/Dashboard', [PageController::class, 'hcDashboard']);
+    Route::get('/Health_Center/Dashboard', [PageController::class,'hcDashboard']);
+
+    Route::controller(HcController::class)->group(function () {
+
+        // FOR ROUTING OF TABS
+        Route::get('/Health_Center/Item_List', 'hcInventory');
+        Route::get('/Health_Center/Patient_List', 'hcPatient');
+        Route::get('/Health_Center/Patient_Item_List', 'hcItemList');
+        // Route::get('/Health_Center/Patient_List/view', 'hcPatientView')->middleware('auth');
+        Route::get('/Health_Center/Patient_View{id}', 'hcPatientView');
+        Route::get('/Health_Center/Patient_View', 'listPatientPrint');
+    
+        // FOR CREATION OF PATIENT
+        Route::post('/Health_Center/Patient_List', 'storePatient')->name('patientname');
+    
+        // FOR PATIENT LIST TABLE
+        Route::get('/Health_Center/Patient_List', 'listPatient');
+    
+        //FOR SEND ITEMS
+        Route::get('/Health_Center/Send_Items', 'sendItemsActiveList');
+    
+        // FOR SENDING ITEM TO PATIENT
+        Route::get('/Health_Center/Patient_Sent_Item{id}', 'itemSendPatientInfo');
+        Route::post('/Health_Center/Patient_Sent_Item', 'HcSendItemsInput');
+    
+        // Route::get('/Health_Center/Patient_Sent_Item', 'index');
+    
+        // FOR ACCOUNT
+        Route::get('/Health_Center/Profile', 'hcAccount');
+        Route::get('/Health_Center/Profile_Change', 'hcAccountChange');
+    
+        // Route::get('/Health_Center/Patient_View', 'listPatientnMedicine');
+        // Route::put('/Health_Center/Patient_List/{id}', 'updatePatient')->name('updatePatient')->middleware('auth');
+    
+        // FOR UPDATING PATIENT INFO
+        Route::post('/Health_Center/Patient_List/{id}', 'updatePatient')->name('routes.update');
+    
+        // FOR INVENTORY
+        Route::get('/Health_Center/Item_List', 'hcInventoryList');
+    
+    });
 });
 
 
 // Route For Supplier
 Route::middleware(['auth', 'supplier'])->group(function () {
-    Route::get('/Supplier/Dashboard', [PageController::class, 'supplierDashboard']);
-
     Route::get('/Supplier/Dashboard', [PageController::class, 'supplierDashboard']);
 
     Route::post('/Supplier/Item_List', [SupplierController::class, 'storeItem'])->name('products.store');
@@ -195,47 +216,6 @@ Route::middleware(['auth', 'supplier'])->group(function () {
 });
 
 
-
-
-
-    Route::controller(HcController::class)->group(function () {
-
-        // FOR ROUTING OF TABS
-        Route::get('/Health_Center/Item_List', 'hcInventory');
-        Route::get('/Health_Center/Patient_List', 'hcPatient');
-        Route::get('/Health_Center/Patient_Item_List', 'hcItemList');
-        // Route::get('/Health_Center/Patient_List/view', 'hcPatientView')->middleware('auth');
-        Route::get('/Health_Center/Patient_View{id}', 'hcPatientView');
-        Route::get('/Health_Center/Patient_View', 'listPatientPrint');
-
-        // FOR CREATION OF PATIENT
-        Route::post('/Health_Center/Patient_List', 'storePatient')->name('patientname');
-
-        // FOR PATIENT LIST TABLE
-        Route::get('/Health_Center/Patient_List', 'listPatient');
-
-        //FOR SEND ITEMS
-        Route::get('/Health_Center/Send_Items', 'sendItemsActiveList');
-
-        // FOR SENDING ITEM TO PATIENT
-        Route::get('/Health_Center/Patient_Sent_Item{id}', 'itemSendPatientInfo');
-        Route::post('/Health_Center/Patient_Sent_Item', 'HcSendItemsInput');
-
-        // Route::get('/Health_Center/Patient_Sent_Item', 'index');
-
-        // FOR ACCOUNT
-        Route::get('/Health_Center/Profile', 'hcAccount');
-        Route::get('/Health_Center/Profile_Change', 'hcAccountChange');
-
-        // Route::get('/Health_Center/Patient_View', 'listPatientnMedicine');
-        // Route::put('/Health_Center/Patient_List/{id}', 'updatePatient')->name('updatePatient')->middleware('auth');
-
-        // FOR UPDATING PATIENT INFO
-        Route::post('/Health_Center/Patient_List/{id}', 'updatePatient')->name('routes.update');
-
-    // FOR INVENTORY
-    Route::get('/Health_Center/Item_List', 'listItem');
-});
 // // Admin route
 
 // Route::controller(AdminController::class)->group(function () {
