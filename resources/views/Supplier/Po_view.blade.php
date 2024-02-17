@@ -119,7 +119,7 @@
                                                                 <td>
                                                                     {{ $joinedppmpdatas->item_name }}
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-wrap text-break">
                                                                     {{ $joinedppmpdatas->description }}
                                                                 </td>
                                                                 <td>
