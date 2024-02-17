@@ -20,10 +20,5 @@ class Patient extends Model
         'district',
         'status'
     ];
-
-    public function hcSendItems()
-    {
-        return $this->hasMany(HcSendItems::class, 'patient_ID');
-    }
     
 }

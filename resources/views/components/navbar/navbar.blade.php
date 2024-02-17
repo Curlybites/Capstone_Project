@@ -70,22 +70,7 @@
                         class="text-muted fw-light">{{ Request::is('Supplier/Account_Profile') ? 'Account /' : '' }}</span>{{ Request::is('Supplier/Account_Profile') ? ' Profile' : '' }}
                 </h5>
 
-              {{-- Health Center --}}
-              <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light"></span>{{ Request::is('Health_Center/Dashboard') ? 'Dashboard' : '' }} </h5>
-
-              <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Health_Center/Item_List') ? 'Inventory /' : '' }}</span>{{ Request::is('Health_Center/Item_List') ? ' List of Item ' : '' }} </h5>
-
-              <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Health_Center/Patient_List') ? 'Patient /' : '' }}</span>{{ Request::is('Health_Center/Patient_List') ? ' List of Patients ' : '' }} </h5>
-
-              <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Health_Center/Send_Items') ? 'Patient /' : '' }}</span>{{ Request::is('Health_Center/Send_Items') ? ' Send Items' : '' }} </h5>
-
-              <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Health_Center/Patient_Sent_Item{id}') ? 'Patient /' : '' }}</span>{{ Request::is('Health_Center/Patient_Sent_Item{id}') ? ' Patient List / Patient Item Order' : '' }} </h5>
-
-              <h5 class="fw-bold py-3 mt-3"><span class="text-muted fw-light">{{ Request::is('Health_Center/Account_Profile') ? 'Account /' : '' }}</span>{{ Request::is('Health_Center/Account_Profile') ? ' Profile' : '' }} </h5>
-
-
-
-
+                {{-- Supplier/Account_Profile --}}
 
 
                 {{-- PROGRAM MANAGER  --}}

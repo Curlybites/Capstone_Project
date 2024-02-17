@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('HcInventory', function (Blueprint $table) {
+        Schema::create('itemdistribute', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable;
-            $table->string('type')->nullable;
-            $table->string('program')->nullable;
-            $table->integer('expiration')->nullable;
             $table->integer('quantity')->nullable;
+            $table->string('unit')->nullable;
+            $table->string('item')->nullable;
+            $table->string('description')->nullable;
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('HcInventory');
+        Schema::dropIfExists('itemdistribute');
     }
 };

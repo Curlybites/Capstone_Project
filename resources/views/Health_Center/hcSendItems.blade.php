@@ -18,17 +18,21 @@
                     <!-- Content -->
 
                     <div class="container-fluid  flex-grow-1 container-p-y">
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Patient /</span> List of
+                            Patients
+                        </h4>
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card mb-4">
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
                                         <h5 class="card-header">Patients List</h5>
-                                        {{-- <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
+                                        <button class="btn-success mx-4 px-4 py-1 border-0" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
-                                            New</button> --}}
+                                            New</button>
 
-                                        {{-- <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        <div class="modal fade" id="exampleModal" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-xl modal-dialog-centered">
                                                 <div class="modal-content ">
@@ -139,7 +143,7 @@
                                                     </form>
                                                 </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                     <!-- Modal Content end-->
                                     <hr class="my-0">

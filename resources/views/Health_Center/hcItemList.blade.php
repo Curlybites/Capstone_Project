@@ -18,6 +18,10 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-fluid  flex-grow-1 container-p-y">
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Patient / Patient List /
+                            </span>
+                            Patient Item Order
+                        </h4>
 
                         <div class="row">
                             <div class="col-md-12">
@@ -32,40 +36,16 @@
                                     <!-- Account -->
                                     <div class="card-body px-5">
                                         <div class="row">
-                                            <form action="{{ url('/Health_Center/Patient_Sent_Item') }}" method="POST">
-                                                @csrf
-                                                @method('POST')
-                                                <div class="col-md-12">
+                                            <div class="col-md-12">
+                                                <form action="">
                                                     <div class="row mb-2">
-                                                        @if ($patientid)
-                                                            <div class="col-md-6 mb-md-0 mb-3  	d-none">
-                                                                <label for="exampleFormControlInput1"
-                                                                    class="form-label">ID</label>
-                                                                <input class="form-control" type="text"
-                                                                    value="{{ $patientid->id }} "
-                                                                    aria-label="Disabled input example"
-                                                                    name="patient_ID">
-                                                            </div>
+                                                        @if ($send)
                                                             <div class="col-md-6 mb-md-0 mb-3">
                                                                 <label for="exampleFormControlInput1"
                                                                     class="form-label">Name</label>
                                                                 <input class="form-control" type="text"
-                                                                    value="{{ $patientid->fname }} {{ $patientid->mname }}. {{ $patientid->lname }}"
-                                                                    aria-label="Disabled input example" name="fname"
-                                                                    disabled>
-
-                                                                <input type="hidden" name="patient_ID"
-                                                                    value="{{ $patientid->id }}">
-
-                                                            </div>
-                                                        @endif
-                                                        @if ($itemid)
-                                                            <div class="col-md-6 mb-md-0 mb-3  	d-none">
-                                                                <label for="exampleFormControlInput1"
-                                                                    class="form-label">ID</label>
-                                                                <input class="form-control" type="text"
-                                                                    value="{{ $itemid->id }} "
-                                                                    aria-label="Disabled input example" name="items_id">
+                                                                    value="{{ $send->fname }} {{ $send->mname }}. {{ $send->lname }}"
+                                                                    aria-label="Disabled input example" disabled>
                                                             </div>
                                                         @endif
 
@@ -73,9 +53,8 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Program</label>
                                                             <input class="form-control" type="text"
-                                                                value="{{ $patientid->program }}"
-                                                                aria-label="Disabled input example" name="program"
-                                                                disabled>
+                                                                value="{{ $send->program }}"
+                                                                aria-label="Disabled input example" disabled>
                                                         </div>
                                                     </div>
 
@@ -84,21 +63,18 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Barangay Health Center</label>
                                                             <input class="form-control" type="text"
-                                                                value="{{ $patientid->healthcenter }}"
-                                                                aria-label="Disabled input example" name="healthcenter"
-                                                                disabled>
+                                                                value="{{ $send->healthcenter }}"
+                                                                aria-label="Disabled input example" disabled>
 
                                                         </div>
                                                         <div class="col-md-6 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">District</label>
                                                             <input class="form-control" type="text"
-                                                                value="{{ $patientid->district }}"
-                                                                aria-label="Disabled input example" name="district"
-                                                                disabled>
+                                                                value="{{ $send->district }}"
+                                                                aria-label="Disabled input example" disabled>
                                                         </div>
                                                     </div>
-
                                                     <div class="table-responsive mb-5">
                                                         <table class="table table-striped table-bordered"
                                                             id="myTable">
@@ -126,36 +102,40 @@
                                                                             class="btn btn-sm btn-danger py-0 text-start"
                                                                             onclick="removeRow(this)">X</button>
                                                                     </td>
-
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            value="" name="stp[0][quantity]"
-                                                                            required>
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            name="stp[0][unit]" required>
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            name="stp[0][item]" required>
-                                                                    </td>
-                                                                    <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
-                                                                            class="form-control text-center border-0"
-                                                                            name="stp[0][description]" required>
-                                                                    </td>
+                                                                    {{-- <form action="{{ url('//Health_Center/Patient_Sent_Item') }}" method="GET">
+                                                                        <input type="text" name="search" placeholder="Search by name" value="{{ request('search') }}">
+                                                                        <button type="submit">Search</button>
+                                                                    </form> --}}
+                                                                    <form action="{{ route('distribute') }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        <td class="align-middle p-0 text-center">
+                                                                            <input type="text"
+                                                                                class="form-control text-center border-0"
+                                                                                value="" name="quantity">
+                                                                        </td>
+                                                                        <td class="align-middle p-0 text-center">
+                                                                            <input type="text"
+                                                                                class="form-control text-center border-0"
+                                                                                name="unit">
+                                                                        </td>
+                                                                        <td class="align-middle p-0 text-center">
+                                                                            <input type="text"
+                                                                                class="form-control text-center border-0"
+                                                                                name="item">
+                                                                        </td>
+                                                                        <td class="align-middle p-0 text-center">
+                                                                            <input type="text"
+                                                                                class="form-control text-center border-0"
+                                                                                name="description">
+                                                                        </td>
                                                                 </tr>
                                                             </tbody>
                                                             <tfoot>
                                                                 <tr>
                                                                     <th colspan="6" class="text-start">
                                                                         <div class="btn btn-primary"
-                                                                            style="font-size: 10px"
-                                                                            onclick="addRow()">
+                                                                            style="font-size: 10px" onclick="addRow()">
                                                                             Add
                                                                             Row</div>
                                                                     </th>
@@ -164,77 +144,7 @@
                                                             </tfoot>
                                                         </table>
                                                     </div>
-                                                    <div class="col-4">
-                                                        <button class="btn btn-primary" type="submit">Save</button>
-                                                        <a class="btn btn-danger"
-                                                            href="{{ '/Health_Center/Patient_List' }}">Cancel</a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <script>
-                    var i = 0;
-
-                    function addRow() {
-
-                        ++i
-
-                        var newRow = `<tr>` +
-                            `<td><button class="btn btn-sm btn-danger py-0 text-start"onclick="removeRow(this)">X</button></td>` +
-                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="stp[` +
-                            i + `][quantity]" required></td>` +
-                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="stp[` +
-                            i + `][unit]" required></td>` +
-                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="stp[` +
-                            i + `][item]" required></td>` +
-                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="stp[` +
-                            i + `][description]" required></td>` +
-                            `</tr>`;
-
-                        $('.addTBRow').append(newRow);
-                    }
-
-                    function removeRow(button) {
-                        const row = button.parentNode.parentNode;
-                        row.parentNode.removeChild(row);
-                    }
-                </script>
-
-                @include('components.footer');
-
-
-
-                <!-- items send for patients -->
-                <!--<div class="row mb-5">
-                                                        <div class="col-md-6 mb-md-0 mb-3">
-                                                            <label for="exampleFormControlInput1"
-                                                                class="form-label">Items</label>
-                                                            <input class="form-control" type="text"
-                                                                
-                                                                aria-label="Disabled input example" name="items_id"  >
-
-                                                        </div>
-                                                        {{-- <div class="col-md-6 mb-md-0 mb-3">
-                                                            <label for="exampleFormControlInput1"
-                                                                class="form-label">Quantity</label>
-                                                            <input class="form-control" type="text"
-                                                                
-                                                                aria-label="Disabled input example" name="quantity"  >
-                                                        </div> --}}
-                                                    </div>-->
-
-
-
-                {{-- <div class="row my-5">
+                                                    {{-- <div class="row my-5">
                                                         <div class="col-md-6 mb-md-0 mb-3">
                                                             <label for="">Notes</label>
                                                             <textarea class="form-control" style="height: 100px"></textarea>
@@ -250,3 +160,41 @@
                                                             </select>
                                                         </div>
                                                     </div> --}}
+                                                    <div class="col-4">
+                                                        <button class="btn btn-primary" type="submit">Save</button>
+                                                        <a class="btn btn-danger"
+                                                            href="{{ '/Health_Center/Patient_List' }}">Cancel</a>
+                                                    </div>
+                                                </form>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function addRow() {
+
+                        var newRow = '<tr>' +
+                            '<td><button class="btn btn-sm btn-danger py-0 text-start"onclick="removeRow(this)">X</button></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="number"class="form-control text-center border-0" value=""></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" value=""></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text"class="form-control text-center border-0"value=""></td>' +
+                            '<td class="align-middle p-0 text-center"><input type="text"class="form-control text-center border-0"value=""></td>' +
+                            '</tr>';
+
+                        $('.addTBRow').append(newRow);
+                    }
+
+                    function removeRow(button) {
+                        const row = button.parentNode.parentNode;
+                        row.parentNode.removeChild(row);
+                    }
+                </script>
+
+                @include('components.footer');

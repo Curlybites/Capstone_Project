@@ -67,16 +67,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($joinedPatientItem as $item)
-                        <tr>
-                            <td>{{ $item->quantity }}</td>
-                            <td>{{ $item->unit }}</td>
-                            <td>{{ $item->item }}</td>
-                            <td>{{ $item->description }}</td>
-                        </tr>
-                    @endforeach
+                    <tr>
+                        <td>Paracetamol</td>
+                        <td>Per Box</td>
+                        <td>30</td>
+                        <td>Sample Item Only. Test 101</td>
+                    </tr>
                 </tbody>
-                
             </table>
         </div>
 

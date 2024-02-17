@@ -19,6 +19,8 @@
                     <!-- Content -->
 
                     <div class="container-fluid flex-grow-1 container-p-y">
+                        {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account /</span> Profile
+                        </h4> --}}
 
                         <div class="row">
                             <div class="col-md-12">
@@ -45,6 +47,14 @@
                                         @if (session('success'))
                                             <div class="alert alert-success" role="alert"> {{ session('success') }}
                                             </div>
+                                            {{-- <div class="toast fade show bs-toast align-items-center position-fixed bottom-0 end-0 m-3 bg-success"
+                                                role="alert" aria-live="assertive" aria-atomic="true">
+                                                <div class="d-flex">
+                                                    <div class="toast-body"> {{ session('success') }} </div> <button
+                                                        type="button" class="btn-close me-2 m-auto"
+                                                        data-bs-dismiss="toast" aria-label="Close"></button>
+                                                </div>
+                                            </div> --}}
                                         @endif
 
                                         <form action="{{ route('changePass') }}" method="POST">
@@ -127,6 +137,7 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- <button onclick="showAlert()">Click me</button> --}}
 
                     </div>
                     <!-- / Content -->
@@ -134,4 +145,13 @@
                     <!--footer-->
 
                     @include('components.footer')
-                    
+                    {{-- <script>
+                        function showAlert() {
+                            Swal.fire({
+                                title: 'Hello!',
+                                text: 'This is a SweetAlert dialog.',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            });
+                        }
+                    </script> --}}
