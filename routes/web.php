@@ -185,44 +185,6 @@ Route::middleware(['auth', 'supplier'])->group(function () {
 
 
 
-// Route::controller(PageController::class)->group(function () {
-//     Route::get('/', 'AdminLogin')->name('login'); 
-// });
-
-
-
-
-// Route::controller(UserController::class)->group(function () {
-//     // Route::get('/Admin/User_List', 'userlistPage');
-//     // Route::post('/Admin/Store', 'store');
-//     // Route::get('/Admin/Add_User', 'createUserPage')->middleware('auth');
-//     // Route::get('/Admin/User_List', 'userList')->middleware('auth');
-//     // Route::get('/Admin/User_List/$id',)->middleware('auth');
-//     Route::post('/Login/Process', 'LoginProcess');
-//     Route::post('/Logout', 'logout');
-//     Route::get('/change-password', 'changePassword')->name('changePassword');
-//     Route::post('/change-password', 'ChangePasswordSave')->name('changePass');
-// });
-
-
-
-
-
-
-// Supplier Route
-Route::controller(SupplierController::class)->group(function () {
-    Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
-    Route::get('/Supplier/Account_Profile', 'profileSupplier')->middleware('auth');
-    Route::get('/Supplier/Account_Change_Password', 'profileChangeSupplier')->middleware('auth');
-    Route::get('/Supplier/PPMP_List', 'ppmp')->middleware('auth');
-});
-
-// Program Manager route
-// Route::controller(ProgramManagerController::class)->group(function () {
-//     Route::get('/Program_Manager/Inventorylist', 'Inventorypage')->middleware('auth');
-//     Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
-//     Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
-//     Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
 
 
     Route::controller(HcController::class)->group(function () {

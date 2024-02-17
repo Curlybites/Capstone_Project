@@ -101,7 +101,7 @@ class AdminController extends Controller
     public function barangayStore(Request $request)
     {
         $barangay = new Barangay();
-        $barangay->barangay_name = $request->input('barangayName');
+        $barangay->name = $request->input('barangayName');
         $barangay->district_id = $request->input('districtNumber');
         $barangay->save();
 
