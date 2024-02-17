@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Items extends Model
+class HcInventoryItems extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'item_name',
         'item_description',

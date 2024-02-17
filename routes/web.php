@@ -157,7 +157,48 @@ Route::middleware(['auth', 'district'])->group(function () {
 
 // Route For Health Center
 Route::middleware(['auth', 'health_center'])->group(function () {
-    Route::get('/Health_Center/Dashboard', [PageController::class, 'hcDashboard']);
+    Route::get('/Health_Center/Dashboard', [PageController::class,'hcDashboard']);
+
+    Route::controller(HcController::class)->group(function () {
+
+        // FOR ROUTING OF TABS
+        Route::get('/Health_Center/Item_List', 'hcInventory');
+        Route::get('/Health_Center/Patient_List', 'hcPatient');
+        Route::get('/Health_Center/Patient_Item_List', 'hcItemList');
+        // Route::get('/Health_Center/Patient_List/view', 'hcPatientView')->middleware('auth');
+        Route::get('/Health_Center/Patient_View{id}', 'hcPatientView');
+        Route::get('/Health_Center/Patient_View', 'listPatientPrint');
+        Route::get('/Health_Center/Report', 'hcReport');
+    
+        // FOR CREATION OF PATIENT
+        Route::post('/Health_Center/Patient_List', 'storePatient')->name('patientname');
+    
+        // FOR PATIENT LIST TABLE
+        Route::get('/Health_Center/Patient_List', 'listPatient');
+    
+        //FOR SEND ITEMS
+        Route::get('/Health_Center/Send_Items', 'sendItemsActiveList');
+    
+        // FOR SENDING ITEM TO PATIENT
+        Route::get('/Health_Center/Patient_Sent_Item{id}', 'itemSendPatientInfo');
+        Route::post('/Health_Center/Patient_Sent_Item', 'HcSendItemsInput');
+    
+        // Route::get('/Health_Center/Patient_Sent_Item', 'index');
+    
+        // FOR ACCOUNT
+        Route::get('/Health_Center/Profile', 'hcAccount');
+        Route::get('/Health_Center/Profile_Change', 'hcAccountChange');
+    
+        // Route::get('/Health_Center/Patient_View', 'listPatientnMedicine');
+        // Route::put('/Health_Center/Patient_List/{id}', 'updatePatient')->name('updatePatient')->middleware('auth');
+    
+        // FOR UPDATING PATIENT INFO
+        Route::post('/Health_Center/Patient_List/{id}', 'updatePatient')->name('routes.update');
+    
+        // FOR INVENTORY
+        Route::get('/Health_Center/Item_List', 'hcInventoryList');
+    
+    });
 });
 
 
@@ -179,42 +220,54 @@ Route::middleware(['auth', 'supplier'])->group(function () {
 });
 
 
-Route::controller(HcController::class)->group(function () {
 
-    // FOR ROUTING OF TABS
-    Route::get('/Health_Center/Item_List', 'hcInventory')->middleware('auth');
-    Route::get('/Health_Center/Patient_List', 'hcPatient')->middleware('auth');
-    Route::get('/Health_Center/Patient_Item_List', 'hcItemList')->middleware('auth');
-    // Route::get('/Health_Center/Patient_List/view', 'hcPatientView')->middleware('auth');
-    Route::get('/Health_Center/Patient_View{id}', 'hcPatientView')->middleware('auth');
-    Route::get('/Health_Center/Patient_View', 'listPatientPrint')->middleware('auth');
-    Route::get('/Health_Center/Report', 'hcReport')->middleware('auth');
+// // Admin route
 
-    // FOR CREATION OF PATIENT
-    Route::post('/Health_Center/Patient_List', 'storePatient')->name('patientname')->middleware('auth');
+// Route::controller(AdminController::class)->group(function () {
+//     Route::post('/Admin/District_Store', 'districtStore');
+//     Route::post('/Admin/Barangay_Store', 'barangayStore');
+//     Route::post('/Admin/Health_Center_Store', 'healthcenterStore');
+//     Route::post('/Admin/Program_Store', 'programStore');
+//     Route::get('/Admin/District_List', 'districtListpage')->middleware('auth');
+//     Route::put('/Admin/District_List/{id}', 'updateDistrict');
+//     Route::get('/Admin/Account_Profile', 'profile')->middleware('auth');
+//     Route::get('/Admin/Account_Change_Password', 'profileChange')->middleware('auth');
+//     Route::get('/Admin/Barangay_List', 'barangayPage');
+//     Route::get('/Admin/Health_Center_List', 'Healthcenterpage');
+//     Route::put('/Admin/Health_Center_List/{id}','updatehc');
+//     Route::post('/Admin/Program_List', 'Programpage');
+//     Route::put('Admin/Program_List/{id}', 'programUpdate');
+// });
 
-    // FOR PATIENT LIST TABLE
-    Route::get('/Health_Center/Patient_List', 'listPatient');
 
-    //FOR SEND ITEMS
-    Route::get('/Health_Center/Send_Items', 'sendItems');
+// // Program Manager route
+// Route::controller(ProgramManagerController::class)->group(function () {
+//     // Route::get('/Program_Manager/Inventorylist', 'Inventorypage')->middleware('auth');
+//     Route::get('/Program_Manager/Allocationlist', 'Allocationpage')->middleware('auth');
+//     Route::get('/Program_Manager/PPMPlist', 'PPMPpage')->middleware('auth');
+//     Route::get('/Program_Manager/Profile', 'Profilepage')->middleware('auth');
+// });
 
-    // FOR SENDING ITEM TO PATIENT
-    Route::get('/Health_Center/Patient_Sent_Item{id}', 'itemSentPatient')->middleware('auth');
-    Route::post('/Health_Center/Patient_Sent_Item', 'distribute')->name('distribute')->middleware('auth');
+// // Health Department Route
+// Route::controller(HdController::class)->group(function () {
+//     // Route::get('/Health_Department/Item_List', 'hdInventory')->middleware('auth');
+//     // Route::get('/Health_Department/Allocation_List', 'hdAllocation')->middleware('auth');
+//     // Route::get('/Health_Department/Allocation_Process', 'hdAllocationProcess')->middleware('auth');
+//     // Route::get('/Health_Department/Allocation_View', 'hdAllocationView')->middleware('auth');
+//     // Route::get('/Health_Department/Allocation_Edit', 'hdAllocationEdit')->middleware('auth');
+//     // Route::get('/Health_Department/Profile', 'hdAccount')->middleware('auth');
+//     // Route::get('/Health_Department/Purchase_Order_View', 'hdPurchaseOrderView')->middleware('auth');
+//     // Route::get('/Health_Department/Purchase_Order_List', 'hdPurchaseOrderList')->middleware('auth');
+//     // Route::get('/Health_Department/Profile_Change', 'hdAccountChange')->middleware('auth');
 
-    // Route::get('/Health_Center/Patient_Sent_Item', 'index');
+//     // Route::post('/Health_Department/Allocation_Process', 'hdAllocationtoProg')->name('allocate')->middleware('auth');
+// });
 
-    // FOR ACCOUNT
-    Route::get('/Health_Center/Profile', 'hcAccount')->middleware('auth');
-    Route::get('/Health_Center/Profile_Change', 'hcAccountChange')->middleware('auth');
+// // Supplier Route
+// Route::controller(SupplierController::class)->group(function () {   
+//     // Route::get('/Supplier/Item_List', 'itemList')->middleware('auth');
+//     // Route::get('/Supplier/Account_Profile', 'profileSupplier')->middleware('auth');
+//     // Route::get('/Supplier/Account_Change_Password', 'profileChangeSupplier')->middleware('auth');
+//     // Route::get('/Supplier/PPMP_List', 'ppmp')->middleware('auth');
+// });
 
-    // Route::get('/Health_Center/Patient_View', 'listPatientnMedicine');
-    // Route::put('/Health_Center/Patient_List/{id}', 'updatePatient')->name('updatePatient')->middleware('auth');
-
-    // FOR UPDATING PATIENT INFO
-    Route::post('/Health_Center/Patient_List/{id}', 'updatePatient')->name('routes.update')->middleware('auth');
-
-    // FOR INVENTORY
-    Route::get('/Health_Center/Item_List', 'listItem');
-});
