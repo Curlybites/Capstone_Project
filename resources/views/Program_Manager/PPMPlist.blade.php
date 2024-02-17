@@ -109,19 +109,21 @@
                                                                         {{-- <a class="dropdown-item text-info"
                                                                             href="{{ "/Program_Manager/pmPPMPEdit_{$ppmps->id}" }}"><i
                                                                                 class="bx bx-edit-alt me-2"></i>Edit</a>
+--}}
+                                                                        <a href="#"
+                                                                            onclick="confirmDelete('{{ route('ppmp.delete', $ppmps->id) }}')"
+                                                                            class="dropdown-item text-danger"><i
+                                                                                class="bi bi-trash-fill fs-5"></i>
+                                                                            Delete</a>
 
-                                                                        <a> --}}
-                                                                            <form
-                                                                                action="{{ route('ppmp.delete', $ppmps->id) }}"
-                                                                                method="POST">
-                                                                                @csrf
-                                                                                @method('DELETE')
-                                                                                <button type="submit"
-                                                                                    class="dropdown-item text-danger"><i
-                                                                                        class="bi bi-trash-fill fs-5"></i>
-                                                                                    Delete</button>
-                                                                            </form>
-                                                                        </a>
+                                                                        <script>
+                                                                            function confirmDelete(url) {
+                                                                                if (confirm('Are you sure you want to delete this item?')) {
+                                                                                    // User confirmed, proceed with deletion
+                                                                                    window.location.href = url;
+                                                                                }
+                                                                            }
+                                                                        </script>
                                                                         </ul>
                                                                     </div>
                                                             </td>
