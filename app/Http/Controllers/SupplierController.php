@@ -41,7 +41,7 @@ class SupplierController extends Controller
     {
         $program = Program::all();
         $user = Auth::user();
-        $ppmp = Ppmpdatas::all();
+        $ppmp = Ppmpdatas::orderBy('created_at', 'desc')->get();
         $totalPPMP = Ppmpdatas::all()->count();
         $totalApprove = Ppmpdatas::all()->Where('status', 1)->count();
         $totalDisapprove = Ppmpdatas::all()->Where('status', 2)->count();
