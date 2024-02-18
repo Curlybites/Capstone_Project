@@ -33,137 +33,40 @@
                                             data-bs-target="#exampleModal"> <i class='bx bxs-add-to-queue'></i> Create
                                             New</button> --}}
 
-                                        <div class="modal fade" id="exampleModal" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content ">
-                                                    <div class="modal-header ">
-                                                        <h1 class="modal-title fs-3" id="exampleModalLabel">Create
-                                                            Health Centers
-                                                        </h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <form action="/Admin/Store" method="POST">
-                                                        @csrf
-                                                        <div class="modal-body">
-
-                                                            <div class="row">
-                                                                <h5>Personal Details</h5>
-                                                                <div class="col-12">
-                                                                    <p>Health Center Name</p>
-                                                                    <div class="input-group mb-3">
-                                                                        <select class="form-select"
-                                                                            aria-label="Default select example"
-                                                                            name="role">
-                                                                            <option value="">Select District
-                                                                                Number
-                                                                            </option>
-                                                                            <option value="1">District 1
-                                                                            </option>
-                                                                            <option value="2">District 2
-                                                                            </option>
-                                                                            <option value="3">District 3
-                                                                            </option>
-                                                                            <option value="4">District 4
-                                                                            </option>
-                                                                            <option value="5">District 5
-                                                                            </option>
-                                                                            <option value="6">District 6
-                                                                            </option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <p>District Supervisor</p>
-                                                                    <select class="form-select"
-                                                                        aria-label="Default select example"
-                                                                        name="role">
-                                                                        <option value="">Select District
-                                                                            Number
-                                                                        </option>
-                                                                        <option value="1">District 1
-                                                                        </option>
-                                                                        <option value="2">District 2
-                                                                        </option>
-                                                                        <option value="3">District 3
-                                                                        </option>
-                                                                        <option value="4">District 4
-                                                                        </option>
-                                                                        <option value="5">District 5
-                                                                        </option>
-                                                                        <option value="6">District 6
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="modal-footer border-1">
-                                                            <button type="button" class="btn btn-secondary mt-3"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit"
-                                                                class="btn btn-primary mt-3">Save</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
 
                                     <hr class="my-0">
                                     <!-- Account -->
                                     <div class="card-body px-5 ">
                                         <div class="table-responsive text-nowrap overflow-visible">
-                                            <table id="dataTable" class="datatables-basic table   border-top "
+                                            <table id="dataTable" class="table table-striped table-bordered"
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>Item Image</th>
+                                                        <th>PO Code</th>
                                                         <th>Quantity</th>
+                                                        <th>Unit</th>
                                                         <th>Item Name</th>
                                                         <th>Program</th>
                                                         <th>Description</th>
                                                         <th>Price</th>
+                                                        <th>Total</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <ul
-                                                                class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
-                                                                    data-bs-placement="top"
-                                                                    class="avatar avatar-xs pull-up"
-                                                                    title="Lilian Fuller">
-                                                                    <img src="../assets/img/avatars/5.png"
-                                                                        alt="Avatar" class="rounded-circle">
-                                                                </li>
-                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
-                                                                    data-bs-placement="top"
-                                                                    class="avatar avatar-xs pull-up"
-                                                                    title="Sophia Wilkerson">
-                                                                    <img src="../assets/img/avatars/6.png"
-                                                                        alt="Avatar" class="rounded-circle">
-                                                                </li>
-                                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
-                                                                    data-bs-placement="top"
-                                                                    class="avatar avatar-xs pull-up"
-                                                                    title="Christina Parker">
-                                                                    <img src="../assets/img/avatars/7.png"
-                                                                        alt="Avatar" class="rounded-circle">
-                                                                </li>
-                                                            </ul>
-                                                        </td>
-                                                        <td>Paracetamol</td>
-                                                        <td>Medicine</td>
-                                                        <td>100</td>
-                                                        <td>Maternity</td>
-                                                        <td>12-12-2023</td>
-                                                    </tr>
+                                                    @foreach ($hdInventory as $hdInventories)
+                                                        <tr>
+                                                            <td>{{ $hdInventories->po_code }}</td>
+                                                            <td>{{ $hdInventories->item_quan }}</td>
+                                                            <td>{{ $hdInventories->item_unit }}</td>
+                                                            <td>{{ $hdInventories->item_name }}</td>
+                                                            <td>{{ $hdInventories->program_title }}</td>
+                                                            <td class="text-wrap text-break w-75">
+                                                                {{ $hdInventories->item_description }}</td>
+                                                            <td>{{ $hdInventories->item_price }}</td>
+                                                            <td>{{ $hdInventories->item_total }}</td>
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
 
                                             </table>

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('hd_inventories', function (Blueprint $table) {
             $table->id();
             $table->string('po_code');
-            $table->string('item_img')->nullable();
             $table->integer('item_quan');
+            $table->integer('item_unit');
             $table->string('item_name');
             $table->string('program_title')->nullable();
             $table->text('item_description');

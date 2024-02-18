@@ -59,23 +59,10 @@
                                                                 <td>{{ $ppmps->typeofcontract }}</td>
                                                                 <td>{{ $ppmps->accounttitle }}</td>
                                                                 <td>
-
                                                                     @switch($ppmps->status)
                                                                         @case(1)
                                                                             <span class="badge bg-label-success me-1">
                                                                                 Approved
-                                                                            </span>
-                                                                        @break
-
-                                                                        @case(2)
-                                                                            <span class="badge bg-label-danger me-1">
-                                                                                Disaproved
-                                                                            </span>
-                                                                        @break
-
-                                                                        @case(3)
-                                                                            <span class="badge bg-label-warning me-1">
-                                                                                pending
                                                                             </span>
                                                                         @break
 
@@ -110,6 +97,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
+
                                                             </tr>
                                                         @endif
                                                 </tbody>

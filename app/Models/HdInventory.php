@@ -9,8 +9,8 @@ class HdInventory extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'item_img',
         'item_quan',
+        'item_unit',
         'item_name',
         'program_title',
         'item_description',

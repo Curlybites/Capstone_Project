@@ -42,19 +42,25 @@
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Program</label>
-                                                            <select class="form-select" name="program"
-                                                                aria-label="Default select example">
+                                                            <select class="form-select" id="program_title"
+                                                                name="program" aria-label="Default select example">
                                                                 <option selected>Select Program</option>
-                                                                <option>One</option>
-                                                                <option>Two</option>
-                                                                <option>Three</option>
+                                                                @if (isset($hdInventory))
+                                                                    @foreach ($hdInventory as $hdInventories)
+                                                                        <option
+                                                                            value="{{ $hdInventories->program_title }}">
+                                                                            {{ $hdInventories->program_title }}</option>
+                                                                    @endforeach
+                                                                @endif
                                                             </select>
                                                         </div>
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1" class="form-label">PO
                                                                 #</label>
-                                                            <input type="text" class="form-control" name="POnum">
+                                                            <input type="text" class="form-control" id="po_code"
+                                                                name="POnum" readonly>
                                                         </div>
+
                                                         <div class="col-md-4 mb-md-0 mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Item Type</label>
@@ -85,6 +91,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="addTBRow">
+                                                                {{-- @foreach ($hdInventory as $hdInventories) --}}
                                                                 <tr>
                                                                     <td>
                                                                         <button class="btn btn-sm btn-danger py-0"
@@ -96,34 +103,42 @@
                                                                             id="quantItem"
                                                                             name="alloprog[0][alloprog_quan]"
                                                                             onkeyup="autoCal()">
+                                                                        {{-- value="{{ $hdInventories->item_quan }}"> --}}
                                                                     </td>
                                                                     <td
                                                                         class="align-middle
                                                                             p-0 text-center">
-                                                                        <input type="text"
+                                                                        <input type="text" id="item_unit"
                                                                             class="form-control text-center border-0"
                                                                             name="alloprog[0][alloprog_unit]">
+                                                                        {{-- value="{{ $hdInventories->item_unit }}"> --}}
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
-                                                                        <select class="form-select text-center border-0"
-                                                                            name="alloprog[0][alloprog_item]"
-                                                                            aria-label="Default select example">
-                                                                            <option selected>Select Program</option>
-                                                                            <option value="One">One</option>
-                                                                            <option value="Two">Two</option>
-                                                                            <option value="Three">Three</option>
-                                                                        </select>
+                                                                        {{-- <select
+                                                                                class="form-select text-center border-0"
+                                                                                id="item_name"
+                                                                                name="alloprog[0][alloprog_item]"
+                                                                                aria-label="Default select example">
+                                                                                <option selected>Select Item</option>
+                                                                            </select> --}}
+                                                                        <input type="text" id="item_unit"
+                                                                            class="form-control text-center border-0"
+                                                                            name="alloprog[0][alloprog_item]">
+                                                                        {{-- value="{{ $hdInventories->item_name }}"> --}}
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
-                                                                        <input type="text"
+                                                                        <input type="text" id="item_description"
                                                                             class="form-control text-center border-0"
                                                                             name="alloprog[0][alloprog_descript]">
+                                                                        {{-- value="{{ $hdInventories->item_description }}"> --}}
                                                                     </td>
                                                                     <td class="align-middle p-0 text-center">
                                                                         <input type="text"
                                                                             class="form-control text-center border-0 bg-transparent"
+                                                                            id="item_price"
                                                                             name="alloprog[0][alloprog_price]"
-                                                                            id="price" onkeyup="autoCal()">
+                                                                            onkeyup="autoCal()">
+                                                                        {{-- value="{{ $hdInventories->item_price }}"> --}}
                                                                     </td>
                                                                     <td>
                                                                         <div class="float-start">
@@ -132,13 +147,14 @@
                                                                         <div class="text-center">
                                                                             <input
                                                                                 class="text-center border-0 bg-white ms-2 fs-6 bg-transparent"
-                                                                                type="text"
+                                                                                id="item_total" type="text"
                                                                                 name="alloprog[0][alloprog_pricetotal]"
-                                                                                id="totalPrice" value="0" readonly>
+                                                                                {{-- value="{{ $hdInventories->item_total }}" --}} readonly>
                                                                             {{-- <span id="totalPrice">0</span> --}}
                                                                         </div>
                                                                     </td>
                                                                 </tr>
+                                                                {{-- @endforeach --}}
                                                             </tbody>
                                                             <tfoot>
                                                                 <tr>
@@ -209,51 +225,50 @@
                             `<td><button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button></td>` +
                             `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
                             i + `][alloprog_quan]" id="quantItem" onkeyup="autoCal()"></td>` +
-                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
+                            `<td class="align-middle p-0 text-center"><input type="text" id="item_unit" class="form-control text-center border-0" name="alloprog[` +
                             i + `][alloprog_unit]"></td>` +
                             `<td class="align-middle p-0 text-center">` +
-                            `<select class="form-select text-center border-0" name="alloprog[` + i +
+                            `<select class="form-select text-center border-0" id="item_name" name="alloprog[` + i +
                             `][alloprog_item]" aria-label="Default select example">` +
-                            `<option selected>Select Program</option>` +
-                            `<option value="One">One</option>` +
-                            `<option value="Two">Two</option>` +
-                            `<option value="Three">Three</option>` +
+                            `<option selected>Select Item</option>` +
                             `</select>` +
                             `</td>` +
-                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0" name="alloprog[` +
+                            `<td class="align-middle p-0 text-center"><input type="text" id="item_description" class="form-control text-center border-0" name="alloprog[` +
                             i + `][alloprog_descript]"></td>` +
-                            `<td class="align-middle p-0 text-center"><input type="text" class="form-control text-center border-0 bg-transparent" name="alloprog[` +
-                            i + `][alloprog_price]" id="price" onkeyup="autoCal()"></td>` +
+                            `<td class="align-middle p-0 text-center"><input type="text"  id="item_price" class="form-control text-center border-0 bg-transparent" name="alloprog[` +
+                            i + `][alloprog_price]" onkeyup="autoCal()"></td>` +
                             `<td>` +
                             `<div class="float-start"><span class="fw-bold">₱</span></div>` +
-                            `<div class="text-center"><input class="text-center border-0 bg-white ms-2 fs-6 bg-transparent" type="text" name="alloprog[` +
-                            i + `][alloprog_pricetotal]" id="totalPrice" value="0" readonly></div>` +
+                            `<div class="text-center"><input  id="item_total" class="text-center border-0 bg-white ms-2 fs-6 bg-transparent" type="text" name="alloprog[` +
+                            i + `][alloprog_pricetotal]" value="0" readonly></div>` +
                             `</td>` +
                             `</tr>`;
 
                         // Append the new row to the tbody
                         $('.addTBRow').append(newRow);
+                        setupRowEvents(newRow);
                     }
 
                     // Remove Row
                     function removeRow(button) {
                         var row = $(button).closest("tr");
                         var total = $("#total").val();
-                        var price = row.find("#totalPrice").val();
+                        var price = row.find("#item_total").val();
                         total -= price;
 
                         $("#total").val(total);
                         row.remove();
                     }
 
+
                     function autoCal() {
                         var total = 0;
 
                         $(".addTBRow tr").each(function() {
                             var quant = $(this).find("#quantItem").val();
-                            var price = $(this).find("#price").val();
+                            var price = $(this).find("#item_price").val();
                             var totalPrice = quant * price;
-                            $(this).find("#totalPrice").val(totalPrice);
+                            $(this).find("#item_total").val(totalPrice);
                             total += totalPrice;
                         });
 
@@ -261,5 +276,112 @@
                         $("#total").val(total);
                     }
                 </script>
+
+                {{-- wag burahinto itong sa baba --}}
+                {{-- <script>
+                    $(document).ready(function() {
+                        var hdInventory = {!! json_encode($hdInventory) !!}; // Pass hdInventory from PHP to JavaScript
+
+                        $('#program_title').change(function() {
+                            var selectedProgram = $(this).val();
+                            $('#item_name').empty();
+                            // Loop through hdInventory array
+                            hdInventory.forEach(function(item) {
+                                if (item.program_title === selectedProgram) {
+                                    $('#po_code').val(item.po_code);
+                                    $('#quantItem').val(item.item_quan)
+                                    $('#item_unit').val(item.item_unit)
+                                    $('#item_name').append($('<option>', {
+                                        value: item.item_name,
+                                        text: item.item_name,
+                                        selected: true
+                                    }));
+                                    $('#item_description').val(item
+                                        .item_description); // Set item description initially
+                                    $('#item_price').val(item.item_price);
+                                    $('#item_total').val(item
+                                        .item_total);
+                                }
+                            });
+                        });
+
+                        // Event listener for change in item name dropdown
+                        $('#item_name').change(function() {
+                            var selectedItem = $(this).val();
+
+                            // Find the selected item in hdInventory
+                            var selectedItemData = hdInventory.find(function(item) {
+                                return item.item_name === selectedItem;
+                            });
+                            $('#quantItem').val(selectedItemData.item_quan)
+                            $('#item_unit').val(selectedItemData.item_unit)
+                            // Update the description with the corresponding item description
+                            $('#item_description').val(selectedItemData.item_description);
+                            $('#item_price').val(selectedItemData.item_price);
+                            $('#item_total').val(selectedItemData
+                                .item_total);
+                        });
+                    });
+                </script> --}}
+
+                <script>
+                    document.getElementById('program_title').addEventListener('change', function() {
+                        var selectedProgram = this.value;
+                        var tableBody = document.querySelector('.addTBRow');
+                        tableBody.innerHTML = ''; // Clear previous rows
+
+                        // Assuming $hdInventory is available in JavaScript as an array of objects
+                        var hdInventory = <?php echo json_encode($hdInventory); ?>;
+
+                        // Filter items based on selected program title
+                        var filteredItems = hdInventory.filter(function(item) {
+                            return item.program_title === selectedProgram;
+                        });
+
+                        // Update PO code
+                        var poCodeInput = document.getElementById('po_code');
+                        var poCode = ''; // Initializing poCode variable
+                        if (filteredItems.length > 0) {
+                            poCode = filteredItems[0].po_code; // Selecting the first PO code from filtered items
+                        }
+                        poCodeInput.value = poCode;
+
+                        // Generate rows for filtered items
+                        filteredItems.forEach(function(item, index) {
+                            var row =
+                                `<tr>
+                <td>
+                    <button class="btn btn-sm btn-danger py-0" onclick="removeRow(this)">X</button>
+                </td>
+                <td class="align-middle p-0 text-center">
+                    <input type="text" class="form-control text-center border-0" id="quantItem" name="alloprog[${index}][alloprog_quan]" onchange="autoCal()" value="${item.item_quan}">
+                </td>
+                <td class="align-middle p-0 text-center">
+                    <input type="text" id="item_unit" class="form-control text-center border-0" name="alloprog[${index}][alloprog_unit]" value="${item.item_unit}">
+                </td>
+                <td class="align-middle p-0 text-center">
+                    <input type="text" id="item_unit" class="form-control text-center border-0" name="alloprog[${index}][alloprog_item]" value="${item.item_name}">
+                </td>
+                <td class="align-middle p-0 text-center">
+                    <input type="text" id="item_description" class="form-control text-center border-0" name="alloprog[${index}][alloprog_descript]" value="${item.item_description}">
+                </td>
+                <td class="align-middle p-0 text-center">
+                    <input type="text" class="form-control text-center border-0 bg-transparent" id="item_price" name="alloprog[${index}][alloprog_price]" onchange="autoCal()" value="${item.item_price}">
+                </td>
+                <td>
+                    <div class="float-start">
+                        <span class="fw-bold">₱</span>
+                    </div>
+                    <div class="text-center">
+                        <input class="text-center border-0 bg-white ms-2 fs-6 bg-transparent" id="item_total" type="text" name="alloprog[${index}][alloprog_pricetotal]" value="${item.item_total}" readonly>
+                    </div>
+                </td>
+            </tr>`;
+                            tableBody.innerHTML += row;
+                        });
+                        autoCal();
+                    });
+                </script>
+
 
                 @include('components.footer');

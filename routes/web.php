@@ -157,7 +157,7 @@ Route::middleware(['auth', 'district'])->group(function () {
 
 // Route For Health Center
 Route::middleware(['auth', 'health_center'])->group(function () {
-    Route::get('/Health_Center/Dashboard', [PageController::class,'hcDashboard']);
+    Route::get('/Health_Center/Dashboard', [PageController::class, 'hcDashboard']);
 
     Route::controller(HcController::class)->group(function () {
 
@@ -168,35 +168,34 @@ Route::middleware(['auth', 'health_center'])->group(function () {
         // Route::get('/Health_Center/Patient_List/view', 'hcPatientView')->middleware('auth');
         Route::get('/Health_Center/Patient_View{id}', 'hcPatientView');
         Route::get('/Health_Center/Patient_View', 'listPatientPrint');
-    
+
         // FOR CREATION OF PATIENT
         Route::post('/Health_Center/Patient_List', 'storePatient')->name('patientname');
-    
+
         // FOR PATIENT LIST TABLE
         Route::get('/Health_Center/Patient_List', 'listPatient');
-    
+
         //FOR SEND ITEMS
         Route::get('/Health_Center/Send_Items', 'sendItemsActiveList');
-    
+
         // FOR SENDING ITEM TO PATIENT
         Route::get('/Health_Center/Patient_Sent_Item{id}', 'itemSendPatientInfo');
         Route::post('/Health_Center/Patient_Sent_Item', 'HcSendItemsInput');
-    
+
         // Route::get('/Health_Center/Patient_Sent_Item', 'index');
-    
+
         // FOR ACCOUNT
         Route::get('/Health_Center/Profile', 'hcAccount');
         Route::get('/Health_Center/Profile_Change', 'hcAccountChange');
-    
+
         // Route::get('/Health_Center/Patient_View', 'listPatientnMedicine');
         // Route::put('/Health_Center/Patient_List/{id}', 'updatePatient')->name('updatePatient')->middleware('auth');
-    
+
         // FOR UPDATING PATIENT INFO
         Route::post('/Health_Center/Patient_List/{id}', 'updatePatient')->name('routes.update');
-    
+
         // FOR INVENTORY
         Route::get('/Health_Center/Item_List', 'hcInventoryList');
-    
     });
 });
 
@@ -212,10 +211,10 @@ Route::middleware(['auth', 'supplier'])->group(function () {
     Route::get('/Supplier/Account_Profile', [SupplierController::class, 'profileSupplier']);
     Route::get('/Supplier/Account_Change_Password', [SupplierController::class, 'profileChangeSupplier']);
     Route::get('/Supplier/PPMP_List', [SupplierController::class, 'ppmp']);
-    Route::get('/Supplier/PPMP_View{id}',[SupplierController::class,'ppmp_view']);
-    Route::get('/Supplier/PPMP_Edit{id}',[SupplierController::class,'ppmp_edit']);
-    Route::put('/Supplier/PPMP_Edit{id}',[SupplierController::class,'ppmp_update'])->name('supplier_ppmp.update');
-    Route::delete('/Supplier/PPMP_List{id}', [SupplierController::class,'deletePPMP'])->name('supplier_ppmp.delete');
+    Route::get('/Supplier/PPMP_View{id}', [SupplierController::class, 'ppmp_view']);
+    Route::get('/Supplier/PPMP_Edit{id}', [SupplierController::class, 'ppmp_edit']);
+    Route::put('/Supplier/PPMP_Edit{id}', [SupplierController::class, 'ppmp_update'])->name('supplier_ppmp.update');
+    Route::delete('/Supplier/PPMP_List{id}', [SupplierController::class, 'deletePPMP'])->name('supplier_ppmp.delete');
 });
 
 
