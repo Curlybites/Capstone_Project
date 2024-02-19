@@ -23,6 +23,10 @@ class Items extends Model
         'quantity',
     ];
 
+    public function item()
+    {
+        return $this->belongsTo(Items::class, 'item_name', );
+    }
     
 
     

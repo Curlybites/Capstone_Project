@@ -18,4 +18,9 @@ class Program_Manager_Inventory extends Model
         'item_price',
         'item_total'
     ];
+
+    public function programManagerInventories()
+    {
+        return $this->hasMany(Program_Manager_Inventory::class, 'item_name', );
+    }
 }

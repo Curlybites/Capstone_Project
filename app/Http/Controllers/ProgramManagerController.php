@@ -25,6 +25,9 @@ class ProgramManagerController extends Controller
     {
         $user = Auth::user();
         $hdInventory = Program_Manager_Inventory::all();
+        // $getname = DB::table('program_manager_inventory')
+        // ->join('items','program_manager_inventory.item_name', '=','items.id')
+        // ->select('items.item_name')->where('program_manager_inventory.item_name',);
         
         return view('Program_manager.Inventory', ['user' => $user, 'hdInventory' => $hdInventory]);
     }

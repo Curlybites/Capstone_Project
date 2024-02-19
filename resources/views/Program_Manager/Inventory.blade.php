@@ -43,33 +43,48 @@
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th>PO Code</th>
-                                                        <th>Quantity</th>
-                                                        <th>Unit</th>
+                                                        <th>#</th>
                                                         <th>Item Name</th>
-                                                        <th>Program</th>
                                                         <th>Description</th>
-                                                        <th>Price</th>
-                                                        <th>Total</th>
+                                                        <th>Program</th>
+                                                        <th>Unit</th>
+                                                        <th>Quantity</th>
+                                                        {{-- <th>Price</th>
+                                                        <th>Total</th> --}}
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($hdInventory as $hdInventories)
                                                         <tr>
-                                                            <td>{{ $hdInventories->po_code }}</td>
-                                                            <td>{{ $hdInventories->item_quantity }}</td>
-                                                            <td>{{ $hdInventories->item_unit }}</td>
-                                                            <td>{{ $hdInventories->item_name}}</td>
-                                                            <td>{{ $hdInventories->program_title }}</td>
+                                                            <td>{{ $hdInventories->id }}</td>
+                                                            <td>{{ $hdInventories->item_name }}</td>
                                                             <td class="text-wrap text-break w-75">
                                                                 {{ $hdInventories->item_description }}</td>
-                                                            <td>{{ $hdInventories->item_price }}</td>
-                                                            <td>{{ $hdInventories->item_total }}</td>
+                                                            <td>{{ $hdInventories->program_title }}</td>
+                                                            <td>{{ $hdInventories->item_unit }}</td>
+                                                            <td>{{ $hdInventories->item_quantity }}</td>
+                                                            {{-- <td>{{ $hdInventories->item_price }}</td>
+                                                            <td>{{ $hdInventories->item_total }}</td> --}}
                                                         </tr>
                                                     @endforeach
-                                                </tbody>
 
+
+                                                </tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="text-wrap text-break w-75">
+                                                    </td>
+                                                    <td></td>
+                                                    <td>Total: </td>
+                                                    <td> @php
+                                                        $totalQuantity = $hdInventory->sum('item_quantity');
+                                                        echo $totalQuantity;
+                                                    @endphp</td>
+                                                </tr>
                                             </table>
+
+
                                         </div>
                                     </div>
                                     <hr class="my-0">
