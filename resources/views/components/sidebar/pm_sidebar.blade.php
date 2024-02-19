@@ -51,14 +51,29 @@
                 </li>
             </ul>
         </li>
-        <li class="menu-item {{ Request::is('Program_Manager/Reportlist') || Request::is('Program_Manager/Reportlist') ? 'active open' : '' }}">
+
+        <li class="menu-item {{ Request::is('Program_Manager/Receive_List') || Request::is('Program_Manager/Receive_List') ? 'active open' : '' }}">
+            <a href="#" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
+                <div data-i18n="Extended UI">Received</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::is('Program_Manager/Receive_List') || Request::is('Program_Manager/Receive_List') ? 'active' : '' }}">
+                    <a href="{{ '/Program_Manager/Receive_List' }}" class="menu-link">
+                        <div data-i18n="Perfect Scrollbar">Receive List</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="menu-item {{ Request::is('Program_Manager/Inventory_List') || Request::is('Program_Manager/Inventory_List') ? 'active open' : '' }}">
             <a href="#" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
                 <div data-i18n="Extended UI">Inventory</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::is('Program_Manager/Reportlist') || Request::is('Program_Manager/Reportlist') ? 'active' : '' }}">
-                    <a href="{{ '/Program_Manager/Reportlist' }}" class="menu-link">
+                <li class="menu-item {{ Request::is('Program_Manager/Inventory_List') || Request::is('Program_Manager/Inventory_List') ? 'active' : '' }}">
+                    <a href="{{ '/Program_Manager/Inventory_List' }}" class="menu-link">
                         <div data-i18n="Perfect Scrollbar">Inventory List</div>
                     </a>
                 </li>

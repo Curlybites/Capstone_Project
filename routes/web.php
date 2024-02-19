@@ -109,8 +109,11 @@ Route::middleware(['auth', 'program_manager'])->group(function () {
         Route::get('/Program_Manager/AllocationEdit', 'pmAllocationEdit');
         Route::get('/Program_Manager/pmAllocationPrint', 'AllocationPrint');
         Route::get('/Program_Manager/AllocationProcess', 'pmAccountChange');
+        Route::get('/Program_Manager/Receive_List','receive_page');
+        Route::get('/Program_Manager/Receive_View{id}','receive_view');
+        Route::post('/Program_Manager/Receive_View{id}','program_receive_items')->name('pm_received_items');
         // Report_Page
-        Route::get('/Program_Manager/Reportlist', 'Reportpage');
+        Route::get('/Program_Manager/Inventory_List', 'Inventorypage');
         // Profile_Page
         Route::get('/Program_Manager/Profile', 'Profilepage');
         Route::get('/Program_Manager/Profile_Change', 'pmAccountChange');

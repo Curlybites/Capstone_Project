@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hd_inventories', function (Blueprint $table) {
+        Schema::create('program_manager_inventory', function (Blueprint $table) {
             $table->id();
             $table->string('po_code');
-            $table->integer('item_quan');
+            $table->integer('item_quantity');
             $table->string('item_unit');
             $table->string('item_name');
             $table->string('program_title')->nullable();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hd_inventories');
+        Schema::dropIfExists('program_manager_inventory');
     }
 };

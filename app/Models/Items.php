@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Items extends Model
 {
+
+    
+    public function programManagerInventories()
+    {
+        return $this->hasMany(Program_Manager_Inventory::class);
+    }
     protected $fillable = [
         'item_name',
         'item_description',
