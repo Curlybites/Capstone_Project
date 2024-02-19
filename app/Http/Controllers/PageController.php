@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\HealthCenters;
 use App\Models\Program;
+use App\Models\Role;
+use App\Models\District;
 use Illuminate\Support\Facades\Auth;
+// use ConsoleTVs\Charts\Facades\Charts;
+
 
 class PageController extends Controller
 {
@@ -50,9 +54,39 @@ class PageController extends Controller
         $totalProgram = Program::count();
         $totalProgramString = $this->programString($totalProgram);
 
-        return view('Admin.dashboard',['user' => $user,'totalUser' => $totalUser, 
-        'totalUserString'=>$totalUserString, 'totalHealthCenter' => $totalHealthCenter, 
-        'totalHealthCenterString'=>$totalHealthCenterString, 'totalBarangay' => $totalBarangay, 'totalBarangayString' => $totalBarangayString, 'totalProgram' => $totalProgram, 'totalProgramString' => $totalProgramString]);
+        $totalRole = Role::count();
+        $totalRoleString = $this->roleString($totalRole);
+
+        $totalDistrict = District::count();
+        $totalDistrictString = $this->districtString($totalDistrict);
+
+        $data = [
+            'totalUser' => User::count(),
+            'totalHealthCenter' => HealthCenters::count(),
+            'totalBarangay' => Barangay::count(),
+            'totalProgram' => Program::count(),
+            'totalRole' => Role::count(),
+            'totalDistrict' => District::count()
+        ];
+
+        return view('Admin.dashboard',[
+            'data' => $data,
+            'user' => $user,
+            'totalUser' => $totalUser, 
+            'totalUserString'=>$totalUserString, 
+            'totalHealthCenter' => $totalHealthCenter, 
+            'totalHealthCenterString'=>$totalHealthCenterString, 
+            'totalBarangay' => $totalBarangay, 
+            'totalBarangayString' => $totalBarangayString, 
+            'totalProgram' => $totalProgram, 
+            'totalProgramString' => $totalProgramString,
+            'totalRole' => $totalRole,
+            'totalRoleString' => $totalRoleString,
+            'totalDistrict' => $totalDistrict,
+            'totalDistrictString' => $totalDistrictString,
+
+
+        ]);
     }
 
     public function userString($totalUserString) {
@@ -86,6 +120,22 @@ class PageController extends Controller
         }
     }
 
+    public function roleString($totalRoleString) {
+        if ($totalRoleString == 1) {
+            return "Total Role:";
+        } else {
+            return "Total Roles:";
+        }
+    }
+
+    public function districtString($totalDistrictString) {
+        if ($totalDistrictString == 1) {
+            return "Total District:";
+        } else {
+            return "Total Districts:";
+        }
+    }
+
     public function pmDashboard(){
         $user = Auth::user();
         return view('Program_Manager.Dashboard',['user' => $user]);
@@ -110,7 +160,6 @@ class PageController extends Controller
         $user = Auth::user();
         return view('Supplier.Dashboard',['user' => $user]);
     }
-
 
   
 }
