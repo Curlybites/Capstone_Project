@@ -77,6 +77,7 @@ class AdminController extends Controller
     {
         // $district = District::all();
         $district = District::find($request->id);
+        $district->number = $request->districtNumber;
         $district->supervisor_id = $request->districtSupervisor;
         $district->save();
         return redirect('/Admin/District_List')->with('success', 'Update successful !');
@@ -126,7 +127,7 @@ class AdminController extends Controller
     public function barangayStore(Request $request)
     {
         $barangay = new Barangay();
-        $barangay->name = $request->input('barangayName');
+        $barangay->barangay_name = $request->input('barangayName');
         $barangay->district_id = $request->input('districtNumber');
         $barangay->save();
 
