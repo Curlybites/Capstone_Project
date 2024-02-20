@@ -119,9 +119,6 @@
                                                                 </a> --}}
                                                             </td>
                                                         </tr>
-
-                                                    
-
                                                         <div class="modal fade" id="exampleModal2{{ $programRow->id }}"
                                                             tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
@@ -143,7 +140,6 @@
                                                                             <div class="col">
                                                                                 <p>Program Name</p>
                                                                                 <div class="input-group mb-3">
-                                                                                    @foreach ($programData as $programRow)
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             aria-label="Sizing example input"
@@ -151,7 +147,6 @@
                                                                                             name="programName"
                                                                                             value="{{ $programRow->name }}"
                                                                                             required>
-                                                                                    @endforeach
                                                                                 </div>
                                                                             </div>
 
@@ -163,13 +158,13 @@
                                                                                             name="programManager">
                                                                                             <option selected>Assign to
                                                                                                 Program Manager</option>
-                                                                                     @foreach ($userData as $programRow)
+                                                                                                @foreach($userData as $programRow)
                                                                                             <option
                                                                                                 value="{{ $programRow->id }}">
                                                                                                 {{ $programRow->firstname }}
                                                                                                 {{ $programRow->lastname }}
                                                                                             </option>
-                                                                                    @endforeach
+                                                                                            @endforeach
                                                                                         </select>
                                                                                 </div>
                                                                             </div>
@@ -185,10 +180,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        </form>
-
-                                                       
-                                                    @endforeach
+                                                        </form>   
+                                                        @endforeach
                                                 </tbody>
                                                 </tfoot>
                                             </table>

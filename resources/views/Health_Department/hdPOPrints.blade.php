@@ -53,8 +53,13 @@
                         <th>Description</th>
                         <th>Price</th>
                         <th>Total</th>
-
                     </tr>
+                    {{-- <div class="avatar-wrapper">
+                        <div class="avatar avatar-sm me-3"><img
+                                src="{{ asset('storage/images/' . $ppmpdatas->item_image) }}" alt="Avatar"
+                                class="rounded-circle">
+                        </div>
+                    </div> --}}
                 </thead>
                 <tbody>
                     @foreach ($joinedppmpdata as $joinedppmpdatas)

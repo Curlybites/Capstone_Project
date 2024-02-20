@@ -23,10 +23,9 @@
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
                                         <h5 class="card-header">Allocation List</h5>
                                     </div>
-                                    <hr class=" ">
+                                    <hr class="my-0"">
                                     <!-- / Content -->
                                     <div class="card-body px-5">
-                                        <h5 class="mb-4">Allocation Details</h5>
                                         <div class="table-responsive text-nowrap overflow-visible">
                                             <table id="dataTable" class="datatables-basic table border-top "
                                                 style="width:100%">

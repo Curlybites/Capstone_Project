@@ -1,12 +1,12 @@
     <div class="card-body">
-        <div class="pb-4">
+        <div class="pb-1">
             <p style="margin-bottom: 0px; font-weight: bold;">Program</p>
             <p style="margin-bottom: 0px; font-weight: bold;">qcprogram@gmail.com</p>
             <p style="margin-bottom: 0px; font-weight: bold;">Sample Address, 23rd St.,
                 Sample City, ####
             </p>
         </div>
-        <div class="row pb-4 mt-5">
+        <div class="row pb-3 mt-5">
             <div class="col-md-4 col-4 mb-md-0 mb-3">
                 <p style="margin-bottom: 0px; font-weight: bold;">Vendor</p>
                 <p style="margin-bottom: 0px;">Supplier 101</p>
@@ -15,11 +15,11 @@
                 <p style="margin-bottom: 0px;">09123459879</p>
                 <p style="margin-bottom: 0px;">supplier101@gmail.com</p>
             </div>
-            <div class="col-md-4 col-4 mb-md-0 mb-3">
+            <div class="col-md-4 text-center col-4 mb-md-0 mb-2">
                 <p style="margin-bottom: 0px; font-weight: bold;">P.O #</p>
                 <p style="margin-bottom: 0px;">PO-{{ $allotoprogview->POnum }}</p>
             </div>
-            <div class="col-md-4 col-4">
+            <div class="col-md-4 col-4 text-center">
                 <p style="margin-bottom: 0px; font-weight: bold;">Date Created:</p>
                 <p style="margin-bottom: 0px;">2021-09-08</p>
             </div>
@@ -34,7 +34,6 @@
                         <th>Description</th>
                         <th>Price</th>
                         <th>Total Amount</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -43,7 +42,7 @@
                             <td>{{ $joinedDatas->alloprog_quan }}</td>
                             <td>{{ $joinedDatas->alloprog_unit }}</td>
                             <td>{{ $joinedDatas->alloprog_item }}</td>
-                            <td>{{ $joinedDatas->alloprog_descript }}</td>
+                            <td class="text-wrap ">{{ $joinedDatas->alloprog_descript }}</td>
                             <td>{{ $joinedDatas->alloprog_price }}</td>
                             <td>
                                 <div class="float-start">

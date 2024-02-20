@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HdInventory extends Model
+class Program_Manager_Inventory extends Model
 {
     use HasFactory;
+    protected $table = 'program_manager_inventory';
     protected $fillable = [
-        'item_quan',
+        'item_quantity',
         'item_unit',
         'item_name',
         'program_title',
@@ -17,4 +18,9 @@ class HdInventory extends Model
         'item_price',
         'item_total'
     ];
+
+    public function programManagerInventories()
+    {
+        return $this->hasMany(Program_Manager_Inventory::class, 'item_name', );
+    }
 }

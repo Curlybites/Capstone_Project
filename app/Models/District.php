@@ -12,7 +12,7 @@ class District extends Model
 
     protected $fillable = [
         'number',
-        'supervisor'
+        'supervisor_id'
     ];
 
 //     public function barangays()

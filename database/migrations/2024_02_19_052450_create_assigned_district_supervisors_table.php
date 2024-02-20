@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hc_inventory_items', function (Blueprint $table) {
+        Schema::create('assigned_district_supervisors', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable;
-            $table->string('type')->nullable;
-            $table->string('program')->nullable;
-            $table->integer('expiration')->nullable;
-            $table->integer('quantity')->nullable;
+            $table->integer('district_number');
+            $table->integer('district_supervisor_id');
             $table->timestamps();
         });
     }
@@ -27,7 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('HcInventory');
-        Schema::dropIfExists('hc_inventory_items');
+        Schema::dropIfExists('assigned_district_supervisors');
     }
 };

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('districts', function (Blueprint $table) {
             $table->id();
             $table->integer('number');
-            $table->string('supervisor');
+            $table->integer('supervisor_id');
             $table->timestamps();
         });
     }

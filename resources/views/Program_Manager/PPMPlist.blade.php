@@ -38,7 +38,7 @@
                                     </div>
 
 
-                                    <hr class="">
+                                    <hr class="my-0"">
                                     <div class="card-body p-5 ">
                                         <div class="table-responsive text-nowrap overflow-visible">
                                             <table id="dataTable" class="datatables-basic table border-top "
