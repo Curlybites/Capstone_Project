@@ -75,6 +75,23 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
+                                                                <div class="row">
+                                                                    <p>Health Center Staff</p>
+                                                                    <div class="input-group mb-3">
+                                                                        <select class="form-select"
+                                                                            aria-label="Default select example"
+                                                                            name="healthCenterStaff">
+                                                                            <option selected>Choose Health Center Staff
+                                                                            </option>
+                                                                            @foreach ($userData as $healthcenterRow)
+                                                                                <option
+                                                                                    value="{{ $healthcenterRow->id }}">
+                                                                                    {{ $healthcenterRow->firstname }} {{ $healthcenterRow->lastname }}
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
 
                                                                 {{-- <div class="row">
                                                                     <div class="input-group mb-3">
@@ -113,24 +130,25 @@
                                                         {{-- <th>#</th> --}}
                                                         <th>Health Center</th>
                                                         <th>Barangay</th>
+                                                        <th>Health Center Staff</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($healthCentersData as $healthCenterRow)
+                                                    @foreach ($healthCentersData as $healthcenterRow)
                                                         <tr>
                                                             {{-- <td>{{ $healthCenterRow->id }}</td> --}}
-                                                            <td>{{ $healthCenterRow->health_center_name }}</td>
-                                                            <td>{{ $healthCenterRow->barangay_name }}</td>
+                                                            <td>{{ $healthcenterRow->health_center_name }}</td>
+                                                            <td>{{ $healthcenterRow->barangay_name }}</td>
+                                                            <td>{{ $healthcenterRow->firstname }} {{ $healthcenterRow->lastname }}</td>
                                                             <td class="">
-                                                                <a type="button" href=/Admin/Edit/ class="text-primary"
+                                                                <a type="button" href="" class="text-primary"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#exampleModal2{{ $healthcenterRow->id }}">
                                                                     <i class="bi bi-pencil-square"></i>
                                                                 </a>
                                                             </td>
                                                         </tr>
-
 
                                                         <div class="modal fade"
                                                             id="exampleModal2{{ $healthcenterRow->id }}" tabindex="-1"
@@ -159,7 +177,40 @@
                                                                                         aria-label="Sizing example input"
                                                                                         aria-describedby="inputGroup-sizing-default"
                                                                                         name="healthcenterName"
-                                                                                        value="{{ $healthcenterRow->name }}">
+                                                                                        value="{{ $healthcenterRow->health_center_name }}">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="row">
+                                                                                <p>Barangay</p>
+                                                                                <div class="input-group mb-3">
+                                                                                    <select class="form-select"
+                                                                                        aria-label="Default select example"
+                                                                                        name="barangayName">
+                                                                                        @foreach ($barangayData as $healthcenterRow )
+                                                                                            <option
+                                                                                                value="{{ $healthcenterRow->id }}">
+                                                                                                {{ $healthcenterRow->barangay_name }}
+                                                                                            </option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <p>Health Center Staff</p>
+                                                                                <div class="input-group mb-3">
+                                                                                    <select class="form-select"
+                                                                                        aria-label="Default select example"
+                                                                                        name="healthCenterStaff">
+                                                                                        <option selected>Choose Health Center Staff
+                                                                                        </option>
+                                                                                        @foreach ($userData as $healthcenterRow)
+                                                                                            <option
+                                                                                                value="{{ $healthcenterRow->id }}">
+                                                                                                {{ $healthcenterRow->firstname }} {{ $healthcenterRow->lastname }}
+                                                                                            </option>
+                                                                                        @endforeach
+                                                                                    </select>
                                                                                 </div>
                                                                             </div>
 

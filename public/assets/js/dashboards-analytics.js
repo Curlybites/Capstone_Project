@@ -15,6 +15,7 @@
   // Total Revenue Report Chart - Bar Chart
   // --------------------------------------------------------------------
   const totalRevenueChartEl = document.querySelector('#totalRevenueChart'),
+
     totalRevenueChartOptions = {
       series: [
         {

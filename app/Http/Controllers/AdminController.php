@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AssignedHealthCenter;
 use App\Models\AssignedProgramManager;
+use App\Models\AssignedDistrictSupervisor;
 use App\Models\BarangaysPerDistrict;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -13,7 +14,6 @@ use App\Models\Role;
 use App\Models\HealthCenters;
 use App\Models\Program;
 use App\Models\HealthCentersPerBarangay;
-use App\Models\AssignedProgramManagerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Colors\Rgb\Channels\Red;
@@ -22,12 +22,31 @@ class AdminController extends Controller
 {
     public function districtListpage()
     {
+        // $districtsData = District::join('assigned_district_supervisors', 'districts.number', '=', 'assigned_district_supervisors.district_number')
+        //     ->join('users', 'districts.supervisor_id', '=', 'users.id')
+        //     ->select('districts.*', 'assigned_district_supervisors.*', 'users.*')
+        //     ->get();
+
         $districtData = District::all();
+
         $userData = DB::table('users')->where('role', 4)->orderBy('id')->get();
         $barangayData = Barangay::all();
         $user = Auth::user();
         $healthcenterData = HealthCenters::all();
-        return view('Admin.districtList', ['districtData' => $districtData, 'barangayData' => $barangayData, 'healthcenterData' => $healthcenterData, 'userData' => $userData, 'user' => $user]);
+        $districSupervisorData = AssignedDistrictSupervisor::all();
+        $districtsData = AssignedDistrictSupervisor::join('districts', 'assigned_district_supervisors.district_number', '=', 'districts.number')
+        ->join('users', 'assigned_district_supervisors.district_supervisor_id', '=', 'users.id')
+        ->select('districts.*', 'users.*')
+        ->get(); 
+
+        // return view('Admin.districtList', ['districtsData' => $districtsData,'districSupervisorData'=> $districSupervisorData, 'districtData' => $districtData, 'barangayData' => $barangayData, 'healthcenterData' => $healthcenterData, 'userData' => $userData, 'user' => $user]);
+        return view('Admin.districtList', [
+        'districtData' => $districtData,
+        'districSupervisorData' => $districSupervisorData, 
+        'districtsData' => $districtsData, 
+        'barangayData' => $barangayData, 
+        'healthcenterData' => $healthcenterData, 
+        'userData' => $userData, 'user' => $user]);
         // return view('Admin.districtList', compact('districts, barangays'));
     }
 
@@ -35,8 +54,14 @@ class AdminController extends Controller
     {
         $district = new District();
         $district->number = $request->input('districtNumber');
-        $district->supervisor = $request->input('districtSupervisor');
+        $district->supervisor_id = $request->input('districtSupervisor');
         $district->save();
+
+        $districtSupervisor = new AssignedDistrictSupervisor();
+        $districtSupervisor->district_number = $district->number;
+        $districtSupervisor->district_supervisor_id = $district->supervisor_id;
+        $districtSupervisor->save();
+
         // dd($request->all());
         // $districtData = $request->all(['districtNumber']);
         // District::create($districtData);
@@ -52,7 +77,7 @@ class AdminController extends Controller
     {
         // $district = District::all();
         $district = District::find($request->id);
-        $district->supervisor = $request->districtSupervisor;
+        $district->supervisor_id = $request->districtSupervisor;
         $district->save();
         return redirect('/Admin/District_List')->with('success', 'Update successful !');
 
@@ -76,9 +101,9 @@ class AdminController extends Controller
         $barangayData = Barangay::all();
         $districtData = District::all();
         $barangayPerDistrictData = BarangaysPerDistrict::all();
-        $barangaysData = BarangaysPerDistrict::join('districts', 'barangays_per_districts.district_id', '=', 'districts.id')
-            ->join('barangays', 'barangays_per_districts.barangay_id', '=', 'barangays.id')
-            ->select('barangays.*', 'districts.*')
+        $barangaysData = BarangaysPerDistrict::join('barangays', 'barangays_per_districts.barangay_id', '=', 'barangays.id')
+            ->join('districts', 'barangays_per_districts.district_id', '=', 'districts.id')
+            ->select('districts.*', 'barangays.*')
             ->get();
         return view('Admin.barangayList', [
             'user' => $user,
@@ -93,7 +118,7 @@ class AdminController extends Controller
     {
 
         $barangay = Barangay::find($request->id);
-        $barangay->name = $request->barangayName;
+        $barangay->barangay_name = $request->barangayName;
         $barangay->save();
         return redirect('/Admin/Barangay_List')->with('success', 'Update successful!');
     }
@@ -115,13 +140,6 @@ class AdminController extends Controller
         return redirect('/Admin/Barangay_List')->with('message', 'Barangay created successfully!');
     }
 
-    public function updatehc(Request $request, HealthCenters $healthcenter)
-    {
-        $healthcenter = HealthCenters::find($request->id);
-        $healthcenter->name = $request->healthcenterName;
-        $healthcenter->save();
-        return redirect('/Admin/Health_Center_List')->with('success', 'Update successful!');
-    }
 
 
 
@@ -134,16 +152,28 @@ class AdminController extends Controller
         $userData = DB::table('users')->where('role', 5)->orderBy('id')->get();
         $healthCentersData = HealthCentersPerBarangay::join('health_centers', 'health_centers_per_barangays.health_center_id', '=', 'health_centers.id')
             ->join('barangays', 'health_centers_per_barangays.barangay_id', '=', 'barangays.id')
-            ->select('barangays.*', 'health_centers.*')
+            ->join('users', 'health_centers_per_barangays.health_center_staff_id', '=', 'users.id')
+            ->select('health_centers.*', 'barangays.*', 'users.*')
             ->get();
+
         return view('Admin.HealthCenter', [
             'healthcenterData' => $healthcenterData,
             'user' => $user,
             'barangayData' => $barangayData,
             'healthCenterPerBrgyData' => $healthCenterPerBrgyData,
             'userData' => $userData,
-            'healthCentersData' => $healthCentersData
+            'healthCentersData' => $healthCentersData,
         ]);
+    }
+
+
+    public function updatehc(Request $request, HealthCenters $healthcenter)
+    {
+        $healthcenter = HealthCenters::find($request->id);
+        // $healthcenter->health_center_name = $request->healthcenterName;
+        $healthcenter->barangay_id = $request->barangayName;
+        $healthcenter->save();
+        return redirect('/Admin/Health_Center_List')->with('success', 'Update successful!');
     }
 
     public function healthcenterStore(Request $request)
@@ -154,11 +184,20 @@ class AdminController extends Controller
         $healthcenter->save();
 
         $healthcenterId = $healthcenter->id;
+        // $healthcenterstaff = new User();
+        // $healthcenterstaffId = $healthcenterstaff->id;
+        $healthCenterStaff = new AssignedHealthCenter();
+        $healthCenterStaff->health_center_id = $healthcenterId;
+        $healthCenterStaff->health_center_staff_id = $request->input('healthCenterStaff');
+        $healthCenterStaff->save();
 
         $healthCenterPerBrgy = new HealthCentersPerBarangay();
         $healthCenterPerBrgy->health_center_id = $healthcenterId;
+        $healthCenterPerBrgy->health_center_staff_id = $request->input('healthCenterStaff');
         $healthCenterPerBrgy->barangay_id = $request->input('barangayName');
         $healthCenterPerBrgy->save();
+
+
 
 
         return redirect('/Admin/Health_Center_List')->with('success', 'Health Center created successfully!');
@@ -189,7 +228,7 @@ class AdminController extends Controller
     {
         $program = Program::find($request->id);
         $program->name = $request->programName;
-        // $program->program_manager = $request->programManager;
+        // $program->program_manager_id = $request->programManager;
         $program->save();
         return redirect('/Admin/Program_List')->with('message', 'Update successfully!');
     }

@@ -150,7 +150,7 @@
                                                                                         <input type="text" class="form-control"
                                                                                             aria-label="Sizing example input"
                                                                                             aria-describedby="inputGroup-sizing-default"
-                                                                                            name="barangayName" value="{{ $barangayRow->name }}" >
+                                                                                            name="barangayName" value="{{ $barangayRow->barangay_name }}" >
                                                                                     </div>
                                                                                 </div>
                                                                      
