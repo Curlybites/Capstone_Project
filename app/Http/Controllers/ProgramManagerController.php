@@ -38,6 +38,16 @@ class ProgramManagerController extends Controller
         return view('Program_Manager.pmAllocationlist', ['user' => $user]);
     }
 
+    public function create_allocation(){
+        $program = Program::all();
+        $user = Auth::user();
+        $ppmp = Ppmpdatas::all();
+        $hdInventory = Program_Manager_Inventory::all();
+        return view('Program_Manager.create_allocation', ['user' => $user, 'ppmp' => $ppmp, 'program' => $program, 'hdInventory' => $hdInventory]);
+        // $user = Auth::user();
+        // return view('Program_Manager.create_allocation', ['user' => $user]);
+    }
+
     public function PPMPpage()
     {
         $program = Program::all();

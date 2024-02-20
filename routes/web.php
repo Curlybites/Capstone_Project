@@ -114,6 +114,7 @@ Route::middleware(['auth', 'program_manager'])->group(function () {
         Route::post('/Program_Manager/Receive_View{id}','program_receive_items')->name('pm_received_items');
         // Report_Page
         Route::get('/Program_Manager/Inventory_List', 'Inventorypage');
+        Route::get('/Program_Manager/Create_Allocation', 'create_allocation');
         // Profile_Page
         Route::get('/Program_Manager/Profile', 'Profilepage');
         Route::get('/Program_Manager/Profile_Change', 'pmAccountChange');

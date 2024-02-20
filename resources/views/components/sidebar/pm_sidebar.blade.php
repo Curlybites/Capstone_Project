@@ -38,7 +38,7 @@
             </ul>
         </li>
 
-        <li class="menu-item {{ Request::is('Program_Manager/Allocationlist') || Request::is('Program_Manager/pmAllocationlist') ? 'active open' : '' }}">
+        <li class="menu-item {{ Request::is('Program_Manager/Allocationlist') || Request::is('Program_Manager/pmAllocationlist')|| Request::is('Program_Manager/Create_Allocation') || Request::is('Program_Manager/Create_Allocation') ? 'active open' : '' }}">
             <a href="#" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-sitemap"></i>
                 <div data-i18n="Extended UI">Allocation</div>
@@ -47,6 +47,12 @@
                 <li class="menu-item {{ Request::is('Program_Manager/Allocationlist') || Request::is('Program_Manager/pmAllocationlist') ? 'active' : '' }}">
                     <a href="{{ '/Program_Manager/Allocationlist' }}" class="menu-link">
                         <div data-i18n="Perfect Scrollbar">Allocation List</div>
+                    </a>
+                </li>
+
+                <li class="menu-item {{ Request::is('Program_Manager/Create_Allocation') || Request::is('Program_Manager/Create_Allocation') ? 'active' : '' }}">
+                    <a href="{{ '/Program_Manager/Create_Allocation' }}" class="menu-link">
+                        <div data-i18n="Perfect Scrollbar">Create Allocation</div>
                     </a>
                 </li>
             </ul>
