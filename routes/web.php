@@ -28,8 +28,6 @@ use App\Models\District;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-
 // Route For Login
 Route::get('/', [PageController::class, 'AdminLogin'])->name('login');
 
@@ -45,7 +43,6 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/change-password', 'changePassword')->name('changePassword');
     Route::post('/change-password', 'ChangePasswordSave')->name('changePass');
 });
-
 
 // Route For Admin
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -112,8 +109,11 @@ Route::middleware(['auth', 'program_manager'])->group(function () {
         Route::get('/Program_Manager/AllocationEdit', 'pmAllocationEdit');
         Route::get('/Program_Manager/pmAllocationPrint', 'AllocationPrint');
         Route::get('/Program_Manager/AllocationProcess', 'pmAccountChange');
+        Route::get('/Program_Manager/Receive_List','receive_page');
+        Route::get('/Program_Manager/Receive_View{id}','receive_view');
+        Route::post('/Program_Manager/Receive_View{id}','program_receive_items')->name('pm_received_items');
         // Report_Page
-        Route::get('/Program_Manager/Reportlist', 'Reportpage');
+        Route::get('/Program_Manager/Inventory_List', 'Inventorypage');
         // Profile_Page
         Route::get('/Program_Manager/Profile', 'Profilepage');
         Route::get('/Program_Manager/Profile_Change', 'pmAccountChange');
@@ -142,6 +142,7 @@ Route::middleware(['auth', 'health_department'])->group(function () {
 
     Route::post('/Health_Department/Allocation_List{id}', [HdController::class, 'hdReceive'])->name('receivehd');
 });
+
 
 
 // Route For Disctrict 
@@ -218,7 +219,6 @@ Route::middleware(['auth', 'supplier'])->group(function () {
     Route::put('/Supplier/PPMP_Edit{id}', [SupplierController::class, 'ppmp_update'])->name('supplier_ppmp.update');
     Route::delete('/Supplier/PPMP_List{id}', [SupplierController::class, 'deletePPMP'])->name('supplier_ppmp.delete');
 });
-
 
 
 // // Admin route

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('health_centers_per_barangays', function (Blueprint $table) {
             $table->id();
             $table->integer('health_center_id');
+            $table->integer('health_center_staff_id');
             $table->integer('barangay_id');
             $table->timestamps();
         });

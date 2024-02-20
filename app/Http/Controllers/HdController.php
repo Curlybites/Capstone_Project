@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Allocatetoprogs;
 use App\Models\Allocateitemtoprogs;
 use App\Models\HdInventory;
+use App\Models\Items;
 
 use App\Models\Program;
 use App\Models\Ppmpdatas;
@@ -19,10 +20,9 @@ class HdController extends Controller
 {
     public function hdInventory()
     {
-        $program = Program::all();
         $user = Auth::user();
-        $ppmp = Ppmpdatas::all();
-        return view('Health_Department.hdInventory', ['user' => $user, 'ppmp' => $ppmp, 'program' => $program]);
+        $hdInventory = HdInventory::all();
+        return view('Health_Department.hdInventory', ['user' => $user, 'hdInventory' => $hdInventory]);
     }
 
     public function hdPurchaseOrderList()
@@ -33,19 +33,23 @@ class HdController extends Controller
         return view('Health_Department.hdPOList', ['user' => $user, 'ppmp' => $ppmp, 'program' => $program]);
     }
 
-
-    public function hdReceive($id)
-    { // Example: Storing data in the OtherTable
-        $ppmp = Ppmpitemdatas::findOrFail($id);
-
-        // Store the PPMP data into the other table
-        HdInventory::create([
-            'item_quan' => $ppmp->quantity,
-            'item_name' => $ppmp->itemname,
-            'item_description' => $ppmp->description,
-            'item_price' => $ppmp->unitprice,
-            // Add other fields as needed
-        ]);
+    public function hdReceive(Request $request, $id)
+    {
+        $ppmpdata = Ppmpdatas::findOrFail($id);
+        $ppmpdataitems = Ppmpitemdatas::where('ppmpitemID', $id)->get(); // Assuming there's a column 'ppmp_id' in Ppmpitemdatas table
+        foreach ($ppmpdataitems as $ppmpdataitem) {
+            $receivedOrder = new HdInventory();
+            $receivedOrder->po_code = $ppmpdata->ppmp_code;
+            // $receivedOrder->item_img = $items->item_image;
+            $receivedOrder->item_quan = $ppmpdataitem->quantity;
+            $receivedOrder->item_unit = $ppmpdataitem->unit;
+            $receivedOrder->item_name = $ppmpdataitem->itemname;
+            $receivedOrder->program_title = $ppmpdata->programtitle;
+            $receivedOrder->item_description = $ppmpdataitem->description;
+            $receivedOrder->item_price = $ppmpdataitem->unitprice;
+            $receivedOrder->item_total = $ppmpdataitem->total;
+            $receivedOrder->save();
+        }
 
         return redirect()->back()->with('success', 'PPMP received successfully.');
     }
@@ -57,7 +61,7 @@ class HdController extends Controller
         $joinedppmpdata = DB::table('ppmpitemdatas')
             ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
             ->join('items', 'ppmpitemdatas.itemname', '=', 'items.id')
-            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total', 'items.item_name')
+            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total', 'items.item_name', 'items.item_image')
             ->where('ppmpitemdatas.ppmpitemID', $id)->get();
 
         return view('Health_Department.hdPOView', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata]);
@@ -67,8 +71,11 @@ class HdController extends Controller
 
     public function hdAllocationProcess()
     {
+        $program = Program::all();
         $user = Auth::user();
-        return view('Health_Department.hdAllocationProcess', ['user' => $user]);
+        $ppmp = Ppmpdatas::all();
+        $hdInventory = HdInventory::all();
+        return view('Health_Department.hdAllocationProcess', ['user' => $user, 'ppmp' => $ppmp, 'program' => $program, 'hdInventory' => $hdInventory]);
     }
 
     public function hdAccount()

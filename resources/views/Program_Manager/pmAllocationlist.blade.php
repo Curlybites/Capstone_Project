@@ -23,10 +23,9 @@
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
                                         <h5 class="card-header">Allocation List</h5>
                                     </div>
-                                    <hr class=" ">
+                                    <hr class="my-0"">
                                     <!-- / Content -->
                                     <div class="card-body px-5">
-                                        <h5 class="mb-4">Allocation Details</h5>
                                         <div class="table-responsive text-nowrap overflow-visible">
                                             <table id="dataTable" class="datatables-basic table border-top "
                                                 style="width:100%">
@@ -111,7 +110,7 @@
                                                                     data-bs-toggle="dropdown"><i
                                                                         class="bx bx-dots-vertical-rounded"></i></button>
                                                                 <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" <a
+                                                                    <a class="dropdown-item"
                                                                         href="{{ '/Program_Manager/AllocationView' }}">
                                                                         <i class="bi bi-eye-fill me-2"></i>View
                                                                     </a>

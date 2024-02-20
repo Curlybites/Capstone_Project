@@ -14,14 +14,22 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
+use App\Models\Allocatetoprogs;
+use App\Models\Allocateitemtoprogs;
+use App\Models\Program_Manager_Inventory;
 
 class ProgramManagerController extends Controller
 {
 
-    public function Reportpage()
+    public function Inventorypage()
     {
         $user = Auth::user();
-        return view('Program_Manager.Reportlist', ['user' => $user]);
+        $hdInventory = Program_Manager_Inventory::all();
+        // $getname = DB::table('program_manager_inventory')
+        // ->join('items','program_manager_inventory.item_name', '=','items.id')
+        // ->select('items.item_name')->where('program_manager_inventory.item_name',);
+        
+        return view('Program_manager.Inventory', ['user' => $user, 'hdInventory' => $hdInventory]);
     }
 
     public function Allocationpage()
@@ -61,7 +69,7 @@ class ProgramManagerController extends Controller
         $user = Auth::user();
         return view('Program_Manager.pmAllocationView', ['user' => $user]);
     }
-    
+
     public function pmAllocationEdit()
     {
         $user = Auth::user();
@@ -78,10 +86,7 @@ class ProgramManagerController extends Controller
     public function storePPMP(Request $request)
     {
         $user = Auth::user();
-        $items = Items::all();
-        $ppmp = Ppmpdatas::all();
-        $program = Program::all();
-        $user = Auth::user();
+
         Validator::make($request->all(), [
             'ppmp_code' => 'required',
             'year' => 'required',
@@ -93,11 +98,11 @@ class ProgramManagerController extends Controller
             'schedule',
             'note',
             'status' => 'required',
-            'items_total'=> 'required',
+            'items_total' => 'required',
         ]);
 
         $ppmptosupplier = Ppmpdatas::create($request->all());
-        
+
         Validator::make($request->all(), [
             'ppmp.*.quantity' => 'required',
             'ppmp.*.unit' => 'required',
@@ -134,8 +139,8 @@ class ProgramManagerController extends Controller
         $ppmpdatas = Ppmpdatas::findOrfail($id);
         $joinedppmpdata = DB::table('ppmpitemdatas')
             ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
-            ->join('items','ppmpitemdatas.itemname', '=','items.id')
-            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total','items.item_name')
+            ->join('items', 'ppmpitemdatas.itemname', '=', 'items.id')
+            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total', 'items.item_name')
             ->where('ppmpitemdatas.ppmpitemID', $id)->get();
 
         return view('Program_Manager.pmPPMPEdit', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata, 'item' => $items, 'ppmp' => $ppmp, 'program' => $program]);
@@ -147,9 +152,9 @@ class ProgramManagerController extends Controller
         $ppmpdatas = Ppmpdatas::findOrfail($id);
         $joinedppmpdata = DB::table('ppmpitemdatas')
             ->join('ppmpdatas', 'ppmpitemdatas.ppmpitemID', '=', 'ppmpdatas.id')
-            ->join('items','ppmpitemdatas.itemname', '=','items.id')
-            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total','items.item_name')
-            ->where('ppmpitemdatas.ppmpitemID', $id)->get();     
+            ->join('items', 'ppmpitemdatas.itemname', '=', 'items.id')
+            ->select('ppmpitemdatas.quantity', 'ppmpitemdatas.unit', 'ppmpitemdatas.itemname', 'ppmpitemdatas.description', 'ppmpitemdatas.unitprice', 'ppmpitemdatas.total', 'items.item_name')
+            ->where('ppmpitemdatas.ppmpitemID', $id)->get();
 
         return view('Program_Manager.pmPPMPView', ['user' => $user, 'ppmpdatas' => $ppmpdatas, 'joinedppmpdata' => $joinedppmpdata]);
     }
@@ -162,4 +167,45 @@ class ProgramManagerController extends Controller
 
         return back()->with('success', 'PPMP is deleted sucessfully');
     }
+
+    public function receive_page()
+    {
+        $user = Auth::user();
+        $allotoprog = Allocatetoprogs::all();
+        return view('Program_Manager.receive_list', ['user' => $user, 'allotoprog' => $allotoprog]);
+    }
+
+    public function receive_view($id)
+    {
+        $user = Auth::user();
+        $allotoprogview = Allocatetoprogs::findOrFail($id);
+
+        $joinedData = DB::table('allocateitemtoprogs')
+            ->join('allocatetoprogs', 'allocateitemtoprogs.allocateIDprogs', '=', 'allocatetoprogs.id')
+            ->select('allocateitemtoprogs.alloprog_quan', 'allocateitemtoprogs.alloprog_unit', 'allocateitemtoprogs.alloprog_item', 'allocateitemtoprogs.alloprog_descript', 'allocateitemtoprogs.alloprog_price', 'allocateitemtoprogs.alloprog_pricetotal')
+            ->where('allocateitemtoprogs.allocateIDprogs', $id)->get();
+        return view('Program_Manager.receive_view', ['user' => $user, 'allotoprogview' => $allotoprogview, 'joinedData' => $joinedData]);
+    }
+
+    public function program_receive_items(Request $request, $id){
+
+        $received_po_from_hd = Allocatetoprogs::findOrFail($id);
+        $received_item_from_hd = Allocateitemtoprogs::Where('allocateIDprogs',$id)->get();
+        foreach ($received_item_from_hd as $received_items ) {
+            $receivedOrder = new Program_Manager_Inventory();
+            $receivedOrder->po_code = $received_po_from_hd->POnum;
+            $receivedOrder->item_quantity =  $received_items->alloprog_quan;
+            $receivedOrder->item_unit =  $received_items->alloprog_unit;
+            $receivedOrder->item_name =  $received_items->alloprog_item;
+            $receivedOrder->program_title = $received_po_from_hd->program;
+            $receivedOrder->item_description = $received_items->alloprog_descript;
+            $receivedOrder->item_price = $received_items->alloprog_price;
+            $receivedOrder->item_total = $received_items->alloprog_pricetotal; 
+            $receivedOrder->save();
+        }
+        
+        return redirect('/Program_Manager/Receive_List')->with('success', 'Received successfully.');
+    }
+
+
 }

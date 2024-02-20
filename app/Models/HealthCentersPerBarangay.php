@@ -11,6 +11,7 @@ class HealthCentersPerBarangay extends Model
 
     protected $fillable = [
         'health_center_id',
+        'health_center_staff_id',
         'barangay_id'
     ];
     

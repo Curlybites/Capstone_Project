@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AssignedHealthCenter extends Model
+class AssignedDistrictSupervisor extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'health_center_staff_id',
-        'health_center_id',
+        'district_number',
+        'district_supervisor_id',
     ];
 }
