@@ -142,21 +142,37 @@
                                                                             method="POST">
                                                                             @csrf
                                                                             @method('PUT')
+
                                                                             <div class="col">
                                                                                 <p>District Number</p>
+                                                                                <select class="form-select"
+                                                                                    name="districtNumber"
+                                                                                    aria-label="Default select example">
+                                                                                    <option selected>Choose District
+                                                                                    </option>
+                                                                                    <option value="1">1</option>
+                                                                                    <option value="2">2</option>
+                                                                                    <option value="3">3</option>
+                                                                                    <option value="4">4</option>
+                                                                                    <option value="5">5</option>
+                                                                                    <option value="6">6</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <p>District Supervisor</p>
                                                                                 <div class="input-group mb-3">
                                                                                     <select class="form-select"
                                                                                         aria-label="Default select example"
                                                                                         name="districtSupervisor">
                                                                                         <option selected>Choose
-                                                                                            District Number</option>
-                                                                                            @foreach($userData as $districtRow)
+                                                                                            District Supervisor</option>
+                                                                                        @foreach ($userData as $districtRow)
                                                                                             <option
                                                                                                 value="{{ $districtRow->id }}">
                                                                                                 {{ $districtRow->firstname }}
                                                                                                 {{ $districtRow->lastname }}
                                                                                             </option>
-                                                                                            @endforeach
+                                                                                        @endforeach
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
