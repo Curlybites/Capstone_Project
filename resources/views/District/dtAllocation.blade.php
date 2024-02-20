@@ -98,9 +98,18 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card mb-4">
+                                    
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
                                         <h5 class="card-header">Item List</h5>
+                                        <div
+                                       
+                                        <a href="{{ '/District/District_Allocation_Create' }}"
+                                            class="btn-success mx-4 px-4 py-1 border-0"> <i
+                                                class='bx bxs-add-to-queue'></i> Create
+                                            New</a>
+                                        <!-- / Content -->
+                                    </div>
                                     </div>
                                     <hr class="my-0">
                                     <!-- Account -->

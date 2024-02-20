@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\districtdatas;
 use App\Models\Barangay;
 use App\Models\District;
+use App\Models\dtAllocation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -100,6 +101,11 @@ class DistrictController extends Controller
         $user = Auth::user();
         return view('District.dtAllocationView', ['user' => $user]);
     }
+    public function AllocationCreate()
+    {
+        $user = Auth::user();
+        return view('District.dtAllocationCreate', ['user' => $user]);
+    }
     public function AllocationEdit()
     {
         $user = Auth::user();
@@ -119,8 +125,23 @@ class DistrictController extends Controller
         return back()->with('sucess', 'PPMP is deleted sucessfully');
     
     }
+    public function districtAllocation(Request $request)
+    {
+        $request->validate([
 
+        'id' => 'required',
+        'District ' => 'required',
+        'Item Name' => 'required',
+        'Description' => 'required',
+        'Quantity' => 'required',
+        'status' => 'required',
 
+        ]);
+
+        dtAllocation::create($request->all());
+
+        return back()->with('success', 'Allocation successfully');
+    }
 
     //Health Department to District 
     // public function storeItem(Request $request)

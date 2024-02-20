@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('districtdatas', function (Blueprint $table) {
             $table->id();
-            $table->year('PO#');
-            $table->string('datacreated');
-            $table->string('programtitle');
-            $table->string('itemname');
-            $table->string('total');
+            $table->year('District');
+            $table->string('Item_Name');
+            $table->string('Description');
+            $table->string('Quantity');
             $table->string('status');
             $table->timestamps();
         });
