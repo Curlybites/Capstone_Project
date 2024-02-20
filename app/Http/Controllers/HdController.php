@@ -34,18 +34,66 @@ class HdController extends Controller
     }
 
 
-    public function hdReceive($id)
-    { // Example: Storing data in the OtherTable
-        $ppmp = Ppmpitemdatas::findOrFail($id);
+    // public function hdReceive($id)
+    // { // Example: Storing data in the OtherTable
+    //     $ppmp = Ppmpitemdatas::findOrFail($id);
 
-        // Store the PPMP data into the other table
-        HdInventory::create([
-            'item_quan' => $ppmp->quantity,
-            'item_name' => $ppmp->itemname,
-            'item_description' => $ppmp->description,
-            'item_price' => $ppmp->unitprice,
-            // Add other fields as needed
-        ]);
+    //     // Store the PPMP data into the other table
+    //     HdInventory::create([
+    //         'item_quan' => $ppmp->quantity,
+    //         'item_name' => $ppmp->itemname,
+    //         'item_description' => $ppmp->description,
+    //         'item_price' => $ppmp->unitprice,
+    //         // Add other fields as needed
+    //     ]);
+
+    //     return redirect()->back()->with('success', 'PPMP received successfully.');
+    // }
+
+    public function hdReceive(Request $request, $id)
+    {
+        // // Fetch data from Ppmpitemdatas table
+        // $ppmpItemData = Ppmpitemdatas::findOrFail($id);
+
+        // // Fetch data from Ppmpdatas table
+        // $ppmpDatas = Ppmpdatas::findOrFail($id);
+
+        // // Store the PPMP data into the other table
+        // HdInventory::create([
+        //     'po_code' => $ppmpDatas->ppmp_code,
+        //     'item_quan' => $ppmpItemData->quantity,
+        //     'item_name' => $ppmpItemData->itemname,
+        //     'item_description' => $ppmpItemData->description,
+        //     'item_price' => $ppmpItemData->unitprice,
+        //     'item_total' => $ppmpItemData->total,
+        // ]);
+
+
+        // $ppmpdata = Ppmpdatas::findOrFail($id);
+        // $ppmpdataitem = Ppmpitemdatas::findOrFail($id);
+        // $receivedOrder = new HdInventory();
+        // $receivedOrder->po_code = $ppmpdata->ppmp_code;
+        // $receivedOrder->item_quan = $ppmpdataitem->quantity;
+        // $receivedOrder->item_name = $ppmpdataitem->itemname;
+        // $receivedOrder->item_description = $ppmpdataitem->description;
+        // $receivedOrder->item_price = $ppmpdataitem->unitprice;
+        // $receivedOrder->item_total = $ppmpdataitem->total;
+        // $receivedOrder->save();
+
+
+        $ppmpdata = Ppmpdatas::findOrFail($id);
+        $ppmpdataitems = Ppmpitemdatas::where('ppmpitemID', $id)->get(); // Assuming there's a column 'ppmp_id' in Ppmpitemdatas table
+
+        foreach ($ppmpdataitems as $ppmpdataitem) {
+            $receivedOrder = new HdInventory();
+            $receivedOrder->po_code = $ppmpdata->ppmp_code;
+            $receivedOrder->item_quan = $ppmpdataitem->quantity;
+            $receivedOrder->item_name = $ppmpdataitem->itemname;
+            $receivedOrder->item_description = $ppmpdataitem->description;
+            $receivedOrder->item_price = $ppmpdataitem->unitprice;
+            $receivedOrder->item_total = $ppmpdataitem->total;
+            $receivedOrder->save();
+        }
 
         return redirect()->back()->with('success', 'PPMP received successfully.');
     }
