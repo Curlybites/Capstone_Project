@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DistrictController extends Controller
 {
@@ -101,11 +102,11 @@ class DistrictController extends Controller
         $user = Auth::user();
         return view('District.dtAllocationView', ['user' => $user]);
     }
-    public function AllocationCreate()
-    {
-        $user = Auth::user();
-        return view('District.dtAllocationCreate', ['user' => $user]);
-    }
+    // public function AllocationCreate()
+    // {
+    //     $user = Auth::user();
+    //     return view('District.dtAllocationCreate', ['user' => $user]);
+    // }
     public function AllocationEdit()
     {
         $user = Auth::user();
@@ -125,8 +126,12 @@ class DistrictController extends Controller
         return back()->with('sucess', 'PPMP is deleted sucessfully');
     
     }
-    public function districtAllocation(Request $request)
+    
+
+    public function AllocationCreate(Request $request)
     {
+        $user = Auth::user();
+
         $request->validate([
 
         'id' => 'required',

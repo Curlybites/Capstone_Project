@@ -6,7 +6,7 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('components.sidebar.dt_sidebar')
+            @include('components.sidebar.district_sidebar')
 
             <!-- Layout container -->
             <div class="layout-page">
@@ -29,7 +29,7 @@
                                 <div class="card mb-4">
                                     <div
                                         class="title d-flex align-items-center justify-content-between border-top border-success">
-                                        <h5 class="card-header">Project Procurement Management Plan Create</h5>
+                                        <h5 class="card-header"></h5>
 
                                     </div>
 
@@ -39,8 +39,8 @@
                                         <div class="row">
                                             <div class="col-md-12">
 
-                                                {{-- <form action="{{ route('ppmp.create') }}" method="POST">
-                                                    @csrf --}}
+                                                <form action="{{ route('Allocation.create') }}" method="POST">
+                                                    @csrf
 
                                                     <div class="row mb-3">
                                                         <div class="col-md-4 mb-md-0 mb-3">
@@ -318,7 +318,7 @@
                                                             href="{{ '/Program_Manager/PPMPlist' }}">Cancel
                                                         </a>
                                                     </div>
-                                                {{-- </form> --}}
+                                                </form>
 
                                             </div>
                                         </div>

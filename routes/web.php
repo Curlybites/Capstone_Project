@@ -154,9 +154,9 @@ Route::middleware(['auth', 'district'])->group(function () {
     Route::get('/District/District_InventoryList', [DistrictController::class, 'dtInventory_List']);
     Route::get('/District/District_Allocation', [DistrictController::class, 'allocation']);
     Route::get('/District/District_Allocation_View', [DistrictController::class, 'AllocationView']);
-    Route::get('/District/District_Allocation_Create', [DistrictController::class, 'AllocationCreate']);
+    // Route::get('/District/District_Allocation_Create', [DistrictController::class, 'AllocationCreate']);
+    Route::post('/District/District_Allocation_Create', [DistrictController::class, 'AllocationCreate'])->name('Allocation.create');
     Route::get('/District/District_Allocation_Edit', [DistrictController::class, 'AllocationEdit']);
-    
     Route::get('/District/District_Report', [DistrictController::class, 'Report']);
     Route::get('/District/District_Account', [DistrictController::class, 'Account']);
     Route::get('/District/District_Change_Account', [DistrictController::class, 'AccountChange']);
